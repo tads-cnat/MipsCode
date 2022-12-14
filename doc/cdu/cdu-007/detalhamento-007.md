@@ -16,5 +16,5 @@
 ## Página fora do ar
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
-| 2.1 - Página de proejtos está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
-| 2.2 - O visitante é notificado | 2.2 - Renderiza página 404. |
+| 2.1 - Página de projetos está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
+| 2.2 - O visitante é notificado. | 2.2 - Renderiza página 404. |
