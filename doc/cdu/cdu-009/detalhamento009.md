@@ -24,5 +24,5 @@
 ## Arquivo não suportado
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
-| 2.1 - Arquivo muito grande ou formato invalido. | 2.1 - Não é possivel validar os arquivos e força um error. |  
-| 2.2 - O usuario é notificado | 2.2 - Notifica e pede novamente outros arquivos validos. |
+| 4.1 - Arquivo muito grande ou formato invalido. | 5.1 - Não é possivel validar os arquivos e força um error. |  
+| 4.2 - O usuario é notificado | 5.2 - Notifica e pede novamente outros arquivos validos. |
