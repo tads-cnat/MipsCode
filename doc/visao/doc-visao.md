@@ -77,5 +77,5 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | F10 | Exportar arquivo | Fazer download de arquivo de texto referente ao código. |
 | F11 | Gerenciar perfil | Inserir, editar, excluir dados(bio, foto, e-mail, nome, github…) e mudar tema do site. |
 | F12 | Acessar tutoriais | Entrar na área de guia de aprendizagem. |
-| F13 | Controle dos usuários cadastrados | Gerenciamento dos perfis de usuários, como controle de permissão. |
+| F13 | Controle dos usuários cadastrados | Criar, editar, excluir e alterar permissão de acesso. |
 | F14 | Controle dos tutoriais | Criar, editar e excluir tutoriais que sejam visíveis para os usuários. |
