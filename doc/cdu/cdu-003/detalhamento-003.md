@@ -4,7 +4,7 @@
 - **Atores secundários**: ...	 
 - **Resumo**: Usuário acessa página da IDE
 - **Pré-condição**: Um usuário deve estar acessando o site.
-- **Pós-Condição**: Um usuário deve estar acessando o site na página da IDE.
+- **Pós-Condição**: ...
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
