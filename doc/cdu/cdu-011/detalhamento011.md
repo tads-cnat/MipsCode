@@ -4,7 +4,7 @@
 - **Atores secundários**: ...
 - **Resumo**: Usuário acessa página de perfil e modifica seu proprio perfil.
 - **Pré-condição**: Um usuário deve estar logado no site.
-- **Pós-Condição**: Um usuário deve estar logado no site e acessando a página de perfil.
+- **Pós-Condição**: Após gerenciar o perfil, o usuario deve continuar logado.
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
