@@ -1,25 +1,23 @@
-# Título do Projeto
+# MipsCode
 
-<img src="logo.png" width="200" height="200" />
+<img src="logo-mips.png" width="400" height="350" />
 
->Inserir uma logo para o projeto
-
->Inserir pequena descrição do projeto
+>Sistema que possui documentação, guia de aprendizagem e uma IDE para aprender e praticar mips assembly.
 
 # Equipe e Formas de Contato
 
-1. Nome...
-2. Nome...
-
->Descrever as formas de contato da equipe - WhatsApp, Discord, etc.
+- Hilquias Abias Figueiredo Silva
+- Heloise Vitória Macena Bezerra
+- Matheus Duarte de Medeiros
+- Neemias Renan Santos de Oliveira
 
 # Horário de Reuniões
 
->Descrever dias, horários e local das reuniões da equipe
+>Terças, quintas e sextas.
 
 # Tecnologias Utilizadas
 
->Enumerar as tecnoligas utilzadas no projeto
+>Python, Django, HTML, CSS e JavaScript
 
 # Documentação
 
