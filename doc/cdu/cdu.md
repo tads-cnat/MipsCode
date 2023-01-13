@@ -2,7 +2,7 @@
 
 ## 1. Diagrama de Casos de Uso
 
-![Casos de uso](./Untitled.png)
+![Casos de uso](./Cdu.png)
 
 ## 2. Listagem dos detalhamentos dos casos de uso
 
