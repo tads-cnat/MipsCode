@@ -1,0 +1,101 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/index.css' %}">
+{% endblock statics %}
+
+{% block article %}
+<article>
+    <section class="section-one margin-top-2 padding-padrao column align-center">
+        <h1 class="fs-0 color-green">MipsCode</h1>
+        <p class="fs-4 medio">Uma ferramenta para desenvolver código em assembly para o processador MIPS</p>
+    </section>
+
+    <section class="section-two margin-top-2 padding-padrao column align-center">
+        <div class="">
+            <div class="div-text">
+                <h3 class="fs-3 margin-zero">FEITO PARA VOCÊ</h3>
+                <p class="fs-5">O MipsCode possui uma IDE voltada para assembly mips, ideal para quem precisa de um
+                    ambiente de
+                    desenvolvimento completo e integrado para a linguagem.</p>
+                <button class="fs-5 button button-green color-green margin-top-2">Faça uma demonstração</button>
+            </div>
+
+
+            <div class="div-element"></div>
+        </div>
+    </section>
+
+    <section class="section-three margin-top-7 padding-padrao column align-center">
+        <h3 class="fs-3">SEJA UM EXPLORADOR</h3>
+
+        <div class="cards">
+            <div class="card column align-center">
+                <img class="icon-card" src="{% static 'mipscode/svgs/icon-mao.svg' %}">
+                <div class="group-card  column align-center">
+                    <h4 class="fs-5 margin-zero">Está iniciando agora?</h4>
+                    <p class="fs-6 ligth">Podemos te ajudar a programar em assembly de forma fácil e intuitiva.</p>
+                </div>
+            </div>
+            <div class="card column align-center">
+                <img class="icon-card" src="{% static 'mipscode/svgs/icon-mao2.svg' %}">
+                <div class="group-card column align-center">
+                    <h4 class="fs-5 margin-zero">Compartilhe experiência</h4>
+                    <p class="fs-6 ligth">Uma comunidade para compartilhar conhecimento sobre programação.</p>
+                </div>
+            </div>
+            <div class="card column align-center">
+                <img class="icon-card" src="{% static 'mipscode/svgs/icon-save.svg' %}">
+                <div class="group-card  column align-center">
+                    <h4 class="fs-5 margin-zero">Guarde seus projetos</h4>
+                    <p class="fs-6 ligth">Você pode salvar seus projetos e acessá-los a qualquer momento.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="section-four margin-top-7 padding-padrao column align-center">
+        <h3 class="fs-3">DEPOIMENTOS</h3>
+
+        <div class="group-depoimento">
+            <div> <img src="{% static 'mipscode/svgs/icon-aspas.svg' %}"> </div>
+            <div class="texts">
+                <p class="fs-6">O site MipsCode é um ótimo recurso para aprender e praticar mips. O site
+                    fornece<br>
+                    uma variedade de exemplos e tutoriais para ajudar os usuários a se familiarizarem<br> com a
+                    linguagem. Eu recomendaria este site para qualquer pessoa que esteja<br> procurando um bom recurso
+                    para aprender assembly mips.</p>
+                <div class="column">
+                    <h4 class="fs-5 color-green margin-top-1 margin-zero">João Pereira</h4>
+                    <p class="fs-6 bold margin-zero">Professor de Arquitetura de Computadores</p>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="avatar"></div>
+                <div class="nexts"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-five margin-top-7 padding-padrao column align-center">
+        <div class="group-contato column">
+            <h3 class="fs-3">CONTATO</h3>
+            <p class="fs-6">Alguma dúvida? Fale com a gente.</p>
+        </div>
+
+        <form action="#" class="form">
+            <input type="text" class="fs-6 input" placeholder="Nome*">
+            <input type="email" class="fs-6 input" placeholder="Email*">
+            <textarea name="content" id="content" cols="30" rows="10" class="fs-6 input"
+                placeholder="Mensagem"></textarea>
+            <input class="fs-6 button button-green color-green" type="submit" value="Enviar">
+        </form>
+    </section>
+</article>
+
+
+{% endblock article %}
