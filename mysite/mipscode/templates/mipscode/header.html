@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>MipsCode</title>
+    {% load static %}
+    {% block statics %}{% endblock statics %}
+    <link rel="stylesheet" href="{% static 'mipscode/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'mipscode/css/geral.css' %}">
+</head>
+
+<body>
+    <header class="padding-padrao header-nav">
+        <nav class="row navegation align-center">
+            <div class="nav-logo">
+                <img src="{% static 'mipscode/svgs/logo-min.svg' %}" alt="MipsCode Logo" class="logo">
+            </div>
+
+
+            <div class="nav-links">
+                {% if user.is_authenticated %}
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                {% else %}
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:index' %}">Início</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                {% endif %}
+            </div>
+
+            <div class="nav-buttons">
+                {% if user.is_authenticated %}
+
+                {% else %}
+                <a href="{% url 'mipscode:login' %}" class="fs-navegations color-green">Entrar</a>
+                <a href="{% url 'mipscode:cadastro' %}"><input class="fs-navegations button button-white bold"
+                        type="button" value="Inscreva-se"></a>
+                {% endif %}
+            </div>
+
+        </nav>
+
+        <nav class="header-nav-mobile">
+            <img src="{% static 'mipscode/svgs/logo-min.svg' %}" alt="MipsCode Logo" class="logo">
+            <button class="menu">
+                <img src="{% static 'mipscode/svgs/menu-min.svg' %}" alt="Menu">
+            </button>
+        </nav>
+    </header>
+
+    <!-- Criar o menu para mobile -->
+
+
+
+
+    {% block article %}{% endblock article %}
+
+    {% if title != "ide" %}
+    <footer class="margin-top-7">
+        <div class="padding-padrao column ">
+            <div class="row top margin-top-7">
+                <img class="logo-white" src="{% static 'mipscode/svgs/logo-white.svg' %}">
+                <div class="group">
+                    <div class="links column">
+                        <h4 class="fs-5 bold">Rotas Principais</h4>
+                        <a class="fs-6 color-white ligth" href="">Tutorial</a>
+                        <a class="fs-6 color-white ligth" href="">Comunidade</a>
+                        <a class="fs-6 color-white ligth" href="">Documentação</a>
+                        <a class="fs-6 color-white ligth" href="">Artigos</a>
+                        <a class="fs-6 color-white ligth" href="">Fórum</a>
+                    </div>
+
+                    <div class="links column">
+                        <h4 class="fs-5 bold">Sobre nós</h4>
+                        <a class="fs-6 color-white ligth" href="">Quem Somos</a>
+                        <a class="fs-6 color-white ligth" href="">Fale conosco</a>
+                        <a class="fs-6 color-white ligth" href="">Termos de Serviços</a>
+                    </div>
+                </div>
+                <div class="links-externs">
+                    <img src="{% static 'mipscode/svgs/icon-github.svg' %}">
+                    <img src="{% static 'mipscode/svgs/icon-instagram.svg' %}">
+                </div>
+            </div>
+            <div class="fs-6 margin-top-7 bottom">© 2022 MipsCode. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+    {% endif %}
+</body>
+
+</html>
