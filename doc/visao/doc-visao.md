@@ -36,7 +36,7 @@ Site que possui IDE para mips assembly, conexão para comunidade externa, docume
 
 
 ## 4. Descrição do ambiente dos usuários
-
+A aplicação será em forma de aplicação web, e será utilizada através de qualquer computador com acesso a internet. Contendo:
 - IDE para codificação de mips assembly. 
 - Sistema de arquivos.
 - Perfil do usuário.
@@ -79,3 +79,13 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | F12 | Acessar tutoriais | Entrar na área de guia de aprendizagem. |
 | F13 | Controle dos usuários cadastrados | Criar, editar, excluir e alterar permissão de acesso. |
 | F14 | Controle dos tutoriais | Criar, editar e excluir tutoriais que sejam visíveis para os usuários. |
+| F15 | Montar código | Inicializar o processo de compilação do código assembly. |
+| F16 | Executar código | Permitir executar o código completo após ser compilado. |
+| F17 | Avançar uma etapa | Permitir que o usuário execute o código linha por linha manualmente. |
+| F18 | Voltar uma etapa | Permitir que o usuário retroceda uma linha da execução do código, manualmente. |
+| F19 | Abrir console | Abrir um console que mostra o resultado do código que já foi rodado. |
+| F20 | Fechar console | Finaliza um console que já está aberto. |
+| F21 | Abrir registradores | Abrir a aba de registradores no lugar do console. |
+| F22 | Fechar registradores | Fecha a aba de registradores. |
+| F23 | Console hexadecimal | Exibir os valores dos registradores e do console em hexadecimal. |
+| F24 | Console decimal | Exibir os valores dos registradores e do console em decimal. |

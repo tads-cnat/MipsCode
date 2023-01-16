@@ -1,0 +1,117 @@
+
+.header {
+    height: 62px;
+    background: #1F2024;
+    box-shadow: 0px 4px 23px rgb(0 0 0 / 33%);
+    display: flex;
+    padding: 0px 13%;
+}
+
+.header .header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 115px;
+}
+
+.header .header-nav .header-nav-links {
+    display: flex;
+    gap: 45px;
+}
+
+.header-nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 59px;
+}
+
+.header-nav-buttons .text-user{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.header-nav-buttons .text-user .user-avatar {
+    width: 3em;
+    height: 3em;
+    border-radius: 100%;
+    background-size: cover;
+    border: 1px solid white;
+}
+
+.header-nav-buttons .text-user .username{
+    text-transform: capitalize;
+}
+
+.green-text {
+    color: #2EF2AA;
+}
+
+.white-button {
+    background: rgba(217, 217, 217, 0.1);
+    border: 1px solid #C9B9B9;
+    border-radius: 5px;
+    height: 33px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-family: inter;
+    font-size: 13px;
+    padding: 0px 29px;
+}
+
+a {
+    text-decoration: none;
+    color: #D0D0D0;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.header-nav-mobile {
+    display: none;
+}
+
+.menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    align-items: flex-end;
+}
+
+.input-submit {
+    width: max-content !important;
+}
+
+@media (max-width:1080px) {
+    .header {
+        padding: 0px 5%;
+    }
+
+    .header-nav-buttons {
+        gap: 36px;
+    }
+}
+
+@media (max-width:910px) {
+    .header-nav {
+        display: none !important;
+
+    }
+
+    .header-nav-mobile {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

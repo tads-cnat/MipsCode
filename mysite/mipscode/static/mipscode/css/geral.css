@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #1A1B1F;
+    color: white;
+}
+
+
+/* Textos Titulos */
+.fs-0 {
+    font-size: 93px;
+    font-weight: 800;
+    line-height: 126px;
+    margin: 0;
+}
+
+.fs-1 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 62.4px;
+    margin: 0px;
+}
+
+.fs-2 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50.4px;
+    margin: 0px;
+}
+
+.fs-3 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 42.8571px;
+}
+
+.fs-4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.8px;
+}
+
+.fs-5 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.6px;
+}
+
+/* Textos normais */
+
+.fs-6 {
+    font-size: 16px;
+    line-height: 22.8571px
+}
+
+.fs-7 {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 21.6px;
+}
+
+.fs-navegations {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    padding: 3px;
+    transition: 0.5s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+    cursor: pointer;
+}
+
+.font-uppercase {
+    text-transform: uppercase;
+}
+
+
+
+.padding-padrao {
+    padding: 1em 7.4em;
+}
+
+/* Margins */
+.margin-bottom-2 {
+    margin-bottom: 2em !important;
+}
+
+.margin-top-1 {
+    margin-top: 1em;
+}
+
+.margin-top-2 {
+    margin-top: 2em;
+}
+
+.margin-top-7 {
+    margin-top: 7em;
+}
+
+.margin-zero {
+    margin: 0em !important;
+}
+
+/* Weight */
+.bold {
+    font-weight: bold !important;
+}
+
+.medio {
+    font-weight: 500 !important;
+}
+
+.ligth {
+    font-weight: 400 !important;
+}
+
+/* Colors */
+.color-white {
+    color: white !important;
+}
+
+.color-gray {
+    color: #D0D0D0 !important;
+}
+
+.color-green {
+    color: #2EF2AA !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.arrow-right::before {
+    content: "➝";
+    margin-right: 5px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    padding: 0px 2em;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.button-green {
+    border: 1px solid #2EF2AA;
+    background: rgba(46, 242, 170, 0.05);
+    color: #FFFFFF;
+}
+
+.button-white {
+    border: 1px solid #C9B9B9;
+    background: #d9d9d91a;
+    color: #FFFFFF;
+}
+
+.input {
+    padding: 15px 10px;
+    width: -webkit-fill-available;
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    background: none;
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+}
+
+
+
+
+
+footer {
+    background: #151518;
+    width: 100%;
+}
+
+footer .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+footer .top .logo-white {
+    width: 115px;
+}
+
+footer .top .group {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    gap: 6em;
+}
+
+footer .top .group .links {
+    display: flex;
+    gap: 0.5em;
+}
+
+footer .top .links-externs {
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+}
+
+.bottom {
+    color: white;
+    border-top: 1px solid;
+    padding: 2em;
+    font-size: 13px;
+    justify-content: center;
+}
+
+
+@media (max-width:1050px) {
+    .padding-padrao {
+        padding: 2em 1.8em !important;
+    }
+
+    .fs-0 {
+        font-size: 4.5rem !important;
+    }
+
+    .form {
+        width: 80% !important;
+    }
+
+}
+
+
+
+@media (max-width:880px) {
+    .fs-0 {
+        font-size: 3.5rem !important;
+    }
+
+    .fs-1 {
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        line-height: 38.4px !important;
+    }
+
+    .fs-2 {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        line-height: 33.6px !important;
+    }
+
+    .fs-6 {
+        font-size: 14px !important;
+        line-height: 24px !important;
+    }
+
+    .fs-navegations {
+        font-size: 15px !important;
+    }
+
+    .padding-padrao {
+        padding: 2em 1.8em !important;
+    }
+
+    .form {
+        width: 96% !important;
+    }
+
+    footer {
+        display: none;
+    }
+
+    footer .top {
+        gap: 4em;
+    }
+}

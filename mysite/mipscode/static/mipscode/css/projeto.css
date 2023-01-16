@@ -1,0 +1,311 @@
+article {
+    color: white;
+}
+
+article .article-header {
+    margin-top: 4.5em;
+    padding: 0px 13%;
+}
+
+article .article-header .title-local {
+    margin: 0;
+}
+
+article .nav-maps {
+    display: flex;
+
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+}
+
+article .nav-maps p {
+    font-size: smaller;
+}
+
+article .nav-maps .text-opacity-mini {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+article .nav-maps .text-opacity-medium {
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+article .nav-maps .text-green {
+    color: #2EF2AA;
+}
+
+
+article .content-projetos {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 13%
+}
+
+article .content-projetos .content-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+article .content-projetos .content-filtersesearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3em;
+}
+
+article .content-projetos .content-filtersesearch .search {
+    background: rgba(217, 217, 217, 0.02);
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    border-radius: 5px;
+    height: 34px;
+    width: 263px;
+    color: white;
+    padding: 0px 15px;
+    font-family: 'Inter';
+}
+
+article .content-projetos .content-filtersesearch .filters {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    height: 34px;
+    width: 199px;
+    color: white;
+    padding: 0px 15px;
+    font-family: 'Inter';
+
+}
+
+article .content-projetos .content-projetos-all {
+    margin-top: 2em;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+}
+
+article .content-projetos .content-projetos-all .project {
+    height: 109px;
+    border: 1px solid #333333;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0px 27px;
+    justify-content: space-between;
+}
+
+article .content-projetos .content-projetos-all .project .titles {
+    display: flex;
+    flex-direction: column;
+}
+
+article .content-projetos .content-projetos-all .project .titles .title {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 110%;
+    margin: 0;
+}
+
+article .content-projetos .content-projetos-all .project .titles .time {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 2px 0px 6px;
+}
+
+article .content-projetos .content-projetos-all .project .titles .description {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 110%;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+article .content-projetos .content-projetos-all .project .options {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+article .content-projetos .content-projetos-all .project .options .button-open {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    height: 34px;
+    width: 145px;
+    color: white;
+    padding: 0px 15px;
+    font-family: 'Inter';
+}
+
+article .content-projetos .content-projetos-all .project .options .div-options {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+}
+
+
+
+article .content-projetos .content-buttons .button-green-solid {
+    background: #2EF2AA;
+    border: 1px solid #2EF2AA;
+    border-radius: 5px;
+    width: 200px;
+    height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+article .content-projetos .content-buttons .button-white-solid {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    width: 200px;
+    height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+article .content-projetos .content-div .h1 {
+    margin: 0px;
+    font-size: 32px;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 1em;
+    padding-right: 9em;
+}
+
+article .content-projetos .content-div .h3 {
+    font-size: 22px;
+}
+
+article .content-projetos .content-div .p {
+    font-size: 18px;
+}
+
+article .content-projetos .content-div .content-roadmap {
+    width: 50%;
+}
+
+.create-arquivo, .editar-arquivo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    left: 0;
+    top: 0;
+
+}
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.display-none{
+    display: none;
+}
+
+.create-arquivo .div,.editar-arquivo .div {
+    width: 31em;
+    background: #1a1b1f;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    height: auto;
+    box-shadow: 1px 2px 47px 0px #00000057;
+    border-radius: 5px;
+    color: white;
+    padding: 1em 8em 3em;
+}
+
+.input-form{
+    color: white !important;
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(217, 217, 217, 0.02) !important;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    font-family: 'Inter';
+}
+
+.input-button{
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(46, 242, 170, 0.05);
+    border: 1px solid #2EF2AA;
+    color: #2EF2AA;
+    font-family: 'Inter';
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}
+.textarea{
+    padding-top: 1em;
+    resize: none;
+    height: 8em;
+}
+.create-arquivo .div form .div-header, .editar-arquivo .div form .div-header,.editar-arquivo .div form .div-header, .editar-arquivo .div form .div-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-arquivo .div form .div-header .button-close,.editar-arquivo .div form .div-header .button-close{
+    background: #ffffff1c;
+    border: solid 1px white;
+    border-radius: 4px;
+    width: 2em;
+    height: 2em;
+    color: white;
+    font-weight: 600;
+}
+
+.create-arquivo .div form .content, .editar-arquivo .div form .content{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+
+
+.options-div{
+    position: absolute;
+    border-radius: 5px;
+    background: #1a1b1f;
+    border: solid 1px white;
+    margin-top: 11em;
+    right: 17em;
+}
+
+.buttonOptions{
+    background: none;
+    border: none;
+}
+
+.option{
+    padding: 1em 1em;
+    margin: 0;
+}

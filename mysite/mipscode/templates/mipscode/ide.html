@@ -1,0 +1,299 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/ide.css' %}">
+
+<script src="{% static 'mipscode/js/ide.js' %}"></script>
+<script src="{% static 'mipscode/js/index.js' %}" defer="true" type="module"></script>
+{% endblock statics %}
+
+{% block article %}
+<article>
+    <section class="section-code">
+        <textarea class="codemirror-textarea code"></textarea>
+
+        <div class="area">
+            <section class="registers">
+                <h3>Registradores</h3>
+
+                <table class="table">
+                    <tr>
+                        <th>Identificação</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                    </tr>
+                    <tr>
+                        <td>$0</td>
+                        <td>
+                            <div class="border">$Zero</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>$1</td>
+                        <td>
+                            <div class="border">$at</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$2</td>
+                        <td>
+                            <div class="border">$v0</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$3</td>
+                        <td>
+                            <div class="border">$v1</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$4</td>
+                        <td>
+                            <div class="border">$a0</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$5</td>
+                        <td>
+                            <div class="border">$a1</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$6</td>
+                        <td>
+                            <div class="border">$a3</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$7</td>
+                        <td>
+                            <div class="border">$t0</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$8</td>
+                        <td>
+                            <div class="border">$t1</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$9</td>
+                        <td>
+                            <div class="border">$t2</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$10</td>
+                        <td>
+                            <div class="border">$t3</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$11</td>
+                        <td>
+                            <div class="border">$t4</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+                    <tr>
+                        <td>$12</td>
+                        <td>
+                            <div class="border">$t5</div>
+                        </td>
+                        <td>0</td>
+                    </tr>
+
+
+                </table>
+            </section>
+
+
+        </div>
+
+    </section>
+
+</article>
+{% endblock article %}
