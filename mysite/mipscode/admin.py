@@ -1,9 +1,9 @@
 from django.contrib import admin
 
-from .models import UserNew, UserSettings, Tutorial, Repositorio, Documentation
+from .models import Profile, ProfileSettings, Tutorial, Repositorio, Documentation
 
-class UsersettingsInline(admin.TabularInline):
-    model = UserSettings
+class ProfileSettingsInline(admin.TabularInline):
+    model = ProfileSettings
     extra = 0
 
     
@@ -24,11 +24,11 @@ class UserAdmin(admin.ModelAdmin):
         (None,        {'fields': ['avatar']}),
         (None,        {'fields': ['user_type']}),
     ]
-    inlines = [TutorialInline,RepositorioInline,UsersettingsInline]
+    inlines = [TutorialInline,RepositorioInline,ProfileSettingsInline]
 
 class DocumentationArea(admin.TabularInline):
     model = Documentation
 
 
-admin.site.register(UserNew,UserAdmin)
+admin.site.register(Profile,UserAdmin)
 admin.site.register(Documentation)
