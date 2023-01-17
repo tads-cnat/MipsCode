@@ -2,28 +2,25 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from PIL import Image
+from django.contrib.auth.models import User
 
-
-
-class UserNew(models.Model):
-    name = models.CharField(max_length = 250)
-    email = models.EmailField(max_length = 250)
-    password = models.CharField(max_length = 150)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False)
     bio = models.TextField(default='Biografia do Usuário')
     avatar = models.ImageField(upload_to='avatar', default='avatar/default.jpg')
 
-    types_users = [
+    types_profiles = [
         ('1', 'Admin'),
         ('2', 'Student'),
         ('3', 'Teacher'),
     ]
 
-    user_type = models.CharField(max_length=1, choices=types_users, default='2')
+    user_profile = models.CharField(max_length=1, choices=types_profiles, default='2')
 
 
 
-class UserSettings(models.Model):
-    user = models.ForeignKey(UserNew, on_delete = models.CASCADE, null=False)
+class ProfileSettings(models.Model):
+    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=False)
 
     types_themes = [
         ('1', 'Dark'),
@@ -41,7 +38,7 @@ class UserSettings(models.Model):
 
 
 class Tutorial(models.Model):
-    user = models.ForeignKey(UserNew, on_delete = models.CASCADE, null=True)
+    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=True)
 
     title = models.CharField(max_length = 150)
     description = models.CharField(max_length = 300)
@@ -58,7 +55,7 @@ class Tutorial(models.Model):
         return self.title
 
 class Repositorio(models.Model):
-    user = models.ForeignKey(UserNew, on_delete = models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=True)
     title = models.CharField(max_length = 50)
     description = models.CharField(max_length = 250)
     favorite = models.BooleanField(default=False)

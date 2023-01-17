@@ -3,44 +3,65 @@ from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.views import View
-
-from .models import Documentation, Repositorio, Tutorial, UserNew, UserSettings
+from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
+from .models import Profile, ProfileSettings, Documentation, Repositorio, Tutorial
+from django.contrib.auth.models import User
 
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         return render(request, "mipscode/index.html")
 
-class LoginView(View):
+class LoginView(TemplateView):
     def post(self, request, *args, **kwargs):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        pass
-       
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username)
+        print(password)
+        print(request.POST)
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            print(user)
+            return HttpResponseRedirect(reverse('mipscode:index'))
+        else:
+            context = { 'msg': 'Usuário ou senha incorretos!'}
+            print('deu erro')
+            return render(request, "mipscode/login.html", context)
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            context = { 'msg': 'Usuário já está autenticado' }
+            print('usuário já está autenticado')
+            logout(request)
+            return render(request, 'mipscode/login.html', context)
+
         mensagem = ""
         return render(request, "mipscode/login.html", {'mensagem': mensagem })
 
 
-class CadastroView(View):
-    def post(self, request, *args, **kwargs):
-        username = request.POST.get('user')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        user = UserNew.objects.filter(email=email).first()
-        
-        if user:
-            return HttpResponse('Já existe com esse email.')
-
-        CreateUser = UserNew.objects.create(name=username, email=email, password=password)
-        CreationSettings = UserSettings.objects.create(user=CreateUser)
-        
-        return HttpResponseRedirect(reverse('mipscode:login'))
-
+class CadastroView(TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, "mipscode/cadastro.html")
+
+    def post(self, request, *args, **kwargs):
+        username = request.POST['user']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        userExists = User.objects.filter(email=email).first()
+        
+        if userExists:
+            return HttpResponse('Já existe com esse email.')
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        profile = Profile.objects.create(user=user)
+        user.save()
+        profile.save()
+        
+        return HttpResponseRedirect(reverse('mipscode:login'))
 
 
 class DocumentacaoView(View):
@@ -62,49 +83,49 @@ class IdeView(View):
         
 class RepositorioView(View):
     def get(self, request, *args, **kwargs):
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
-        projetos = Repositorio.objects.filter(user=user).order_by('-created_at')
-        return render(request, "mipscode/repositorio.html",{'user': user, 'projetos': projetos})
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
+        projetos = Repositorio.objects.filter(profile=profile).order_by('-created_at')
+        return render(request, "mipscode/repositorio.html",{'profile': profile, 'projetos': projetos})
 
     def post(self, request, *args, **kwargs):
         title = request.POST.get('title')
         description = request.POST.get('description')
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
 
-        CreateProject = Repositorio.objects.create(user= user,title=title, description=description,content= "null")
+        CreateProject = Repositorio.objects.create(profile= profile,title=title, description=description,content= "null")
 
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
 class DashboardView(View):
     def get(self, request, *args, **kwargs):
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
-        projetos = Repositorio.objects.filter(user=user).order_by('-created_at')[:4]
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
+        projetos = Repositorio.objects.filter(profile=profile).order_by('-created_at')[:4]
         tutoriais = Tutorial.objects.all()
-        return render(request, "mipscode/dashboard.html",{'user': user, 'projetos': projetos})
+        return render(request, "mipscode/dashboard.html",{'profile': profile, 'projetos': projetos})
 
     def post(self, request, *args, **kwargs):
         title = request.POST.get('title')
         description = request.POST.get('description')
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
 
-        CreateProject = Repositorio.objects.create(user= user,title=title, description=description,content= "null")
+        CreateProject = Repositorio.objects.create(profile= profile,title=title, description=description,content= "null")
 
         return HttpResponseRedirect(reverse('mipscode:dashboard'))
 
 
 class TutoriaisView(View):
     def get(self, request, *args, **kwargs):
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
-        projetos = Repositorio.objects.filter(user=user)
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
+        projetos = Repositorio.objects.filter(profile=profile)
         tutoriais = Tutorial.objects.all()
-        return render(request, "mipscode/dashboard.html",{'user': user, 'projetos': projetos})
+        return render(request, "mipscode/dashboard.html",{'profile': profile, 'projetos': projetos})
 
     def post(self, request, *args, **kwargs):
         title = request.POST.get('title')
         description = request.POST.get('description')
-        user = UserNew.objects.filter(email='teste@gmail.com').first()
+        profile = Profile.objects.filter(email='teste@gmail.com').first()
 
-        CreateProject = Repositorio.objects.create(user= user,title=title, description=description,content= "null")
+        CreateProject = Repositorio.objects.create(profile= profile,title=title, description=description,content= "null")
 
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
