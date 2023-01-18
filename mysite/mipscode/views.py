@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Profile, Documentation, Repositorio, Tutorial
 from django.contrib.auth.models import User
 from django.utils import timezone
-from datetime import datetime
+from django.db.models import Q
 
 
 class IndexView(View):
@@ -92,6 +92,41 @@ class RepositorioView(View):
         description = request.POST.get('description')
         CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= "null")
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
+
+
+class BuscarRepositorio(View):
+    def post(self, request, *args, **kwargs):
+        busca = request.POST.get('search')
+        filters = request.POST.get('filters') 
+        profile = Profile.objects.get(user = request.user)
+        title = 'repositorio'
+
+        if busca:
+            lista = Repositorio.objects.filter(Q(title__icontains=busca))
+        elif int(filters) == 1:
+            lista = Repositorio.objects.filter(user=profile).order_by('-created_at')
+        elif int(filters) == 2:
+            lista = Repositorio.objects.filter(user=profile).order_by('created_at')
+        elif int(filters) == 3:
+            lista = Repositorio.objects.filter(user=profile).order_by('-favorite')
+        else:
+            return HttpResponseRedirect(reverse('mipscode:repositorio'))
+        return render(request, "mipscode/repositorio.html", {'projetos': lista, 'busca': busca,'title':title})
+
+class BuscarTutorial(View):
+    def post(self, request, *args, **kwargs):
+        busca = request.POST.get('search')
+        filters = request.POST.get('filters') 
+        title = 'tutoriais'
+
+        if busca:
+            lista = Tutorial.objects.filter(Q(title__icontains=busca))
+        elif int(filters) > 0:
+            lista = Tutorial.objects.filter(level = filters)
+        else:
+            return HttpResponseRedirect(reverse('mipscode:tutoriais'))
+        return render(request, "mipscode/tutoriais.html", {'tutoriais': lista, 'busca': busca,'title':title})
+
 
 class DashboardView(View):
     def get(self, request, *args, **kwargs):

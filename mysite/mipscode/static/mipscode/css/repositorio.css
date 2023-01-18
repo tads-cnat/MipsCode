@@ -14,6 +14,7 @@
     border: 1px solid #333333;
     border-radius: 13px;
     padding: 23px 31px;
+    
 }
 
 .content-projetos-all {
@@ -152,10 +153,21 @@
 }
 
 
-
+.div-projects{
+    width: 50%;
+}
 
 @media (max-width:1050px) {
-
+    .div-projects{
+        width: 100%;
+    }
+    .options{
+        justify-content: space-between;
+        margin-top: 1em;
+    }
+    .project-div{
+        flex-direction: column !important;
+    }
     .p-button {
         text-align: right;
         line-height: 1;

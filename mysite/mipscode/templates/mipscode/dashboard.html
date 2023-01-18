@@ -1,5 +1,6 @@
 {% extends "mipscode/header.html" %}
 {% load static %}
+{% load template_filters %}
 
 {% block statics %}
 <link rel="stylesheet" href="{% static 'mipscode/css/dashboard.css' %}">
@@ -59,8 +60,8 @@
                 <div>
                     <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
                     <p class="fs-7 margin-zero color-opaco">{{firstname}}</p>
-                    <p class="fs-7 margin-zero color-opaco">{{projeto.edited_at}}</p>
-                    <p class="fs-6 margin-zero">{{projeto.description}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
+                    <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
                 <div class="margin-top-2">
                     <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>

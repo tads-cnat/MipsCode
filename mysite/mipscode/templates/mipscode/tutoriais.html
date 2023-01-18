@@ -14,37 +14,44 @@
         <p class="color-green fs-6 bold margin-zero">Tutoriais</p>
     </header>
     <section class="column">
-        <div class="row margin-top-2 justify-space-between div-filters">
+        <form class="row margin-top-2 justify-space-between div-filters" action="{% url 'mipscode:buscaTutorial' %}"
+            method="post">
+            {% csrf_token %}
             <input type="text" class="button-white button-background-opaco fs-7 button search"
-                placeholder="Buscar arquivo">
+                placeholder="Buscar arquivo" name="search">
 
-            <select name="filters" class="button-white button-background-opaco fs-7 button filters">
-                <option value="maisrecentes" class="fs-7">Fácil</option>
-                <option value="maisrecentes" class="fs-7">Intermediário</option>
-                <option value="maisrecentes" class="fs-7">Difícil</option>
+            <select name="filters" class="button-white button-background-opaco fs-7 button filters" onchange="this.form.submit()">
+                <option class="fs-7" class="fs-7" selected="selected" disabled>Escolha o nível</option>
+                <option value="0" class="fs-7">Todos</option>
+                <option value="1" class="fs-7">Fácil</option>
+                <option value="2" class="fs-7">Intermediário</option>
+                <option value="3" class="fs-7">Difícil</option>
             </select>
-        </div>
+        </form>
 
-        <div class="content-projetos-all margin-top-2">
+            <div class="content-projetos-all margin-top-2">
 
-            {% for tutorial in tutoriais %}
-            <div class="project-div column button-background-opaco">
-                <div>
-                    <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
-                    {% if tutorial.level == '1' %}
-                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-green">Fácil</span></p>
-                    {% elif tutorial.level == '2' %}
-                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-yellow">Intermediário</span></p>
-                    {% elif tutorial.level == '3' %}
-                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-red">Difícil</span></p>
-                    {% endif %}
+                {% for tutorial in tutoriais %}
+                <div class="project-div column button-background-opaco">
+                    <div>
+                        <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
+                        {% if tutorial.level == '1' %}
+                        <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span
+                                class="color-green">Fácil</span></p>
+                        {% elif tutorial.level == '2' %}
+                        <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span
+                                class="color-yellow">Intermediário</span></p>
+                        {% elif tutorial.level == '3' %}
+                        <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span
+                                class="color-red">Difícil</span></p>
+                        {% endif %}
+                    </div>
+                    <div class="margin-top-2">
+                        <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
+                    </div>
                 </div>
-                <div class="margin-top-2">
-                    <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
-                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
 
     </section>
 </article>

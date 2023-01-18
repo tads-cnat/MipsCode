@@ -1,5 +1,6 @@
 {% extends "mipscode/header.html" %}
 {% load static %}
+{% load template_filters %}
 
 {% block statics %}
 <link rel="stylesheet" href="{% static 'mipscode/css/repositorio.css' %}">
@@ -32,24 +33,28 @@
             </a>
         </div>
 
-        <div class="row margin-top-2 justify-space-between div-filters">
+        <form class="row margin-top-2 justify-space-between div-filters" action="{% url 'mipscode:buscaRepositorio' %}" method="post">
+            {% csrf_token %}
             <input type="text" class="button-white button-background-opaco fs-7 button search"
-                placeholder="Buscar arquivo">
+                placeholder="Buscar arquivo" name="search" value="{{busca}}">
 
-            <select name="filters" class="button-white button-background-opaco fs-7 button filters">
-                <option value="maisrecentes" class="fs-7">Mais Recentes</option>
+            <select name="filters" class="button-white button-background-opaco fs-7 button filters" onchange="this.form.submit()">
+                <option class="fs-7" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+                <option value="3" class="fs-7">Favoritos</option>
             </select>
-        </div>
+        </form>
 
         <div class="content-projetos-all column margin-top-2">
             {% for projeto in projetos %}
-            <div class="project-div justify-space-between  row">
-                <div class="column">
+            <div class="project-div justify-space-between row">
+                <div class="column div-projects">
                     <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
-                    <p class="fs-7 margin-zero color-opaco">{{projeto.created_at}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
                     <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
-                <div class="row options align-center">
+                <div class="row options align-center ">
                     <button class="button-white button-background-white fs-7 button">Abrir arquivos</button>
                     <div class="row options">
                         {% if projeto.favorite == True %}
