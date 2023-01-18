@@ -12,20 +12,22 @@
         <h1 class="fs-3 font-uppercase">Veja o que você pode realizar no MipsCode.</h1>
 
         <div class="row area-div">
-            <div class="area-link">
-                <p class="fs-7">APRENDA</p>
-                <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
-            </div>
+            <a href="{% url 'mipscode:documentacao' 1%}" class="color-white area-link">
+  
+                    <p class="fs-7 bold">APRENDA</p>
+                    <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
 
-            <div class="area-link">
-                <p class="fs-7">CRIE AGORA</p>
+            </a>
+
+            <a href="{% url 'mipscode:ide' %}" class="color-white area-link">
+                <p class="fs-7 bold">CRIE AGORA</p>
                 <h1 class="fs-4 ligth margin-zero">Programe com Mips</h1>
-            </div>
+            </a>
 
-            <div class="area-link">
-                <p class="fs-7">Compartilhe <span>(Discord)</span></p>
+            <a href="https://discord.com/" target="_blank" class="color-white area-link">
+                <p class="fs-7 bold">COMPARTILHE <span>(Discord)</span></p>
                 <h1 class="fs-4 ligth margin-zero">Entre na comunidade</h1>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -56,7 +58,8 @@
             <div class="project-div column">
                 <div>
                     <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
-                    <p class="fs-7 margin-zero color-gray">{{projeto.created_at}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{firstname}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{projeto.edited_at}}</p>
                     <p class="fs-6 margin-zero">{{projeto.description}}</p>
                 </div>
                 <div class="margin-top-2">
@@ -69,21 +72,33 @@
 
     <header class="margin-top-7">
         <h1 class="fs-3 margin-zero">Tutoriais</h1>
-        <p class="margin-zero fs-6 color-gray">Aprenda de maneira fácil e prática.</p>
+        <p class="margin-zero fs-6 color-opaco">Aprenda de maneira fácil e prática.</p>
 
-        <div class="content-projetos-all">
+        <div class="content-projetos-all margin-top-1">
 
             {% for tutorial in tutoriais %}
-            <div class="project-div column">
+            <div class="project-div column button-background-opaco">
                 <div>
                     <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
-                    <p class="fs-6 margin-zero color-green">{{tutorial.level}}</p>
+                    {% if tutorial.level == '1' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-green">Fácil</span>
+                    </p>
+                    {% elif tutorial.level == '2' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span
+                            class="color-yellow">Intermediário</span></p>
+                    {% elif tutorial.level == '3' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-red">Difícil</span>
+                    </p>
+                    {% endif %}
                 </div>
                 <div class="margin-top-2">
-                    <button class="button-green color-green fs-6 button cursor-pointer">Abrir Tutorial</button>
+                    <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
                 </div>
             </div>
             {% endfor %}
+        </div>
+        <div class="margin-top-2 row align-end">
+            <button class="button-white color-white fs-6 button bold cursor-pointer">Ver todos os tutoriais</button>
         </div>
     </header>
 

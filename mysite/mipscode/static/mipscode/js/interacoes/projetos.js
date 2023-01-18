@@ -10,7 +10,7 @@ function closeNewProjectView(){
 
 function openOptions(id){
     view = document.querySelector('#options-area'+id)
-    view.setAttribute('class','options-div')
+    view.setAttribute('class','options-div button-white')
     // view.setAttribute('onclick','closeOptions('+id+')')
 
     button = document.querySelector('#buttonOption'+id)
@@ -19,7 +19,7 @@ function openOptions(id){
 
 function closeOptions(id){
     view = document.querySelector('#options-area'+id)
-    view.setAttribute('class','options-div display-none')
+    view.setAttribute('class','options-div button-white display-none')
     button = document.querySelector('#buttonOption'+id)
     button.setAttribute('onclick','openOptions('+id+')')
 }

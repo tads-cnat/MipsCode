@@ -9,6 +9,7 @@ class Profile(models.Model):
     name = models.CharField(default='',max_length = 150, null=True)
     bio = models.TextField(default='Biografia do Usuário')
     avatar = models.ImageField(upload_to='avatar/', default='avatar/default.jpg')
+    
 
     types_profiles = [
         ('1', 'Admin'),
@@ -49,6 +50,7 @@ class Tutorial(models.Model):
 
     created_at = models.DateTimeField('Created Date', default=timezone.now())
     
+    
 
     def was_published_recently(self):
         now = timezone.now()
@@ -64,7 +66,8 @@ class Repositorio(models.Model):
     favorite = models.BooleanField(default=False)
     content = models.JSONField(null=True) #alterar para JSONField() e salvar o objeto 'sys' daquele projeto como json
     created_at = models.DateTimeField('Created Date', default=timezone.now())
-
+    edited_at = models.DateTimeField('Edited Date', default=timezone.now())
+    
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.data <= now

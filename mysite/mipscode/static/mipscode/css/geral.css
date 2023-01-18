@@ -57,8 +57,7 @@ body {
 }
 
 .fs-7 {
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
     line-height: 21.6px;
 }
 
@@ -104,9 +103,11 @@ a {
 .margin-top-2 {
     margin-top: 2em;
 }
+
 .margin-top-5 {
     margin-top: 5em;
 }
+
 .margin-top-7 {
     margin-top: 7em;
 }
@@ -145,6 +146,18 @@ a {
     color: #000 !important;
 }
 
+.color-yellow {
+    color: #D9A318 !important;
+}
+
+.color-red {
+    color: #D91828 !important;
+}
+
+.color-opaco {
+    color: #FFFFFF80 !important;
+
+}
 
 .cursor-pointer {
     cursor: pointer;
@@ -167,6 +180,13 @@ a {
 
 .align-center {
     align-items: center;
+}
+
+.align-end {
+    justify-content: flex-end;
+}
+.justify-space-between {
+    justify-content: space-between;
 }
 
 /* Botões */
@@ -192,14 +212,16 @@ a {
     background: #d9d9d91a;
     color: #FFFFFF;
 }
-
-.background-button-green{
+.button-background-opaco{
+    background: #24252A;
+}
+.background-button-green {
     background: #2EF2AA;
     align-items: center;
     gap: 0.5em;
 }
 
-.background-button-white{
+.background-button-white {
     align-items: center;
     gap: 0.5em;
 }
@@ -218,6 +240,11 @@ a {
     display: flex;
     flex-direction: column;
     width: 43%;
+}
+
+.sitemap-inicio::after {
+    content: "/";
+    margin: 0px 1em;
 }
 
 
@@ -264,6 +291,7 @@ footer .top .links-externs {
     font-size: 13px;
     justify-content: center;
 }
+
 
 
 @media (max-width:1050px) {

@@ -18,4 +18,5 @@ urlpatterns = [
     path('repositorio/<int:pk>/desfavoritar', views.DesfavoritarProjeto.as_view(), name='desfavoritarprojeto'),
     path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
     path('tutoriais/', views.TutoriaisView.as_view(), name='tutoriais'),
+    path('logout/', views.LogoutView.as_view(),name='logout'),
 ]

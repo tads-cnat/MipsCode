@@ -8,14 +8,14 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Profile, Documentation, Repositorio, Tutorial
 from django.contrib.auth.models import User
 from django.utils import timezone
+from datetime import datetime
 
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('mipscode:dashboard'))
-        title_page = "inicio"
-        return render(request, "mipscode/index.html",{"title":title_page})
+        return render(request, "mipscode/index.html",{"title":"inicio"})
 
 class LoginView(TemplateView):
     def post(self, request, *args, **kwargs):
@@ -24,7 +24,6 @@ class LoginView(TemplateView):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            print(user)
             return HttpResponseRedirect(reverse('mipscode:index'))
         else:
             context = { 'msg': 'Usuário ou senha incorretos!'}
@@ -33,7 +32,6 @@ class LoginView(TemplateView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             context = { 'msg': 'Usuário já está autenticado' }
-            print('usuário já está autenticado')
             logout(request)
             return render(request, 'mipscode/login.html', context)
 
@@ -51,28 +49,25 @@ class CadastroView(TemplateView):
         password = request.POST['password']
 
         userExists = User.objects.filter(email=email).first()
-        
         if userExists:
             return HttpResponse('Já existe com esse email.')
-
         user = User.objects.create_user(username=email, password=password)
         profile = Profile.objects.create(user=user, name=username)
         user.save()
-        profile.save()
-        
+        profile.save()        
         return HttpResponseRedirect(reverse('mipscode:login'))
 
 
 
 class DocumentacaoView(View):
     def get(self, request, *args, **kwargs):
-        documentacao = get_object_or_404(Documentation, pk=kwargs['pk'])
         pk = kwargs['pk']
+        documentacao = get_object_or_404(Documentation, pk=pk)        
         documentacao_itens = documentacao.content["content"]
         links_documentacao = Documentation.objects.all()
         title_page = "documentacao"
-
         return render(request, "mipscode/documentacao.html",{"documentacao":documentacao,"documentacao_itens":documentacao_itens,"links_documentacao":links_documentacao,"title":title_page})
+
 # {"content": [{"h1": "Tstes de titulo", "p": "A Suprema Corte dos Estados Unidos permitiu nesta segunda-feira que o WhatsApp, da Meta Platforms, abra processo contra a companhia israelense NSO Group por explorar um bug no aplicativo de mensagens para instalar um software de espionagem que permitiu o monitoramento de 1.400 pessoas, incluindo jornalistas, ativistas de direitos humanos e dissidentes."}, {"h1": "Titulo2", "p": "Os juízes rejeitaram recurso da NSO contra decisão de um tribunal inferior que permitiu o andamento do processo. A NSO argumentou que é imune a processos porque agiu como agente de governos estrangeiros não identificados quando instalou o spyware 'Pegasus'."}, {"p": "Em 2019, o WhatsApp processou a NSO buscando uma liminar e indenização, acusando a empresa israelense de acessar os servidores do aplicativo sem permissão para instalar o software Pegasus nos dispositivos móveis das vítimas."}]}
 
 
@@ -84,9 +79,8 @@ class IdeView(View):
         
 class RepositorioView(View):
     def get(self, request, *args, **kwargs):
-        user = request.user
         title_page = "repositorio"
-        profile = Profile.objects.get(user = user)
+        profile = Profile.objects.get(user = request.user)
 
         projetos = Repositorio.objects.filter(user=profile).order_by('-created_at')
         return render(request, "mipscode/repositorio.html",{'profile': profile, 'projetos': projetos,'title':title_page})
@@ -94,12 +88,9 @@ class RepositorioView(View):
     def post(self, request, *args, **kwargs):
         user = request.user
         profile = Profile.objects.get(user = user)
-
         title = request.POST.get('title')
         description = request.POST.get('description')
-
         CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= "null")
-
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
 class DashboardView(View):
@@ -107,10 +98,10 @@ class DashboardView(View):
         title = "dashboard"
         user = request.user
         profile = Profile.objects.get(user = user)
-        projetos = Repositorio.objects.filter(user=profile).order_by('-created_at')[:4]
-        tutoriais = Tutorial.objects.all()[:5]
+        projetos = Repositorio.objects.filter(user=profile).order_by('-edited_at')[:4]
+        tutoriais = Tutorial.objects.all()[:8]
 
-        return render(request, "mipscode/dashboard.html",{'profile': profile, 'projetos': projetos,'tutoriais':tutoriais,'title':title})
+        return render(request, "mipscode/dashboard.html",{'profile': profile, 'projetos': projetos,'tutoriais':tutoriais,'title':title,'now':timezone.now()})
 
     def post(self, request, *args, **kwargs):
         user = request.user
@@ -125,11 +116,11 @@ class DashboardView(View):
 
 class TutoriaisView(View):
     def get(self, request, *args, **kwargs):
+        title = "tutoriais"
         user = request.user
         profile = Profile.objects.get(user = user)
-        projetos = Repositorio.objects.filter(user=profile)
         tutoriais = Tutorial.objects.all()
-        return render(request, "mipscode/tutoriais.html", {'profile': profile, 'projetos': projetos})
+        return render(request, "mipscode/tutoriais.html", {'profile': profile, 'tutoriais': tutoriais,'title':title})
 
     def post(self, request, *args, **kwargs):
         title = request.POST.get('title')
@@ -173,5 +164,8 @@ class DesfavoritarProjeto(View):
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
 
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect(reverse('mipscode:index'))
 
-        

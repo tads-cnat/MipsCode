@@ -1,7 +1,7 @@
-.sitemap-inicio::after {
+/* .sitemap-inicio::after {
     content: "/";
     margin: 0px 1em;
-}
+} */
 
 .title::after {
     content: "";
