@@ -1,0 +1,3 @@
+export const addi = (rs, imm) => rs + imm
+
+// ...
