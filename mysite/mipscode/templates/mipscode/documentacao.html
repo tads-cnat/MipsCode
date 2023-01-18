@@ -6,7 +6,7 @@
 {% endblock statics %}
 
 {% block article %}
-<article class="padding-padrao margin-top-7">
+<article class="padding-padrao margin-top-5">
     <header class="row">
         <p class="color-gray fs-6 sitemap-inicio">Início</p>
         <p class="color-green fs-6 bold">Documentação</p>
@@ -41,7 +41,12 @@
                 <h5 class="fs-7 color-gray margin-bottom-2">Trilha de conhecimento</h5>
 
                 {% for value in links_documentacao %}
-                <a href="{% url 'mipscode:documentacao' value.pk %}" class="color-gray"><p class="fs-6 option-map row margin-zero">{{value}}</p></a>
+                    {% if value.pk == documentacao.pk %}
+                    <a href="{% url 'mipscode:documentacao' value.pk %}" class="color-green"><p class="fs-6 option-map-green bold row margin-zero">{{value}}</p></a>
+                    {% else %}
+                    <a href="{% url 'mipscode:documentacao' value.pk %}" class="color-gray"><p class="fs-6 option-map row margin-zero">{{value}}</p></a>
+                    {% endif%}
+                
                 {% endfor %}
             </div>
         </div>

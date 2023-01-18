@@ -1,20 +1,52 @@
-
-.section-links .div-links {
-    display: flex;
-    justify-content: space-between;
-}
-
-.div {
+.area-link {
     background: linear-gradient(96.95deg, #19C284 0%, rgba(83, 169, 107, 0.95) 100%);
     border-radius: 4px;
-    width: 398px;
-    padding: 23px;
+    width: -webkit-fill-available;
+    padding: 2em 2em;
     height: 6em;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    justify-content: center;
 }
+
+.area-div {
+    gap: 2em;
+}
+
+.content-buttons {
+    gap: 1em;
+}
+
+.button-green-solid {
+    background: #2EF2AA;
+    border: 1px solid #2EF2AA;
+    border-radius: 5px;
+    width: 200px;
+    height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.content-projetos-all {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+}
+
+.project-div {
+    border: 1px solid #333333;
+    border-radius: 13px;
+    padding: 23px 31px;
+}
+
+
+
+
+
+
 
 article .article-header .title-local {
     margin: 0;
@@ -22,7 +54,6 @@ article .article-header .title-local {
 
 article .nav-maps {
     display: flex;
-
     flex-direction: row;
     gap: 1em;
     align-items: center;
@@ -31,12 +62,7 @@ article .nav-maps {
 
 
 
-.content-buttons {
-    display: flex;
-    gap: 1em;
-}
-
- .content-filtersesearch {
+.content-filtersesearch {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,7 +80,7 @@ article .nav-maps {
     font-family: 'Inter';
 }
 
- .content-filtersesearch .filters {
+.content-filtersesearch .filters {
     background: rgba(255, 255, 255, 0.05);
     border: 1.5px solid rgb(255, 255, 255);
     border-radius: 5px;
@@ -65,28 +91,10 @@ article .nav-maps {
     font-family: 'Inter';
 }
 
-.content-projetos-all {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 32px;
-    row-gap: 32px;
-}
 
-.content-projetos-all .project {
-    height: 162px;
-    border: 1px solid #333333;
-    border-radius: 13px;
-    display: flex;
-    align-items: flex-start;
-    padding: 27px 43px;
-    justify-content: space-between;
-    flex-direction: column;
-}
 
-.content-projetos-all .project .titles {
-    display: flex;
-    flex-direction: column;
-}
+
+
 
 .content-projetos-all .project .titles .title {
     font-weight: 700;
@@ -103,7 +111,7 @@ article .nav-maps {
     margin: 2px 0px 6px;
 }
 
- .content-projetos-all .project .titles .description {
+.content-projetos-all .project .titles .description {
     font-weight: 400;
     font-size: 16px;
     line-height: 110%;
@@ -111,7 +119,7 @@ article .nav-maps {
     margin: 0;
 }
 
- .content-projetos-all .project .options {
+.content-projetos-all .project .options {
     display: flex;
     align-items: center;
     gap: 2em;
@@ -136,19 +144,7 @@ article .nav-maps {
 
 
 
-.content-buttons .button-green-solid {
-    background: #2EF2AA;
-    border: 1px solid #2EF2AA;
-    border-radius: 5px;
-    width: 200px;
-    height: 2.4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    font-size: 15px;
-    font-weight: 600;
-}
+
 
 .content-buttons .button-white-solid {
     background: rgba(255, 255, 255, 0.05);
@@ -305,4 +301,25 @@ article .content-projetos .content-div .content-roadmap {
 .option {
     padding: 1em 1em;
     margin: 0;
+}
+
+
+@media (max-width:1050px) {
+    .area-div {
+        gap: 2em;
+        flex-direction: column !important;
+    }
+    .area-link {
+        height: auto !important;
+    }
+
+    .p-button{
+        text-align: right;
+        line-height: 1;
+    }
+
+    .content-projetos-all {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

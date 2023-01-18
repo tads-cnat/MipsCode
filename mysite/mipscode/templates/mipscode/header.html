@@ -20,15 +20,53 @@
 
             <div class="nav-links">
                 {% if user.is_authenticated %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                    {% if title == "dashboard" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                    {% endif %}
+
+                    {% if title == "documentacao" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                    {% endif %}
+
+                    {% if title == "ide" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                    {% endif %}
+
+                    {% if title == "repositorio" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                    {% endif %}
+
+                    {% if title == "tutoriais" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                    {% endif %}
                 {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:index' %}">Início</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                    {% if title == "inicio" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:index' %}">Início</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:index' %}">Início</a>
+                    {% endif %}
+
+                    {% if title == "ide" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                    {% endif %}
+
+                    {% if title == "documentacao" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                    {% endif %}
                 {% endif %}
             </div>
 
@@ -67,11 +105,9 @@
                 <div class="group">
                     <div class="links column">
                         <h4 class="fs-5 bold">Rotas Principais</h4>
-                        <a class="fs-6 color-white ligth" href="">Tutorial</a>
-                        <a class="fs-6 color-white ligth" href="">Comunidade</a>
-                        <a class="fs-6 color-white ligth" href="">Documentação</a>
-                        <a class="fs-6 color-white ligth" href="">Artigos</a>
-                        <a class="fs-6 color-white ligth" href="">Fórum</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:tutoriais' %}">Tutorial</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:repositorio' %}">Meu Repositório</a>
                     </div>
 
                     <div class="links column">

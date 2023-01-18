@@ -11,18 +11,18 @@
     <section class="section-links">
         <h1 class="fs-3 font-uppercase">Veja o que você pode realizar no MipsCode.</h1>
 
-        <div class="div-links">
-            <div class="div">
+        <div class="row area-div">
+            <div class="area-link">
                 <p class="fs-7">APRENDA</p>
                 <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
             </div>
 
-            <div class="div">
+            <div class="area-link">
                 <p class="fs-7">CRIE AGORA</p>
                 <h1 class="fs-4 ligth margin-zero">Programe com Mips</h1>
             </div>
 
-            <div class="div">
+            <div class="area-link">
                 <p class="fs-7">Compartilhe <span>(Discord)</span></p>
                 <h1 class="fs-4 ligth margin-zero">Entre na comunidade</h1>
             </div>
@@ -35,22 +35,32 @@
     </header>
 
     <section class="margin-top-2">
-        <div class="content-buttons">
-            <button class="button-green-solid" onclick="openNewProjectView()"><img src="{% static 'mipscode/svgs/icons-add.svg' %}">Criar novo arquivo</button>
-            <button class="button-white-solid"><img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">Ver todos os arquivos</button>
+        <div class="row content-buttons">
+            <button class="button-green color-black background-button-green fs-6 button bold cursor-pointer"
+                onclick="openNewProjectView()">
+                <img src="{% static 'mipscode/svgs/icons-add.svg' %}">
+                <p class="p-button margin-zero">Criar novo arquivo
+                <p>
+            </button>
+
+            <a href="{% url 'mipscode:repositorio' %}">
+                <button class="button-white background-button-white fs-6 button bold cursor-pointer">
+                    <img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">
+                    <p class="p-button margin-zero">Ver todos os arquivos</p>
+                </button>
+            </a>
         </div>
         <p class="margin-top-2 fs-6 color-gray">Projetos recentes</p>
-        <div class="content-projetos-all">
-
+        <div class="content-projetos-all margin-top-1">
             {% for projeto in projetos %}
-            <div class="project">
-                <div class="titles">
-                    <h2 class="title">{{projeto.title}}</h2>
-                    <p class="time">{{projeto.created_at}}</p>
-                    <p class="description">{{projeto.description}}</p>
+            <div class="project-div column">
+                <div>
+                    <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
+                    <p class="fs-7 margin-zero color-gray">{{projeto.created_at}}</p>
+                    <p class="fs-6 margin-zero">{{projeto.description}}</p>
                 </div>
-                <div class="options">
-                    <button class="button-open">Abrir Projeto</button>
+                <div class="margin-top-2">
+                    <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>
                 </div>
             </div>
             {% endfor %}
@@ -58,23 +68,23 @@
     </section>
 
     <header class="margin-top-7">
-        <h1 class="fs-3">Tutoriais</h1>
-        <nav class="nav-maps">
-            <p class="text-opacity-mini">Aprenda de maneira fácil e prática.</p>
-        </nav>
+        <h1 class="fs-3 margin-zero">Tutoriais</h1>
+        <p class="margin-zero fs-6 color-gray">Aprenda de maneira fácil e prática.</p>
 
-        <!-- {% for projeto in projetos %}
-            <div class="project">
-                <div class="titles">
-                    <h2 class="title">{{projeto.title}}</h2>
-                    <p class="time">{{projeto.created_at}}</p>
-                    <p class="description">{{projeto.description}}</p>
+        <div class="content-projetos-all">
+
+            {% for tutorial in tutoriais %}
+            <div class="project-div column">
+                <div>
+                    <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
+                    <p class="fs-6 margin-zero color-green">{{tutorial.level}}</p>
                 </div>
-                <div class="options">
-                    <button class="button-open">Abrir Projeto</button>
+                <div class="margin-top-2">
+                    <button class="button-green color-green fs-6 button cursor-pointer">Abrir Tutorial</button>
                 </div>
             </div>
-            {% endfor %} -->
+            {% endfor %}
+        </div>
     </header>
 
 </article>
