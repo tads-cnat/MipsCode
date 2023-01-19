@@ -290,6 +290,9 @@ a {
 .gap-1{
     gap: 1em;
 }
+.gap-4{
+    gap: 4em;
+}
 
 footer {
     background: #151518;
@@ -302,9 +305,6 @@ footer .top {
     align-items: flex-start;
 }
 
-footer .top .logo-white {
-    width: 115px;
-}
 
 footer .top .group {
     display: flex;
@@ -334,7 +334,7 @@ footer .top .links-externs {
 
 
 
-@media (max-width:1050px) {
+@media (max-width:1400px) {
     .padding-padrao {
         padding: 2em 1.8em !important;
     }

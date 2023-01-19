@@ -61,12 +61,15 @@ class CadastroView(TemplateView):
 
 class DocumentacaoView(View):
     def get(self, request, *args, **kwargs):
+        profile = ""
+        if request.user.is_authenticated:
+            profile = Profile.objects.get(user = request.user)
         pk = kwargs['pk']
         documentacao = get_object_or_404(Documentation, pk=pk)        
         documentacao_itens = documentacao.content["content"]
         links_documentacao = Documentation.objects.all()
         title_page = "documentacao"
-        return render(request, "mipscode/documentacao.html",{"documentacao":documentacao,"documentacao_itens":documentacao_itens,"links_documentacao":links_documentacao,"title":title_page})
+        return render(request, "mipscode/documentacao.html",{"documentacao":documentacao,"documentacao_itens":documentacao_itens,"links_documentacao":links_documentacao,"title":title_page , "profile":profile})
 
 # {"content": [{"h1": "Tstes de titulo", "p": "A Suprema Corte dos Estados Unidos permitiu nesta segunda-feira que o WhatsApp, da Meta Platforms, abra processo contra a companhia israelense NSO Group por explorar um bug no aplicativo de mensagens para instalar um software de espionagem que permitiu o monitoramento de 1.400 pessoas, incluindo jornalistas, ativistas de direitos humanos e dissidentes."}, {"h1": "Titulo2", "p": "Os juízes rejeitaram recurso da NSO contra decisão de um tribunal inferior que permitiu o andamento do processo. A NSO argumentou que é imune a processos porque agiu como agente de governos estrangeiros não identificados quando instalou o spyware 'Pegasus'."}, {"p": "Em 2019, o WhatsApp processou a NSO buscando uma liminar e indenização, acusando a empresa israelense de acessar os servidores do aplicativo sem permissão para instalar o software Pegasus nos dispositivos móveis das vítimas."}]}
 
