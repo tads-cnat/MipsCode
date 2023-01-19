@@ -76,22 +76,52 @@ class IdeView(View):
     def get(self, request, *args, **kwargs):
         title_page = "ide"
         return render(request, "mipscode/ide.html",{"title":title_page})
-        
+
+class IdeProjetoView(View):
+    def get(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        projeto = get_object_or_404(Repositorio, pk=pk)
+
+        title_page = "ide"
+        return render(request, "mipscode/ide.html",{"title":title_page,"projeto":projeto})
+    
+    def post(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        textarea = request.POST.get('content')
+        print(pk)
+        projeto = Repositorio.objects.get(pk=pk)
+        projeto.content = textarea
+        projeto.save()        
+        title_page = "ide"
+        return HttpResponseRedirect(reverse('mipscode:dashboard' ))
+
+
+def handle_uploaded_file(f):
+    return f.read().decode()
+
 class RepositorioView(View):
     def get(self, request, *args, **kwargs):
         title_page = "repositorio"
         profile = Profile.objects.get(user = request.user)
-
-        projetos = Repositorio.objects.filter(user=profile).order_by('-created_at')
+        projetos = Repositorio.objects.filter(user=profile).order_by('-edited_at')
         return render(request, "mipscode/repositorio.html",{'profile': profile, 'projetos': projetos,'title':title_page})
+
+    
 
     def post(self, request, *args, **kwargs):
         user = request.user
         profile = Profile.objects.get(user = user)
         title = request.POST.get('title')
         description = request.POST.get('description')
-        CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= "null")
-        return HttpResponseRedirect(reverse('mipscode:repositorio'))
+        file = request.FILES.get('upload')
+
+        if file and file.content_type == 'text/plain':
+            content = handle_uploaded_file(file)
+            CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= content)
+            return HttpResponseRedirect(reverse('mipscode:repositorio' ))
+       
+        CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= "")
+        return HttpResponseRedirect(reverse('mipscode:repositorio' ))
 
 
 class BuscarRepositorio(View):
@@ -102,11 +132,11 @@ class BuscarRepositorio(View):
         title = 'repositorio'
 
         if busca:
-            lista = Repositorio.objects.filter(Q(title__icontains=busca))
+            lista = Repositorio.objects.filter(user=profile and Q(title__icontains=busca))
         elif int(filters) == 1:
-            lista = Repositorio.objects.filter(user=profile).order_by('-created_at')
+            lista = Repositorio.objects.filter(user=profile).order_by('-edited_at')
         elif int(filters) == 2:
-            lista = Repositorio.objects.filter(user=profile).order_by('created_at')
+            lista = Repositorio.objects.filter(user=profile).order_by('edited_at')
         elif int(filters) == 3:
             lista = Repositorio.objects.filter(user=profile).order_by('-favorite')
         else:
@@ -144,7 +174,10 @@ class DashboardView(View):
 
         title = request.POST.get('title')
         description = request.POST.get('description')
-        CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= "null",created_at=timezone.now())
+        contentFile = request.POST.get('content_file')
+        content = contentFile.read().decode()
+        print(content)
+        CreateProject = Repositorio.objects.create(user= profile,title=title, description=description,content= content,created_at=timezone.now())
 
         return HttpResponseRedirect(reverse('mipscode:dashboard'))
 
@@ -174,6 +207,7 @@ class AtualizarProjeto(View):
 
         projeto.title = title
         projeto.description = description
+        projeto.edited_at=timezone.now()
         projeto.save()
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 

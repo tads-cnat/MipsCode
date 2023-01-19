@@ -64,7 +64,7 @@ class Repositorio(models.Model):
     title = models.CharField(max_length = 50)
     description = models.CharField(max_length = 250)
     favorite = models.BooleanField(default=False)
-    content = models.JSONField(null=True) #alterar para JSONField() e salvar o objeto 'sys' daquele projeto como json
+    content = models.TextField(null=True) #alterar para JSONField() e salvar o objeto 'sys' daquele projeto como json
     created_at = models.DateTimeField('Created Date', default=timezone.now())
     edited_at = models.DateTimeField('Edited Date', default=timezone.now())
     

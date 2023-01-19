@@ -4,7 +4,6 @@
 
 {% block statics %}
 <link rel="stylesheet" href="{% static 'mipscode/css/dashboard.css' %}">
-<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
 {% endblock statics %}
 
 {% block article %}
@@ -14,9 +13,9 @@
 
         <div class="row area-div">
             <a href="{% url 'mipscode:documentacao' 1%}" class="color-white area-link">
-  
-                    <p class="fs-7 bold">APRENDA</p>
-                    <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
+
+                <p class="fs-7 bold">APRENDA</p>
+                <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
 
             </a>
 
@@ -63,9 +62,9 @@
                     <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
                     <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
-                <div class="margin-top-2">
+                <a class="margin-top-2" href="{% url 'mipscode:ide_projeto' projeto.id%}">
                     <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
@@ -107,23 +106,27 @@
 
 
 
+
 <section class="create-arquivo display-none" id="create-arquivo">
-    <div class="div">
-        <form action="{% url 'mipscode:dashboard' %}" method="post">
-            {% csrf_token %}
-            <div class="div-header">
-                <h1>Crie um novo Arquivo</h1>
+    <form class="form-div" action="{% url 'mipscode:repositorio' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-space-between align-center">
+            <h1 class="fs-4">Crie um novo Arquivo</h1>
 
-                <input class="button-close" onclick="closeNewProjectView()" type="reset" value="x">
+            <input class="button-close cursor-pointer" id="exit-button" onclick="closeNewProjectView()" type="reset" value="x">
+        </div>
+
+        <div class="column gap-1 margin-top-2">
+            <input type="text" class="button-white button-background-opaco fs-7 button" name="title" placeholder="Titulo">
+            <textarea class="button-white button-background-opaco fs-7 textarea button padding-vertical-1" name="description" placeholder="Descrição"></textarea>
+            <div>
+                <input type="file" value="Importar arquivo" name="upload" id="file">
+                <input type="button" id="fileInput" class="button-white color-white button bold cursor-pointer" value="Importe um arquivo" onclick="" />
             </div>
-
-            <div class="content">
-                <input type="text" class="input-form" name="title" placeholder="Titulo">
-                <textarea class="input-form textarea" name="description" placeholder="Descrição"></textarea>
-                <input type="submit" class="input-button" value="Criar Arquivo">
-            </div>
-        </form>
-
-    </div>
+            <input type="submit" class="button-green color-green button bold cursor-pointer" value="Criar Arquivo">
+        </div>
+    </form>
 </section>
+<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
+
 {% endblock article %}

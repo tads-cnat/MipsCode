@@ -14,21 +14,6 @@
     gap: 1em;
 }
 
-.button-green-solid {
-    background: #2EF2AA;
-    border: 1px solid #2EF2AA;
-    border-radius: 5px;
-    width: 200px;
-    height: 2.4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-
 .content-projetos-all {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -139,20 +124,7 @@ article .content-projetos .content-div .content-roadmap {
     width: 50%;
 }
 
-.create-arquivo,
-.editar-arquivo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #1a1b1fdb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    left: 0;
-    top: 0;
-
-}
 
 .editar-arquivo {
     position: fixed;
@@ -166,12 +138,22 @@ article .content-projetos .content-div .content-roadmap {
     top: 0;
 }
 
-.display-none {
-    display: none;
+
+
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
 }
 
-.create-arquivo .div,
-.editar-arquivo .div {
+.form-div{
     width: 31em;
     background: #1a1b1f;
     border: 1px solid rgba(208, 208, 208, 0.5);
@@ -207,38 +189,9 @@ article .content-projetos .content-div .content-roadmap {
 }
 
 .textarea {
-    padding-top: 1em;
     resize: none;
-    height: 8em;
 }
 
-.create-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.create-arquivo .div form .div-header .button-close,
-.editar-arquivo .div form .div-header .button-close {
-    background: #ffffff1c;
-    border: solid 1px white;
-    border-radius: 4px;
-    width: 2em;
-    height: 2em;
-    color: white;
-    font-weight: 600;
-}
-
-.create-arquivo .div form .content,
-.editar-arquivo .div form .content {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
 
 
 

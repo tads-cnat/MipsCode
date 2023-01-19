@@ -32,12 +32,6 @@
                     <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
                     {% endif %}
 
-                    {% if title == "ide" %}
-                    <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
-                    {% else %}
-                    <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
-                    {% endif %}
-
                     {% if title == "repositorio" %}
                     <a class="fs-navegations color-green" href="{% url 'mipscode:repositorio' %}">Repositório</a>
                     {% else %}

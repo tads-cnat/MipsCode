@@ -1,28 +1,52 @@
-# MipsCode
+![banner](./banner.png) 
+<br><br><br>
 
-<img src="logo-mips.png" width="400" height="350" />
+# Descrição do projeto
+O mipscode é ideal para aqueles que querem aprender e praticar programação em assembly MIPS. Ele oferece uma documentação abrangente para ajudar os usuários a entender melhor o assunto, além de um guia de aprendizagem passo a passo para facilitar ainda mais o processo. O sistema ainda inclui uma IDE especializada no MIPS assembly, permitindo que os usuários escrevam e testem seus códigos de maneira eficiente. Além disso, todos os recursos são totalmente gratuitos e acessíveis a qualquer pessoa que queira aprender a programar em MIPS assembly. 
 
->Sistema que possui documentação, guia de aprendizagem e uma IDE para aprender e praticar mips assembly.
+# Equipe de desenvolvimento 
 
-# Equipe e Formas de Contato
-
-- Hilquias Abias Figueiredo Silva
-- Heloise Vitória Macena Bezerra
-- Matheus Duarte de Medeiros
-- Neemias Renan Santos de Oliveira
+<table style>
+  <tr>
+    <td align="center"><a href="https://github.com/plmdsmatheus">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/69238611?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/alcides07"><b>Neemias Renan</b></a>
+    </td>
+    <td align="center"><a href="https://github.com/HilquiasAbias">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/76264931?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/diogoodiego"><b>Hilquias Abiass</b></a>
+    </td>
+    <td align="center"><a href="https://github.com/HeloiseMacena">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/42615847?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/erick003"><b>Heloise Macena</b></a>
+    </td>
+    <td align="center"><a href="https://github.com/plmdsmatheus">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/84824460?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/alcides07"><b>Matheus Duarte</b></a>
+    </td>
+  </tr>
+</table>
 
 # Horário de Reuniões
 
->Terças, quintas e sextas.
+Terças, quintas e sextas.
 
 # Tecnologias Utilizadas
 
->Python, Django, HTML, CSS e JavaScript
+Python, Django, HTML, CSS e JavaScript
 
 # Documentação
 
 [Link para os documentos do projeto](doc/documentacao.md)
 
-# Manual da Desenvolvedor
+# Manual de desenvolvimento
 
->Descrever os comandos iniciais para começar a colaborar com o desenvolvimento do projeto
+O primeiro passo para rodar a aplicação localmente é criar o ambiente virtual através do VENV usando o seguinte comando:
+
+> py -m venv venv 
+
+##### 👨‍💻 Em desenvolvimento 👩‍💻
