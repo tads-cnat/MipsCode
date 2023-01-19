@@ -1,4 +1,4 @@
-![banner](./banner.png) 
+![banner](./Banner.png) 
 <br><br><br>
 
 # Descrição do projeto
