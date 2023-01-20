@@ -1,9 +1,9 @@
 {% extends "mipscode/header.html" %}
 {% load static %}
+{% load template_filters %}
 
 {% block statics %}
 <link rel="stylesheet" href="{% static 'mipscode/css/dashboard.css' %}">
-<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
 {% endblock statics %}
 
 {% block article %}
@@ -11,21 +11,23 @@
     <section class="section-links">
         <h1 class="fs-3 font-uppercase">Veja o que você pode realizar no MipsCode.</h1>
 
-        <div class="div-links">
-            <div class="div">
-                <p class="fs-7">APRENDA</p>
+        <div class="row area-div">
+            <a href="{% url 'mipscode:documentacao' 1%}" class="color-white area-link">
+
+                <p class="fs-7 bold">APRENDA</p>
                 <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
-            </div>
 
-            <div class="div">
-                <p class="fs-7">CRIE AGORA</p>
+            </a>
+
+            <a href="{% url 'mipscode:ide' %}" class="color-white area-link">
+                <p class="fs-7 bold">CRIE AGORA</p>
                 <h1 class="fs-4 ligth margin-zero">Programe com Mips</h1>
-            </div>
+            </a>
 
-            <div class="div">
-                <p class="fs-7">Compartilhe <span>(Discord)</span></p>
+            <a href="https://discord.com/" target="_blank" class="color-white area-link">
+                <p class="fs-7 bold">COMPARTILHE <span>(Discord)</span></p>
                 <h1 class="fs-4 ligth margin-zero">Entre na comunidade</h1>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -35,69 +37,96 @@
     </header>
 
     <section class="margin-top-2">
-        <div class="content-buttons">
-            <button class="button-green-solid" onclick="openNewProjectView()"><img src="{% static 'mipscode/svgs/icons-add.svg' %}">Criar novo arquivo</button>
-            <button class="button-white-solid"><img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">Ver todos os arquivos</button>
+        <div class="row content-buttons">
+            <button class="button-green color-black background-button-green fs-6 button bold cursor-pointer"
+                onclick="openNewProjectView()">
+                <img src="{% static 'mipscode/svgs/icons-add.svg' %}">
+                <p class="p-button margin-zero">Criar novo arquivo
+                <p>
+            </button>
+
+            <a href="{% url 'mipscode:repositorio' %}">
+                <button class="button-white background-button-white fs-6 button bold cursor-pointer">
+                    <img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">
+                    <p class="p-button margin-zero">Ver todos os arquivos</p>
+                </button>
+            </a>
         </div>
         <p class="margin-top-2 fs-6 color-gray">Projetos recentes</p>
-        <div class="content-projetos-all">
-
+        <div class="content-projetos-all margin-top-1">
             {% for projeto in projetos %}
-            <div class="project">
-                <div class="titles">
-                    <h2 class="title">{{projeto.title}}</h2>
-                    <p class="time">{{projeto.created_at}}</p>
-                    <p class="description">{{projeto.description}}</p>
+            <div class="project-div column">
+                <div>
+                    <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
+                    <p class="fs-7 margin-zero color-opaco">{{firstname}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
+                    <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
-                <div class="options">
-                    <button class="button-open">Abrir Projeto</button>
-                </div>
+                <a class="margin-top-2" href="{% url 'mipscode:ide_projeto' projeto.id%}">
+                    <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>
+                </a>
             </div>
             {% endfor %}
         </div>
     </section>
 
     <header class="margin-top-7">
-        <h1 class="fs-3">Tutoriais</h1>
-        <nav class="nav-maps">
-            <p class="text-opacity-mini">Aprenda de maneira fácil e prática.</p>
-        </nav>
+        <h1 class="fs-3 margin-zero">Tutoriais</h1>
+        <p class="margin-zero fs-6 color-opaco">Aprenda de maneira fácil e prática.</p>
 
-        <!-- {% for projeto in projetos %}
-            <div class="project">
-                <div class="titles">
-                    <h2 class="title">{{projeto.title}}</h2>
-                    <p class="time">{{projeto.created_at}}</p>
-                    <p class="description">{{projeto.description}}</p>
+        <div class="content-projetos-all margin-top-1">
+
+            {% for tutorial in tutoriais %}
+            <div class="project-div column button-background-opaco">
+                <div>
+                    <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
+                    {% if tutorial.level == '1' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-green">Fácil</span>
+                    </p>
+                    {% elif tutorial.level == '2' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span
+                            class="color-yellow">Intermediário</span></p>
+                    {% elif tutorial.level == '3' %}
+                    <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-red">Difícil</span>
+                    </p>
+                    {% endif %}
                 </div>
-                <div class="options">
-                    <button class="button-open">Abrir Projeto</button>
+                <div class="margin-top-2">
+                    <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
                 </div>
             </div>
-            {% endfor %} -->
+            {% endfor %}
+        </div>
+        <div class="margin-top-2 row align-end">
+            <button class="button-white color-white fs-6 button bold cursor-pointer">Ver todos os tutoriais</button>
+        </div>
     </header>
 
 </article>
 
 
 
+
 <section class="create-arquivo display-none" id="create-arquivo">
-    <div class="div">
-        <form action="{% url 'mipscode:dashboard' %}" method="post">
-            {% csrf_token %}
-            <div class="div-header">
-                <h1>Crie um novo Arquivo</h1>
+    <form class="form-div" action="{% url 'mipscode:repositorio' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-space-between align-center">
+            <h1 class="fs-4">Crie um novo Arquivo</h1>
 
-                <input class="button-close" onclick="closeNewProjectView()" type="reset" value="x">
+            <input class="button-close cursor-pointer" id="exit-button" onclick="closeNewProjectView()" type="reset" value="x">
+        </div>
+
+        <div class="column gap-1 margin-top-2">
+            <input type="text" class="button-white button-background-opaco fs-7 button" name="title" placeholder="Titulo">
+            <textarea class="button-white button-background-opaco fs-7 textarea button padding-vertical-1" name="description" placeholder="Descrição"></textarea>
+            <div>
+                <input type="file" value="Importar arquivo" name="upload" id="file">
+                <input type="button" id="fileInput" class="button-white color-white button bold cursor-pointer" value="Importe um arquivo" onclick="" />
             </div>
-
-            <div class="content">
-                <input type="text" class="input-form" name="title" placeholder="Titulo">
-                <textarea class="input-form textarea" name="description" placeholder="Descrição"></textarea>
-                <input type="submit" class="input-button" value="Criar Arquivo">
-            </div>
-        </form>
-
-    </div>
+            <input type="submit" class="button-green color-green button bold cursor-pointer" value="Criar Arquivo">
+        </div>
+    </form>
 </section>
+<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
+
 {% endblock article %}

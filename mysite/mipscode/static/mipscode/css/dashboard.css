@@ -1,42 +1,38 @@
-
-.section-links .div-links {
-    display: flex;
-    justify-content: space-between;
-}
-
-.div {
+.area-link {
     background: linear-gradient(96.95deg, #19C284 0%, rgba(83, 169, 107, 0.95) 100%);
     border-radius: 4px;
-    width: 398px;
-    padding: 23px;
+    width: -webkit-fill-available;
+    padding: 2em 2em;
     height: 6em;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    justify-content: center;
 }
 
-article .article-header .title-local {
-    margin: 0;
+.area-div {
+    gap: 2em;
 }
-
-article .nav-maps {
-    display: flex;
-
-    flex-direction: row;
-    gap: 1em;
-    align-items: center;
-}
-
-
-
 
 .content-buttons {
-    display: flex;
     gap: 1em;
 }
 
- .content-filtersesearch {
+.content-projetos-all {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+}
+
+.project-div {
+    border: 1px solid #333333;
+    border-radius: 13px;
+    padding: 23px 31px;
+}
+
+.p-button{
+    line-height: normal !important;
+}
+
+
+.content-filtersesearch {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -54,7 +50,7 @@ article .nav-maps {
     font-family: 'Inter';
 }
 
- .content-filtersesearch .filters {
+.content-filtersesearch .filters {
     background: rgba(255, 255, 255, 0.05);
     border: 1.5px solid rgb(255, 255, 255);
     border-radius: 5px;
@@ -65,53 +61,8 @@ article .nav-maps {
     font-family: 'Inter';
 }
 
-.content-projetos-all {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 32px;
-    row-gap: 32px;
-}
 
-.content-projetos-all .project {
-    height: 162px;
-    border: 1px solid #333333;
-    border-radius: 13px;
-    display: flex;
-    align-items: flex-start;
-    padding: 27px 43px;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.content-projetos-all .project .titles {
-    display: flex;
-    flex-direction: column;
-}
-
-.content-projetos-all .project .titles .title {
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 110%;
-    margin: 0;
-}
-
-.content-projetos-all .project .titles .time {
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 17px;
-    color: rgba(255, 255, 255, 0.5);
-    margin: 2px 0px 6px;
-}
-
- .content-projetos-all .project .titles .description {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 110%;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 0;
-}
-
- .content-projetos-all .project .options {
+.content-projetos-all .project .options {
     display: flex;
     align-items: center;
     gap: 2em;
@@ -136,19 +87,7 @@ article .nav-maps {
 
 
 
-.content-buttons .button-green-solid {
-    background: #2EF2AA;
-    border: 1px solid #2EF2AA;
-    border-radius: 5px;
-    width: 200px;
-    height: 2.4em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    font-size: 15px;
-    font-weight: 600;
-}
+
 
 .content-buttons .button-white-solid {
     background: rgba(255, 255, 255, 0.05);
@@ -185,20 +124,7 @@ article .content-projetos .content-div .content-roadmap {
     width: 50%;
 }
 
-.create-arquivo,
-.editar-arquivo {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #1a1b1fdb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    left: 0;
-    top: 0;
-
-}
 
 .editar-arquivo {
     position: fixed;
@@ -212,12 +138,22 @@ article .content-projetos .content-div .content-roadmap {
     top: 0;
 }
 
-.display-none {
-    display: none;
+
+
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
 }
 
-.create-arquivo .div,
-.editar-arquivo .div {
+.form-div{
     width: 31em;
     background: #1a1b1f;
     border: 1px solid rgba(208, 208, 208, 0.5);
@@ -253,38 +189,9 @@ article .content-projetos .content-div .content-roadmap {
 }
 
 .textarea {
-    padding-top: 1em;
     resize: none;
-    height: 8em;
 }
 
-.create-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header,
-.editar-arquivo .div form .div-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.create-arquivo .div form .div-header .button-close,
-.editar-arquivo .div form .div-header .button-close {
-    background: #ffffff1c;
-    border: solid 1px white;
-    border-radius: 4px;
-    width: 2em;
-    height: 2em;
-    color: white;
-    font-weight: 600;
-}
-
-.create-arquivo .div form .content,
-.editar-arquivo .div form .content {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
 
 
 
@@ -305,4 +212,20 @@ article .content-projetos .content-div .content-roadmap {
 .option {
     padding: 1em 1em;
     margin: 0;
+}
+
+
+@media (max-width:1050px) {
+    .area-div {
+        gap: 2em;
+        flex-direction: column !important;
+    }
+    .area-link {
+        height: auto !important;
+    }
+
+    .content-projetos-all {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

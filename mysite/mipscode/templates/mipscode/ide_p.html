@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador MIPS MARS</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./index.js" defer="true" type="module"></script>
+</head>
+<body>
+    <Section class="screen">
+        <div class="address"></div>
+
+        <textarea class="input" id="input" placeholder="code here..."></textarea>
+
+        <div class="sys">
+            <div class="registers">
+                <div class="first-sixteen-registers">
+                    <span class="span-register">$zero</span> <input type="text" value="0" name="$0"> <br>
+                    <span class="span-register">$at</span> <input type="text" value="0" name="$1"> <br>
+                    <span class="span-register">$v0</span> <input type="text" value="0" name="$2"> <br>
+                    <span class="span-register">$v1</span> <input type="text" value="0" name="$3"> <br>
+                    <span class="span-register">$a0</span> <input type="text" value="0" name="$4"> <br>
+                    <span class="span-register">$a1</span> <input type="text" value="0" name="$5"> <br>
+                    <span class="span-register">$a2</span> <input type="text" value="0" name="$6"> <br>
+                    <span class="span-register">$a3</span> <input type="text" value="0" name="$7"> <br>
+                    <span class="span-register">$t0</span> <input type="text" value="0" name="$8"> <br>
+                    <span class="span-register">$t1</span> <input type="text" value="0" name="$9"> <br>
+                    <span class="span-register">$t2</span> <input type="text" value="0" name="$10"> <br>
+                    <span class="span-register">$t3</span> <input type="text" value="0" name="$11"> <br>
+                    <span class="span-register">$t4</span> <input type="text" value="0" name="$12"> <br>
+                    <span class="span-register">$t5</span> <input type="text" value="0" name="$13"> <br>
+                    <span class="span-register">$t6</span> <input type="text" value="0" name="$14"> <br>
+                    <span class="span-register">$t7</span> <input type="text" value="0" name="$15"> <br>
+                </div>
+                <div class="remaining-sixteen-registers">
+                    <span class="span-register">$s0</span> <input type="text" value="0" name="$16"> <br>
+                    <span class="span-register">$s1</span> <input type="text" value="0" name="$17"> <br>
+                    <span class="span-register">$s2</span> <input type="text" value="0" name="$18"> <br>
+                    <span class="span-register">$s3</span> <input type="text" value="0" name="$19"> <br>
+                    <span class="span-register">$s4</span> <input type="text" value="0" name="$20"> <br>
+                    <span class="span-register">$s4</span> <input type="text" value="0" name="$21"> <br>
+                    <span class="span-register">$s5</span> <input type="text" value="0" name="$22"> <br>
+                    <span class="span-register">$s6</span> <input type="text" value="0" name="$23"> <br>
+                    <span class="span-register">$s7</span> <input type="text" value="0" name="$24"> <br>
+                    <span class="span-register">$t8</span> <input type="text" value="0" name="$25"> <br>
+                    <span class="span-register">$t9</span> <input type="text" value="0" name="$26"> <br>
+                    <span class="span-register">$k0</span> <input type="text" value="0" name="$27"> <br>
+                    <span class="span-register">$k1</span> <input type="text" value="0" name="$28"> <br>
+                    <span class="span-register">$gp</span> <input type="text" value="0" name="$29"> <br>
+                    <span class="span-register">$sp</span> <input type="text" value="0" name="$30"> <br>
+                    <span class="span-register">$fp</span> <input type="text" value="0" name="$31"> <br>
+                    <span class="span-pc">pc</span> <input type="text" value="0" name="pc"> <br>
+                    <span class="span-hi">hi</span> <input type="text" value="0" name="hi"> <br>
+                    <span class="span-lo">lo</span> <input type="text" value="0" name="lo"> <br>
+                </div>
+            </div>
+            
+            <div class="console"></div>
+        </div>
+
+    </Section>
+    <div class="options">
+        <button type="submit" class="mount">Montar</button>
+        <button type="submit" class="step">Avançar</button>
+        <button type="submit" class="run">Executar</button>
+        <button type="submit" class="back">Retroceder</button>
+        <button type="submit" class="unmount">Desmontar</button>
+
+        <!--
+            - apagar a div criada no css pela classe;
+            - $pc =  tools.formatAddress(programAttributes.addressCount -= 4)
+        -->
+    </div>
+</body>
+</html>

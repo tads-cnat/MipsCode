@@ -8,33 +8,73 @@
     {% block statics %}{% endblock statics %}
     <link rel="stylesheet" href="{% static 'mipscode/css/header.css' %}">
     <link rel="stylesheet" href="{% static 'mipscode/css/geral.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'mipscode/img/logo-mips-min.png' %}">
 </head>
 
 <body>
     <header class="padding-padrao header-nav">
         <nav class="row navegation align-center">
-            <div class="nav-logo">
-                <img src="{% static 'mipscode/svgs/logo-min.svg' %}" alt="MipsCode Logo" class="logo">
+            <div class="nav-logo row align-center">
+                <img src="{% static 'mipscode/img/logo-mips.png' %}" alt="MipsCode Logo" class="logo">
             </div>
 
 
             <div class="nav-links">
                 {% if user.is_authenticated %}
+                {% if title == "dashboard" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                {% endif %}
+
+                {% if title == "documentacao" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                {% endif %}
+
+                {% if title == "repositorio" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                {% endif %}
+
+                {% if title == "tutoriais" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                {% endif %}
+                {% else %}
+                {% if title == "inicio" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:index' %}">Início</a>
                 {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:index' %}">Início</a>
+                {% endif %}
+
+                {% if title == "ide" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
+                {% endif %}
+
+                {% if title == "documentacao" %}
+                <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                {% endif %}
                 {% endif %}
             </div>
 
             <div class="nav-buttons">
                 {% if user.is_authenticated %}
+                <div class="row gap-4">
+                    <div class="row align-center gap-1">
+                        <div class="avatar" style="background-image: url({{profile.avatar.url}});"></div>
+                        <span class="fs-navegations">{{profile.name}}</span>
+                    </div>
 
+                    <a href="{% url 'mipscode:logout' %}" class="row align-center"><img class="cursor-pointer" src="{% static 'mipscode/svgs/icon-logout.svg' %}" alt=""></a>
+                </div>
                 {% else %}
                 <a href="{% url 'mipscode:login' %}" class="fs-navegations color-green">Entrar</a>
                 <a href="{% url 'mipscode:cadastro' %}"><input class="fs-navegations button button-white bold"
@@ -45,7 +85,7 @@
         </nav>
 
         <nav class="header-nav-mobile">
-            <img src="{% static 'mipscode/svgs/logo-min.svg' %}" alt="MipsCode Logo" class="logo">
+            <img src="{% static 'mipscode/img/logo-mips.png' %}" alt="MipsCode Logo" class="logo">
             <button class="menu">
                 <img src="{% static 'mipscode/svgs/menu-min.svg' %}" alt="Menu">
             </button>
@@ -63,15 +103,13 @@
     <footer class="margin-top-7">
         <div class="padding-padrao column ">
             <div class="row top margin-top-7">
-                <img class="logo-white" src="{% static 'mipscode/svgs/logo-white.svg' %}">
+                <img class="logo-white" src="{% static 'mipscode/img/logo-mips.png' %}">
                 <div class="group">
                     <div class="links column">
                         <h4 class="fs-5 bold">Rotas Principais</h4>
-                        <a class="fs-6 color-white ligth" href="">Tutorial</a>
-                        <a class="fs-6 color-white ligth" href="">Comunidade</a>
-                        <a class="fs-6 color-white ligth" href="">Documentação</a>
-                        <a class="fs-6 color-white ligth" href="">Artigos</a>
-                        <a class="fs-6 color-white ligth" href="">Fórum</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:tutoriais' %}">Tutorial</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:documentacao' 1 %}">Documentação</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:repositorio' %}">Meu Repositório</a>
                     </div>
 
                     <div class="links column">

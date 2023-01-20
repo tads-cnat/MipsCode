@@ -5,9 +5,11 @@ from PIL import Image
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(default='',max_length = 150, null=True)
     bio = models.TextField(default='Biografia do Usuário')
-    avatar = models.ImageField(upload_to='avatar', default='avatar/default.jpg')
+    avatar = models.ImageField(upload_to='avatar/', default='avatar/default.jpg')
+    
 
     types_profiles = [
         ('1', 'Admin'),
@@ -16,11 +18,6 @@ class Profile(models.Model):
     ]
 
     user_profile = models.CharField(max_length=1, choices=types_profiles, default='2')
-
-
-
-class ProfileSettings(models.Model):
-    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=False)
 
     types_themes = [
         ('1', 'Dark'),
@@ -38,13 +35,21 @@ class ProfileSettings(models.Model):
 
 
 class Tutorial(models.Model):
-    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=True)
-
+    user = models.ForeignKey(Profile, on_delete = models.CASCADE)
     title = models.CharField(max_length = 150)
     description = models.CharField(max_length = 300)
     content = models.JSONField(null=True)
+    levels = [
+        ('1', 'fácil'),
+        ('2', 'médio'),
+        ('3', 'dificil'),
+    ]
+
+    level =  models.CharField(max_length=1, choices=levels, default='1')
+
 
     created_at = models.DateTimeField('Created Date', default=timezone.now())
+    
     
 
     def was_published_recently(self):
@@ -55,13 +60,14 @@ class Tutorial(models.Model):
         return self.title
 
 class Repositorio(models.Model):
-    profile = models.ForeignKey(Profile, on_delete = models.CASCADE, null=True)
+    user = models.ForeignKey(Profile, on_delete = models.CASCADE)
     title = models.CharField(max_length = 50)
     description = models.CharField(max_length = 250)
     favorite = models.BooleanField(default=False)
-    content = models.JSONField(null=True) #alterar para JSONField() e salvar o objeto 'sys' daquele projeto como json
+    content = models.TextField(null=True) #alterar para JSONField() e salvar o objeto 'sys' daquele projeto como json
     created_at = models.DateTimeField('Created Date', default=timezone.now())
-
+    edited_at = models.DateTimeField('Edited Date', default=timezone.now())
+    
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.data <= now

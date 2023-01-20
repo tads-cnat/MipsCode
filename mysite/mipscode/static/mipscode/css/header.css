@@ -8,7 +8,7 @@
 }
 
 .logo {
-    width: 115px;
+    width: 150px;
 }
 
 .nav-links {
@@ -22,6 +22,10 @@
     gap: 59px;
 }
 
+.logo-white{
+    filter: brightness(4) grayscale(2);
+    width: 150px;
+}
 
 a {
     text-decoration: none;
@@ -51,6 +55,13 @@ a {
     width: max-content !important;
 }
 
+.avatar{
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
+    border: solid 1px;
+}
 @media (max-width:1080px) {
     .header {
         padding: 0px 5%;

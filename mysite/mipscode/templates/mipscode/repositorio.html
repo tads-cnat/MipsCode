@@ -1,51 +1,64 @@
 {% extends "mipscode/header.html" %}
 {% load static %}
+{% load template_filters %}
 
 {% block statics %}
-<link rel="stylesheet" href="{% static 'mipscode/css/projeto.css' %}">
-<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
+<link rel="stylesheet" href="{% static 'mipscode/css/repositorio.css' %}">
 {% endblock statics %}
 
 {% block article %}
-<article>
-    <header class="article-header">
-        <h1 class="title-local">Meu Repositório</h1>
-        <nav class="nav-maps">
-            <img src="{% static 'mipscode/svgs/icons-home.svg' %}">
-            <p class="text-opacity-mini">Dashboard</p>
-            <p class="text-opacity-medium">/</p>
-            <p class="text-green">Meu Repositório</p>
-        </nav>
+<article class="padding-padrao margin-top-2">
+    <h1 class="title-local">Meu Repositório</h1>
+    <header class="row">
+        <p class="color-opaco fs-6 sitemap-inicio margin-zero">Início</p>
+        <p class="color-green fs-6 bold margin-zero">Repositório</p>
     </header>
-    <section class="content-projetos">
-        <div class="content-buttons">
-            <button class="button-green-solid" onclick="openNewProjectView()"><img
-                    src="{% static 'mipscode/svgs/icons-add.svg' %}">Criar novo
-                arquivo</button>
-            <button class="button-white-solid"><img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">Importar
-                arquivo</button>
+
+
+    <section class="column">
+        <div class="row content-buttons margin-top-2">
+            <button class="button-green color-black background-button-green fs-6 button bold cursor-pointer"
+                onclick="openNewProjectView()">
+                <img src="{% static 'mipscode/svgs/icons-add.svg' %}">
+                <p class="p-button margin-zero">Criar novo arquivo
+                <p>
+            </button>
+
+            <!-- <a href="{% url 'mipscode:repositorio' %}">
+                <input class="button-white background-button-white fs-6 button bold cursor-pointer p-button margin-zero" type="file" value="Importar arquivo">
+                    <img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">
+                    <p class=""></p>
+                </input>
+            </a> -->
         </div>
 
-        <div class="content-filtersesearch">
-            <input type="text" class="search" placeholder="Buscar arquivo">
+        <form class="row margin-top-2 justify-space-between div-filters" action="{% url 'mipscode:buscaRepositorio' %}"
+            method="post">
+            {% csrf_token %}
+            <input type="text" class="button-white button-background-opaco fs-7 button search"
+                placeholder="Buscar arquivo" name="search" value="{{busca}}">
 
-
-            <select name="filters" class="filters">
-                <option value="maisrecentes">Mais Recentes</option>
+            <select name="filters" class="button-white button-background-opaco fs-7 button filters"
+                onchange="this.form.submit()">
+                <option class="fs-7" selected="selected" disabled>Filtragem</option>
+                <option value="1" class="fs-7">Mais Recentes</option>
+                <option value="2" class="fs-7">Mais Antigos</option>
+                <option value="3" class="fs-7">Favoritos</option>
             </select>
-        </div>
+        </form>
 
-        <div class="content-projetos-all">
+        <div class="content-projetos-all column margin-top-2">
             {% for projeto in projetos %}
-            <div class="project">
-                <div class="titles">
-                    <h2 class="title">{{projeto.title}}</h2>
-                    <p class="time">{{projeto.created_at}}</p>
-                    <p class="description">{{projeto.description}}</p>
+            <div class="project-div justify-space-between row">
+                <div class="column div-projects">
+                    <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
+                    <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
+                    <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
-                <div class="options">
-                    <button class="button-open">Abrir arquivos</button>
-                    <div class="div-options">
+                <div class="row options align-center ">
+                    <a class="button-white button-background-white fs-7 button"
+                        href="{% url 'mipscode:ide_projeto' projeto.id%}">Abrir arquivo</a>
+                    <div class="row options">
                         {% if projeto.favorite == True %}
                         <a href="{% url 'mipscode:desfavoritarprojeto' projeto.id %}"><img
                                 src="{% static 'mipscode/svgs/icon-favoriteTrue.svg' %}"></a>
@@ -55,39 +68,42 @@
                         {% endif %}
 
                         <button class="buttonOptions" id="buttonOption{{projeto.id}}"
-                            onclick="openOptions({{projeto.id}})"><img
-                                src="{% static 'mipscode/svgs/icon-options.svg' %}"></button>
+                            onclick="openOptions({{projeto.id}})">
+                            <img src="{% static 'mipscode/svgs/icon-options.svg' %}">
+                        </button>
                     </div>
                 </div>
 
-                <div class="options-div display-none" id="options-area{{projeto.id}}">
-                    <p class="option" onclick="openEditar({{projeto.id}})">Editar</p>
-                    <p class="option">Baixar arquivo</p>
+                <div class="options-div button-background-opaco display-none" id="options-area{{projeto.id}}">
+                    <p class="option color-white fs-6" onclick="openEditar({{projeto.id}})">Editar</p>
+                    <p class="option color-white fs-6">Baixar arquivo</p>
                     <a href="{% url 'mipscode:removerprojeto' projeto.id %}">
-                        <p class="option">Apagar</p>
+                        <p class="option color-red fs-6">Apagar</p>
                     </a>
                 </div>
             </div>
 
-            <section class="editar-arquivo display-none" id="editar-arquivo{{projeto.id}}">
-                <div class="div">
-                    <form action="{% url 'mipscode:atualizarprojeto' projeto.id %}" method="post">
-                        {% csrf_token %}
-                        <div class="div-header">
-                            <h1>Editar Arquivo</h1>
+            <section class="create-arquivo display-none" id="editar-arquivo{{projeto.id}}">
+                <form class="form-div" action="{% url 'mipscode:atualizarprojeto' projeto.id %}" method="post"
+                    enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row justify-space-between align-center">
+                        <h1 class="fs-4">Editar Arquivo</h1>
 
-                            <input class="button-close" onclick="closeEditar({{projeto.id}})" type="reset" value="x">
-                        </div>
+                        <input class="button-close cursor-pointer" id="exit-button" onclick="closeEditar({{projeto.id}})"
+                            type="reset" value="x">
+                    </div>
 
-                        <div class="content">
-                            <input type="text" class="input-form" name="title" placeholder="Titulo"
-                                value="{{projeto.title}}">
-                            <textarea class="input-form textarea" name="description"
-                                placeholder="Descrição">{{projeto.description}}</textarea>
-                            <input type="submit" class="input-button" value="Salvar mudança">
-                        </div>
-                    </form>
-                </div>
+                    <div class="column gap-1 margin-top-2">
+                        <input type="text" class="button-white button-background-opaco fs-7 button" name="title"
+                            placeholder="Titulo" value="{{projeto.title}}">
+                        <textarea class="button-white button-background-opaco fs-7 textarea button padding-vertical-1"
+                            name="description" placeholder="Descrição">{{projeto.description}}</textarea>
+
+                        <input type="submit" class="button-green color-green button bold cursor-pointer"
+                            value="Salvar Mudanças">
+                    </div>
+                </form>
             </section>
             {% endfor %}
 
@@ -100,22 +116,29 @@
 
 
 <section class="create-arquivo display-none" id="create-arquivo">
-    <div class="div">
-        <form action="{% url 'mipscode:repositorio' %}" method="post">
-            {% csrf_token %}
-            <div class="div-header">
-                <h1>Crie um novo Arquivo</h1>
+    <form class="form-div" action="{% url 'mipscode:repositorio' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row justify-space-between align-center">
+            <h1 class="fs-4">Crie um novo Arquivo</h1>
 
-                <input class="button-close" onclick="closeNewProjectView()" type="reset" value="x">
+            <input class="button-close cursor-pointer" id="exit-button" onclick="closeNewProjectView()" type="reset"
+                value="x">
+        </div>
+
+        <div class="column gap-1 margin-top-2">
+            <input type="text" class="button-white button-background-opaco fs-7 button" name="title"
+                placeholder="Titulo">
+            <textarea class="button-white button-background-opaco fs-7 textarea button padding-vertical-1"
+                name="description" placeholder="Descrição"></textarea>
+            <div>
+                <input type="file" value="Importar arquivo" name="upload" id="file">
+                <input type="button" id="fileInput" class="button-white color-white button bold cursor-pointer fs-6"
+                    value="Importe um arquivo" onclick="" />
             </div>
-
-            <div class="content">
-                <input type="text" class="input-form" name="title" placeholder="Titulo">
-                <textarea class="input-form textarea" name="description" placeholder="Descrição"></textarea>
-                <input type="submit" class="input-button" value="Criar Arquivo">
-            </div>
-        </form>
-
-    </div>
+            <input type="submit" class="button-green color-green button bold cursor-pointer fs-6" value="Criar Arquivo">
+        </div>
+    </form>
 </section>
+<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
+
 {% endblock article %}
