@@ -1,25 +1,70 @@
-.section-code {
-    width: 100%;
-    height: 85%;
+.article {
     position: absolute;
-    display: flex;
-    flex-direction: row;
+    height: -webkit-fill-available;
+    width: 100%;
 }
 
-.section-code textarea {
-    width: 50%;
+.textarea-code {
+    padding: 4% 0em 1em 3%;
+    background: #141417;
+    font-family: inherit;
+    border: none;
     resize: none;
-
-}
-
-.CodeMirror {
     border-right: solid 1px #333333;
-    width: 60% !important;
 }
 
-.code {
-    display: none;
+.form-divs {
+    height: 89%;
 }
+
+
+.justify-center {
+    justify-content: center;
+}
+
+.div-regs {
+    padding: 2% 0em 0em 0em;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sections-regs {
+    height: -webkit-fill-available;
+    width: 70%;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.height-50 {
+    height: 50%;
+}
+
+.table {
+    display: flex;
+    height: 80%;
+    overflow: auto;
+    width: fit-content;
+    border-radius: 10px;
+    border: solid 1px rgb(255 255 255 / 5%);
+}
+
+.console {
+    width: 70%;
+}
+
+.textarea-console {
+    border-radius: 10px;
+    border: solid 1px rgb(255 255 255 / 5%);
+    background: none;
+    font-family: unset;
+    padding: 1em;
+    resize: none;
+}
+
+
 
 article .section-code .area {
     width: 40%;
@@ -37,40 +82,34 @@ article .section-code .area .registers ul {
     list-style-type: none;
 }
 
-.table{
-    display: flex;
-    position: relative;
-    height: 90%;
-    overflow: auto;
-    width: fit-content;
-}
+
 
 tr {
     display: flex;
     flex-direction: row;
-    
+
 }
 
 th {
-    width: 118px;
+    width: -webkit-fill-available;
     display: flex;
-    padding: 7px 26px 7px 32px;
+    padding: 7px 1em 7px 1em;
     background: #141417;
-    
+
 }
 
 td {
     font-size: 14px;
     font-weight: 300;
-    width: 118px;
-    padding: 7px 26px 7px 32px;
+    width: -webkit-fill-available;
+    padding: 7px 1em 7px 1em;
     border-bottom: solid 1px #24252A;
-    height: 23px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
-.border{
+.border {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 9px;
     padding: 4px 28px 4px 12px;
@@ -82,71 +121,86 @@ td {
 
 ::-webkit-scrollbar {
     width: 4px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #24252A;
     border-radius: 2px;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #2EF2AA;
     border-radius: 2px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #2EF2AA;
-  }
+}
 
-footer{
-    bottom: 0px;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
+.options {
     height: 10%;
-    align-items: center;
-    justify-content: space-between;
+    border-top: solid 1px #333333;
+    padding-left: 2em;
 }
 
-footer .div {
-    display: flex;
-    gap: 24px;
-    padding: 0px 70px;
+
+.icon-options {
+    margin-right: 10px;
 }
 
-footer button {
-    border-radius: 5px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0em 1.1em;
-    gap: 10px;
-}
-footer .button-green {
-    background: rgba(46, 242, 170, 0.05);
-    border: 1px solid #2EF2AA;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
-    color: #2EF2AA;
+.console-button {
+    display: none !important;
 }
 
-footer .button-white {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #FFFFFF;
-    color: white;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 19px;
-    text-align: center;
+.registers-button {
+    display: none !important;
+}
+
+.pading-horizon-0 {
+    padding: 0em 12.4em;
+}
+
+@media (max-width: 1400px) {
+    .padding-horizon-0 {
+        padding: 0em 1.8em !important;
+    }
+
+    .options {
+        padding-left: 0;
+        flex-direction: column !important;
+    }
+
+    .form-divs {
+        height: 80%;
+    }
+    .button-div-first{
+        padding-top: 1em;
+    }
+}
+
+@media (max-width:1080px) {
+    .textarea-code {
+        width: 100% !important;
+        border: none;
+    }
+
+    .div-regs {
+        display: none !important;
+    }
+
+    .text-buttons-options {
+        display: none;
+    }
+
+    .icon-options {
+        margin-right: 0px;
+    }
+
+    .console-button,
+    .registers-button {
+        display: flex !important;
+    }
 }

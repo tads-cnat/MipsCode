@@ -62,9 +62,19 @@ a {
     border-radius: 100%;
     border: solid 1px;
 }
-@media (max-width:1080px) {
+@media (max-width:1050px) {
     .header {
         padding: 0px 5%;
+    }
+
+    .navegation {
+        display: none !important;
+
+    }
+    .header-nav-mobile {
+        display: flex !important;
+        width: 100%;
+        justify-content: space-between;
     }
 
     .header-nav-buttons {

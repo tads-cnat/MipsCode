@@ -62,7 +62,7 @@
                     <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
                     <p class="fs-6 margin-top-1">{{projeto.description}}</p>
                 </div>
-                <a class="margin-top-2" href="{% url 'mipscode:ide_projeto' projeto.id%}">
+                <a class="margin-top-2" href="{% url 'mipscode:ide_projeto' projeto.id %}">
                     <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>
                 </a>
             </div>

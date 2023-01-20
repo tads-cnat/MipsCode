@@ -7,43 +7,321 @@
 {% endblock statics %}
 
 {% block article %}
-<article>
+<article class="article">
     {% if user.is_authenticated %}
-    <form class="screen" method="post" action="{% url 'mipscode:ide_projeto' projeto.id %}">
-    {% else %}
-    <form class="screen">
-    {% endif %}
-        {% csrf_token %}
-        <div class="address"></div>
-        <textarea class="input" id="input" name="content" placeholder="code here...">{{projeto.content}}</textarea>
-        
-        <div class="sys">
+    <form class="form-divs" method="post" action="{% url 'mipscode:ide_projeto' projeto.id %}">
+        {% else %}
+        <form class="row">
+            {% endif %}
+            {% csrf_token %}
+            <!-- <div class="address"></div> -->
+
+            <section class="row width-100 height-100 ">
+                <textarea class="textarea-code color-white fs-6 width-50" id="input" name="content"
+                    placeholder="code here...">{{projeto.content}}</textarea>
+                <div class="width-50 align-center column div-regs">
+                    <section class="sections-regs height-50 ">
+                        <h3 class="fs-5">Registradores</h3>
+
+                        <table class="table width-100">
+                            <tbody class="width-100">
+                                <tr>
+                                    <th>Identificação</th>
+                                    <th>Nome</th>
+                                    <th>Valor</th>
+                                </tr>
+                                <tr>
+                                    <td>$0</td>
+                                    <td>
+                                        <div class="border">$zero</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>$1</td>
+                                    <td>
+                                        <div class="border">$at</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$2</td>
+                                    <td>
+                                        <div class="border">$v0</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$3</td>
+                                    <td>
+                                        <div class="border">$v1</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$4</td>
+                                    <td>
+                                        <div class="border">$a0</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$5</td>
+                                    <td>
+                                        <div class="border">$a1</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$6</td>
+                                    <td>
+                                        <div class="border">$a2</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$7</td>
+                                    <td>
+                                        <div class="border">$a3</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$8</td>
+                                    <td>
+                                        <div class="border">$t0</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$9</td>
+                                    <td>
+                                        <div class="border">$t1</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$10</td>
+                                    <td>
+                                        <div class="border">$t2</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$11</td>
+                                    <td>
+                                        <div class="border">$t3</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$12</td>
+                                    <td>
+                                        <div class="border">$t4</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$13</td>
+                                    <td>
+                                        <div class="border">$t5</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$14</td>
+                                    <td>
+                                        <div class="border">$t6</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$15</td>
+                                    <td>
+                                        <div class="border">$t7</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$16</td>
+                                    <td>
+                                        <div class="border">$s0</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$17</td>
+                                    <td>
+                                        <div class="border">$s1</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$18</td>
+                                    <td>
+                                        <div class="border">$s2</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$19</td>
+                                    <td>
+                                        <div class="border">$s3</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$20</td>
+                                    <td>
+                                        <div class="border">$s4</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$21</td>
+                                    <td>
+                                        <div class="border">$s5</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$22</td>
+                                    <td>
+                                        <div class="border">$t6</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$23</td>
+                                    <td>
+                                        <div class="border">$t7</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$24</td>
+                                    <td>
+                                        <div class="border">$t8</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$25</td>
+                                    <td>
+                                        <div class="border">$t9</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$26</td>
+                                    <td>
+                                        <div class="border">$k0</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$27</td>
+                                    <td>
+                                        <div class="border">$k1</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$28</td>
+                                    <td>
+                                        <div class="border">$gp</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$29</td>
+                                    <td>
+                                        <div class="border">$sp</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$30</td>
+                                    <td>
+                                        <div class="border">$fp</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>$31</td>
+                                    <td>
+                                        <div class="border">$ra</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>pc</td>
+                                    <td>
+                                        <div class="border">pc</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>hi</td>
+                                    <td>
+                                        <div class="border">hi</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                                <tr>
+                                    <td>lo</td>
+                                    <td>
+                                        <div class="border">lo</div>
+                                    </td>
+                                    <td>0</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </section>
+
+                    <section class="sections-regs height-50 console margin-top-1">
+                        <h3 class="fs-5">Console</h3>
+                        <textarea class="width-100 height-50 textarea-console color-white"></textarea>
+                    </section>
+                </div>
+            </section>
+            <!-- <div class="sys">
             <div class="registers">
                 <div class="first-sixteen-registers">
-                    <span class="span-register">$zero</span><input type="text" value="0" name="$0"> <br>
-                    <span class="span-register">$at</span> <input type="text" value="0" name="$1"> <br>
-                    <span class="span-register">$v0</span> <input type="text" value="0" name="$2"> <br>
-                    <span class="span-register">$v1</span> <input type="text" value="0" name="$3"> <br>
-                    <span class="span-register">$a0</span> <input type="text" value="0" name="$4"> <br>
-                    <span class="span-register">$a1</span> <input type="text" value="0" name="$5"> <br>
-                    <span class="span-register">$a2</span> <input type="text" value="0" name="$6"> <br>
-                    <span class="span-register">$a3</span> <input type="text" value="0" name="$7"> <br>
-                    <span class="span-register">$t0</span> <input type="text" value="0" name="$8"> <br>
-                    <span class="span-register">$t1</span> <input type="text" value="0" name="$9"> <br>
-                    <span class="span-register">$t2</span> <input type="text" value="0" name="$10"> <br>
-                    <span class="span-register">$t3</span> <input type="text" value="0" name="$11"> <br>
-                    <span class="span-register">$t4</span> <input type="text" value="0" name="$12"> <br>
-                    <span class="span-register">$t5</span> <input type="text" value="0" name="$13"> <br>
-                    <span class="span-register">$t6</span> <input type="text" value="0" name="$14"> <br>
-                    <span class="span-register">$t7</span> <input type="text" value="0" name="$15"> <br>
-                </div>
-                <div class="remaining-sixteen-registers">
-                    <span class="span-register">$s0</span> <input type="text" value="0" name="$16"> <br>
-                    <span class="span-register">$s1</span> <input type="text" value="0" name="$17"> <br>
-                    <span class="span-register">$s2</span> <input type="text" value="0" name="$18"> <br>
-                    <span class="span-register">$s3</span> <input type="text" value="0" name="$19"> <br>
-                    <span class="span-register">$s4</span> <input type="text" value="0" name="$20"> <br>
-                    <span class="span-register">$s4</span> <input type="text" value="0" name="$21"> <br>
                     <span class="span-register">$s5</span> <input type="text" value="0" name="$22"> <br>
                     <span class="span-register">$s6</span> <input type="text" value="0" name="$23"> <br>
                     <span class="span-register">$s7</span> <input type="text" value="0" name="$24"> <br>
@@ -61,24 +339,30 @@
             </div>
             
             <div class="console"></div>
-        </div>
-        {% if user.is_authenticated %}
-        <input type="submit" value="Salvar">
-        {% endif %}
-    </form>
-    <div class="options">
-        <button type="submit" class="mount">Montar</button>
-        <button type="submit" class="step">Avançar</button>
-        <button type="submit" class="run">Executar</button>
-        <button type="submit" class="back">Retroceder</button>
-        <button type="submit" class="unmount">Desmontar</button>
+        </div> -->
+            <!-- {% if user.is_authenticated %}
+            <input type="submit" value="Salvar">
+            {% endif %} -->
+        </form>
+        <div class="options row gap-1 align-center justify-space-between padding-horizon-0">
+            <div class=" row gap-1 align-center button-div-first width-100 justify-space-between">
+                <button  class="button button-green color-green fs-6 bold cursor-pointer mount "><img class="icon-options" src="{% static 'mipscode/svgs/icon-montar.svg' %}"><span class="text-buttons-options">Montar</span></button>
+                <button  class="button button-green color-green fs-6 bold cursor-pointer run"><img class="icon-options" src="{% static 'mipscode/svgs/icon-run.svg' %}"><span class="text-buttons-options">Executar</span></button>
+                <button  class="button button-white fs-6 bold cursor-pointer step"><img class="icon-options" src="{% static 'mipscode/svgs/icon-executar.svg' %}"><span class="text-buttons-options">Avançar</span></button>
+                <button  class="button button-white fs-6 bold cursor-pointer back"><img class="icon-options" src="{% static 'mipscode/svgs/icon-voltar.svg' %}"><span class="text-buttons-options">Retroceder</span></button>
+                <button  class="button button-white fs-6 bold cursor-pointer unmount"><img class="icon-options" src="{% static 'mipscode/svgs/icon-desmontar.svg' %}"><span class="text-buttons-options">Desmontar</span></button>
+            </div>
 
-        <!--
+            <div class="row gap-1 align-center width-100 justify-space-between padding-horizon-0">
+                <button  class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img class="icon-options" src="{% static 'mipscode/svgs/icon-console.svg' %}"><span class="text-options">Console</span></button>
+                <button  class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img class="icon-options" src="{% static 'mipscode/svgs/icon-registradores.svg' %}"><span class="text-options">Registradores</span></button>
+            </div>
+            <!--
             - apagar a div criada no css pela classe;
             - $pc =  tools.formatAddress(programAttributes.addressCount -= 4)
         -->
-    </div>
-    <!-- <section class="section-code">
+        </div>
+        <!-- <section class="section-code">
         <textarea class="codemirror-textarea code"></textarea>
 
         <div class="area">

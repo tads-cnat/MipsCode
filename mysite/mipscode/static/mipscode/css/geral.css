@@ -332,6 +332,21 @@ footer .top .links-externs {
     justify-content: center;
 }
 
+.width-100{
+    width: 100%;
+}
+
+.width-50{
+    width: 50%;
+}
+
+.width-40{
+    width: 40%;
+}
+
+.width-60{
+    width: 60%;
+}
 
 
 @media (max-width:1400px) {
