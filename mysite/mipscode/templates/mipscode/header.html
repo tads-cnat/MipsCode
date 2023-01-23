@@ -69,10 +69,10 @@
             <div class="nav-buttons">
                 {% if user.is_authenticated %}
                 <div class="row gap-4">
-                    <div class="row align-center gap-1">
+                    <a class="row align-center gap-1" href="{% url 'mipscode:perfil' %}">
                         <div class="avatar" style="background-image: url({{profile.avatar.url}});"></div>
-                        <span class="fs-navegations">{{profile.name}}</span>
-                    </div>
+                        <span class="fs-navegations color-white">{{profile.name}}</span>
+                    </a>
 
                     <a href="{% url 'mipscode:logout' %}" class="row align-center"><img class="cursor-pointer" src="{% static 'mipscode/svgs/icon-logout.svg' %}" alt=""></a>
                 </div>

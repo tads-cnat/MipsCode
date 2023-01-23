@@ -20,5 +20,6 @@ urlpatterns = [
     path('tutoriais/', views.TutoriaisView.as_view(), name='tutoriais'),
     path('repositorio/buscar', views.BuscarRepositorio.as_view(), name='buscaRepositorio'),
     path('buscar_Tutorial/', views.BuscarTutorial.as_view(), name='buscaTutorial'),
+    path('perfil/', views.PerfilView.as_view(), name='perfil'),
     path('logout/', views.LogoutView.as_view(),name='logout'),
 ]

@@ -260,6 +260,11 @@ class DesfavoritarProjeto(View):
 
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
+class PerfilView(View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        return render(request, "mipscode/perfil.html", {'profile': profile})
 
 class LogoutView(View):
     def get(self, request, *args, **kwargs):

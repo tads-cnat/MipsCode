@@ -60,8 +60,19 @@ a {
     width: 2em;
     height: 2em;
     border-radius: 100%;
-    border: solid 1px;
+    border: solid 1px white !important;
 }
+
+.div-image-space{
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2em;
+    gap: 1em;
+}
+
 @media (max-width:1050px) {
     .header {
         padding: 0px 5%;

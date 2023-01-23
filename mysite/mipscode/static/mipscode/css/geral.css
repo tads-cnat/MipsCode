@@ -214,6 +214,12 @@ a {
     color: #FFFFFF;
 }
 
+.button-red {
+    background: rgba(217, 24, 40, 0.1);
+    border: 1px solid #D91828;
+    border-radius: 4.15px;
+}
+
 .button-background-opaco {
     background: #24252A;
 }
@@ -277,7 +283,7 @@ a {
     display: none;
 }
 
-.button-close{
+.button-close {
     background: #ffffff1c;
     border: solid 1px white;
     border-radius: 4px;
@@ -287,10 +293,11 @@ a {
     font-weight: 600;
 }
 
-.gap-1{
+.gap-1 {
     gap: 1em;
 }
-.gap-4{
+
+.gap-4 {
     gap: 4em;
 }
 
@@ -332,19 +339,19 @@ footer .top .links-externs {
     justify-content: center;
 }
 
-.width-100{
+.width-100 {
     width: 100%;
 }
 
-.width-50{
+.width-50 {
     width: 50%;
 }
 
-.width-40{
+.width-40 {
     width: 40%;
 }
 
-.width-60{
+.width-60 {
     width: 60%;
 }
 
@@ -369,7 +376,7 @@ footer .top .links-externs {
 @media (max-width:880px) {
 
     .form-div {
-        width: 21em;    
+        width: 21em;
         padding: 1em 3em 3em;
     }
 

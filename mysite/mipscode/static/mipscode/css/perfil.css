@@ -1,0 +1,15 @@
+.div-perfil-1 {
+    width: 100%;
+    height: 26em;
+    background: #24252A;
+    border-radius: 1em;
+}
+
+.avatar-perfil{
+    background-size: cover;
+    width: 8em;
+    height: 8em;
+    border-radius: 100%;
+    border: solid 1px white !important;
+}
+

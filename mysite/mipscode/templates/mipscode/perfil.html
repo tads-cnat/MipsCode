@@ -1,0 +1,41 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/perfil.css' %}">
+{% endblock statics %}
+
+{% block article %}
+<article class="column padding-padrao">
+    <h1 class="title-local margin-top-2">Configurações</h1>
+    <header class="row">
+        <p class="color-opaco fs-6 sitemap-inicio margin-zero">Início</p>
+        <p class="color-green fs-6 bold margin-zero">Configurações</p>
+    </header>
+
+    <section class="margin-top-2">
+        <p class="fs-6 bold">Perfil do usuário</p>
+        <div class="div-perfil-1 row">
+            <div class="div-image-space">
+                <img class="avatar-perfil" src="{{profile.avatar.url}}" id="avatarView">
+                <div>
+                    <input type="file" id="file" name="upload" accept="image/*">
+                    <input type="button" id="fileInput" class="button button-white bold" value="Envie uma Foto" onclick=""/>
+                </div>
+                <input class="button button-red color-red" value="Remover foto">
+                
+            </div>
+
+            <div class="column">
+                <label for="name" class="">Nome</label>
+                <input type="text" name="name" class="input" value="{{profile.name}}">
+                <label for="bio">Biografica</label>
+                <textarea name="bio"class="input" id="biografia" cols="30" rows="10">{{profile.bio}}</textarea>
+                <input type="submit" class="button button-green color-green" value="Salvar">
+            </div>
+        </div>
+    </section>
+
+
+</article>
+{% endblock article %}
