@@ -5,7 +5,7 @@
 }
 
 .textarea-code {
-    padding: 4% 0em 1em 3%;
+    padding: 4% 0em 0em 5%;
     background: #141417;
     font-family: inherit;
     border: none;
@@ -14,7 +14,7 @@
 }
 
 .form-divs {
-    height: 89%;
+    height: 100%;
 }
 
 
@@ -30,7 +30,7 @@
 }
 
 .sections-regs {
-    height: -webkit-fill-available;
+    height: 75%;
     width: 70%;
 }
 
@@ -44,7 +44,7 @@
 
 .table {
     display: flex;
-    height: 80%;
+    height: 90%;
     overflow: auto;
     width: fit-content;
     border-radius: 10px;
@@ -144,6 +144,29 @@ td {
     height: 10%;
     border-top: solid 1px #333333;
     padding-left: 2em;
+    position: absolute;
+    bottom: 0em;
+}
+
+.options-div{
+    width: 3em;
+    height: 4em;
+    bottom: 2em;
+    position: absolute;
+    background: rgb(255 255 255 / 24%);
+    backdrop-filter: blur(7px);
+    border-radius: 0em 3px 3px 0em;
+    border: solid 1px #8b8b8b;
+    border-left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1em;
+    transition: 1s;
+}
+
+.options-div:hover{
+    width: 50%;
 }
 
 
@@ -162,6 +185,8 @@ td {
 .pading-horizon-0 {
     padding: 0em 12.4em;
 }
+
+
 
 @media (max-width: 1400px) {
     .padding-horizon-0 {

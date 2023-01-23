@@ -11,7 +11,7 @@
     {% if user.is_authenticated %}
     <form class="form-divs" method="post" action="{% url 'mipscode:ide_projeto' projeto.id %}">
         {% else %}
-        <form class="row">
+        <form class="row height-100">
             {% endif %}
             {% csrf_token %}
             <!-- <div class="address"></div> -->
@@ -20,7 +20,7 @@
                 <textarea class="textarea-code color-white fs-6 width-50" id="input" name="content"
                     placeholder="code here...">{{projeto.content}}</textarea>
                 <div class="width-50 align-center column div-regs">
-                    <section class="sections-regs height-50 ">
+                    <section class="sections-regs">
                         <h3 class="fs-5">Registradores</h3>
 
                         <table class="table width-100">
@@ -344,18 +344,57 @@
             <input type="submit" value="Salvar">
             {% endif %} -->
         </form>
-        <div class="options row gap-1 align-center justify-space-between padding-horizon-0">
+
+        <div class="options-div">
+            <button class="button button-green color-green fs-6 bold cursor-pointer mount "><img class="icon-options"
+                    src="{% static 'mipscode/svgs/icon-montar.svg' %}"><span
+                    class="text-buttons-options">Montar</span></button>
+            <button class="button button-green color-green fs-6 bold cursor-pointer run"><img class="icon-options"
+                    src="{% static 'mipscode/svgs/icon-run.svg' %}"><span
+                    class="text-buttons-options">Executar</span></button>
+            <button class="button button-white fs-6 bold cursor-pointer step"><img class="icon-options"
+                    src="{% static 'mipscode/svgs/icon-executar.svg' %}"><span
+                    class="text-buttons-options">Avançar</span></button>
+            <button class="button button-white fs-6 bold cursor-pointer back"><img class="icon-options"
+                    src="{% static 'mipscode/svgs/icon-voltar.svg' %}"><span
+                    class="text-buttons-options">Retroceder</span></button>
+            <button class="button button-white fs-6 bold cursor-pointer unmount"><img class="icon-options"
+                    src="{% static 'mipscode/svgs/icon-desmontar.svg' %}"><span
+                    class="text-buttons-options">Desmontar</span></button>
+
+                    
+            <img src="{% static 'mipscode/svgs/icon-menu-options.svg' %}">
+
+
+        </div>
+
+        <div class="options row gap-1 align-center justify-space-between padding-horizon-0 display-none">
             <div class=" row gap-1 align-center button-div-first width-100 justify-space-between">
-                <button  class="button button-green color-green fs-6 bold cursor-pointer mount "><img class="icon-options" src="{% static 'mipscode/svgs/icon-montar.svg' %}"><span class="text-buttons-options">Montar</span></button>
-                <button  class="button button-green color-green fs-6 bold cursor-pointer run"><img class="icon-options" src="{% static 'mipscode/svgs/icon-run.svg' %}"><span class="text-buttons-options">Executar</span></button>
-                <button  class="button button-white fs-6 bold cursor-pointer step"><img class="icon-options" src="{% static 'mipscode/svgs/icon-executar.svg' %}"><span class="text-buttons-options">Avançar</span></button>
-                <button  class="button button-white fs-6 bold cursor-pointer back"><img class="icon-options" src="{% static 'mipscode/svgs/icon-voltar.svg' %}"><span class="text-buttons-options">Retroceder</span></button>
-                <button  class="button button-white fs-6 bold cursor-pointer unmount"><img class="icon-options" src="{% static 'mipscode/svgs/icon-desmontar.svg' %}"><span class="text-buttons-options">Desmontar</span></button>
+                <button class="button button-green color-green fs-6 bold cursor-pointer mount "><img
+                        class="icon-options" src="{% static 'mipscode/svgs/icon-montar.svg' %}"><span
+                        class="text-buttons-options">Montar</span></button>
+                <button class="button button-green color-green fs-6 bold cursor-pointer run"><img class="icon-options"
+                        src="{% static 'mipscode/svgs/icon-run.svg' %}"><span
+                        class="text-buttons-options">Executar</span></button>
+                <button class="button button-white fs-6 bold cursor-pointer step"><img class="icon-options"
+                        src="{% static 'mipscode/svgs/icon-executar.svg' %}"><span
+                        class="text-buttons-options">Avançar</span></button>
+                <button class="button button-white fs-6 bold cursor-pointer back"><img class="icon-options"
+                        src="{% static 'mipscode/svgs/icon-voltar.svg' %}"><span
+                        class="text-buttons-options">Retroceder</span></button>
+                <button class="button button-white fs-6 bold cursor-pointer unmount"><img class="icon-options"
+                        src="{% static 'mipscode/svgs/icon-desmontar.svg' %}"><span
+                        class="text-buttons-options">Desmontar</span></button>
             </div>
 
             <div class="row gap-1 align-center width-100 justify-space-between padding-horizon-0">
-                <button  class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img class="icon-options" src="{% static 'mipscode/svgs/icon-console.svg' %}"><span class="text-options">Console</span></button>
-                <button  class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img class="icon-options" src="{% static 'mipscode/svgs/icon-registradores.svg' %}"><span class="text-options">Registradores</span></button>
+                <button class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img
+                        class="icon-options" src="{% static 'mipscode/svgs/icon-console.svg' %}"><span
+                        class="text-options">Console</span></button>
+                <button
+                    class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img
+                        class="icon-options" src="{% static 'mipscode/svgs/icon-registradores.svg' %}"><span
+                        class="text-options">Registradores</span></button>
             </div>
             <!--
             - apagar a div criada no css pela classe;
