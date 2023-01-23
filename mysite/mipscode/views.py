@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views import View
 from django.views.generic import TemplateView
-
+from django.urls import resolve
 from .models import Documentation, Profile, Repositorio, Tutorial
 
 
@@ -92,8 +92,14 @@ class IdeProjetoView(View):
     def post(self, request, *args, **kwargs):
         pk = kwargs['pk']
         textarea = request.POST.get('content')
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+
         projeto = Repositorio.objects.get(pk=pk)
         projeto.content = textarea
+        projeto.title = title
+        projeto.description = description
+        projeto.edited_at = timezone.now()
         projeto.save()
         title_page = "ide"
         return HttpResponseRedirect(reverse('mipscode:ide_projeto', kwargs={'pk':projeto.pk}))
@@ -221,12 +227,14 @@ class AtualizarProjeto(View):
         title = request.POST.get('title')
         description = request.POST.get('description')
         projeto = get_object_or_404(Repositorio, pk=kwargs['pk'])
-
+        conteudo = request.POST.get("content")
         projeto.title = title
         projeto.description = description
         projeto.edited_at = timezone.now()
+        projeto.content = conteudo
         projeto.save()
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
+
 
 
 class RemoverProjeto(View):
