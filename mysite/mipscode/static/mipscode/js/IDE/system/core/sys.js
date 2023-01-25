@@ -1,7 +1,7 @@
 import memory from "./memory.js";
 import view from "./view.js";
 import * as user from './userAction.js';
-import sysHandling from "./errorHandling/sysHandling.js";
+import sysHandling from "./errors/sysHandling.js";
 
 // import view from "./viewRegisters.js";
 import { convertDecimalToAddressHex, formatAddress, convertHexToDecimal } from "./toolkit.js";

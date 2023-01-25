@@ -1,6 +1,6 @@
 import sys from './system/core/sys.js'
 import view from './system/core/view.js'
-import errorHandler from './system/core/errorHandling/manager.js'
+import errorHandler from './system/core/errors/manager.js'
 import * as user from './system/core/userAction.js'
 
 import { isTypeI, formatInstruction as formatI } from './system/core/ISA/I/manager.js'
