@@ -23,17 +23,9 @@
                 {% csrf_token %}
 
                 <section class="row width-100 height-100 ">
+
                     <div class="textarea-code color-white fs-6 width-50 row">
-
-
-                        <!-- O CODIGO DE ENDEREÇO É PRA FICAR DENTRO DESSA DIV ABAIXO, ENTÃO TEM QUE FAZER UM APPEND AQUI. -->
-                        <div class="textarea-address color-white fs-6 column">
-
-                            <!-- ÁREA DO CÓDIGO -->
-
-                        </div>
-
-
+                        <div class="textarea-address color-white fs-6 column"></div>
                         <textarea class="textarea-code color-white fs-6 width-50 mips" id="textarea" name="content"
                             placeholder="code here...">{{projeto.content}}</textarea>
                     </div>
@@ -52,256 +44,256 @@
                                     <tr>
                                         <td>$0</td>
                                         <td>
-                                            <div class="border">$zero</div>
+                                            <div class="border" name="$0">$zero</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
                                     <tr>
                                         <td>$1</td>
                                         <td>
-                                            <div class="border">$at</div>
+                                            <div class="border" name="$1">$at</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$2</td>
                                         <td>
-                                            <div class="border">$v0</div>
+                                            <div class="border" name="$2">$v0</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$3</td>
                                         <td>
-                                            <div class="border">$v1</div>
+                                            <div class="border" name="$3">$v1</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$4</td>
                                         <td>
-                                            <div class="border">$a0</div>
+                                            <div class="border" name="$4">$a0</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$5</td>
                                         <td>
-                                            <div class="border">$a1</div>
+                                            <div class="border" name="$5">$a1</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$6</td>
                                         <td>
-                                            <div class="border">$a2</div>
+                                            <div class="border" name="$6">$a2</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$7</td>
                                         <td>
-                                            <div class="border">$a3</div>
+                                            <div class="border" name="$7">$a3</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$8</td>
                                         <td>
-                                            <div class="border">$t0</div>
+                                            <div class="border" name="$8">$t0</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$9</td>
                                         <td>
-                                            <div class="border">$t1</div>
+                                            <div class="border" name="$9">$t1</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$10</td>
                                         <td>
-                                            <div class="border">$t2</div>
+                                            <div class="border" name="$10">$t2</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$11</td>
                                         <td>
-                                            <div class="border">$t3</div>
+                                            <div class="border" name="$11">$t3</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$12</td>
                                         <td>
-                                            <div class="border">$t4</div>
+                                            <div class="border" name="$12">$t4</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$13</td>
                                         <td>
-                                            <div class="border">$t5</div>
+                                            <div class="border" name="$13">$t5</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$14</td>
                                         <td>
-                                            <div class="border">$t6</div>
+                                            <div class="border" name="$14">$t6</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$15</td>
                                         <td>
-                                            <div class="border">$t7</div>
+                                            <div class="border" name="$15">$t7</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$16</td>
                                         <td>
-                                            <div class="border">$s0</div>
+                                            <div class="border" name="$16">$s0</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$17</td>
                                         <td>
-                                            <div class="border">$s1</div>
+                                            <div class="border" name="$17">$s1</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$18</td>
                                         <td>
-                                            <div class="border">$s2</div>
+                                            <div class="border" name="$18">$s2</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$19</td>
                                         <td>
-                                            <div class="border">$s3</div>
+                                            <div class="border" name="$19">$s3</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$20</td>
                                         <td>
-                                            <div class="border">$s4</div>
+                                            <div class="border" name="$20">$s4</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$21</td>
                                         <td>
-                                            <div class="border">$s5</div>
+                                            <div class="border" name="$21">$s5</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$22</td>
                                         <td>
-                                            <div class="border">$t6</div>
+                                            <div class="border" name="$22">$t6</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$23</td>
                                         <td>
-                                            <div class="border">$t7</div>
+                                            <div class="border" name="$23">$t7</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$24</td>
                                         <td>
-                                            <div class="border">$t8</div>
+                                            <div class="border" name="$24">$t8</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$25</td>
                                         <td>
-                                            <div class="border">$t9</div>
+                                            <div class="border" name="$25">$t9</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$26</td>
                                         <td>
-                                            <div class="border">$k0</div>
+                                            <div class="border" name="$26">$k0</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$27</td>
                                         <td>
-                                            <div class="border">$k1</div>
+                                            <div class="border" name="$27">$k1</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$28</td>
                                         <td>
-                                            <div class="border">$gp</div>
+                                            <div class="border" name="$28">$gp</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$29</td>
                                         <td>
-                                            <div class="border">$sp</div>
+                                            <div class="border" name="$29">$sp</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$30</td>
                                         <td>
-                                            <div class="border">$fp</div>
+                                            <div class="border" name="$30">$fp</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
                                         <td>$31</td>
                                         <td>
-                                            <div class="border">$ra</div>
+                                            <div class="border" name="$31">$ra</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
@@ -309,7 +301,7 @@
                                         <td>
                                             <div class="border">pc</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
@@ -317,7 +309,7 @@
                                         <td>
                                             <div class="border">hi</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                     <tr>
@@ -325,7 +317,7 @@
                                         <td>
                                             <div class="border">lo</div>
                                         </td>
-                                        <td>0</td>
+                                        <td class="reg-value">0</td>
                                     </tr>
 
                                 </tbody>
@@ -334,7 +326,14 @@
 
                         <section class="sections-regs height-50 console margin-top-1">
                             <h3 class="fs-5">Console</h3>
-                            <textarea class="width-100 height-50 textarea-console color-white"></textarea>
+                            <!--
+                            CONSOLE NÃO DEVE SER UM TEXTAREA, MAS SIM UMA DIV ONDE A MEDIDA
+                            QUE ELEMENTOS SÃO ADCIONADOS DENTRO, CRIE UM SCROOL PARA NÃO QUEBRAR
+                            A INTERFACE, O USUÁRIO SÓ VAI ESCREVER NO CONSOLE QUANDO TIVER UM
+                            SYSCALL DE ENTRADA DE DADOS, NESSE CASO EU CRIO UM INPUT E DESABILITO
+                            APÓS O USUÁRIO DIGITAR ENTER PELO JAVASCRIPT
+                            -->
+                            <div class="width-100 height-50 textarea-console color-white console-div"></div>
                         </section>
                     </div>
                 </section>

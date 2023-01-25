@@ -8,6 +8,12 @@ const formatAddress = { // talvez seja obsoleto, atente para a possibilidade de 
     immOrLabel: '0000000000000000'
 };
 
+/*
+
+For the bgez, bgtz, blez, and bltz instructions, the rt field is used as an extension of the opcode field.
+
+*/
+
 export function organizationTypeA(arr) { // [fn, rd, rs, rt]
     formatAddress.op = arr[0]
     formatAddress.rt = arr[1]

@@ -1,52 +1,83 @@
 import { structureInstruction } from "./toolkit.js";
 import * as Console from './console.js'
 
-const dataInAndOut = document.querySelector('.console')
-const addressArea = document.querySelector('.address')
-const registers = document.querySelector('.registers')
-const screen = document.querySelector('.screen')
-const input = document.querySelector('.input')
+const codeArea = document.querySelector('div.textarea-code')
+//const dataInAndOut = document.querySelector('.console')
+//const addressArea = document.querySelector('.address')
+const registers = document.querySelector('table.table')
+//const screen = document.querySelector('.screen')
+const input = document.querySelector('textarea.textarea-code')
 
 const view = {
     linesAttributes: [],
+    structuredInstructions: null,
     lastViewRegisterChanged: null,
 }    
 
-function createLine(a, b) {
+function createLine(a, b, c) {
     const div = document.createElement('div')
-    div.classList.add('address-line')
-    const spanA = document.createElement('span')
-    const spanB = document.createElement('span')
-    spanA.innerText = a
-    spanB.innerText = b
-    div.appendChild(spanA)
-    div.appendChild(spanB)
+    div.classList.add('mounted-code-line')
+
+    const address = document.createElement('span')
+    const code = document.createElement('span')
+    const instruction = document.createElement('span')
+
+    address.innerText = a
+    code.innerText = b
+    instruction.innerText = c
+
+    div.appendChild(
+        createColumn(address)
+    )
+    div.appendChild(
+        createColumn(code)
+    )
+    div.appendChild(
+        createColumn(instruction)
+    )
+
+    return div
+}
+
+function createColumn(element) {
+    const div = document.createElement('div')
+    div.classList.add('mounted-code-column-element')
+    div.appendChild(element)
     return div
 }
 
 Object.prototype.console = Console
 
-Object.prototype.showPropertiesAfterMount = () => {
-    //screen.style.paddingLeft = '100px'
-    screen.style.justifyContent = 'space-between'
-    screen.style.gridTemplateColumns = '1fr 1fr 1fr'
-    screen.style.gap = '60px'
-    addressArea.style.display = 'initial'
+Object.prototype.structureInstructionsToMountView = () => {
+    const instructions = input.value
+        .split('\n')
+        .filter( instruction => instruction.split('').every(el => el === ' ') === false )
+        .map( instruction => instruction.trim() )
+
+    view.structuredInstructions = instructions
 }
 
+// Object.prototype.showPropertiesAfterMount = () => {
+//     //screen.style.paddingLeft = '100px'
+//     screen.style.justifyContent = 'space-between'
+//     screen.style.gridTemplateColumns = '1fr 1fr 1fr'
+//     screen.style.gap = '60px'
+//     addressArea.style.display = 'initial'
+// }
+
 Object.prototype.cleanView = () => {
-    addressArea.innerText = ''
-    const regs = registers.querySelectorAll('input')
-    regs.forEach(register => register.value = 0 )
+    //addressArea.innerText = ''
+    const regs = registers.querySelectorAll('div.reg-value')
+    regs.forEach(register => register.innerText = 0 )
     Console.cleanIt()
 }
 
-Object.prototype.hidePropertiesAfterUnmount = () => {
-    screen.style.justifyContent = 'space-around'
-    screen.style.gridTemplateColumns = '1fr 1fr'
-    addressArea.style.gap = '40px'
-    addressArea.style.display = 'none'
-}
+// Object.prototype.hidePropertiesAfterUnmount = () => {
+//     screen.style.justifyContent = 'space-around'
+//     screen.style.gridTemplateColumns = '1fr 1fr'
+//     addressArea.style.gap = '40px'
+//     addressArea.style.display = 'none'
+// }
 
 Object.prototype.getInputInstructions = () => {
     if (input.value === '') return null
@@ -54,14 +85,21 @@ Object.prototype.getInputInstructions = () => {
 }
 
 Object.prototype.mountView = () => {
-    view.linesAttributes.forEach(attributes => {
-        const line = createLine(attributes.address, attributes.code)
-        addressArea.appendChild(line)
-    });
+    codeArea.innerText = ''
+
+    const div = document.createElement('div')
+    div.classList.add('mounted-code-area')
+
+    view.linesAttributes.forEach((attributes, index) => {
+        const line = createLine( attributes.address, attributes.code, view.structuredInstructions[index] )
+        div.appendChild(line)
+    })
+
+    codeArea.appendChild(div)
 }
 
 Object.prototype.setValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`input[name="${register}"]`)
+    const reg = document.querySelector(`div[name="${register}"]`)
     reg.value = value
 }
 
@@ -76,7 +114,7 @@ Object.prototype.Word = () => {}
 Object.prototype.ToOutput = data => {}
 
 Object.prototype.SetValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`input[name="${register}"]`)
+    const reg = document.querySelector(`div[name="${register}"]`)
     reg.value = value
 }
 

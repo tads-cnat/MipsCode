@@ -1,19 +1,20 @@
-import sys from './system/sys.js'
-import view from './system/view.js'
-import errorHandler from './system/errorHandling/manager.js'
-import * as user from './system/userAction.js'
+import sys from './system/core/sys.js'
+import view from './system/core/view.js'
+import errorHandler from './system/core/errorHandling/manager.js'
+import * as user from './system/core/userAction.js'
 
-import { isTypeI, formatInstruction as formatI } from './system/ISA/I/manager.js'
-import { isTypeR, formatInstruction as formatR } from './system/ISA/R/manager.js'
-import { isTypeJ, formatInstruction as formatJ } from './system/ISA/J/manager.js'
+import { isTypeI, formatInstruction as formatI } from './system/core/ISA/I/manager.js'
+import { isTypeR, formatInstruction as formatR } from './system/core/ISA/R/manager.js'
+import { isTypeJ, formatInstruction as formatJ } from './system/core/ISA/J/manager.js'
 
-import { convertHexToDecimal } from './system/toolkit.js'
+import { convertHexToDecimal } from './system/core/toolkit.js'
 
 user.mount.addEventListener('click', () => {
     sys.cleanSys()
     view.cleanView()
 
-    view.showPropertiesAfterMount()
+    view.structureInstructionsToMountView()
+    //view.showPropertiesAfterMount()
     view.console.dataOut(null, 'comment', 'Código montado, programa iniciado!')
     
     const inputInstructions = view.getInputInstructions()
@@ -107,8 +108,8 @@ user.mount.addEventListener('click', () => {
     sys.initialAssembly = false
     sys.empty = false
 
-    sys.regs.pc = convertHexToDecimal(sys.instructions[0].address) // TODO: fazer função disso no sys
-    view.setValueInViewRegister(sys.regs.pc, 'pc')
+    sys.regs.especial.pc = convertHexToDecimal(sys.instructions[0].address) // TODO: fazer função disso no sys
+    view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
 
     console.log(sys)
 })
@@ -134,7 +135,7 @@ user.run.addEventListener('click', () => {
 
             if (instruction.index < sys.instructions.length) {
                 sys.SetNextInstructionInPc()
-                view.setValueInViewRegister(sys.regs.pc, 'pc')
+                view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
             }
 
         })
@@ -151,7 +152,7 @@ user.run.addEventListener('click', () => {
 
         if (instruction.index < sys.instructions.length) {
             sys.SetNextInstructionInPc()
-            view.setValueInViewRegister(sys.regs.pc, 'pc')
+            view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
         }
 
     })
@@ -173,12 +174,19 @@ user.step.addEventListener('click', () => {
     sys.regsStackTimeline.push( Object.assign( {}, sys.regs ) )
     sys.Execute( instruction )
 
-    if (instruction.typing.type === 'j') 
+    // if (instruction.typing.type === 'j') 
+    //     return
+
+    if (sys.pcChangedAtExecution) {
+        sys.pcChangedAtExecution = false
         return
+    }
+
+    console.log('passou do pcChangedAtExecution');
 
     if (instruction.index < sys.instructions.length) {
         sys.SetNextInstructionInPc()
-        view.setValueInViewRegister(sys.regs.pc, 'pc')
+        view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
     }
 
     console.log(sys)
@@ -196,7 +204,7 @@ user.back.addEventListener('click', () => {
     sys.instructionExecutedIndex = sys.regs.currentIndex
 
     view.setValueInViewRegister(sys.regs[ sys.lastViewRegisterChanged ], sys.lastViewRegisterChanged)
-    view.setValueInViewRegister(sys.regs.pc, 'pc')
+    view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
 
     console.log(sys)
 });

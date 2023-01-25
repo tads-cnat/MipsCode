@@ -2,8 +2,8 @@ import { getLowOrder, getHighOrder } from '../../toolkit.js'
 
 export function executeTypeR(instruction, sys) {
     if (instruction.typing.org === 'a') {
-        sys.regs[ instruction.GPR.rd ] = instruction.does( sys.regs[instruction.GPR.rs], sys.regs[instruction.GPR.rt] )
-        sys.SetValueInViewRegister(sys.regs[ instruction.GPR.rd ], instruction.GPR.rd)
+        sys.regs.general[ instruction.GPR.rd ] = instruction.does( sys.regs.general[instruction.GPR.rs], sys.regs.general[instruction.GPR.rt] )
+        sys.SetValueInViewRegister(sys.regs.general[ instruction.GPR.rd ], instruction.GPR.rd)
         sys.lastViewRegisterChanged = instruction.GPR.rd
     }
 
@@ -15,15 +15,15 @@ export function executeTypeR(instruction, sys) {
     }
     
     if (instruction.typing.org === 'c') {
-        const res = instruction.does( sys.regs[instruction.GPR.rs], sys.regs[instruction.GPR.rt] )
+        const res = instruction.does( sys.regs.general[instruction.GPR.rs], sys.regs.general[instruction.GPR.rt] )
 
         if (instruction.func === 'mult' || instruction.func === 'multu') {
-            sys.regs.hi = getHighOrder(res)
-            sys.regs.lo = getLowOrder(res)
+            sys.regs.especial.hi = getHighOrder(res)
+            sys.regs.especial.lo = getLowOrder(res)
         }
 
-        sys.SetValueInViewRegister('hi', sys.regs.hi)
-        sys.SetValueInViewRegister('lo', sys.regs.lo)
+        sys.SetValueInViewRegister('hi', sys.regs.especial.hi)
+        sys.SetValueInViewRegister('lo', sys.regs.especial.lo)
     }
 
     if (instruction.typing.org === 'd') {}

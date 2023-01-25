@@ -23,6 +23,52 @@ textarea:focus-visible {
     resize: none;
 }
 
+/* Hilquias */
+
+.code-text-area {
+    padding: 4% 0em 1em 3%;
+    background: #141417;
+    font-family: inherit;
+    border: none;
+    resize: none;
+    border-right: solid 1px #333333;
+}
+
+.code-area {
+    height: 100%;
+    width: 100%;  
+}
+
+.mounted-code-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.mounted-code-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.mounted-code-column-element {
+    text-align: left;
+    width: 130px;
+}
+
+.data-in-input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+/* Hilquias */
+
 .form-divs {
     height: 100%;
 }
