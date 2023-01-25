@@ -118,6 +118,8 @@ textarea:focus-visible {
     font-family: unset;
     padding: 1em;
     resize: none;
+    height: 5em;
+    overflow: auto;
 }
 
 
