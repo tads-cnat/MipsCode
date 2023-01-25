@@ -1,7 +1,7 @@
-import * as tools from '../../toolkit.js'
+import * as tools from '../../core/toolkit.js'
 import * as formatting from './formatting.js'
-import instructions from "./instructions.js"
-import operationInstruction from "./operation.js"
+import instructions from './instructions.js'
+import operationInstruction from './operation.js'
 
 function selectOrganizationType(type, arr) {
     if (type === 'a') return formatting.organizationFromTypeA(arr)

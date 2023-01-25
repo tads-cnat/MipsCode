@@ -1,4 +1,4 @@
-import { convertDecimalToBin, convertBinToHex, addressBase } from "../../toolkit.js"
+import { convertDecimalToBin, convertBinToHex, addressBase } from '../../core/toolkit.js'
 
 const shiftLeftTwoBitsLogical = value => value >> 2
 

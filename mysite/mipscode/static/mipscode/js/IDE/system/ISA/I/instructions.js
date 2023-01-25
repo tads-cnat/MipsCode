@@ -1,4 +1,4 @@
-import { uInt } from '../../toolkit.js'
+import { uInt } from '../../core/toolkit.js'
 import * as op from './functions.js'
 
 export default {

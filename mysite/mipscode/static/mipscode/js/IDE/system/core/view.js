@@ -99,8 +99,8 @@ Object.prototype.mountView = () => {
 }
 
 Object.prototype.setValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`div[name="${register}"]`)
-    reg.value = value
+    const reg = registers.querySelector(`td[name="${register}"]`)
+    reg.innerText = value
 }
 
 //export function cleanView
@@ -112,11 +112,6 @@ Object.prototype.Text = () => {}
 Object.prototype.Word = () => {}
 
 Object.prototype.ToOutput = data => {}
-
-Object.prototype.SetValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`div[name="${register}"]`)
-    reg.value = value
-}
 
 Object.prototype.inputTreatement = (input) => {
     const instructions = input.split('\n').filter(

@@ -1,4 +1,4 @@
-import { whichOrganization } from "./manager.js";
+import { whichOrganization } from './manager.js';
 
 export default function operationInstruction(instruction) {
     if ( whichOrganization(instruction.func) === 'a' )

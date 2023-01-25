@@ -1,11 +1,11 @@
 import sys from './system/core/sys.js'
 import view from './system/core/view.js'
-import errorHandler from './system/core/errors/manager.js'
+import errorHandler from './system/errors/manager.js'
 import * as user from './system/core/userAction.js'
 
-import { isTypeI, formatInstruction as formatI } from './system/core/ISA/I/manager.js'
-import { isTypeR, formatInstruction as formatR } from './system/core/ISA/R/manager.js'
-import { isTypeJ, formatInstruction as formatJ } from './system/core/ISA/J/manager.js'
+import { isTypeI, formatInstruction as formatI } from './system/ISA/I/manager.js'
+import { isTypeR, formatInstruction as formatR } from './system/ISA/R/manager.js'
+import { isTypeJ, formatInstruction as formatJ } from './system/ISA/J/manager.js'
 
 import { convertHexToDecimal } from './system/core/toolkit.js'
 

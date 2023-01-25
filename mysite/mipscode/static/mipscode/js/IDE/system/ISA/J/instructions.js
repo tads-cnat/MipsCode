@@ -1,4 +1,4 @@
-import { convertHexToDecimal } from '../../toolkit.js'
+import { convertHexToDecimal } from '../../core/toolkit.js'
 
 export default {
     j: {

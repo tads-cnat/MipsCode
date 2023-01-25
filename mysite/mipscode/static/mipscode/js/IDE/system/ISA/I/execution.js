@@ -1,7 +1,9 @@
+import view from '../../core/view.js'
+
 export function executeTypeI(instruction, sys) {
     if (instruction.typing.org === 'a') {
         sys.regs.general[ instruction.GPR.rt ] = instruction.does( sys.regs.general[instruction.GPR.rs], instruction.GPR.imm )
-        sys.SetValueInViewRegister( sys.regs.general[ instruction.GPR.rt ], instruction.GPR.rt )
+        view.setValueInViewRegister( sys.regs.general[ instruction.GPR.rt ], instruction.GPR.rt )
         sys.lastViewRegisterChanged = instruction.GPR.rt
     }
 
@@ -10,7 +12,7 @@ export function executeTypeI(instruction, sys) {
             sys.regs.especial.pc = parseInt( instruction.GPR.offset )
             sys.pcChangedAtExecution = true
             console.log(sys.regs.especial.pc);
-            sys.SetValueInViewRegister(sys.regs.especial.pc, 'pc')
+            view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
             sys.lastViewRegisterChanged = instruction.func
         }
     }
