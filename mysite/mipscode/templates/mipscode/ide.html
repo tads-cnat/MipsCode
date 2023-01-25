@@ -379,6 +379,7 @@
 
     </article>
 
+    {% if user.is_authenticated %}
     <section class="nav-lateral">
         <div class="button-nav-lateral" onclick="abrirDiv()">
             <img id="icon-nav" src="{% static 'mipscode/svgs/icon-arrow.svg' %}">
@@ -399,7 +400,7 @@
             </div>
         </div>
     </section>
-    {% if user.is_authenticated %}
+    
 </form>
 {% endif %}
   
