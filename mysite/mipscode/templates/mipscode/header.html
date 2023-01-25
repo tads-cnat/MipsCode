@@ -71,7 +71,7 @@
                 <div class="row gap-4">
                     <a class="row align-center gap-1" href="{% url 'mipscode:perfil' %}">
                         <div class="avatar" style="background-image: url({{profile.avatar.url}});"></div>
-                        <span class="fs-navegations color-white">{{profile.name}}</span>
+                        <span class="fs-navegations color-white">{{name}}</span>
                     </a>
 
                     <a href="{% url 'mipscode:logout' %}" class="row align-center"><img class="cursor-pointer" src="{% static 'mipscode/svgs/icon-logout.svg' %}" alt=""></a>

@@ -57,6 +57,7 @@ a {
 
 .avatar{
     background-size: cover;
+    background-position: center;
     width: 2em;
     height: 2em;
     border-radius: 100%;

@@ -182,12 +182,24 @@ a {
     align-items: center;
 }
 
+.align-start {
+    align-items: flex-start;
+}
+
 .align-end {
     justify-content: flex-end;
 }
 
+.alignself-end {
+    align-self: end;
+}
+
 .justify-space-between {
     justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 /* Botões */
@@ -245,6 +257,20 @@ a {
     color: white;
 }
 
+.input-off {
+    padding: 15px 10px;
+    background: rgba(217, 217, 217, 0.02);
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+.input-off:focus {
+    color: white;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -297,6 +323,10 @@ a {
     gap: 1em;
 }
 
+.gap-05 {
+    gap: 0.5em;
+}
+
 .gap-4 {
     gap: 4em;
 }
@@ -347,14 +377,21 @@ footer .top .links-externs {
     width: 50%;
 }
 
-.width-40 {
-    width: 40%;
-}
-
 .width-60 {
     width: 60%;
 }
 
+.width-40 {
+    width: 40%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.resize-none {
+    resize: none;
+}
 
 @media (max-width:1400px) {
     .padding-padrao {

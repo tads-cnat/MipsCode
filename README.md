@@ -8,7 +8,7 @@ O mipscode é ideal para aqueles que querem aprender e praticar programação em
 
 <table style>
   <tr>
-    <td align="center"><a href="https://github.com/plmdsmatheus">
+    <td align="center"><a href="https://github.com/neemias-renan">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/69238611?v=4" width="100px;" alt=""/>
         <br />
         <a href="https://github.com/alcides07"><b>Neemias Renan</b></a>
@@ -16,17 +16,17 @@ O mipscode é ideal para aqueles que querem aprender e praticar programação em
     <td align="center"><a href="https://github.com/HilquiasAbias">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/76264931?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/diogoodiego"><b>Hilquias Abiass</b></a>
+        <a href="https://github.com/HilquiasAbias"><b>Hilquias Abiass</b></a>
     </td>
     <td align="center"><a href="https://github.com/HeloiseMacena">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/42615847?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/erick003"><b>Heloise Macena</b></a>
+        <a href="https://github.com/HeloiseMacena"><b>Heloise Macena</b></a>
     </td>
     <td align="center"><a href="https://github.com/plmdsmatheus">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/84824460?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/alcides07"><b>Matheus Duarte</b></a>
+        <a href="https://github.com/plmdsmatheus"><b>Matheus Duarte</b></a>
     </td>
   </tr>
 </table>
