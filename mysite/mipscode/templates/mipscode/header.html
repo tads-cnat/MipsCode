@@ -21,29 +21,31 @@
 
             <div class="nav-links">
                 {% if user.is_authenticated %}
-                {% if title == "dashboard" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
-                {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
-                {% endif %}
+                    {% if title == "dashboard" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:dashboard' %}">Dashboard</a>
+                    {% endif %}
 
-                {% if title == "documentacao" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
-                {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
-                {% endif %}
+                    {% if title == "documentacao" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:documentacao' 1%}">Documentação</a>
+                    {% endif %}
 
-                {% if title == "repositorio" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:repositorio' %}">Repositório</a>
-                {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
-                {% endif %}
+                    {% if title == "repositorio" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:repositorio' %}">Repositório</a>
+                    {% endif %}
 
-                {% if title == "tutoriais" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
-                {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
-                {% endif %}
+                    {% if title == "tutoriais" %}
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                    {% else %}
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:tutoriais' %}">Tutoriais</a>
+                    {% endif %}
+
+
                 {% else %}
 
                 {% if title == "inicio" %}

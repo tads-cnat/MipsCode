@@ -95,6 +95,10 @@ a {
 .margin-bottom-2 {
     margin-bottom: 2em !important;
 }
+.margin-bottom-05 {
+    margin-bottom: 0.5em !important;
+}
+
 
 .margin-top-1 {
     margin-top: 1em;
@@ -144,6 +148,9 @@ a {
 
 .color-black {
     color: #000 !important;
+}
+.color-black-opacity{
+    color: #00000069 !important
 }
 
 .color-yellow {
@@ -322,6 +329,9 @@ a {
 .gap-1 {
     gap: 1em;
 }
+.gap-2 {
+    gap: 2em;
+}
 
 .gap-05 {
     gap: 0.5em;
@@ -379,6 +389,9 @@ footer .top .links-externs {
 
 .width-60 {
     width: 60%;
+}
+.width-70 {
+    width: 70%;
 }
 
 .width-40 {

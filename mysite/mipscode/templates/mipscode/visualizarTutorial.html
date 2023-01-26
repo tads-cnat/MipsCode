@@ -1,0 +1,66 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/tutorial.css' %}">
+<script src="{% static 'mipscode/js/interacoes/projetos.js' %}"></script>
+{% endblock statics %}
+
+{% block article %}
+<article class="padding-padrao margin-top-2">
+    <h1 class="title-local">Tutoriais</h1>
+    <header class="row">
+        <p class="color-opaco fs-6 sitemap-inicio margin-zero">Dashboard</p>
+        <p class="color-opaco fs-6 sitemap-inicio margin-zero">Tutoriais</p>
+        <p class="color-green fs-6 margin-zero">{{tutorial}}</p>
+    </header>
+    <section class="column margin-top-5 ">
+        <h1 class="fs-5 bold margin-zero">
+            {{tutorial}}
+        </h1>
+
+        <div class="div-tutorial margin-top-1">
+            {% for item in tutorial_itens %}
+            {% for key, value in item.items %}
+
+
+            {% if key == "h1" %}
+            <h1 class="fs-2  margin-zero">
+                {{value}}
+            </h1>
+            {% endif %}
+            
+            {% if key == "h2" %}
+            <h3 class="fs-3 margin-zero">
+                {{value}}
+            </h3>
+            {% endif %}
+
+            {% if key == "h3" %}
+            <h3 class="fs-4 margin-zero">
+                {{value}}
+            </h3>
+            {% endif %}
+
+            {% if key == "h4" %}
+            <h3 class="fs-5 margin-zero">
+                {{value}}
+            </h3>
+            {% endif %}
+
+            {% if key == "p" %}
+            <p class="fs-6  margin-top-1">
+                {{value}}
+            </p>
+            {% endif %}
+
+
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+
+
+    </section>
+</article>
+{% endblock article %}

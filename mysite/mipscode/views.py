@@ -8,11 +8,11 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views import View
 from django.views.generic import TemplateView
-from django.urls import resolve
 from .models import Documentation, Profile, Repositorio, Tutorial
 from PIL import Image
 from django.core.files.storage import FileSystemStorage
 import uuid
+from json import loads
 
 
 class IndexView(View):
@@ -72,7 +72,7 @@ class DocumentacaoView(View):
             name = " ".join(profile.name.split(" ")[:2])
         pk = kwargs['pk']
         documentacao = get_object_or_404(Documentation, pk=pk)
-        documentacao_itens = documentacao.content["content"]
+        documentacao_itens = documentacao.content
         links_documentacao = Documentation.objects.all()
         title_page = "documentacao"
         return render(request, "mipscode/documentacao.html", {"name":name,"documentacao": documentacao, "documentacao_itens": documentacao_itens, "links_documentacao": links_documentacao, "title": title_page, "profile": profile})
@@ -135,11 +135,9 @@ class RepositorioView(View):
         if file and file.content_type == 'text/plain':
             content = handle_uploaded_file(file)
             CreateProject = Repositorio.objects.create(user=profile, title=title, description=description, content=content, created_at=timezone.now(), edited_at=timezone.now())
-            print(CreateProject)
             return HttpResponseRedirect(reverse('mipscode:ide_projeto', kwargs={'pk':CreateProject.pk}))
         
         CreateProject = Repositorio.objects.create(user=profile, title=title, description=description, content="", created_at=timezone.now(), edited_at=timezone.now())
-        print(CreateProject.pk)
         return HttpResponseRedirect(reverse('mipscode:ide_projeto', kwargs={'pk':CreateProject.pk}))
 
 
@@ -184,7 +182,6 @@ class BuscarTutorial(View):
             return HttpResponseRedirect(reverse('mipscode:tutoriais'))
         return render(request, "mipscode/tutoriais.html", {'profile': profile, 'tutoriais': lista, 'busca': busca, 'title': title})
 
-
 class DashboardView(View):
     def get(self, request, *args, **kwargs):
         title = "dashboard"
@@ -211,7 +208,6 @@ class DashboardView(View):
 
         return HttpResponseRedirect(reverse('mipscode:dashboard'))
 
-
 class TutoriaisView(View):
     def get(self, request, *args, **kwargs):
         title = "tutoriais"
@@ -232,7 +228,6 @@ class TutoriaisView(View):
 
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
 
-
 class AtualizarProjeto(View):
     def post(self, request, *args, **kwargs):
         title = request.POST.get('title')
@@ -245,8 +240,6 @@ class AtualizarProjeto(View):
         projeto.content = conteudo
         projeto.save()
         return HttpResponseRedirect(reverse('mipscode:repositorio'))
-
-
 
 class RemoverProjeto(View):
     def get(self, request, *args, **kwargs):
@@ -308,15 +301,37 @@ class PerfilView(View):
         profile.ide_theme = tema
         profile.language = idioma
         
-
         userprofile.save()
         profile.save()
         
         update_session_auth_hash(request, userprofile)
         return HttpResponseRedirect(reverse('mipscode:perfil'))
 
+class CriarTutorial(View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        name = " ".join(profile.name.split(" ")[:2])
+        return render(request, "mipscode/criartutorial.html", {'profile': profile,'name':name})
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+        content =loads(request.POST.get('content'))
+        Tutorial.objects.create(user= profile, title=title, description = description, content = content)
+        return HttpResponseRedirect(reverse('mipscode:tutoriais'))
 
+class VisualizarTutorial(View):
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        name = " ".join(profile.name.split(" ")[:2])
+        tutorial = Tutorial.objects.get(pk=kwargs['pk'])
+        tutorial_itens = tutorial.content
 
+        return render(request, "mipscode/visualizarTutorial.html", {'tutorial_itens':tutorial_itens,'tutorial':tutorial,'profile': profile,'name':name})
+    
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
