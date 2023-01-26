@@ -3,9 +3,9 @@ import * as Console from './console.js'
 
 const codeArea = document.querySelector('div.textarea-code')
 //const dataInAndOut = document.querySelector('.console')
-//const addressArea = document.querySelector('.address')
+const addressArea = document.querySelector('.textarea-address')
 const registers = document.querySelector('table.table')
-//const screen = document.querySelector('.screen')
+const textareaCode = document.querySelector('textarea.textarea-code')
 const input = document.querySelector('textarea.textarea-code')
 
 const view = {
@@ -14,26 +14,46 @@ const view = {
     lastViewRegisterChanged: null,
 }    
 
-function createLine(a, b, c) {
+// function createLine(a, b, c) {
+//     const div = document.createElement('div')
+//     div.classList.add('mounted-code-line')
+
+//     const address = document.createElement('span')
+//     const code = document.createElement('span')
+//     const instruction = document.createElement('span')
+
+//     address.innerText = a
+//     code.innerText = b
+//     instruction.innerText = c
+
+//     div.appendChild(
+//         createColumn(address)
+//     )
+//     div.appendChild(
+//         createColumn(code)
+//     )
+//     div.appendChild(
+//         createColumn(instruction)
+//     )
+
+//     return div
+// }
+
+function createLine(a, b) {
     const div = document.createElement('div')
     div.classList.add('mounted-code-line')
 
     const address = document.createElement('span')
     const code = document.createElement('span')
-    const instruction = document.createElement('span')
 
     address.innerText = a
     code.innerText = b
-    instruction.innerText = c
 
     div.appendChild(
         createColumn(address)
     )
     div.appendChild(
         createColumn(code)
-    )
-    div.appendChild(
-        createColumn(instruction)
     )
 
     return div
@@ -85,22 +105,37 @@ Object.prototype.getInputInstructions = () => {
 }
 
 Object.prototype.mountView = () => {
-    codeArea.innerText = ''
-
+    
+    
     const div = document.createElement('div')
     div.classList.add('mounted-code-area')
 
     view.linesAttributes.forEach((attributes, index) => {
-        const line = createLine( attributes.address, attributes.code, view.structuredInstructions[index] )
+        const line = createLine( attributes.address, attributes.code)
         div.appendChild(line)
     })
 
-    codeArea.appendChild(div)
+    addressArea.classList.add('code-area-flex-distance')
+    addressArea.appendChild(div)
 }
 
+// Object.prototype.mountView = () => {
+//     codeArea.innerText = ''
+    
+//     const div = document.createElement('div')
+//     div.classList.add('mounted-code-area')
+
+//     view.linesAttributes.forEach((attributes, index) => {
+//         const line = createLine( attributes.address, attributes.code, view.structuredInstructions[index] )
+//         div.appendChild(line)
+//     })
+
+//     codeArea.appendChild(div)
+// }
+
 Object.prototype.setValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`div[name="${register}"]`)
-    reg.value = value
+    const reg = registers.querySelector(`td[name="${register}"]`)
+    reg.innerText = value
 }
 
 //export function cleanView
@@ -112,11 +147,6 @@ Object.prototype.Text = () => {}
 Object.prototype.Word = () => {}
 
 Object.prototype.ToOutput = data => {}
-
-Object.prototype.SetValueInViewRegister = (value, register) => {
-    const reg = document.querySelector(`div[name="${register}"]`)
-    reg.value = value
-}
 
 Object.prototype.inputTreatement = (input) => {
     const instructions = input.split('\n').filter(

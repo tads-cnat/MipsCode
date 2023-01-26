@@ -54,8 +54,9 @@ export const dataIn = async () => {
 }
 
 function createConsoleInput() {
-    const inputLine = document.createElement('input')
+    const inputLine = document.createElement('textarea')
     inputLine.classList.add('data-in-input')
+    inputLine.classList.add('color-white')
     dataInAndOut.appendChild(inputLine)
 
     return inputLine
@@ -74,3 +75,13 @@ function getUserData(inputLine) {
         })
     })
 }
+
+/*
+addi $2, $0, 5
+syscall
+add $4, $2, $2
+addi $2, $0, 1
+syscall
+addi $2, $0, 10
+syscall
+*/

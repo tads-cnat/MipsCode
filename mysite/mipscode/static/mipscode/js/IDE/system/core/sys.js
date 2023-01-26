@@ -1,13 +1,13 @@
-import memory from "./memory.js";
-import view from "./view.js";
+import memory from './memory.js';
+import view from './view.js';
 import * as user from './userAction.js';
-import sysHandling from "./errors/sysHandling.js";
+import sysHandling from '../errors/sysHandling.js';
 
 // import view from "./viewRegisters.js";
 import { convertDecimalToAddressHex, formatAddress, convertHexToDecimal } from "./toolkit.js";
-import { executeTypeI } from './ISA/I/execution.js'
-import { executeTypeR } from './ISA/R/execution.js'
-import { executeTypeJ } from './ISA/J/execution.js'
+import { executeTypeI } from '../ISA/I/execution.js'
+import { executeTypeR } from '../ISA/R/execution.js'
+import { executeTypeJ } from '../ISA/J/execution.js'
 
 const sys = {
     regs: {
@@ -139,6 +139,16 @@ Object.prototype.cleanSys = () => {
     sys.instructions = []
     sys.regsStackTimeline = []
     sys.viewInformations = []
+    sys.memory
+    sys.addressCount = 0
+    sys.pcChangedAtExecution = false
+    sys.instructions = []
+    sys.regsStackTimeline = []
+    sys.executedInstructionsStack = []
+    sys.executionInstructionCount = 0
+    sys.instructionExecuted = null // 'none'
+    sys.instructionExecutedIndex = null
+    sys.empty = true
 }
 
 Object.prototype.OnlyLabel = (instruction, regsSpace) => {
