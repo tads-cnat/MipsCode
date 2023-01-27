@@ -17,5 +17,5 @@
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
 | 1 - Visitante envia solicitação de login | 1 - Sistema procura pelo usuário com os dados correspondentes. |  
-| 2 - Os dados são inválidos  | 2 - A solicitação de login é negada e uma mensagem de erro retornada.s |
+| 2 - Os dados são inválidos  | 2 - A solicitação de login é negada e uma mensagem de erro retornada. |
 
