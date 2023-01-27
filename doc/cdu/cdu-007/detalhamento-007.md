@@ -1,20 +1,20 @@
-# CDU007. Acessar projeto 
+# CDU007. Montar Código 
 
-- **Ator principal**: Usuário
-- **Atores secundários**: Admin 
-- **Resumo**: Usuário acessa página de projetos e acessa um projeto já criado.
-- **Pré-condição**: Um usuário deve estar logado no site.
-- **Pós-Condição**: Um usuário deve estar logado no site e acessando a pagina de projetos.
+- **Ator principal**: Visitante
+- **Atores secundários**: Usuário 
+- **Resumo**: Visitante é capaz de montar o código para ser executado
+- **Pré-condição**: Código deve estar sem erro de sintaxe
+- **Pós-Condição**: Sem pós-condição
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
 | :-----------------: | :-----------------: | 
-| 1 - Acessar site. | 1 - Renderiza página e seus scripts. |  
-| 2 - Acessar a página de projetos. | 2 - Renderiza a página e projetos já criados. | 
-| 3 - Acessar um projeto já criado. | 3 - Rendenriza os aruqivos e codigos salvos no projeto. |  
+| 1 - Acessar site | 1 - Renderiza página e seus scripts |  
+| 2 - Acessar a página de IDE | 2 - Renderiza a página e scripts da IDE e disponibiliza o uso | 
+| 3 - Montar código | 3 - Faz a verificação do código escrito e monta o código |  
 
-## Página fora do ar
+## Erro de sintaxe
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
-| 2.1 - Página de projetos está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
-| 2.2 - O visitante é notificado. | 2.2 - Renderiza página 404. |
+| 3.1 - Montar código | 3.1 - Faz a verificação dó código escrito e descobre erro |  
+| 2.2 - O visitante é notificado | |
