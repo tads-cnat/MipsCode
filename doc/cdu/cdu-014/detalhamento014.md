@@ -1,21 +1,22 @@
-# CDU014. Controle dos tutoriais
+# CDU014. Acessar Dashboard
 
-- **Ator principal**: Admin
-- **Atores secundários**: Usuário
-- **Resumo**: Criar, editar e excluir tutoriais que sejam visíveis para os usuários.
-- **Pré-condição**: Admin deve estar logado.
-- **Pós-Condição**: Houve ou não alteração nos turoriais pelo admin.
+- **Ator principal**: Usuário
+- **Atores secundários**: Admin
+- **Resumo**: Usuário é capaz de acessar o site com todas as funções atráves do dashboard
+- **Pré-condição**: Deve estar logado
+- **Pós-Condição**: Sem pós-condições
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
 | :-----------------: | :-----------------: | 
-| 1 - Acessar site. | 1 - Renderiza página e seus scripts. |  
-| 2 - Acessar a página de tutoriais. | 2 - Renderiza a página e dados já inseridos. | 
-| 3 - Realiza alguma ação. | 3 - Salva o resultado a ação. |  
-| 4 - Volta a navegação do site. | |
+| 1 - Acessa site | 1 - Renderiza página e seus scripts |  
+| 2 - Acessa a página de login | 2 - Renderiza a página e abre o formulário | 
+| | 3 - Realiza a autenticação e libera o acesso ao dashboard |  
+| 4 - Volta a navegação do site | |
 
-## Página fora do ar
+## Erro de autenticação
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
-| 2.1 - Página de tutoriais está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
-| 2.2 - O admin é notificado. | 2.2 - Renderiza página 404. |
+| | 3.1 - Faz a autenticação do formulário |  
+| | 3.2 - Credenciais inválidas |
+| 2.1 - Visitante é notificado | |
