@@ -1,15 +1,16 @@
-# CDU013. Controle dos usuários cadastrados
+# CDU013. Abrir Console
 
-- **Ator principal**: Admin
+- **Ator principal**: Visitante
 - **Atores secundários**: Usuário
-- **Resumo**: Gerencia usuários cadastrados.
-- **Pré-condição**: Admin deve estar logado.
-- **Pós-Condição**: Houve ou não alteração nos usuários pelo admin.
+- **Resumo**: Abre uma tela com o console da IDE que irá ser utilizado no código
+- **Pré-condição**: Código deve estar montado
+- **Pós-Condição**: Deve estar de acordo com as instruções no código
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
 | :-----------------: | :-----------------: | 
-| 1 - Acessar site. | 1 - Renderiza página e seus scripts. |  
-| 2 - Acessar a página de admin. | 2 - Renderiza a página e dados já inseridos. | 
-| 3 - Realiza alguma ação. | 3 - Salva o resultado a ação. |  
-| 4 - Volta a navegação do site. | |
+| 1 - Acessar site | 1 - Renderiza página e seus scripts |  
+| 2 - Acessar a página de IDE | 2 - Renderiza a página e scripts da IDE e disponibiliza o uso | 
+| 3 - Montar código | 3 - Faz a verificação do código escrito e monta o código | 
+| 4 - Executa código | 4 - Executa o código escrito pelo usuário |
+| 5 - Abrir o console | 5 - Abre uma tela com o console para uso do código |
