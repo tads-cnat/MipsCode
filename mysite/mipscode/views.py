@@ -118,19 +118,22 @@ class DocumentacaoView(View):
 
 class IdeView(View):
     def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='application/javascript')
         title_page = "ide"
         context = {"title": title_page}
-        return render(request, "mipscode/ide.html", context)
-
+        render(request, "mipscode/ide.html", context)
+        return response
 
 class IdeProjetoView(View):
     def get(self, request, *args, **kwargs):
+        response = HttpResponse(content_type='application/javascript')
         projeto = get_object_or_404(Repositorio, pk=kwargs['pk'])
         title_page = "ide"
         profile = Profile.objects.get(user=request.user)
         name = " ".join(profile.name.split(" ")[:2])
         context = {"profile":profile,"title": title_page, "projeto": projeto,'name':name}
-        return render(request, "mipscode/ide.html", context)
+        render(request, "mipscode/ide.html", context)
+        return response
 
     def post(self, request, *args, **kwargs):
         textarea = request.POST.get('content')
