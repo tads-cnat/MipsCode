@@ -44,11 +44,16 @@ export const dataIn = async () => {
 
     user.utils.freeze()
 
+    console.log('console dataIn before input');
+
+
     const data = await getUserData(inputLine)
         .then(res => res)
         .catch(err => console.log(err))
 
     user.utils.unFreeze()
+
+    console.log('console dataIn after input');
 
     return data
 }

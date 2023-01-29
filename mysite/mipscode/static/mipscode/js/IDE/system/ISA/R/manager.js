@@ -23,19 +23,6 @@ export function whichOrganization(op) {
 }
 
 export function formatInstruction(instruction, memorySpace, index) {
-    if (instruction.func === 'syscall') 
-        return {
-            address: tools.formatAddress(memorySpace),
-            code: '0x0000000c',
-            index,
-            typing: {
-                type: 'r',
-                org: 'b' // instructions[instruction.func].type
-            },
-            syscall: true,
-            label: instruction.label
-        }
-
     const binary = selectOrganizationType(
         instructions[ instruction.func ].type,
         formatting.formatInstructionsInBinary( [ instruction.func, ...instruction.values ] )

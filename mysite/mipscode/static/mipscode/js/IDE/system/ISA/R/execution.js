@@ -3,15 +3,14 @@ import view from '../../core/view.js'
 
 export function executeTypeR(instruction, sys) {
     if (instruction.typing.org === 'a') {
+        console.log('executeTypeR in typing.org === a');
         sys.regs.general[ instruction.GPR.rd ] = instruction.does( sys.regs.general[instruction.GPR.rs], sys.regs.general[instruction.GPR.rt] )
         view.setValueInViewRegister(sys.regs.general[ instruction.GPR.rd ], instruction.GPR.rd)
         sys.lastViewRegisterChanged = instruction.GPR.rd
     }
 
     if (instruction.typing.org === 'b') {
-        if (instruction.syscall)
-            return sys.Call()
-
+        console.log('executeTypeR in typing.org === b');
         // TODO: fazer execução da instrução break
     }
     
