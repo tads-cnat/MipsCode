@@ -48,13 +48,25 @@ textarea:focus-visible {
 .mounted-code-line {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
+    margin-right: 2em;
+    padding: 9px 44px;
+    border-radius: 5px;
+    justify-content: flex-start;
+    gap: 2em;
+    background: #232529;
+}
+.mounted-code-line:nth-child(odd){
+    background: #191a1d;
+}
+
+.mounted-code-column-element:nth-child(3) {
+    border-right: none;
 }
 
 .mounted-code-column-element {
     text-align: left;
     width: 130px;
+    border-right: solid 1px #3e3e3e;
 }
 
 .color-test {
