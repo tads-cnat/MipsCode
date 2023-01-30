@@ -95,8 +95,31 @@ Object.prototype.mountView = () => {
     codeArea.appendChild(div)
 }
 
+Object.prototype.cleanRegisters = () => {
+    const regs = registers.querySelectorAll('td.table-reg-value')
+    
+    regs.forEach(register => {
+        const parentRegister = register.parentNode
+        if (parentRegister.classList.contains('view-changed-color'))
+            parentRegister.classList.remove('view-changed-color')
+
+        register.classList.remove('color-test')
+    } )
+}
+
 Object.prototype.setValueInViewRegister = (value, register) => {
     //if (register === 'pc' || register === '' || register === 'lo')
+
+    //view.cleanRegisters()
+
+    const changedRegisterLine = document.querySelector('.view-changed-color')
+    const changedRegisterValue = document.querySelector('.color-test')
+
+    if (changedRegisterLine)
+        changedRegisterLine.classList.remove('view-changed-color')
+
+    if (changedRegisterValue)
+        changedRegisterValue.classList.remove('color-test')
 
     const reg = registers.querySelector(`td[name="${register}"]`)
     const regLine = reg.parentElement

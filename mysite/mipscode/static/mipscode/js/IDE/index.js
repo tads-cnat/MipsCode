@@ -285,13 +285,13 @@ user.run.addEventListener('click', () => {
     //     }
     // })
 
-    v
 
     console.log(sys)
 })
 
 user.step.addEventListener('click', async () => {
     let flag = false
+
     
     if (sys.empty) return
 
