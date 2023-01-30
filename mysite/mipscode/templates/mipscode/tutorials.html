@@ -16,7 +16,7 @@
     <section class="column">
         {% if profile.user_profile == '3'%}
         <div class="row content-buttons margin-top-2">
-            <a href="{% url 'mipscode:criarTutorial' %}">
+            <a href="{% url 'mipscode:createtutorial' %}">
                 <button class="button-green color-black background-button-green fs-6 button bold cursor-pointer">
                     <img src="{% static 'mipscode/svgs/icons-add.svg' %}">
                     <p class="p-button margin-zero">Criar novo arquivo
@@ -25,25 +25,16 @@
             </a>
         </div>
         {% endif %}
-        <form class="row margin-top-2 justify-space-between div-filters" action="{% url 'mipscode:buscaTutorial' %}"
+        <form class="row margin-top-2 justify-space-between div-filters" action="{% url 'mipscode:searchtutorial' %}"
             method="post">
             {% csrf_token %}
             <input type="text" class="button-white button-background-opaco fs-7 button search"
-                placeholder="Buscar arquivo" name="search">
-
-            <select name="filters" class="button-white button-background-opaco fs-7 button filters"
-                onchange="this.form.submit()">
-                <option class="fs-7" class="fs-7" selected="selected" disabled>Escolha o nível</option>
-                <option value="0" class="fs-7">Todos</option>
-                <option value="1" class="fs-7">Fácil</option>
-                <option value="2" class="fs-7">Intermediário</option>
-                <option value="3" class="fs-7">Difícil</option>
-            </select>
+                placeholder="Buscar arquivo" name="search" value="{{search}}">
         </form>
 
         <div class="content-projetos-all margin-top-2">
 
-            {% for tutorial in tutoriais %}
+            {% for tutorial in tutorials_all %}
             <div class="project-div column button-background-opaco">
                 <div>
                     <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
@@ -57,9 +48,10 @@
                     <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-red">Difícil</span>
                     </p>
                     {% endif %}
+                    <p class="fs-6 margin-zero color-white margin-top-2">{{ tutorial.description }}</p>
                 </div>
                 <div class="margin-top-2">
-                    <a href="{% url 'mipscode:visualizarTutorial' tutorial.pk %}">
+                    <a href="{% url 'mipscode:opentutorial' tutorial.pk %}">
                         <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
                     </a>
                 </div>

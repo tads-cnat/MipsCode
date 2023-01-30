@@ -8,7 +8,7 @@
 {% block article %}
 <article class="column padding-padrao">
     <section class="section-one column align-center">
-        <form action="{% url 'mipscode:cadastro' %}" method="post" class="form row align-center">
+        <form action="{% url 'mipscode:registration' %}" method="post" class="form row align-center">
             {% csrf_token %}
             <h3 class="fs-3">CRIE UMA NOVA CONTA</h3>
             <div class="div-form column">
@@ -17,7 +17,8 @@
                 <input class="fs-6 input" type="password" name="password" placeholder="Senha" autocomplete="off">
                 <input class="fs-6 input" type="password" name="password" placeholder="Confirme a Senha" autocomplete="off">
                 <input class="button button-green color-green fs-6 bold" type="submit" value="Cadastrar-se">
-                <p class="p_message">{{mensagem}}</p>
+                <p class="p_message">{{error_message}}</p>
+                <p class="color-green">{{success_message}}</p>
                 <div class="division margin-top-1">
                     <a href="{% url 'mipscode:login' %}" class="fs-6 color-green ">Já possui uma conta?</a>
                 </div>
@@ -29,30 +30,4 @@
         </form>
     </section>
 </article>
-<!-- 
-<article>
-    <section class="section-one">
-        <form action="{% url 'mipscode:cadastro' %}" class="form" method="post">
-            {% csrf_token %}
-            <h3>CRIE UMA NOVA CONTA</h3>
-            <div class="div-form">
-                <input class="input-form" type="text" name="user" placeholder="Nome de Usuário">
-                <input class="input-form" type="email" name="email" placeholder="Email">
-                <input class="input-form" type="password" name="password" placeholder="Senha">
-                <input class="input-form" type="password" placeholder="Confirme a Senha">
-                <input class="input-button" type="submit" value="Cadastrar-se">
-                <div class="division">
-                    <a href="{% url 'mipscode:cadastro' %}" class="text-green">Já possui uma conta?</a>
-                </div>
-                <a href="#">
-                    <button class="input-button-link">
-                        <img src="{% static 'mipscode/svgs/icon-google.svg' %}">
-                        Continuar com o Google
-                    </button>
-                </a>
-            </div>
-        </form>
-    </section>
-
- -->
 {% endblock article %}

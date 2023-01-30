@@ -13,9 +13,9 @@
     </header>
     <section class="row">
         <div class="content-documentation">
-            <h1 class="fs-2 title">{{documentacao}}</h1>
+            <h1 class="fs-2 title">{{documentation}}</h1>
             <div class="conteudo">
-                {% for item in tutorial_itens %}
+                {% for item in documentation_itens %}
                 {% for key, value in item.items %}
 
                 <!-- {{key}} | {{value}} -->
@@ -42,7 +42,7 @@
                 {% endfor %}
                 {% endfor %}
 
-                <a href="{% url 'mipscode:documentacao' documentacao.pk %}"><button
+                <a href="{% url 'mipscode:documentation' documentation.pk %}"><button
                         class="button button-green fs-6 color-green button-proximo">Próximo Passo</button></a>
             </div>
         </div>
@@ -51,13 +51,13 @@
             <div class="column">
                 <h5 class="fs-7 color-gray margin-bottom-2">Trilha de conhecimento</h5>
 
-                {% for value in links_documentacao %}
-                {% if value.pk == documentacao.pk %}
-                <a href="{% url 'mipscode:documentacao' value.pk %}" class="color-green">
+                {% for value in documentation_all %}
+                {% if value.pk == documentation.pk %}
+                <a href="{% url 'mipscode:documentation' value.pk %}" class="color-green">
                     <p class="fs-6 option-map-green bold row margin-zero">{{value}}</p>
                 </a>
                 {% else %}
-                <a href="{% url 'mipscode:documentacao' value.pk %}" class="color-gray">
+                <a href="{% url 'mipscode:documentation' value.pk %}" class="color-gray">
                     <p class="fs-6 option-map row margin-zero">{{value}}</p>
                 </a>
                 {% endif%}

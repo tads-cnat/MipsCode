@@ -12,7 +12,7 @@
         <h1 class="fs-3 font-uppercase">Veja o que você pode realizar no MipsCode.</h1>
 
         <div class="row area-div">
-            <a href="{% url 'mipscode:documentacao' 1%}" class="color-white area-link">
+            <a href="{% url 'mipscode:documentation' 1%}" class="color-white area-link">
 
                 <p class="fs-7 bold">APRENDA</p>
                 <h1 class="fs-4 ligth margin-zero">Explorar a Documentação</h1>
@@ -45,7 +45,7 @@
                 <p>
             </button>
 
-            <a href="{% url 'mipscode:repositorio' %}">
+            <a href="{% url 'mipscode:repository' %}">
                 <button class="button-white background-button-white fs-6 button bold cursor-pointer">
                     <img src="{% static 'mipscode/svgs/icons-arquivo.svg' %}">
                     <p class="p-button margin-zero">Ver todos os arquivos</p>
@@ -54,15 +54,15 @@
         </div>
         <p class="margin-top-2 fs-6 color-gray">Projetos recentes</p>
         <div class="content-projetos-all margin-top-1">
-            {% for projeto in projetos %}
+            {% for project in projects %}
             <div class="project-div column">
                 <div>
-                    <h2 class="fs-4 margin-zero">{{projeto.title}}</h2>
+                    <h2 class="fs-4 margin-zero">{{project.title}}</h2>
                     <p class="fs-7 margin-zero color-opaco">{{firstname}}</p>
-                    <p class="fs-7 margin-zero color-opaco">{{ projeto.edited_at|hours_since }}</p>
-                    <p class="fs-6 margin-top-1">{{projeto.description}}</p>
+                    <p class="fs-7 margin-zero color-opaco">{{ project.edited_at|hours_since }}</p>
+                    <p class="fs-6 margin-top-1">{{project.description}}</p>
                 </div>
-                <a class="margin-top-2" href="{% url 'mipscode:ide_projeto' projeto.id %}">
+                <a class="margin-top-2" href="{% url 'mipscode:ideproject' project.id %}">
                     <button class="button-green color-green fs-6 button cursor-pointer">Abrir Projeto</button>
                 </a>
             </div>
@@ -76,7 +76,7 @@
 
         <div class="content-projetos-all margin-top-1">
 
-            {% for tutorial in tutoriais %}
+            {% for tutorial in tutorials_all %}
             <div class="project-div column button-background-opaco">
                 <div>
                     <h2 class="fs-4 margin-zero">{{tutorial.title}}</h2>
@@ -90,9 +90,13 @@
                     <p class="fs-7 margin-zero color-opaco margin-top-2">Nível: <span class="color-red">Difícil</span>
                     </p>
                     {% endif %}
+
+                    <p class="fs-6 color-opaco">{{tutorial.description}}</p>
                 </div>
                 <div class="margin-top-2">
+                    <a href="#">
                     <button class="button-green color-green fs-6 button cursor-pointer">Ver conteúdo</button>
+                    </a>
                 </div>
             </div>
             {% endfor %}
@@ -108,7 +112,7 @@
 
 
 <section class="create-arquivo display-none" id="create-arquivo">
-    <form class="form-div" action="{% url 'mipscode:repositorio' %}" method="post" enctype="multipart/form-data">
+    <form class="form-div" action="{% url 'mipscode:repository' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row justify-space-between align-center">
             <h1 class="fs-4">Crie um novo Arquivo</h1>

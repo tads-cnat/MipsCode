@@ -7,7 +7,7 @@
 
 {% block article %}
 <form class="padding-padrao column margin-top-2 justify-space-between div-filters"
-    action="{% url 'mipscode:criarTutorial' %}" method="post">
+    action="{% url 'mipscode:createtutorial' %}" method="post">
     {% csrf_token %}
 
     <h1 class="fs-3">Crie um novo tutorial</h1>

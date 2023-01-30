@@ -16,9 +16,9 @@
                     autocomplete="off">
                 <input class="fs-6 input" type="password" name="password" placeholder="Senha" autocomplete="off">
                 <input class="button button-green color-green fs-6 bold" type="submit" value="Conecte-se">
-                <p class="p_message">{{mensagem}}</p>
+                <p class="p_message">{{error_message}}</p>
                 <div class="division margin-top-1">
-                    <a href="{% url 'mipscode:cadastro' %}" class="fs-6 color-green ">Crie sua conta</a>
+                    <a href="{% url 'mipscode:registration' %}" class="fs-6 color-green ">Crie sua conta</a>
                     <a href="#" class="fs-6 color-white">Esqueceu a senha?</a>
                 </div>
                 <button class="button button-white color-white">

@@ -11,7 +11,7 @@
 
 {% block article %}
 {% if user.is_authenticated %}
-<form method="post" action="{% url 'mipscode:ide_projeto' projeto.id %}">
+<form method="post" action="{% url 'mipscode:ideproject' project.id %}">
     {% endif %}
     <article class="article">
 
@@ -27,7 +27,7 @@
                     <div class="textarea-code color-white fs-6 width-50 row">
                         <div class="textarea-address color-white fs-6 column"></div>
                         <textarea class="textarea-code color-white fs-6 width-50 mips" id="textarea" name="content"
-                            placeholder="code here...">{{projeto.content}}</textarea>
+                            placeholder="code here...">{{project.content}}</textarea>
 
                     </div>
 
@@ -361,11 +361,10 @@
 
                     </div>
                     <div class="row gap-1 align-center width-100 justify-space-between padding-horizon-0">
-                        <button class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img
+                        <button type="button" class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img
                                 class="icon-options" src="{% static 'mipscode/svgs/icon-console.svg' %}"><span
                                 class="text-options">Console</span></button>
-                        <button
-                            class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img
+                        <button type="button" class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img
                                 class="icon-options" src="{% static 'mipscode/svgs/icon-registradores.svg' %}"><span
                                 class="text-options">Registradores</span></button>
                     </div>
@@ -388,14 +387,13 @@
             <div class="form-div">
                 <div>
                     <label for="title" class="fs-5 bold">Titulo do Projeto</label>
-                    <input type="text" name="title" class="input fs-5 margin-top-1 ligth" value="{{projeto.title}}">
+                    <input type="text" name="title" class="input fs-5 margin-top-1 ligth" value="{{project.title}}">
                 </div>
                 <div class="margin-top-1">
                     <label for="descricao" class="fs-5 bold">Descrição</label>
                     <textarea type="text" name="description"
-                        class="input fs-6 margin-top-1 ligth">{{projeto.description}}</textarea>
-                    <input type="submit" value="Salvar"
-                        class="button button-green width-100 margin-top-1 color-green bold fs-6">
+                        class="input fs-6 margin-top-1 ligth">{{project.description}}</textarea>
+                    <input type="submit" value="Salvar" class="button button-green width-100 margin-top-1 color-green bold fs-6">
                 </div>
             </div>
         </div>
@@ -403,7 +401,4 @@
    
 </form>
 {% endif %}
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
 {% endblock article %}

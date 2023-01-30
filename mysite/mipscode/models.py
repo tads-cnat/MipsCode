@@ -5,6 +5,7 @@ from django.db import models
 from django.utils import timezone
 from PIL import Image
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(default='', max_length=150, null=True)
@@ -60,7 +61,7 @@ class Tutorial(models.Model):
         return self.title
 
 
-class Repositorio(models.Model):
+class Project(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
