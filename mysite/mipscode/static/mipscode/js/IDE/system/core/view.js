@@ -3,7 +3,7 @@ import * as Console from './console.js'
 
 const codeArea = document.querySelector('div.textarea-code')
 //const dataInAndOut = document.querySelector('.console')
-const addressArea = document.querySelector('.textarea-address')
+const addressArea = document.querySelector('div.textarea-address')
 const registers = document.querySelector('table.table')
 const textareaCode = document.querySelector('textarea.textarea-code')
 const input = document.querySelector('textarea.textarea-code')
@@ -56,6 +56,13 @@ Object.prototype.cleanView = () => {
     const regs = registers.querySelectorAll('div.reg-value')
     regs.forEach(register => register.innerText = 0 )
     Console.cleanIt()
+
+    view.linesAttributes = []
+    view.lastViewRegisterChanged = null
+    view.structuredInstructions = null
+
+    addressArea.innerHTML = ''
+    addressArea.classList.remove('code-area-flex-distance')
 }
 
 Object.prototype.getInputInstructions = () => {
@@ -64,8 +71,6 @@ Object.prototype.getInputInstructions = () => {
 }
 
 Object.prototype.mountView = () => {
-    
-    
     const div = document.createElement('div')
     div.classList.add('mounted-code-area')
 
@@ -79,7 +84,16 @@ Object.prototype.mountView = () => {
 }
 
 Object.prototype.setValueInViewRegister = (value, register) => {
+    const before = registers.querySelector(`td[name="${view.lastViewRegisterChanged}"]`)
     const reg = registers.querySelector(`td[name="${register}"]`)
+
+    if (view.lastViewRegisterChanged !== null) {
+        before.classList.remove('color-test')
+    }
+    
+    reg.classList.add('color-test')
+
+    view.lastViewRegisterChanged = register
     reg.innerText = value
 }
 

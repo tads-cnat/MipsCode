@@ -56,65 +56,138 @@ Object.prototype.createSyscallInstance = (instruction, index) => {
         label: instruction.label
     }
 
-    sys.addressCount += 4
     sys.instructions.push(syscall)
+
+    view.linesAttributes.push({
+        address: syscall.address,
+        code: syscall.code,
+        line: index + 1
+    })
+
+    sys.addressCount += 4
 }
 
-Object.prototype.Call = () => {
-    return new Promise(async resolve => {
-        if (sys.regs.general.$2 === 1) { // integer to print
-            view.console.dataOut(sys.regs.general.$4, 'value', '')
-        }
-    
-        else if (sys.regs.general.$2 === 2) { // float to print
-            view.console.dataOut(sys.regs.floatingPoint.$f12.float, 'value', '')
-        }
-    
-        else if (sys.regs.general.$2 === 3) { // double to print
-            view.console.dataOut(sys.regs.floatingPoint.$f12.double, 'value', '')
-        }
-    
-        else if (sys.regs.general.$2 === 5) { // $2 contains integer read
-            const onlyNumbers = new RegExp('^[0-9]+$')
 
-            const input = await view.console.dataIn()
+Object.prototype.Call = async () => {
+    if (sys.regs.general.$2 === 1) { // integer to print
+        view.console.dataOut(sys.regs.general.$4, 'value', '')
+        return true
+    }
 
-            if (!onlyNumbers.test(input))
-                // sysError(incorrectIntegerValueInput)
-            
-            sys.regs.general.$2 = parseInt(input)
-            view.setValueInViewRegister(input, '$2')
-    
-        }
-    
-        else if (sys.regs.general.$2 === 6) { // $2 contains float read
-            sys.regs.general.$2 = parseFloat(prompt())
-        }
-    
-        else if (sys.regs.general.$2 === 7) { // $2 contains double read
-            sys.regs.general.$2 = parseFloat(prompt())
-        }
-    
-        else if (sys.regs.general.$2 === 8) { // $2 contains string read
-            sys.regs.general.$2 = prompt()
-        }
-    
-        // else if (sys.regs.general.$2 === 9) // allocate heap regs
-    
-        else if (sys.regs.general.$2 === 10) {
-            view.console.dataOut(null, 'exit', 'Programa finalizado!')
-            sys.cleanSys()
-            sys.empty = true
-        }
+    if (sys.regs.general.$2 === 2) { // float to print
+        view.console.dataOut(sys.regs.floatingPoint.$f12.float, 'value', '')
+        return true
+    }
 
-        // else new Error('valor em $2 não corresponde há uma ação do sistema')
+    if (sys.regs.general.$2 === 3) { // double to print
+        view.console.dataOut(sys.regs.floatingPoint.$f12.double, 'value', '')
+        return true
+    }
 
-        console.log('sys.call after execute');
-        resolve()
-    })
+    if (sys.regs.general.$2 === 5) { // $2 contains integer read
+        const onlyNumbers = new RegExp('^[0-9]+$')
+        
+        user.utils.freeze()
+
+        const input = await view.console.dataIn()
+
+        user.utils.unFreeze()
+
+        if (!onlyNumbers.test(input))
+            // sysError(incorrectIntegerValueInput)
+        
+        sys.regs.general.$2 = parseInt(input)
+        view.setValueInViewRegister(input, '$2')
+
+        return true
+    }
+
+    if (sys.regs.general.$2 === 6) { // $2 contains float read
+        sys.regs.general.$2 = parseFloat(prompt())
+        return true
+    }
+
+    if (sys.regs.general.$2 === 7) { // $2 contains double read
+        sys.regs.general.$2 = parseFloat(prompt())
+        return true
+    }
+
+    if (sys.regs.general.$2 === 8) { // $2 contains string read
+        sys.regs.general.$2 = prompt()
+        return true
+    }
+
+    // if (sys.regs.general.$2 === 9) // allocate heap regs
+
+    if (sys.regs.general.$2 === 10) {
+        view.console.dataOut(null, 'exit', 'Programa finalizado!')
+        sys.cleanSys()
+        sys.empty = true
+        return true
+    }
+
+    // else new Error('valor em $2 não corresponde há uma ação do sistema')
+
+    console.log('sys.call after execute');
 
     // TODO: Completar chamada do sistema
 }
+
+// Object.prototype.Call = () => {
+//     return new Promise(async resolve => {
+//         if (sys.regs.general.$2 === 1) { // integer to print
+//             view.console.dataOut(sys.regs.general.$4, 'value', '')
+//         }
+    
+//         else if (sys.regs.general.$2 === 2) { // float to print
+//             view.console.dataOut(sys.regs.floatingPoint.$f12.float, 'value', '')
+//         }
+    
+//         else if (sys.regs.general.$2 === 3) { // double to print
+//             view.console.dataOut(sys.regs.floatingPoint.$f12.double, 'value', '')
+//         }
+    
+//         else if (sys.regs.general.$2 === 5) { // $2 contains integer read
+//             const onlyNumbers = new RegExp('^[0-9]+$')
+
+//             const input = await view.console.dataIn()
+
+//             if (!onlyNumbers.test(input))
+//                 // sysError(incorrectIntegerValueInput)
+            
+//             sys.regs.general.$2 = parseInt(input)
+//             view.setValueInViewRegister(input, '$2')
+    
+//         }
+    
+//         else if (sys.regs.general.$2 === 6) { // $2 contains float read
+//             sys.regs.general.$2 = parseFloat(prompt())
+//         }
+    
+//         else if (sys.regs.general.$2 === 7) { // $2 contains double read
+//             sys.regs.general.$2 = parseFloat(prompt())
+//         }
+    
+//         else if (sys.regs.general.$2 === 8) { // $2 contains string read
+//             sys.regs.general.$2 = prompt()
+//         }
+    
+//         // else if (sys.regs.general.$2 === 9) // allocate heap regs
+    
+//         else if (sys.regs.general.$2 === 10) {
+//             view.console.dataOut(null, 'exit', 'Programa finalizado!')
+//             sys.cleanSys()
+//             sys.empty = true
+//         }
+
+//         // else new Error('valor em $2 não corresponde há uma ação do sistema')
+
+//         console.log('sys.call after execute');
+//         resolve()
+//     })
+
+//     // TODO: Completar chamada do sistema
+// }
 
 Object.prototype.cleanSys = () => {
     sys.regs = {
@@ -190,13 +263,13 @@ Object.prototype.Execute = (instruction) => {
 
     sys.instructionExecuted = instruction
     sys.instructionExecutedIndex = instruction.index
+    sys.regs.currentIndex = instruction.index
 }
 
 Object.prototype.Branch = (instruction, op) => {
     if (op === 'j') 
         sys.regs.especial.pc = convertHexToDecimal(instruction.address)
 
-    
 }
 
 export default sys;

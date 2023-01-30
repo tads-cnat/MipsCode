@@ -58,6 +58,10 @@ textarea:focus-visible {
     width: 130px;
 }
 
+.color-test {
+    color: #2EF2AA;
+}
+
 .data-in-input {
     border: none;
     outline: none;
@@ -66,6 +70,7 @@ textarea:focus-visible {
     margin: 0;
     text-decoration: none;
     resize: none;
+    color: white !important;
 }
 
 .code-area-flex-distance {
