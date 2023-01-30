@@ -12,24 +12,23 @@ const view = {
     linesAttributes: [],
     structuredInstructions: null,
     lastViewRegisterChanged: null,
-}    
+} 
 
-function createLine(a, b) {
+function createLine(a, b, c) {
     const div = document.createElement('div')
     div.classList.add('mounted-code-line')
 
     const address = document.createElement('span')
     const code = document.createElement('span')
+    const instruction = document.createElement('span')
 
     address.innerText = a
     code.innerText = b
+    instruction.innerText = c
 
-    div.appendChild(
-        createColumn(address)
-    )
-    div.appendChild(
-        createColumn(code)
-    )
+    div.appendChild( createColumn(address) )
+    div.appendChild( createColumn(code) )
+    div.appendChild( createColumn(instruction) )
 
     return div
 }
@@ -71,16 +70,17 @@ Object.prototype.getInputInstructions = () => {
 }
 
 Object.prototype.mountView = () => {
+    codeArea.innerText = ''
+
     const div = document.createElement('div')
     div.classList.add('mounted-code-area')
 
     view.linesAttributes.forEach((attributes, index) => {
-        const line = createLine( attributes.address, attributes.code)
+        const line = createLine( attributes.address, attributes.code, view.structuredInstructions[index] )
         div.appendChild(line)
     })
 
-    addressArea.classList.add('code-area-flex-distance')
-    addressArea.appendChild(div)
+    codeArea.appendChild(div)
 }
 
 Object.prototype.setValueInViewRegister = (value, register) => {
