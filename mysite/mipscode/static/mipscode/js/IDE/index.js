@@ -254,36 +254,38 @@ user.run.addEventListener('click', () => {
         return
     }
 
-    sys.instructions.forEach(async instruction => {
-        if (instruction.syscall) {
-            flag = await sys.Call()
-            sys.instructionExecuted = instruction
-            sys.instructionExecutedIndex = instruction.index
-            console.log('syscall before flag');
+    // sys.instructions.forEach(async instruction => { // USAR EVERY
+    //     if (instruction.syscall) {
+    //         flag = await sys.Call()
+    //         sys.instructionExecuted = instruction
+    //         sys.instructionExecutedIndex = instruction.index
+    //         console.log('syscall before flag');
 
-            while (flag !== true) {
-                console.log('in flag');
-            }
+    //         while (flag !== true) {
+    //             console.log('in flag');
+    //         }
 
-            console.log('syscall after flag');
-            flag = false
-        }
+    //         console.log('syscall after flag');
+    //         flag = false
+    //     }
 
-        else {
-            sys.Execute( instruction )
-            console.log('execute');
-        }
+    //     else {
+    //         sys.Execute( instruction )
+    //         console.log('execute');
+    //     }
 
-        if (sys.pcChangedAtExecution) {
-            sys.pcChangedAtExecution = false
-            return
-        }
+    //     if (sys.pcChangedAtExecution) {
+    //         sys.pcChangedAtExecution = false
+    //         return
+    //     }
 
-        if (instruction.index < sys.instructions.length) {
-            sys.SetNextInstructionInPc()
-            view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-        }
-    })
+    //     if (instruction.index < sys.instructions.length) {
+    //         sys.SetNextInstructionInPc()
+    //         view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
+    //     }
+    // })
+
+    v
 
     console.log(sys)
 })

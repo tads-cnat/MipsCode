@@ -76,6 +76,10 @@ textarea:focus-visible {
     width: 50% !important;
 }
 
+.view-changed-color {
+    background-color: #2ef2aa28 !important;
+}
+
 /* Hilquias */
 
 .form-divs {

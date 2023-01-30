@@ -52,16 +52,23 @@ Object.prototype.structureInstructionsToMountView = () => {
 }
 
 Object.prototype.cleanView = () => {
-    const regs = registers.querySelectorAll('div.reg-value')
-    regs.forEach(register => register.innerText = 0 )
+    const regs = registers.querySelectorAll('td.table-reg-value')
+    regs.forEach(register => {
+        register.innerText = 0
+        register.parentNode.classList.remove('view-changed-color')
+        register.classList.remove('color-test')
+    } )
     Console.cleanIt()
 
     view.linesAttributes = []
     view.lastViewRegisterChanged = null
     view.structuredInstructions = null
 
-    addressArea.innerHTML = ''
-    addressArea.classList.remove('code-area-flex-distance')
+    codeArea.lastChild.remove()
+    textareaCode.style.display = 'block'
+
+    //addressArea.innerHTML = ''
+    //addressArea.classList.remove('code-area-flex-distance')
 }
 
 Object.prototype.getInputInstructions = () => {
@@ -70,10 +77,15 @@ Object.prototype.getInputInstructions = () => {
 }
 
 Object.prototype.mountView = () => {
-    codeArea.innerText = ''
+    //codeArea.innerText = ''
+
+    textareaCode.style.display = 'none'
 
     const div = document.createElement('div')
     div.classList.add('mounted-code-area')
+
+    const descriptionLine = createLine('Endereço', 'Código', 'Instrução')
+    div.appendChild(descriptionLine)
 
     view.linesAttributes.forEach((attributes, index) => {
         const line = createLine( attributes.address, attributes.code, view.structuredInstructions[index] )
@@ -84,13 +96,14 @@ Object.prototype.mountView = () => {
 }
 
 Object.prototype.setValueInViewRegister = (value, register) => {
-    const before = registers.querySelector(`td[name="${view.lastViewRegisterChanged}"]`)
-    const reg = registers.querySelector(`td[name="${register}"]`)
+    //if (register === 'pc' || register === '' || register === 'lo')
 
-    if (view.lastViewRegisterChanged !== null) {
-        before.classList.remove('color-test')
-    }
-    
+    const reg = registers.querySelector(`td[name="${register}"]`)
+    const regLine = reg.parentElement
+
+    regLine.classList.add('view-changed-color')
+    console.log(regLine);
+
     reg.classList.add('color-test')
 
     view.lastViewRegisterChanged = register
