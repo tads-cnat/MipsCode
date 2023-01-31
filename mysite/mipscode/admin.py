@@ -17,6 +17,7 @@ class UserAdmin(admin.ModelAdmin):
 
 class DocumentationArea(admin.TabularInline):
     model = Documentation
+    
 
 
 admin.site.register(Profile,UserAdmin)
