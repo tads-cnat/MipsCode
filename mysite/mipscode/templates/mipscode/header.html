@@ -29,9 +29,9 @@
                 {% endif %}
 
                 {% if title == "documentation" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' 2 %}">Documentação</a>
+                <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
                 {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' 2 %}">Documentação</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
                 {% endif %}
 
                 {% if title == "repository" %}
@@ -59,12 +59,12 @@
                 <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
                 {% else %}
                 <a class="fs-navegations color-gray" href="{% url 'mipscode:ide' %}">IDE</a>
-                {% endif %}
+                {% endif %} 
 
                 {% if title == "documentation" %}
-                <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' 2 %}">Documentação</a>
+                <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
                 {% else %}
-                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' 2 %}">Documentação</a>
+                <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
                 {% endif %}
                 {% endif %}
             </div>
@@ -125,9 +125,9 @@
             {% endif %}
 
             {% if title == "documentation" %}
-            <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' 1%}">Documentação</a>
+            <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
             {% else %}
-            <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' 1%}">Documentação</a>
+            <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
             {% endif %}
 
             {% if title == "repository" %}
@@ -158,9 +158,9 @@
             {% endif %}
 
             {% if title == "documentation" %}
-            <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' 1 %}">Documentação</a>
+            <a class="fs-navegations color-green" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
             {% else %}
-            <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' 1 %}">Documentação</a>
+            <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
             {% endif %}
 
             
@@ -180,7 +180,7 @@
                     <div class="links column">
                         <h4 class="fs-5 bold">Rotas Principais</h4>
                         <a class="fs-6 color-white ligth" href="{% url 'mipscode:tutorials' %}">Tutorial</a>
-                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:documentation' 1 %}">Documentação</a>
+                        <a class="fs-6 color-white ligth" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
                         <a class="fs-6 color-white ligth" href="{% url 'mipscode:repository' %}">Meu Repositório</a>
                     </div>
 

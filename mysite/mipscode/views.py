@@ -32,16 +32,26 @@ class IndexView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('mipscode:dashboard'))
-        return render(request, "mipscode/index.html", {"title": "inicio"})
+        documentation_all = Documentation.objects.all()
+        context = {
+            "documentationfirst": int(documentation_all.first().pk),
+            "title": "inicio"                                                 
+        }
+        return render(request, "mipscode/index.html", context)
 
 
 class LoginView(View):
     template_name = 'mipscode/login.html'
+    documentation_all = Documentation.objects.all()  
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return HttpResponseRedirect(reverse('mipscode:dashboard'))
-        return render(request, self.template_name)
+
+        context = {
+            "documentationfirst": int(self.documentation_all.first().pk)
+        }
+        return render(request, self.template_name,context)
 
     def post(self, request, *args, **kwargs):
         username = request.POST.get('username')
@@ -50,8 +60,10 @@ class LoginView(View):
         if user:
             login(request, user)
             return HttpResponseRedirect(reverse('mipscode:index'))
-        else:
-            context = {'error_message': 'Usuário ou senha incorretos!'}
+        else:        
+            context = {
+                "documentationfirst": int(self.documentation_all.first().pk),
+                'error_message': 'Usuário ou senha incorretos!'}
             return render(request, self.template_name, context)
 
     def _authenticate_user(self, request, username, password):
@@ -104,25 +116,28 @@ class DocumentationView(View):
         documentation_itens = documentation.content
 
         documentation_all = Documentation.objects.all()
-
-        title_page = "documentation"
-
+        # next_documentation = 
         context = {
             "name": name,
             "documentation": documentation,
             "documentation_itens": documentation_itens,
             "documentation_all":  documentation_all,
-            "title": title_page,
-            "profile": profile
+            "title": "documentation",
+            "profile": profile,
+            "documentationfirst": int(documentation_all.first().pk),
         }
+
+        
 
         return render(request, "mipscode/documentation.html", context)
 
 
 class IdeView(View):
     def get(self, request, *args, **kwargs):
-        title_page = "ide"
-        context = {"title": title_page}
+        documentation_all = Documentation.objects.all()
+        context = {
+            "documentationfirst": int(documentation_all.first().pk),
+            "title": "ide",}
         return render(request, "mipscode/ide.html", context)
 
 
@@ -131,8 +146,15 @@ class IdeProjectView(IdeView):
         project = get_object_or_404(Project, pk=kwargs['pk'])
         profile = Profile.objects.get(user=request.user)
         name = " ".join(profile.name.split(" ")[:2])
-        context = {"profile": profile, "title": "ideproject",
-                   "project": project, 'name': name}
+        documentation_all = Documentation.objects.all()
+        context = {
+            "profile": profile,
+            "title": "ideproject",
+            "project": project,
+            "name": name,
+            "documentationfirst": int(documentation_all.first().pk),
+        }
+
         return render(request, "mipscode/ide.html", context)
 
     def post(self, request, *args, **kwargs):
@@ -140,29 +162,28 @@ class IdeProjectView(IdeView):
         title = request.POST.get('title')
         description = request.POST.get('description')
 
-        Project.objects.filter(pk=kwargs['pk']).update(
-            content=textarea, title=title, description=description, edited_at=timezone.now())
+        Project.objects.filter(pk=kwargs['pk']).update(content=textarea, title=title, description=description, edited_at=timezone.now())
         project = Project.objects.get(pk=kwargs['pk'])
         return HttpResponseRedirect(reverse('mipscode:ideproject', kwargs={'pk': project.pk}))
 
 
 class DashboardView(View):
     def get(self, request, *args, **kwargs):
-        title = "dashboard"
         user = request.user
         profile = Profile.objects.get(user=user)
-        projects = Project.objects.filter(
-            user=profile).order_by('-edited_at')[:4]
+        projects = Project.objects.filter(user=profile).order_by('-edited_at')[:4]
         tutorials_all = Tutorial.objects.all()[:8]
         name = " ".join(profile.name.split(" ")[:2])
 
+        documentation_all = Documentation.objects.all()
         context = {
             "name": name,
             "profile": profile,
             "projects": projects,
             "tutorials_all": tutorials_all,
-            "title": title,
-            "now": timezone.now()
+            "title": "dashboard",
+            "now": timezone.now(),
+            "documentationfirst": int(documentation_all.first().pk),
         }
         return render(request, "mipscode/dashboard.html", context)
 
@@ -193,11 +214,14 @@ class RepositoryView(View):
         name = " ".join(profile.name.split(" ")[:2])
         projects_all = Project.objects.filter(
             user=profile).order_by('-edited_at')
+        
+        documentation_all = Documentation.objects.all()
         context = {
             'name': name,
             'profile': profile,
             'projects_all': projects_all,
-            'title': title_page
+            'title': title_page,
+            'documentationfirst': int(documentation_all.first().pk)
             }
         return render(request, "mipscode/repository.html", context)
 
@@ -261,6 +285,7 @@ class SearchProjectView(View):
         filters = request.POST.get('filters')
         profile = Profile.objects.get(user=request.user)
         title = 'repositorio'
+        documentation_all = Documentation.objects.all()
         
         if search:
             projects_all = Project.objects.filter(user=profile and Q(title__icontains=search))
@@ -275,7 +300,7 @@ class SearchProjectView(View):
         else:
             return HttpResponseRedirect(reverse('mipscode:repository'))
 
-        context = {'projects_all': projects_all, 'search': search, 'title': title, 'profile': profile,'name':name}
+        context = {'projects_all': projects_all, 'search': search, 'title': title, 'profile': profile,'name':name,'documentationfirst': int(documentation_all.first().pk)}
         return render(request, "mipscode/repository.html", context)
 
 
@@ -286,7 +311,8 @@ class TutorialsView(View):
         profile = Profile.objects.get(user=user)
         name = " ".join(profile.name.split(" ")[:2])
         tutorials_all = Tutorial.objects.all()
-        context = {'name': name, 'profile': profile,'tutorials_all': tutorials_all, 'title': title}
+        documentation_all = Documentation.objects.all()
+        context = {'name': name, 'profile': profile,'tutorials_all': tutorials_all, 'title': title,'documentationfirst': int(documentation_all.first().pk)}
         return render(request, "mipscode/tutorials.html", context)
 
 
@@ -295,12 +321,13 @@ class SearchTutorialView(View):
         profile = Profile.objects.get(user=request.user)
         search = request.POST.get('search')
         title = 'tutoriais'
+        documentation_all = Documentation.objects.all()
         if search:
             tutorials_all = Tutorial.objects.filter(Q(title__icontains=search))
         else:
             return HttpResponseRedirect(reverse('mipscode:tutorials'))
 
-        context = {'profile': profile, 'tutorials_all': tutorials_all,'search': search, 'title': title}
+        context = {'profile': profile, 'tutorials_all': tutorials_all,'search': search, 'title': title,'documentationfirst': int(documentation_all.first().pk)}
         return render(request, "mipscode/tutorials.html", context)
 
 class CreateTutorialView(View):
@@ -308,7 +335,8 @@ class CreateTutorialView(View):
         user = request.user
         profile = Profile.objects.get(user=user)
         name = " ".join(profile.name.split(" ")[:2])
-        context = {'profile': profile, 'name': name}
+        documentation_all = Documentation.objects.all()
+        context = {'profile': profile, 'name': name,'documentationfirst': int(documentation_all.first().pk)}
         return render(request, "mipscode/createtutorial.html", context)
 
     def post(self, request, *args, **kwargs):
@@ -324,7 +352,8 @@ class ProfileView(View):
     def get(self, request, *args, **kwargs):
         user = request.user
         profile = Profile.objects.get(user=user)
-        context = {'profile': profile,'name': " ".join(profile.name.split(" ")[:2]),}
+        documentation_all = Documentation.objects.all()
+        context = {'profile': profile,'name': " ".join(profile.name.split(" ")[:2]),'documentationfirst': int(documentation_all.first().pk)}
         return render(request, "mipscode/profile.html", context)
 
     def post(self, request, *args, **kwargs):
