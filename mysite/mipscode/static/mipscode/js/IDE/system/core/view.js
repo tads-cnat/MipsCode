@@ -99,7 +99,7 @@ Object.prototype.cleanRegisters = () => {
     const regs = registers.querySelectorAll('td.table-reg-value')
     
     regs.forEach(register => {
-        const parentRegister = register.parentNode
+        const parentRegister = register.parentElement
         if (parentRegister.classList.contains('view-changed-color'))
             parentRegister.classList.remove('view-changed-color')
 
@@ -110,16 +110,24 @@ Object.prototype.cleanRegisters = () => {
 Object.prototype.setValueInViewRegister = (value, register) => {
     //if (register === 'pc' || register === '' || register === 'lo')
 
-    //view.cleanRegisters()
+    
+    if (register !== 'pc')
+        view.cleanRegisters()
 
-    const changedRegisterLine = document.querySelector('.view-changed-color')
-    const changedRegisterValue = document.querySelector('.color-test')
+    // const changedRegisterLine = document.querySelector('.view-changed-color')
+    // const changedRegisterValue = document.querySelector('.color-test')
 
-    if (changedRegisterLine)
-        changedRegisterLine.classList.remove('view-changed-color')
+    // if (changedRegisterLine)
+    //     changedRegisterLine.classList.remove('view-changed-color')
 
-    if (changedRegisterValue)
-        changedRegisterValue.classList.remove('color-test')
+    // if (changedRegisterValue)
+    //     changedRegisterValue.classList.remove('color-test')
+
+    // if (view.lastViewRegisterChanged === '$2') { 
+    //     const reg = registers.querySelector(`td[name="$2"]`)
+    //     reg.classList.remove('color-test')
+    //     reg.parentElement
+    // }
 
     const reg = registers.querySelector(`td[name="${register}"]`)
     const regLine = reg.parentElement

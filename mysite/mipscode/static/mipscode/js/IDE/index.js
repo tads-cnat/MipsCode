@@ -85,7 +85,7 @@ user.mount.addEventListener('click', () => {
             //     }
             // } )
 
-            const target = inputInstructions.find( (current) => current.label && current.label.includes('test') )
+            const target = inputInstructions.find( (current) => current.label && current.label.includes('jump') )
             const formattedInstrucion = formatJ( instruction, sys.addressCount, index, target )
 
             sys.instructions.push(formattedInstrucion)
