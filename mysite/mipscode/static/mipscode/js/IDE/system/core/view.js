@@ -133,7 +133,6 @@ Object.prototype.setValueInViewRegister = (value, register) => {
     const regLine = reg.parentElement
 
     regLine.classList.add('view-changed-color')
-    console.log(regLine);
 
     reg.classList.add('color-test')
 

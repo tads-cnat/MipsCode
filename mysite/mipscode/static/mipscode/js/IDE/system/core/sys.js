@@ -35,10 +35,11 @@ const sys = {
         currentIndex: null
     },
     memory,
-    addressCount: 0,
+    addressCount: 4194300, // 0
     pcChangedAtExecution: false,
     instructions: [],
     regsStackTimeline: [],
+    ableToProcess: false,
     executedInstructionsStack: [],
     executionInstructionCount: 0,
     instructionExecuted: null, // 'none'
@@ -86,12 +87,12 @@ Object.prototype.Call = async () => {
 
     if (sys.regs.general.$2 === 5) { // $2 contains integer read
         const onlyNumbers = new RegExp('^[0-9]+$')
-        
-        user.utils.freeze()
+
+        console.log('syscall before dataIn()')
 
         const input = await view.console.dataIn()
 
-        user.utils.unFreeze()
+        console.log('syscall after dataIn()')
 
         if (!onlyNumbers.test(input))
             // sysError(incorrectIntegerValueInput)
@@ -99,7 +100,7 @@ Object.prototype.Call = async () => {
         sys.regs.general.$2 = parseInt(input)
         view.setValueInViewRegister(input, '$2')
 
-        return true
+        return false
     }
 
     if (sys.regs.general.$2 === 6) { // $2 contains float read
@@ -214,12 +215,11 @@ Object.prototype.cleanSys = () => {
             //currentIndex: null
         }
     }
-    sys.addressCount = 0
+    sys.addressCount = 4194300 // 4194304
     sys.instructions = []
     sys.regsStackTimeline = []
     sys.viewInformations = []
     sys.memory
-    sys.addressCount = 0
     sys.pcChangedAtExecution = false
     sys.instructions = []
     sys.regsStackTimeline = []
@@ -238,20 +238,31 @@ Object.prototype.OnlyLabel = (instruction, regsSpace) => {
     }
 }
 
-Object.prototype.SetNextInstructionInPc = () => {
+Object.prototype.SetNextAddressInPc = () => { // current
     // const instruction = sys.instructions.find( instruction => instruction.index === sys.instructionExecutedIndex + 1 )
     // sys.regs.pc = convertHexToDecimal( instruction )
-    sys.regs.especial.pc = convertHexToDecimal(
-        sys.instructions.find( instruction => instruction.index === sys.instructionExecutedIndex + 1 ).address
-    )
+
+    //const address = sys.instructions.find( instruction => instruction.index + 1 ).address
+    
+    sys.regs.especial.pc += 4 //convertHexToDecimal(address)
 }
 
 Object.prototype.FindJumpTarget = (index) => {
     return sys.instructions[index].address
 }
 
-Object.prototype.NextInstruction = () => {
-    return sys.instructions.find( instruction => instruction.address === convertDecimalToAddressHex( sys.regs.especial.pc ) )
+Object.prototype.NextInstruction = () => { // try catch??
+    let instruction
+
+    try {
+        instruction = sys.instructions.find( instruction => instruction.address === convertDecimalToAddressHex( sys.regs.especial.pc ) )
+    } catch (error) {
+        console.error(error);
+        //console.log(error);
+        return null
+    }
+
+    return instruction
 }
 
 Object.prototype.Execute = (instruction) => {

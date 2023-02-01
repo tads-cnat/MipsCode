@@ -1,3 +1,5 @@
+const baseAddressIncrement = 4
+
 export const addressBase = 4194304
 
 export function copyRegs(regs) {
@@ -89,7 +91,11 @@ export function convertBinInstructionToHex(binaryInstrution) {
 }
 
 export function formatAddress(addressCount) {
-    let address = (addressBase + addressCount).toString(16)
+    // let address = (addressBase + addressCount).toString(16)
+    // while (address.length != 8) address = '0' + address
+    // return '0x' + address
+
+    let address = (baseAddressIncrement + addressCount).toString(16)
     while (address.length != 8) address = '0' + address
     return '0x' + address
 }
