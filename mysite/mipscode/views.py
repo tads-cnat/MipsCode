@@ -256,7 +256,7 @@ class UpdateProjectView(View):
             updated_values['title'] = title
         if description != project.description:
             updated_values['description'] = description
-        if conteudo != project.content:
+        if conteudo != project.content and conteudo != None:
             updated_values['content'] = conteudo
 
         Project.objects.filter(pk=project.pk).update(**updated_values, edited_at=timezone.now())
