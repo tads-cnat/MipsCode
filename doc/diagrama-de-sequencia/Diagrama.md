@@ -1,19 +1,19 @@
 # Diagramas de Sequencias
 
 ## Criar Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/CriarProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/CriarProjeto.JPG)
 
 ## Atualizar Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/AtualizarProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/AtualizarProjeto.JPG)
 
 ## Favoritar Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/FavoritarProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/FavoritarProjeto.JPG)
 
 ## Desfavoritar Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/DesfavoritarProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/DesfavoritarProjeto.JPG)
 
 ## Excluir Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/ExlucirProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/ExcluirProjeto.JPG)
 
 ## Visualizar Projeto
-![CriarProjeto](doc/diagrama-de-sequencia/img/VisualizarProjeto.jpg)
+![CriarProjeto](/doc/diagrama-de-sequencia/img/VisualizarProjeto.JPG)
