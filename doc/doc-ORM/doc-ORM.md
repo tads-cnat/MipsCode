@@ -17,7 +17,6 @@ Projeto MIPSCODE - Documento do Mapeamento entre os Objetos (Classes do Domínio
 | Documentation       | Documentation       | Classe que armazena a aba de “documentação” do site. |
 | Project             | Project             | Classe que representa os projetos do usuário. |
 | Tutorial            | Tutorial            | Classe que representa a aba de tutoriais do site. |
-| Visitante | Usuário não logado que faz uso limitado do site. | - Acessar documentação. |
 
 
 ## Relacionamentos
