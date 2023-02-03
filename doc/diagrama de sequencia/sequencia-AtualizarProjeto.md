@@ -1,2 +1,2 @@
 # Sequencia de Atualizar Projeto
-![AtualizarProjeto](./AtualizarProjeto.JPG)
+![AtualizarProjeto](/doc/diagrama-de-sequencia/img/AtualizarProjeto.JPG)
