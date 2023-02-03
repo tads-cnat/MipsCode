@@ -13,11 +13,12 @@ export function copyRegs(regs) {
         if (count === 0) copy.general = Object.assign( {}, type )
         if (count === 1) copy.floatingPoint = Object.assign( {}, type ) // está copiando por referência, alterar isso posteriormente
         if (count === 2) copy.especial = Object.assign( {}, type )
-        else copy.currentIndex = Object.assign( Number, type )
         
         count++
       }
     }
+
+    copy.currentIndex = null
   
     return copy
 }

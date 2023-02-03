@@ -111,9 +111,8 @@ user.mount.addEventListener('click', () => {
 
     view.mountView()
 
-    sys.initialAssembly = false
+    sys.isAssembly = true
     sys.empty = false
-    sys.ableToProcess = true
 
     sys.regs.especial.pc = convertHexToDecimal(sys.instructions[0].address) // TODO: fazer função disso no sys
     view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
@@ -129,54 +128,90 @@ user.unmount.addEventListener('click', () => {
     view.cleanView()
 })
 
-// user.run.addEventListener('click', () => {
-//     if (sys.empty) return
+user.step.addEventListener('click', async () => {
+    if (sys.empty) return
 
-//     if (sys.instructions.length === 0)
-//         errorHandler('run', 'tryToRunWithoutInstructions')
+    if (sys.instructions.length === 0)
+        return errorHandler('step', 'tryToMoveOneStepWithoutInstructions')
 
-//     if (sys.instructionExecutedIndex) {
-//         const remaningInstructions = sys.instructions.slice( sys.instructionExecutedIndex + 1 )
+    const instruction = sys.NextInstruction();
+
+    if (!instruction || instruction === null) {
+        return;
+    }
+
+    sys.regs.currentIndex = sys.instructionExecutedIndex
+    sys.regsStackTimeline.push( copyRegs(sys.regs) )
+
+    if (instruction.syscall) {
+        await sys.Call();
+    } else {
+        sys.Execute( instruction );
+    }
+    
+    sys.regs.currentIndex = instruction.index
+    sys.executedInstructionsStack.push( Object.assign( {}, instruction ) )
+
+    console.log('execute');
+
+    if (sys.pcChangedAtExecution) {
+        sys.pcChangedAtExecution = false
+        return
+    }
+
+    if (instruction.index < sys.instructions.length) {
+        console.log('set next instruction in pc');
+        sys.SetNextAddressInPc()
+        view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
+    }
+
+    console.log(sys)
+})
+
+user.run.addEventListener('click', async () => {
+    if (sys.empty) return
+
+    if (sys.instructions.length === 0)
+        return errorHandler('step', 'tryToMoveOneStepWithoutInstructions')
+
+    let instruction = {};
+
+    while (instruction != null) {
+        instruction = sys.NextInstruction();
+
+        if (!instruction || instruction === null) {
+            break;
+        }
+
+        sys.regs.currentIndex = sys.instructionExecutedIndex
+        sys.regsStackTimeline.push( copyRegs(sys.regs) )
+
+        if (instruction.syscall) {
+            await sys.Call();
+        } else {
+            sys.Execute( instruction );
+        }
         
-//         remaningInstructions.forEach( instruction => {
-//             if (instruction.syscall) sys.Call()
+        sys.regs.currentIndex = instruction.index
+        sys.executedInstructionsStack.push( Object.assign( {}, instruction ) )
 
-//             else sys.Execute( instruction )
+        console.log('execute');
 
-//             if (sys.pcChangedAtExecution) {
-//                 sys.pcChangedAtExecution = false
-//                 return
-//             }
+        if (sys.pcChangedAtExecution) {
+            sys.pcChangedAtExecution = false
+            return
+        }
 
-//             if (instruction.index < sys.instructions.length) {
-//                 sys.SetNextInstructionInPc()
-//                 view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-//             }
+        if (instruction.index < sys.instructions.length) {
+            console.log('set next instruction in pc');
+            sys.SetNextAddressInPc()
+            view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
+        }
 
-//         } )
+        console.log(sys)
+    }
+})
 
-//         console.log(sys)
-//         return
-//     }
-
-//     sys.instructions.forEach( instruction => {
-//         if (instruction.syscall) sys.Call()
-
-//         else sys.Execute( instruction )
-
-//         if (sys.pcChangedAtExecution) {
-//             sys.pcChangedAtExecution = false
-//             return
-//         }
-
-//         if (instruction.index < sys.instructions.length) {
-//             sys.SetNextInstructionInPc()
-//             view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-//         }
-//     } )
-
-//     console.log(sys)
-// })
 
 // user.step.addEventListener('click', async () => {
 //     if (sys.empty) return
@@ -186,185 +221,38 @@ user.unmount.addEventListener('click', () => {
 
 //     const instruction = sys.NextInstruction()
 
+//     console.log(instruction.index);
+//     console.log(instruction);
+
 //     if (!instruction) {}
 
-//     sys.regs.currentIndex = sys.instructionExecutedIndex
+//     sys.regs.currentIndex = instruction.index //sys.instructionExecutedIndex
 //     sys.regsStackTimeline.push( copyRegs(sys.regs) )
 
-//     if (instruction.syscall) sys.Call()
+//     if (instruction.syscall) {
+//         await sys.Call()
+//         sys.instructionExecuted = instruction
+//         sys.instructionExecutedIndex = instruction.index
+//     }
 
-//     else sys.Execute( instruction )
-    
-//     console.log('execute');
+//     else {
+//         sys.Execute( instruction )
+//         console.log('execute');
+//     }
 
 //     if (sys.pcChangedAtExecution) {
 //         sys.pcChangedAtExecution = false
 //         return
 //     }
 
-//     if (instruction.index < sys.instructions.length) {
+//     if (instruction.index < sys.instructions.length) { // usar index ou addressCount?
 //         console.log('set next instruction in pc');
-//         sys.SetNextInstructionInPc()
+//         sys.SetNextAddressInPc() // sys.SetNextInstructionInPc( instruction )
 //         view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
 //     }
 
 //     console.log(sys)
 // })
-
-const x = 5
-
-// user.run.addEventListener('click', async () => {
-//     let flag = false
-
-//     if (sys.empty) return
-
-//     if (sys.instructions.length === 0)
-//         errorHandler('run', 'tryToRunWithoutInstructions')
-
-//     if (sys.instructionExecutedIndex) {
-//         const remaningInstructions = sys.instructions.slice( sys.instructionExecutedIndex + 1 )
-        
-//         remaningInstructions.forEach( async instruction => {
-//             if (instruction.syscall) {
-//                 flag = await sys.Call()
-//                 sys.instructionExecuted = instruction
-//                 sys.instructionExecutedIndex = instruction.index
-//                 console.log('syscall before flag');
-
-//                 while (flag !== true) {
-//                     console.log('in flag');
-//                 }
-
-//                 console.log('syscall after flag');
-//                 flag = false
-//             }
-
-//             else {
-//                 sys.Execute( instruction )
-//                 console.log('execute');
-//             }
-
-//             if (sys.pcChangedAtExecution) {
-//                 sys.pcChangedAtExecution = false
-//                 return
-//             }
-
-//             if (instruction.index < sys.instructions.length) {
-//                 sys.SetNextInstructionInPc()
-//                 view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-//             }
-
-//         })
-
-//         console.log(sys)
-//         return
-//     }
-    
-//     const instruction = sys.NextInstruction()
-
-//     if (!instruction) {
-//         console.log('terminou')
-//         return
-//     } 
-
-//     while (convertHexToDecimal(instruction.address) < sys.addressCount) {
-//         let inExecution = true
-        
-//         if (instruction.syscall) {
-//             inExecution = await sys.Call()
-//             sys.instructionExecuted = instruction
-//             sys.instructionExecutedIndex = instruction.index
-//             console.log('syscall before inExecution');
-
-//             while (inExecution) {
-//                 console.log('in inExecution');
-//             }
-
-//             console.log('syscall after inExecution');
-//             //inExecution = false
-//         }
-//     }
-
-//     // while (sys.ableToProcess) {
-//     //     const instruction = sys.NextInstruction()
-//     //     // if (instruction.syscall) 
-//     // }
-
-//     // sys.instructions.forEach(async instruction => { // USAR EVERY
-//     //     if (instruction.syscall) {
-//     //         flag = await sys.Call()
-//     //         sys.instructionExecuted = instruction
-//     //         sys.instructionExecutedIndex = instruction.index
-//     //         console.log('syscall before flag');
-
-//     //         while (flag !== true) {
-//     //             console.log('in flag');
-//     //         }
-
-//     //         console.log('syscall after flag');
-//     //         flag = false
-//     //     }
-
-//     //     else {
-//     //         sys.Execute( instruction )
-//     //         console.log('execute');
-//     //     }
-
-//     //     if (sys.pcChangedAtExecution) {
-//     //         sys.pcChangedAtExecution = false
-//     //         return
-//     //     }
-
-//     //     if (instruction.index < sys.instructions.length) {
-//     //         sys.SetNextInstructionInPc()
-//     //         view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-//     //     }
-//     // })
-
-
-//     console.log(sys)
-// })
-
-user.step.addEventListener('click', async () => {
-    if (sys.empty) return
-
-    if (sys.instructions.length === 0)
-        return errorHandler('step', 'tryToMoveOneStepWithoutInstructions')
-
-    const instruction = sys.NextInstruction()
-
-    console.log(instruction.index);
-    console.log(instruction);
-
-    if (!instruction) {}
-
-    sys.regs.currentIndex = instruction.index //sys.instructionExecutedIndex
-    sys.regsStackTimeline.push( copyRegs(sys.regs) )
-
-    if (instruction.syscall) {
-        await sys.Call()
-        sys.instructionExecuted = instruction
-        sys.instructionExecutedIndex = instruction.index
-    }
-
-    else {
-        sys.Execute( instruction )
-        console.log('execute');
-    }
-
-    if (sys.pcChangedAtExecution) {
-        sys.pcChangedAtExecution = false
-        return
-    }
-
-    if (instruction.index < sys.instructions.length) { // usar index ou addressCount?
-        console.log('set next instruction in pc');
-        sys.SetNextAddressInPc() // sys.SetNextInstructionInPc( instruction )
-        view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-    }
-
-    console.log(sys)
-})
 
 user.back.addEventListener('click', () => {
     if (sys.empty) return
@@ -375,12 +263,12 @@ user.back.addEventListener('click', () => {
     }
 
     sys.regs = sys.regsStackTimeline.pop()
-    sys.instructionExecutedIndex = sys.regs.currentIndex
 
-    const lastValueRegister = findRegValue(sys.lastViewRegisterChanged, sys.regs)
-
-    view.setValueInViewRegister(lastValueRegister, sys.lastViewRegisterChanged)
+    const lastValueRegister = findRegValue(view.lastViewRegisterChanged, sys.regs)
+    console.log(lastValueRegister)
+    console.log(view.lastViewRegisterChanged)
+    view.setValueInViewRegister(lastValueRegister, view.lastViewRegisterChanged)
     view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-
+    view.cleanRegisters()
     console.log(sys)
 });

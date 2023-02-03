@@ -6,7 +6,7 @@ export function executeTypeR(instruction, sys) {
         console.log('executeTypeR in typing.org === a');
         sys.regs.general[ instruction.GPR.rd ] = instruction.does( sys.regs.general[instruction.GPR.rs], sys.regs.general[instruction.GPR.rt] )
         view.setValueInViewRegister(sys.regs.general[ instruction.GPR.rd ], instruction.GPR.rd)
-        sys.lastViewRegisterChanged = instruction.GPR.rd
+        view.lastViewRegisterChanged = instruction.GPR.rd
     }
 
     if (instruction.typing.org === 'b') {

@@ -32,7 +32,7 @@ const sys = {
             hi: 0, 
             lo: 0, 
         },
-        currentIndex: null
+        currentIndex: 0
     },
     memory,
     addressCount: 4194300, // 0
@@ -42,9 +42,8 @@ const sys = {
     ableToProcess: false,
     executedInstructionsStack: [],
     executionInstructionCount: 0,
-    instructionExecuted: null, // 'none'
-    instructionExecutedIndex: null,
-    empty: true
+    empty: true,
+    isAssembly: false
 }
 
 Object.prototype.createSyscallInstance = (instruction, index) => {
@@ -86,6 +85,7 @@ Object.prototype.Call = async () => {
     }
 
     if (sys.regs.general.$2 === 5) { // $2 contains integer read
+        //const input = prompt()
         const onlyNumbers = new RegExp('^[0-9]+$')
 
         console.log('syscall before dataIn()')
@@ -123,7 +123,6 @@ Object.prototype.Call = async () => {
     if (sys.regs.general.$2 === 10) {
         view.console.dataOut(null, 'exit', 'Programa finalizado!')
         sys.cleanSys()
-        sys.empty = true
         return true
     }
 
@@ -133,62 +132,6 @@ Object.prototype.Call = async () => {
 
     // TODO: Completar chamada do sistema
 }
-
-// Object.prototype.Call = () => {
-//     return new Promise(async resolve => {
-//         if (sys.regs.general.$2 === 1) { // integer to print
-//             view.console.dataOut(sys.regs.general.$4, 'value', '')
-//         }
-    
-//         else if (sys.regs.general.$2 === 2) { // float to print
-//             view.console.dataOut(sys.regs.floatingPoint.$f12.float, 'value', '')
-//         }
-    
-//         else if (sys.regs.general.$2 === 3) { // double to print
-//             view.console.dataOut(sys.regs.floatingPoint.$f12.double, 'value', '')
-//         }
-    
-//         else if (sys.regs.general.$2 === 5) { // $2 contains integer read
-//             const onlyNumbers = new RegExp('^[0-9]+$')
-
-//             const input = await view.console.dataIn()
-
-//             if (!onlyNumbers.test(input))
-//                 // sysError(incorrectIntegerValueInput)
-            
-//             sys.regs.general.$2 = parseInt(input)
-//             view.setValueInViewRegister(input, '$2')
-    
-//         }
-    
-//         else if (sys.regs.general.$2 === 6) { // $2 contains float read
-//             sys.regs.general.$2 = parseFloat(prompt())
-//         }
-    
-//         else if (sys.regs.general.$2 === 7) { // $2 contains double read
-//             sys.regs.general.$2 = parseFloat(prompt())
-//         }
-    
-//         else if (sys.regs.general.$2 === 8) { // $2 contains string read
-//             sys.regs.general.$2 = prompt()
-//         }
-    
-//         // else if (sys.regs.general.$2 === 9) // allocate heap regs
-    
-//         else if (sys.regs.general.$2 === 10) {
-//             view.console.dataOut(null, 'exit', 'Programa finalizado!')
-//             sys.cleanSys()
-//             sys.empty = true
-//         }
-
-//         // else new Error('valor em $2 não corresponde há uma ação do sistema')
-
-//         console.log('sys.call after execute');
-//         resolve()
-//     })
-
-//     // TODO: Completar chamada do sistema
-// }
 
 Object.prototype.cleanSys = () => {
     sys.regs = {
@@ -212,23 +155,20 @@ Object.prototype.cleanSys = () => {
             pc: 0, 
             hi: 0, 
             lo: 0, 
-            //currentIndex: null
+            currentIndex: 0
         }
     }
     sys.addressCount = 4194300 // 4194304
     sys.instructions = []
     sys.regsStackTimeline = []
-    sys.viewInformations = []
     sys.memory
     sys.pcChangedAtExecution = false
-    sys.instructions = []
-    sys.regsStackTimeline = []
     sys.executedInstructionsStack = []
     sys.executionInstructionCount = 0
-    sys.instructionExecuted = null // 'none'
-    sys.instructionExecutedIndex = null
     sys.empty = true
+    sys.isAssembly = false
 }
+
 
 Object.prototype.OnlyLabel = (instruction, regsSpace) => {
     return {
@@ -252,7 +192,7 @@ Object.prototype.FindJumpTarget = (index) => {
 }
 
 Object.prototype.NextInstruction = () => { // try catch??
-    let instruction
+    let instruction = null;
 
     try {
         instruction = sys.instructions.find( instruction => instruction.address === convertDecimalToAddressHex( sys.regs.especial.pc ) )
@@ -271,10 +211,6 @@ Object.prototype.Execute = (instruction) => {
     if (instruction.typing.type === "r") executeTypeR(instruction, sys)
     
     if (instruction.typing.type === "j") executeTypeJ(instruction, sys)
-
-    sys.instructionExecuted = instruction
-    sys.instructionExecutedIndex = instruction.index
-    sys.regs.currentIndex = instruction.index
 }
 
 Object.prototype.Branch = (instruction, op) => {

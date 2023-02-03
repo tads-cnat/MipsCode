@@ -5,7 +5,7 @@ export function executeTypeJ(instruction, sys) {
         sys.regs.especial.pc = instruction.does(instruction.target)
         sys.pcChangedAtExecution = true
         view.setValueInViewRegister(sys.regs.especial.pc, 'pc')
-        sys.lastViewRegisterChanged = instruction.func
+        // sys.lastViewRegisterChanged = instruction.func
     }
 
     if (instruction.func === 'jal') {}

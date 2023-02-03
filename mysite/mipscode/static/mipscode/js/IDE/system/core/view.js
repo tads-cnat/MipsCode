@@ -110,33 +110,15 @@ Object.prototype.cleanRegisters = () => {
 Object.prototype.setValueInViewRegister = (value, register) => {
     //if (register === 'pc' || register === '' || register === 'lo')
 
-    
     if (register !== 'pc')
         view.cleanRegisters()
 
-    // const changedRegisterLine = document.querySelector('.view-changed-color')
-    // const changedRegisterValue = document.querySelector('.color-test')
-
-    // if (changedRegisterLine)
-    //     changedRegisterLine.classList.remove('view-changed-color')
-
-    // if (changedRegisterValue)
-    //     changedRegisterValue.classList.remove('color-test')
-
-    // if (view.lastViewRegisterChanged === '$2') { 
-    //     const reg = registers.querySelector(`td[name="$2"]`)
-    //     reg.classList.remove('color-test')
-    //     reg.parentElement
-    // }
-
     const reg = registers.querySelector(`td[name="${register}"]`)
-    const regLine = reg.parentElement
-
-    regLine.classList.add('view-changed-color')
-
     reg.classList.add('color-test')
 
-    view.lastViewRegisterChanged = register
+    const regLine = reg.parentElement
+    regLine.classList.add('view-changed-color')
+
     reg.innerText = value
 }
 
