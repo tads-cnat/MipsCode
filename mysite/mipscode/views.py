@@ -404,11 +404,14 @@ class OpenTutorialView(View):
         name = " ".join(profile.name.split(" ")[:2])
         tutorial = Tutorial.objects.get(pk=kwargs['pk'])
         tutorial_itens = tutorial.content
+        documentation_all = Documentation.objects.all()
         context = {
             'tutorial_itens': tutorial_itens,
             'tutorial': tutorial,
             'profile': profile,
-            'name': name
+            'name': name,
+            'documentationfirst': int(documentation_all.first().pk)
+            
         }
         return render(request, "mipscode/opentutorial.html", context)
 
