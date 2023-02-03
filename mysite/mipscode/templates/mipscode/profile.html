@@ -1,0 +1,94 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/perfil.css' %}">
+
+{% endblock statics %}
+
+{% block article %}
+<form class="" action="{% url 'mipscode:profile' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <article class="column padding-padrao">
+        <h1 class="title-local margin-top-2">Configurações</h1>
+        <header class="row">
+            <p class="color-opaco fs-6 sitemap-inicio margin-zero">Início</p>
+            <p class="color-green fs-6 bold margin-zero">Configurações</p>
+        </header>
+
+        <section class="margin-top-2">
+            <p class="fs-6 bold">Perfil do usuário</p>
+            <div class="div-perfil-1 row">
+                <div class="div-image-space-perfil">
+                    <img class="avatar-perfil" src="{{profile.avatar.url}}" id="avatarView">
+                    <input type="file" id="file" name="upload" accept="image/*">
+                    <input type="button" id="fileInput" class="button button-white bold width-100 fs-6"
+                        value="Envie uma nova Foto" />
+                    <!-- <input type="button" class="button button-red color-red bold  width-100" value="Remover foto"> -->
+                </div>
+
+                <div class="column justify-center gap-1 width-50">
+                    <div class="column gap-05">
+                        <label for="name" class="fs-6 bold">Nome</label>
+                        <input type="text" name="name" class="input-off fs-6" value="{{profile.name}}">
+                    </div>
+                    <div class="column gap-05">
+                        <label for="bio" class="fs-6 bold">Biografia</label>
+                        <textarea name="bio" class="input-off resize-none fs-6 textarea" id="biografia" cols="30"
+                            rows="10">{{profile.bio}}</textarea>
+                    </div>
+                    <input type="submit" class="button button-green color-green alignself-end width-30 fs-6" value="Salvar">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="margin-top-2">
+            <p class="fs-6 bold">Logon e Segurança</p>
+            <div class="div-perfil-1 row section-seguranca align-start">
+                <div class="column justify-center align-start gap-1 width-40">
+                    <div class="column gap-05 width-100">
+                        <label for="email" class="fs-6 bold">Email</label>
+                        <input type="email" name="email" class="input-off fs-6" value="{{user.username}}">
+                    </div>
+
+                    <div class="column gap-05 width-100">
+                        <label for="email" class="fs-6 bold">Senha</label>
+                        <input type="password" name="password" class="input-off fs-6" placeholder="Digite uma nova senha">
+                    </div>
+                    <input type="submit" class="button button-green color-green fs-6 alignself-end width-30" value="Salvar">
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="margin-top-2">
+            <p class="fs-6 bold">Exibição</p>
+            <div class="div-perfil-1 row section-seguranca align-start">
+                <div class="column justify-center align-start gap-1 width-40">
+                    <div class="column gap-05 width-100">
+                        <label for="tema" class="fs-6 bold">Tema</label>
+                        <select class="input-off fs-6" name="tema" id="">
+                            <option value="dark" class="input-off">Dark</option>
+                            <option value="ligth" class="input-off">Ligth</option>
+                        </select>
+                    </div>
+
+                    <div class="column gap-05 width-100">
+                        <label for="idioma" class="fs-6 bold">Idioma</label>
+                        <select class="input-off fs-6" name="idioma" id="">
+                            <option value="dark" class="input-off">Português</option>
+                            <option value="ligth" class="input-off">Inglês</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="button fs-6 button-green color-green alignself-end width-30" value="Salvar">
+
+                </div>
+            </div>
+        </section>
+    </article>
+</form>
+
+<script src="{% static 'mipscode/js/interacoes/perfil.js' %}"></script>
+{% endblock article %}

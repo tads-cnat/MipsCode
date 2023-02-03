@@ -4,7 +4,7 @@
 
 | Data                |  Versão             |          Descrição  |  Autores            |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| 07/12/2022 | 1.2 | Versão final |  Hilquias Abias |
+| 07/12/2022 | 1.3 | Versão final |  Hilquias Abias |
 
 ## 1. Objetivo do projeto
 
@@ -67,25 +67,26 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
 | F01 | Login | Disponibilizar uso do site de acordo com o nível de permissão do usuário. |
 | F02 | Cadastro | Liberar acesso ao visitante para uso de mais funcionalidades do site. |
-| F03 | Acessar IDE | Disponibilizar IDE para uso. |
-| F04 | Acessar documentação. | Acessar área do site que possui a documentação do mips assembly. |
-| F05 | Acessar fórum externo | Acessar fórum da comunidade externa ao site. |
-| F06 | Criar projeto | Criar um projeto para armazenar código. |
-| F07 | Acessar projeto | Acessar um projeto armazenado na sessão de projetos. |
-| F08 | Salvar código | Salvar código produzido na IDE no sistema de arquivos. |
-| F09 | Importar arquivo | Fazer upload de arquivo de texto referente ao código. |
-| F10 | Exportar arquivo | Fazer download de arquivo de texto referente ao código. |
-| F11 | Gerenciar perfil | Inserir, editar, excluir dados(bio, foto, e-mail, nome, github…) e mudar tema do site. |
-| F12 | Acessar tutoriais | Entrar na área de guia de aprendizagem. |
-| F13 | Controle dos usuários cadastrados | Criar, editar, excluir e alterar permissão de acesso. |
-| F14 | Controle dos tutoriais | Criar, editar e excluir tutoriais que sejam visíveis para os usuários. |
-| F15 | Montar código | Inicializar o processo de compilação do código assembly. |
-| F16 | Executar código | Permitir executar o código completo após ser compilado. |
-| F17 | Avançar uma etapa | Permitir que o usuário execute o código linha por linha manualmente. |
-| F18 | Voltar uma etapa | Permitir que o usuário retroceda uma linha da execução do código, manualmente. |
-| F19 | Abrir console | Abrir um console que mostra o resultado do código que já foi rodado. |
-| F20 | Fechar console | Finaliza um console que já está aberto. |
-| F21 | Abrir registradores | Abrir a aba de registradores no lugar do console. |
-| F22 | Fechar registradores | Fecha a aba de registradores. |
-| F23 | Console hexadecimal | Exibir os valores dos registradores e do console em hexadecimal. |
-| F24 | Console decimal | Exibir os valores dos registradores e do console em decimal. |
+| F03 | Acessar documentação | Disponibilizar IDE para uso. 
+| F04 | Acessar IDE | Acessar área do site que possui a documentação do mips assembly. |
+| F05 | Contatar | Contata a equipe desenvolvedora. |
+| F06 | Console decimal | Exibir os valores dos registradores e do console. |
+| F07 | Montar código | Inicializar o processo de compilação do código assembly. |
+| F08 | Voltar uma etapa | Permitir que o usuário retroceda uma linha da execução do código, manualmente. |
+| F09 | Avançar uma etapa | Permitir que o usuário execute o código linha por linha manualmente. |
+| F10 | Executar código | Permitir executar o código completo após ser compilado. |
+| F11 | Desmontar código | Cancelar o processo de compilação do código assembly. |
+| F12 | Visualizar registradores | Visualizar registradores na versão mobile. |
+| F13 | Abrir console | Abrir um console que mostra o resultado do código que já foi rodado na versão mobile. |
+| F14 | Acessar dahsbord | Entrar na área de apresentação das funcionalidades do sistema. |
+| F15 | Filtrar projetos | Filtrar entre as opções dada pelo sistema os projetos solicitados. |
+| F16 | Acessar tutoriais | Entrar na área de guia de aprendizagem. |
+| F17 | Favoritar projetos | Favoritar um ou mais projetos para melhor identificação. |
+| F18 | Gerenciar perfil | Inserir, editar, excluir dados(bio, foto, e-mail, nome, github…) e mudar tema do site. |
+| F19 | Filtrar tutoriais | Filtrar entre as opções dada pelo sistema os tutoriais solicitados. |
+| F20 | Acessar fórum externo | Acessar fórum da comunidade externa ao site. |
+| F21 | Exportar arquivo | Fazer download de arquivo de texto referente ao código. |
+| F22 | Importar arquivo | Fazer upload de arquivo de texto referente ao código. |
+| F23 | Manter Projeto | Criar, editar, salvar e excluir projetos que sejam visíveis para os usuários. |
+| F24 | Manter tutoriais | Criar, editar, salvar e excluir tutoriais que sejam visíveis para os usuários. |
+| F25 | Manter os usuários cadastrados | Criar, editar, excluir, salvar e alterar permissão de acesso. |

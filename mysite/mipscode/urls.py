@@ -7,18 +7,24 @@ app_name = 'mipscode'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('login/', views.LoginView.as_view(), name='login'),
-    path('cadastro/', views.CadastroView.as_view(), name='cadastro'),
-    path('documentacao/<int:pk>/', views.DocumentacaoView.as_view(), name='documentacao'),
-    path('ide/', views.IdeView.as_view(), name='ide'),
-    path('ide/<int:pk>', views.IdeProjetoView.as_view(), name='ide_projeto'),
-    path('repositorio/', views.RepositorioView.as_view(), name='repositorio'),
-    path('repositorio/<int:pk>/atualizar', views.AtualizarProjeto.as_view(), name='atualizarprojeto'),
-    path('repositorio/<int:pk>/remover', views.RemoverProjeto.as_view(), name='removerprojeto'),
-    path('repositorio/<int:pk>/favoritar', views.FavoritarProjeto.as_view(), name='favoritarprojeto'),
-    path('repositorio/<int:pk>/desfavoritar', views.DesfavoritarProjeto.as_view(), name='desfavoritarprojeto'),
-    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),
-    path('tutoriais/', views.TutoriaisView.as_view(), name='tutoriais'),
-    path('buscar_repositorio/', views.BuscarRepositorio.as_view(), name='buscaRepositorio'),
-    path('buscar_Tutorial/', views.BuscarTutorial.as_view(), name='buscaTutorial'),
     path('logout/', views.LogoutView.as_view(),name='logout'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
+
+    path('registration/', views.RegistrationView.as_view(), name='registration'),
+    path('documentation/<int:pk>/', views.DocumentationView.as_view(), name='documentation'),
+
+    path('ide/', views.IdeView.as_view(), name='ide'),
+    path('repository/ide/<int:pk>', views.IdeProjectView.as_view(), name='ideproject'),
+
+    path('repository/', views.RepositoryView.as_view(), name='repository'),
+    path('repository/search', views.SearchProjectView.as_view(), name='searchproject'),
+    path('repository/<int:pk>/', views.UpdateProjectView.as_view(), name='updateproject'),
+    path('repository/<int:pk>/deleting', views.DeleteProjectView.as_view(), name='deleteproject'),
+    path('repository/<int:pk>/changefavorite', views.ChangeFavoriteView.as_view(), name='changefavorite'),     
+
+    path('dashboard/', views.DashboardView.as_view(), name='dashboard'),    
+    path('tutorials/', views.TutorialsView.as_view(), name='tutorials'),                                                           
+    path('tutorials/search', views.SearchTutorialView.as_view(), name='searchtutorial'),
+    path('tutorials/create', views.CreateTutorialView.as_view(), name='createtutorial'),
+    path('tutorial/<int:pk>', views.OpenTutorialView.as_view(), name='opentutorial'),
 ]

@@ -1,3 +1,3 @@
 # Modelo de Domínio
 
-![Casos de uso](./dominio.png)
+![Diagrama de Classe](./Classes.JPG)

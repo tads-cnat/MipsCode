@@ -1,4 +1,4 @@
-import { uInt } from '../../toolkit.js'
+import { uInt } from '../../core/toolkit.js'
 
 export default {
     add: { 
@@ -130,11 +130,11 @@ export default {
         type: 'a', 
         does: (rs, rt) => rs - rt
     },
-    syscall: { 
-        function: '001100', 
-        type: 'b', 
-        does: null
-    },
+    // syscall: { 
+    //     function: '001100', 
+    //     type: 'b', 
+    //     does: null
+    // },
     xor: { 
         function: '100110', 
         type: 'a', 

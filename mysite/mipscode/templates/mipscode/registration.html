@@ -1,0 +1,33 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/login.css' %}">
+{% endblock statics %}
+
+{% block article %}
+<article class="column padding-padrao">
+    <section class="section-one column align-center">
+        <form action="{% url 'mipscode:registration' %}" method="post" class="form row align-center">
+            {% csrf_token %}
+            <h3 class="fs-3">CRIE UMA NOVA CONTA</h3>
+            <div class="div-form column">
+                <input class="fs-6 input" type="text" name="user" placeholder="Nome de Usuário" autocomplete="off">
+                <input class="fs-6 input" type="email" name="email" placeholder="Email" autocomplete="off">
+                <input class="fs-6 input" type="password" name="password" placeholder="Senha" autocomplete="off">
+                <input class="fs-6 input" type="password" name="password" placeholder="Confirme a Senha" autocomplete="off">
+                <input class="button button-green color-green fs-6 bold" type="submit" value="Cadastrar-se">
+                <p class="p_message">{{error_message}}</p>
+                <p class="color-green">{{success_message}}</p>
+                <div class="division margin-top-1">
+                    <a href="{% url 'mipscode:login' %}" class="fs-6 color-green ">Já possui uma conta?</a>
+                </div>
+                <button class="button button-white color-white">
+                    <img src="{% static 'mipscode/svgs/icon-google.svg' %}">
+                    Continuar com o Google
+                </button>
+            </div>
+        </form>
+    </section>
+</article>
+{% endblock article %}

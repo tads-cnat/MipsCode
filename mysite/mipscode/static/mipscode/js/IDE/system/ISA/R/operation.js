@@ -1,4 +1,4 @@
-import { whichOrganization } from "./manager.js";
+import { whichOrganization } from './manager.js';
 
 export default function operationInstruction(instruction) { // { label: null, func: 'addi', values: ['$2', '$0', '5'] }
     if ( whichOrganization(instruction.func) === 'a' )

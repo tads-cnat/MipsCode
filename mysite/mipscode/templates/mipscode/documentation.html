@@ -1,0 +1,70 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/documentacao.css' %}">
+{% endblock statics %}
+
+{% block article %}
+<article class="padding-padrao margin-top-5">
+    <header class="row">
+        <p class="color-opaco fs-6 sitemap-inicio">Início</p>
+        <p class="color-green fs-6 bold">Documentação</p>
+    </header>
+    <section class="row">
+        <div class="content-documentation">
+            <h1 class="fs-2 title">{{documentation}}</h1>
+            <div class="conteudo">
+                {% for item in documentation_itens %}
+                {% for key, value in item.items %}
+
+                <!-- {{key}} | {{value}} -->
+
+                {% if key == "h1" %}
+                <h1 class="fs-2 margin-zero">
+                    {{value}}
+                </h1>
+                {% endif %}
+
+                {% if key == "h3" %}
+                <h3 class="fs-3">
+                    {{value}}
+                </h3>
+                {% endif %}
+
+                {% if key == "p" %}
+                <p class="fs-6">
+                    {{value}}
+                </p>
+                {% endif %}
+
+
+                {% endfor %}
+                {% endfor %}
+
+                <a href="{% url 'mipscode:documentation' documentation.pk %}"><button class="button button-green fs-6 color-green button-proximo">Próximo Passo</button></a>
+            </div>
+        </div>
+
+        <div class="content-roadmap">
+            <div class="column">
+                <h5 class="fs-7 color-gray margin-bottom-2">Trilha de conhecimento</h5>
+
+                {% for value in documentation_all %}
+                {% if value.pk == documentation.pk %}
+                <a href="{% url 'mipscode:documentation' value.pk %}" class="color-green">
+                    <p class="fs-6 option-map-green bold row margin-zero">{{value}}</p>
+                </a>
+                {% else %}
+                <a href="{% url 'mipscode:documentation' value.pk %}" class="color-gray">
+                    <p class="fs-6 option-map row margin-zero">{{value}}</p>
+                </a>
+                {% endif%}
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+</article>
+{% endblock article %}

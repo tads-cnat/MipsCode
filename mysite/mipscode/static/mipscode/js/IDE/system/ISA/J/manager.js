@@ -1,7 +1,7 @@
-import { formatAddress } from "../../toolkit.js"
-import { formatCodeInstruction } from "./formatting.js"
-import instructions from "./instructions.js"
-import sys from "../../sys.js"
+import { formatAddress } from '../../core/toolkit.js'
+import { formatCodeInstruction } from './formatting.js'
+import instructions from './instructions.js'
+import sys from '../../core/sys.js'
 
 export function isTypeJ(op) {
     return 'j' === op || op === 'jal'

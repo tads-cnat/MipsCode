@@ -1,7 +1,7 @@
-import * as tools from '../../toolkit.js'
+import * as tools from '../../core/toolkit.js'
 import * as formatting from './formatting.js'
-import instructions from "./instructions.js"
-import operationInstruction from "./operation.js"
+import instructions from './instructions.js'
+import operationInstruction from './operation.js'
 
 function selectOrganizationType(type, arr) {
     if (type === 'a') return formatting.organizationFromTypeA(arr)
@@ -23,19 +23,6 @@ export function whichOrganization(op) {
 }
 
 export function formatInstruction(instruction, memorySpace, index) {
-    if (instruction.func === 'syscall') 
-        return {
-            address: tools.formatAddress(memorySpace),
-            code: '0x0000000c',
-            index,
-            typing: {
-                type: 'r',
-                org: 'b' // instructions[instruction.func].type
-            },
-            syscall: true,
-            label: instruction.label
-        }
-
     const binary = selectOrganizationType(
         instructions[ instruction.func ].type,
         formatting.formatInstructionsInBinary( [ instruction.func, ...instruction.values ] )

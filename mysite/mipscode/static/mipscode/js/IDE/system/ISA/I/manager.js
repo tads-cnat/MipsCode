@@ -1,7 +1,7 @@
-import { convertBinInstructionToHex, formatAddress } from '../../toolkit.js'
-import * as formatting from "./formatting.js";
-import instructions from "./instructions.js";
-import operateInstrucion from "./operation.js";
+import { convertBinInstructionToHex, formatAddress } from '../../core/toolkit.js'
+import * as formatting from './formatting.js';
+import instructions from './instructions.js';
+import operateInstrucion from './operation.js';
 
 function selectOrganizationType(type, binary) {
     if (type === 'a') return formatting.organizationTypeA(binary);

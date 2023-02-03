@@ -1,28 +1,15 @@
-# CDU009. Importar arquivo 
+# CDU009. Avançar uma etapa
 
-- **Ator principal**: Usuário
-- **Atores secundários**: Admin 
-- **Resumo**: Usuário acessa página de um projeto criado e importa um texto com codigo lá.
-- **Pré-condição**: Um usuário deve estar logado no site.
-- **Pós-Condição**: Um usuário deve estar logado no site e acessando a pagina de um projeto criado.
+- **Ator principal**: Visitante
+- **Atores secundários**: Usuário 
+- **Resumo**: Visitante monta o código e executa, sendo capaz de avançar etapa por etapa do código
+- **Pré-condição**: Código não deve haver erro de sintaxe e deve estar executando
+- **Pós-Condição**: Deve ser capaz de continuar executando o código
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
 | :-----------------: | :-----------------: | 
-| 1 - Acessar site. | 1 - Renderiza página e seus scripts. |  
-| 2 - Acessar a página de projetos. | 2 - Renderiza a página e projetos já criados. | 
-| 3 - Acessar um projeto já criado. | 3 - Rendenriza os arquivos e codigos salvos no projeto. |  
-| 4 - Importa um arquivo. | 4 - Sistema dá opção de arrastar o arquivo ou pesquisar nas pastas locais. |
-| | 5 - Sistema valida os arquivos selecionados e atualiza o projeto. |
-
-## Página fora do ar
-| Ações do ator | Ações do sistema |
-| :-----------------: |:-----------------: | 
-| 2.1 - Página de projetos está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
-| 2.2 - O usuario é notificado | 2.2 - Renderiza página 404. |
-
-## Arquivo não suportado
-| Ações do ator | Ações do sistema |
-| :-----------------: |:-----------------: | 
-| 4.1 - Arquivo muito grande ou formato invalido. | 5.1 - Não é possivel validar os arquivos e força um error. |  
-| 4.2 - O usuario é notificado | 5.2 - Notifica e pede novamente outros arquivos validos. |
+| 1 - Acessar a IDE | 1 - Renderiza página e seus scripts |  
+| 2 - Monta o código | 2 - Verifica se o código estará sem erro de sintaxe e monta o código | 
+| 3 - Executar código | 3 - Código irá ser executado |  
+| 4 - Avança uma etapa | 4 - Código irá avançar somente um passo e continuará a ser executado |

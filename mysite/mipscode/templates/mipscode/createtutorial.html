@@ -1,0 +1,59 @@
+{% extends "mipscode/header.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'mipscode/css/criartutorial.css' %}">
+{% endblock statics %}
+
+{% block article %}
+<form class="padding-padrao column margin-top-2 justify-space-between div-filters"
+    action="{% url 'mipscode:createtutorial' %}" method="post">
+    {% csrf_token %}
+
+    <h1 class="fs-3">Crie um novo tutorial</h1>
+    <section class="column gap-1 ">
+        <div class="width-60 gap-2 column margin-top-2 border-div">
+            <div class="gap-05 column">
+
+                <label for="title">Título do Tutorial</label>
+                <input type="text" class="input fs-6 bold" name="title" placeholder="" required>
+            </div>
+            <div class="gap-05 column descricao">
+                <label for="title" aria-required="true">Descrição do Tutorial</label>
+                <textarea class="input fs-6 bold textarea" name="description" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+
+        <div class="column gap-1 width-60 align-start">
+            <p class="fs-3 bold">Conteúdo</p>
+            <div id="space-content" class="column gap-1 border-div width-100">
+            </div>
+            <div class="row gap-1">
+                <input class="button button-green width-50 color-green cursor-pointer" type="submit" onclick="montar()" value="Salvar">
+                <input class="button button-white width-50 color-white cursor-pointer" type="reset" onclick="reset()"
+                    value="Apagar Tudo">
+            </div>
+        </div>
+
+        <input type="text" hidden name="content" id="content_full_page">
+    </section>
+
+
+
+    <div class="div-ferraments gap-05 column">
+        <p class="fs-7 bold width-60 margin-zero  color-black">Edição</p>
+        <p class="fs-7 medio color-black-opacity margin-zero ">Estilos de texto</p>
+
+        <div class="row gap-05">
+            <button type="button" id="addP" class="button-min-options color-black width-100 bold">P</button>
+            <button type="button" id="addH1" class="button-min-options color-black width-100 bold">H1</button>
+            <button type="button" id="addH2" class="button-min-options color-black width-100 bold">H2</button>
+            <button type="button" id="addH3" class="button-min-options color-black width-100 bold">H3</button>
+            <button type="button" id="addH4" class="button-min-options color-black width-100 bold">H4</button>
+        </div>
+    </div>
+
+</form>
+<script src="{% static 'mipscode/js/interacoes/tutorial.js' %}"></script>
+<script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js' %}"></script>
+{% endblock article %}

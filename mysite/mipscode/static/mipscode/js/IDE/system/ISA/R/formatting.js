@@ -1,5 +1,5 @@
-import * as tools from '../../toolkit.js'
-import instructions from "./instructions.js"
+import * as tools from '../../core/toolkit.js'
+import instructions from './instructions.js'
 
 const formatAddress = {
     op: '000000',

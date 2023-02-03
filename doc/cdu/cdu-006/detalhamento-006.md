@@ -1,20 +1,21 @@
-# CDU006. Criar projeto
+# CDU006. Console Decimal
 
-- **Ator principal**: Usuário
-- **Atores secundários**: Admin	 
-- **Resumo**: Usuário acessa página de projetos e cria seu projeto.
-- **Pré-condição**: Um usuário deve estar logado no site.
-- **Pós-Condição**: Um usuário deve estar acessando a pagina de projetos.
+- **Ator principal**: Visitante
+- **Atores secundários**: Usuário 
+- **Resumo**: Visitante visualiza o console da IDE.
+- **Pré-condição**: Código deve estar montado.
+- **Pós-Condição**: Se usuário estiver logado, deverá continuar logado.
 
 ## Fluxo Principal
 | Ações do ator | Ações do sistema |
 | :-----------------: | :-----------------: | 
-| 1 - Acessar site. | 1 - Renderiza página e seus scripts. |  
-| 2 - Acessar a página de projetos. | 2 - Renderiza a página e projetos já criados. | 
-| 3 - Cria o projeto. | 3 - Cria uma pasta com o nome dado pelo usuário. |  
+| 1 - Acessar site | 1 - Renderiza página e seus scripts |  
+| 2 - Acessar a página de IDE | 2 - Renderiza a página e seus scripts e disponibiliza o uso da IDE | 
+| 3 - Monta código. | 3 - Scripts montam o código escrito. |  
+| 4 - Abre o console Decimal | 4 - Abre o console para visualização do código rodado |
 
-## Página fora do ar
+## Erro no código
 | Ações do ator | Ações do sistema |
 | :-----------------: |:-----------------: | 
-| 2.1 - Página de projetos está indisponivel. | 2.1 - Não é possivel renderizar a página. |  
-| 2.2 - O usuário é notificado. | 2.2 - Renderiza página 404. |
+| 3.1 - Monta código | 3.1 - Não é possivel montar o código por erro de sintaxe |  
+| 4.1 - O usuário é notificado. | |
