@@ -109,3 +109,14 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | RF023 | Manter Projeto | Apenas o usuário poderá Criar, editar, salvar e excluir projetos que sejam visíveis para os usuários. |
 | RF024 | Manter tutoriais | Apenas o usuário poderá Criar, editar, salvar e excluir tutoriais que sejam visíveis para os usuários. |
 | RF025 | Manter os usuários cadastrados | A administração deverá poder: Criar, editar, excluir, salvar e alterar permissão de acesso. |
+
+## 9. Requisitos Não Funcionais
+
+| Código              |  Nome               |          Descrição  |  Prioridade         |
+| :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+| RNF001 | Tempo de Resposta | A administração deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de resposta na exportação. | Desejável
+| RNF002 | Facilidade de uso | A administração deve prover um sistema com uma interface amigável que possibilite a seus usuários uma interação fácil. | Desejável
+| RNF003 | Manutenção e suporte da IDE | A administração irá garantir o funcionamento correto da IDE. | Desejável
+| RNF004 | Monitorar os tutoriais | A administração deverá manter a qualidade dos tutoriais. | Desejável
+| RNF005 | Requisitos legais | A administração deverá adequar a plataforma de acordo com as normas legais(LGPD). | Obrigatório
+| RNF006 | Disponibilidade de armazenamento de arquivos | A administração deverá realizar o gerenciamento de cache para armazenamento de arquivos locais. | Obrigatório
