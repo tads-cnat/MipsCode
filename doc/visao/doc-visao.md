@@ -1,3 +1,9 @@
+<h3 align="center">
+  <a href="[https://github.com/tads-cnat/MipsCode](https://github.com/tads-cnat/MipsCode)">
+    <img alt="Logo" src="../../Banner.png" width="400">
+  </a>
+</h3>
+
 # Documento de Visão
 
 ## Histórico de Revisões
