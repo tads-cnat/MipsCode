@@ -5,7 +5,7 @@
 | Data                |  Versão             |          Descrição  |  Autores            |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
 | 07/12/2022 | 1.0 | Versão inicial |  Hilquias Abias |
-| 11/04/2023 | 1.1 | Visão atualizada do projeto |  Hilquias Abias |
+| 11/04/2023 | 1.1 | Visão atualizada do projeto |  Hilquias Abias e Rafael Pessoa |
 
 ## 1. Objetivo do projeto
 
@@ -84,28 +84,28 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 
 | Código              |  Nome               |          Descrição  |  Prioridade         |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
-| F01 | Login | Disponibilizar uso do site de acordo com o nível de permissão do usuário. |
-| F02 | Cadastro | Liberar acesso ao visitante para uso de mais funcionalidades do site. |
-| F03 | Acessar documentação | Disponibilizar IDE para uso.
-| F04 | Acessar IDE | Acessar área do site que possui a documentação do mips assembly. |
-| F05 | Contatar | Contata a equipe desenvolvedora. |
-| F06 | Console decimal | Exibir os valores dos registradores e do console. |
-| F07 | Montar código | Inicializar o processo de compilação do código assembly. |
-| F08 | Voltar uma etapa | Permitir que o usuário retroceda uma linha da execução do código, manualmente. |
-| F09 | Avançar uma etapa | Permitir que o usuário execute o código linha por linha manualmente. |
-| F10 | Executar código | Permitir executar o código completo após ser compilado. |
-| F11 | Desmontar código | Cancelar o processo de compilação do código assembly. |
-| F12 | Visualizar registradores | Visualizar registradores na versão mobile. |
-| F13 | Abrir console | Abrir um console que mostra o resultado do código que já foi rodado na versão mobile. |
-| F14 | Acessar dahsbord | Entrar na área de apresentação das funcionalidades do sistema. |
-| F15 | Filtrar projetos | Filtrar entre as opções dada pelo sistema os projetos solicitados. |
-| F16 | Acessar tutoriais | Entrar na área de guia de aprendizagem. |
-| F17 | Favoritar projetos | Favoritar um ou mais projetos para melhor identificação. |
-| F18 | Gerenciar perfil | Inserir, editar, excluir dados(bio, foto, e-mail, nome, github…) e mudar tema do site. |
-| F19 | Filtrar tutoriais | Filtrar entre as opções dada pelo sistema os tutoriais solicitados. |
-| F20 | Acessar fórum externo | Acessar fórum da comunidade externa ao site. |
-| F21 | Exportar arquivo | Fazer download de arquivo de texto referente ao código. |
-| F22 | Importar arquivo | Fazer upload de arquivo de texto referente ao código. |
-| F23 | Manter Projeto | Criar, editar, salvar e excluir projetos que sejam visíveis para os usuários. |
-| F24 | Manter tutoriais | Criar, editar, salvar e excluir tutoriais que sejam visíveis para os usuários. |
-| F25 | Manter os usuários cadastrados | Criar, editar, excluir, salvar e alterar permissão de acesso. |
+| RF001 | Login | O usuário e visitante terão a opção de login disponibilizada de acordo com o nível de permissão do usuário. |
+| RF002 | Cadastro | O visitante terá acesso ao cadastro para o uso de mais funcionalidades do site. |
+| RF003 | Acessar documentação | O usuário/visitante deverá ter a disponibilização da IDE para uso. |
+| RF004 | Acessar IDE | O usuário/visitante irá acessar a área do site que possui a documentação do MIPS Assembly. |
+| RF005 | Contatar | Usuário e visitante poderão contatar a equipe desenvolvedora. |
+| RF006 | Console decimal | Todos os usuários terão exibidos os valores dos registradores e do console. |
+| RF007 | Montar código | O usuário/visitante poderá realizar a compilação do código assembly |
+| RF008 | Voltar uma etapa | Todos os usuários podem retroceder uma linha da execução do código, manualmente. |
+| RF009 | Avançar uma etapa | Todos os usuários podem executar o código linha por linha manualmente. |
+| RF010 | Executar código | O usuário e visitante poderá executar o código completo após compilado. |
+| RF011 | Desmontar código | Usuário e Visitante poderão cancelar o processo de compilação do código assembly. |
+| RF012 | Visualizar registradores | Será disponibilizado para todos a visualização de registradores na versão mobile. |
+| RF013 | Abrir console |Usuário e Visitante poderão abrir um console que mostra o resultado do código que já foi rodado na versão mobile. |
+| RF014 | Acessar dahsbord | O usuário poderá entrar na área de apresentação das funcionalidades do sistema. |
+| RF015 | Filtrar projetos | O usuário poderá filtrar entre as opções dada pelo sistema os projetos solicitados. |
+| RF016 | Acessar tutoriais | O usuário poderá entrar na área de guia de aprendizagem. |
+| RF017 | Favoritar projetos | O usuário poderá favoritar um ou mais projetos para melhor identificação. |
+| RF018 | Gerenciar perfil | O usuário poderá: Inserir, editar, excluir dados(bio, foto, e-mail, nome, github…) e mudar tema do site. |
+| RF019 | Filtrar tutoriais | O usuário poderá: Filtrar entre as opções dada pelo sistema os tutoriais solicitados. |
+| RF020 | Acessar fórum externo | Acessar fórum da comunidade externa ao site. |
+| RF021 | Exportar arquivo | Usuário e visitante poderão fazer download de arquivo de texto referente ao código. |
+| RF022 | Importar arquivo | Usuário e visitante poderão fazer o download do arquivo de texto referente ao código. |
+| RF023 | Manter Projeto | Apenas o usuário poderá Criar, editar, salvar e excluir projetos que sejam visíveis para os usuários. |
+| RF024 | Manter tutoriais | Apenas o usuário poderá Criar, editar, salvar e excluir tutoriais que sejam visíveis para os usuários. |
+| RF025 | Manter os usuários cadastrados | A administração deverá poder: Criar, editar, excluir, salvar e alterar permissão de acesso. |
