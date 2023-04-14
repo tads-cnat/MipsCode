@@ -34,7 +34,7 @@ class IndexView(View):
             return HttpResponseRedirect(reverse('mipscode:dashboard'))
         documentation_all = Documentation.objects.all()
         context = {
-            "documentationfirst": int(documentation_all.first().pk),
+            "documentationfirst": 2,
             "title": "inicio"                                                 
         }
         return render(request, "mipscode/index.html", context)
@@ -49,7 +49,7 @@ class LoginView(View):
             return HttpResponseRedirect(reverse('mipscode:dashboard'))
 
         context = {
-            "documentationfirst": int(self.documentation_all.first().pk)
+            "documentationfirst": 2
         }
         return render(request, self.template_name,context)
 
@@ -62,7 +62,7 @@ class LoginView(View):
             return HttpResponseRedirect(reverse('mipscode:index'))
         else:        
             context = {
-                "documentationfirst": int(self.documentation_all.first().pk),
+                "documentationfirst": 2,
                 'error_message': 'Usuário ou senha incorretos!'}
             return render(request, self.template_name, context)
 
@@ -72,9 +72,11 @@ class LoginView(View):
 
 class RegistrationView(View):
     template_name = 'mipscode/registration.html'
-
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        context = {
+            "documentationfirst": 2,
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         username = request.POST.get('user')
@@ -136,7 +138,7 @@ class IdeView(View):
     def get(self, request, *args, **kwargs):
         documentation_all = Documentation.objects.all()
         context = {
-            "documentationfirst": int(documentation_all.first().pk),
+            "documentationfirst": 2,
             "title": "ide",}
         return render(request, "mipscode/ide.html", context)
 
@@ -152,7 +154,7 @@ class IdeProjectView(IdeView):
             "title": "ideproject",
             "project": project,
             "name": name,
-            "documentationfirst": int(documentation_all.first().pk),
+            "documentationfirst": 2,
         }
 
         return render(request, "mipscode/ide.html", context)
@@ -183,7 +185,7 @@ class DashboardView(View):
             "tutorials_all": tutorials_all,
             "title": "dashboard",
             "now": timezone.now(),
-            "documentationfirst": int(documentation_all.first().pk),
+            "documentationfirst": 2,
         }
         return render(request, "mipscode/dashboard.html", context)
 
@@ -221,7 +223,7 @@ class RepositoryView(View):
             'profile': profile,
             'projects_all': projects_all,
             'title': title_page,
-            'documentationfirst': int(documentation_all.first().pk)
+            'documentationfirst': 2
             }
         return render(request, "mipscode/repository.html", context)
 
