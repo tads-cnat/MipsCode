@@ -6,90 +6,77 @@
 
 # Documento de Visão
 
-## Histórico de Revisões
+### Histórico de Revisões
 
 | Data                |  Versão             |          Descrição  |  Autores            |
 | :-----------------: | :-----------------: | :-----------------: | :-----------------: |
 | 07/12/2022 | 1.0 | Versão inicial |  Hilquias Abias |
 | 11/04/2023 | 1.1 | Visão atualizada do projeto |  Hilquias Abias e Rafael Pessoa |
+| 17/04/2023 | 1.2 | Visão atualizada do projeto |  Hilquias Abias, Rafael Pessoa, Daniela Faria |
 
-## 1. Objetivo do projeto
+<br>
 
-O objetivo do projeto é desenvolver um website que ajude usuários a aprender a linguagem de programação MIPS Assembly, fornecendo um ambiente de desenvolvimento integrado (IDE) e simulador, sistema de arquivos para guardar os códigos, tutoriais e documentação da linguagem.
+## 1. Objetivo do Projeto:
 
-## 2. Descrição do problema
+O projeto **MipsCode** tem como objetivo desenvolver um website que ajude usuários a aprender a linguagem de programação MIPS Assembly, fornecendo um ambiente de desenvolvimento integrado (IDE) e simulador, sistema de arquivos para guardar os códigos, tutoriais e documentação da linguagem.
 
-|     |      |
-| --- | --- |
+<br>
+
+## 2. Descrição do problema:
 | **Problema**            | Encontrar um site em português que ajude a aprendizagem da linguagem de baixo nível assembly, e que possua uma comunidade disposta e ativa para tirar eventuais dúvidas e compartilhar experiências.|
+| --- | :---: |
 | **Afeta**               | Os interessados em aprender e praticar código assembly da arquitetura MIPS. |  
-| **Impacta**             | A falta de interesse em desenvolver em assembly, consequentemente uma falta de profissionais qualificados. |
+| **Impacto**             | A falta de interesse em desenvolver em assembly, consequentemente uma falta de profissionais qualificados. |
 | **Solução**             | O desenvolvimento de um site que estimule a aprendizagem e  aumente a produtividade de desenvolvedores de aplicações em Assembly para MIPS, já que eles terão acesso a uma ferramenta de desenvolvimento de fácil manuseio. Além disso, o projeto também beneficiará a comunidade de desenvolvedores, já que haverá uma interação maior entre a comunidade.|
 
-## 3. Descrição dos usuários
+<br>
 
-| Nome |  Descrição |   Responsabilidade  |
-| -----------------   | -----------------   | -----------------   |
-| Estudante | Usuário logado que faz uso das funcionalidades do site. | - Acessar IDE. |
-| | | - Acessar documentação. |
-| | | - Acessar tutoriais. |
-| | | - Gerenciar projetos. |
-| | | - Exportar código. |
-| | | - Importar código. |
-| | | |
-| Professor | Usuário logado que faz uso das funcionalidades do site. | - Acessar IDE. |
-| | | - Acessar documentação. |
-| | | - Acessar tutoriais. |
-| | | - Gerenciar projetos. |
-| | | - Exportar código. |
-| | | - Importar código. |
-| | | - Gerenciar tutoriais. |
-| | | |
-| Visitante | Usuário não logado que faz uso limitado do site. | - Acessar IDE. |
-| | | - Acessar documentação. |
-| | | - Fazer login. |
-| | | - Cadastrar-se. |
-| | | |
-| Administrador | Gerencia os usuários, tutoriais e faz uso das funcionalidades do site. | - Acessar IDE. |
-| | | - Acessar documentação. |
-| | | - Acessar tutoriais. |
-| | | - Gerenciar projetos. |
-| | | - Exportar código. |
-| | | - Importar código. |
-| | | - Gerenciar tutoriais. |
-| | | - Gerenciar os usuários cadastrados. |
+## 3. Descrição dos usuários:
 
+| **Nome** | **Descrição** | **Responsabilidade** |
+| :---: | --- | --- |
+| Estudante | Usuário logado que faz uso das funcionalidades do site. | - Acessar IDE. <br> - Acessar documentação. <br> - Acessar tutoriais.  <br> - Gerenciar projetos.  <br> - Exportar código. <br> - Importar código. |
+| Professor | Usuário logado que faz uso das funcionalidades do site. | - Acessar IDE. <br> - Acessar documentação. <br> - Acessar tutoriais. <br> - Gerenciar projetos. <br> - Exportar código. <br> - Importar código. <br> - Gerenciar tutoriais. |
+| Visitante | Usuário não logado que faz uso limitado do site. | - Acessar IDE. <br> - Acessar documentação. <br> - Fazer login. <br> - Cadastrar-se. |
+| Administrador | Gerencia os usuários, tutoriais e faz uso das funcionalidades do site. | - Acessar IDE. <br>  - Acessar documentação. <br> - Acessar tutoriais. <br>  - Gerenciar projetos. <br>  - Exportar código. <br>  - Importar código. <br>  - Gerenciar tutoriais. <br>  - Gerenciar os usuários cadastrados. |
 
-## 4. Descrição do ambiente dos usuários
+<br>
+
+## 4. Descrição do ambiente dos usuários:
 A aplicação será em forma de aplicação web, e será utilizada através de qualquer computador com acesso a internet. Contendo:
-- IDE para codificação de mips assembly.
-- Sistema de arquivos.
-- Perfil do usuário.
-- Área para tutoriais e guia de aprendizagem inicial de mips assembly.
-- Link para comunidade externa.
-- Área para entrar em contato com os desenvolvedores.
-- Configurações da página (modo claro, modo escuro, tema personalizado...)
+- IDE para codificação de mips assembly;
+- Sistema de arquivos;
+- Perfil do usuário;
+- Área para tutoriais e guia de aprendizagem inicial de mips assembly;
+- Link para comunidade externa;
+- Área para entrar em contato com os desenvolvedores;
+- Configurações da página (modo claro, modo escuro, tema personalizado...).
 
-## 5. Principais necessidades dos usuários
+<br>
 
-- Não encontra ambiente intuitivo para codificação de assembly mips.
-- As IDEs e interpretadores disponíveis são pouco intuitivas ou estão em outro idioma.
+## 5. Principais necessidades dos usuários:
+- Não encontra ambiente intuitivo para codificação de assembly mips;
+- As IDEs e interpretadores disponíveis são pouco intuitivas ou estão em outro idioma;
 - Possui dificuldade em achar uma comunidade envolvida e tão próxima ao ambiente de desenvolvimento.
 
-## 6. Alternativas concorrentes
+<br>
 
+## 6. Alternativas concorrentes:
 Interpretadores e simuladores de assembly mips armazenados na internet.
 
-## 7. Visão geral do produto
+<br>
 
-- Possui IDE construída com linguagem de script vinculada ao próprio browser(javascript), no servidor do usuário mantendo agilidade e desempenho, e utiliza sistema de tratamento de erros bem adaptado.
-- Mantém conexão com comunidade externa para interação dos usuários.
+## 7. Visão geral do produto:
+- Possui IDE construída com linguagem de script vinculada ao próprio browser(javascript), no servidor do usuário mantendo agilidade e desempenho, e utiliza sistema de tratamento de erros bem adaptado;
+- Mantém conexão com comunidade externa para interação dos usuários;
 - A documentação vinculada torna desnecessário a busca por conteúdos de aprendizagem externos, pois ela conduz o usuário ao entendimento.
 
-## 8. Requisitos funcionais
+<br>
 
-| Código              |  Nome               |          Descrição  |  Prioridade         |
-| :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+## 8. Requisitos FUNCIONAIS:
+
+| **Código** | **Nome** | **Descrição** | **Prioridade** |
+| :---: | :---: | --- | --- |
 | RF001 | Login | O usuário e visitante terão a opção de login disponibilizada de acordo com o nível de permissão do usuário. |
 | RF002 | Cadastro | O visitante terá acesso ao cadastro para o uso de mais funcionalidades do site. |
 | RF003 | Acessar documentação | O usuário/visitante deverá ter a disponibilização da IDE para uso. |
@@ -103,7 +90,7 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | RF011 | Desmontar código | Usuário e Visitante poderão cancelar o processo de compilação do código assembly. |
 | RF012 | Visualizar registradores | Será disponibilizado para todos a visualização de registradores na versão mobile. |
 | RF013 | Abrir console |Usuário e Visitante poderão abrir um console que mostra o resultado do código que já foi rodado na versão mobile. |
-| RF014 | Acessar dahsbord | O usuário poderá entrar na área de apresentação das funcionalidades do sistema. |
+| RF014 | Acessar dashboard | O usuário poderá entrar na área de apresentação das funcionalidades do sistema. |
 | RF015 | Filtrar projetos | O usuário poderá filtrar entre as opções dada pelo sistema os projetos solicitados. |
 | RF016 | Acessar tutoriais | O usuário poderá entrar na área de guia de aprendizagem. |
 | RF017 | Favoritar projetos | O usuário poderá favoritar um ou mais projetos para melhor identificação. |
@@ -116,10 +103,12 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | RF024 | Manter tutoriais | Apenas o usuário poderá Criar, editar, salvar e excluir tutoriais que sejam visíveis para os usuários. |
 | RF025 | Manter os usuários cadastrados | A administração deverá poder: Criar, editar, excluir, salvar e alterar permissão de acesso. |
 
-## 9. Requisitos Não Funcionais
+<br>
 
-| Código              |  Nome               |          Descrição  |  Prioridade         |
-| :-----------------: | :-----------------: | :-----------------: | :-----------------: |
+## 9. Requisitos NÃO FUNCIONAIS:
+
+| **Código** | **Nome** | **Descrição** | **Prioridade** |
+| :---: | :---: | --- | :---: |
 | RNF001 | Tempo de Resposta | A administração deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de resposta na exportação. | Desejável
 | RNF002 | Facilidade de uso | A administração deve prover um sistema com uma interface amigável que possibilite a seus usuários uma interação fácil. | Desejável
 | RNF003 | Manutenção e suporte da IDE | A administração irá garantir o funcionamento correto da IDE. | Desejável
