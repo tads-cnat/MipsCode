@@ -4,9 +4,49 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") // url do banco de dados 
 }
 
+model User {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
+  password  String
+  name      String
+  bio       String?
+  avatar    String? //avatar ira armazenar a URL da imagem de perfil 
+  role      UserRole
+  ide_theme Boolean    @default(true)
+  project   Project[]
+  Tutorial  Tutorial[]
+}
+
+// enum que serve para definir qual o tipo de usuario está cadastrado -- relacionado com a tabela User
+enum UserRole {
+  student
+  professor
+}
+
+//tabela dos tutoriais 
+model Tutorial {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String?
+  content     String
+  level       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  professor   User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
+  userId      Int
+}
+
+//tabela da documentação 
+model Document {
+  id      Int    @id @default(autoincrement())
+  title   String
+  content String
+}
+
+//tabela dos projetos 
 model Project {
   id          Int      @id @default(autoincrement())
   title       String
@@ -15,4 +55,6 @@ model Project {
   content     String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
+  userId      Int
 }
