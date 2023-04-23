@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { User } from '@prisma/client';
 import { IsString } from 'class-validator';
 
 export class CreateProjectDto {
@@ -9,12 +10,15 @@ export class CreateProjectDto {
 
     @ApiProperty({ required: false })
     @IsString()
-    description: string;
+    description?: string;
+    
+    @ApiProperty({ required: false, default: false })
+    favorite?: boolean = false;
     
     @ApiProperty()
     @IsString()
-    content: string;
-
-    @ApiProperty({ required: false, default: false })
-    favorite?: boolean = false;
+    content?: string;
+    
+    @ApiProperty()
+    userId: number;
 }

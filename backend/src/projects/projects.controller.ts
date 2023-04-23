@@ -1,9 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('projects')
+@ApiTags('/ projects')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
@@ -12,9 +14,11 @@ export class ProjectsController {
     return this.projectsService.create(createProjectDto);
   }
 
+  // @UseGuards(JwtAuthGuard)
   @Get()
-  findAll() {
-    return this.projectsService.findAll();
+  findAll(@Request() req) {
+    const userId = req.user.id;
+    return this.projectsService.findAll(userId);
   }
 
   @Get(':id')
