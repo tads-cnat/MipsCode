@@ -7,12 +7,18 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('projects')
+@UseGuards(JwtAuthGuard)
+@ApiBearerAuth()
+@ApiTags('/ projects')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
