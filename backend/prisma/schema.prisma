@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  password  String
+  name      String
+  bio       String?
+  avatar    String? //avatar ira armazenar a URL da imagem de perfil 
+  role      UserRole
+  ide_theme Boolean    @default(true)
+  project   Project[]
+  Tutorial  Tutorial[]
+}
+
+// enum que serve para definir qual o tipo de usuario está cadastrado -- relacionado com a tabela User
+enum UserRole {
+  student
+  professor
+}
+
+//tabela dos tutoriais 
+model Tutorial {
+  id          String   @id @default(uuid())
+  title       String   @unique
+  description String?
+  content     String
+  level       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  professor   User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
+  userId      String
+}
+
+//tabela da documentação 
+model Document {
+  id      String @id @default(uuid())
+  title   String
+  content String
+}
+
+//tabela dos projetos 
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  favorite    Boolean  @default(false)
+  content     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
+  userId      String
+}
