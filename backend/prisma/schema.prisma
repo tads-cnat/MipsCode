@@ -4,11 +4,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") // url do banco de dados 
+  url      = env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
+  id        String     @id @default(uuid())
   email     String     @unique
   password  String
   name      String
@@ -28,7 +28,7 @@ enum UserRole {
 
 //tabela dos tutoriais 
 model Tutorial {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   title       String   @unique
   description String?
   content     String
@@ -36,19 +36,19 @@ model Tutorial {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   professor   User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
-  userId      Int
+  userId      String
 }
 
 //tabela da documentação 
 model Document {
-  id      Int    @id @default(autoincrement())
+  id      String @id @default(uuid())
   title   String
   content String
 }
 
 //tabela dos projetos 
 model Project {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   title       String
   description String?
   favorite    Boolean  @default(false)
@@ -56,5 +56,5 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
-  userId      Int
+  userId      String
 }

@@ -3,7 +3,7 @@ CREATE TYPE "UserRole" AS ENUM ('student', 'professor');
 
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -17,21 +17,21 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Tutorial" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
     "content" TEXT NOT NULL,
     "level" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "Tutorial_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Document" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
 
@@ -40,14 +40,14 @@ CREATE TABLE "Document" (
 
 -- CreateTable
 CREATE TABLE "Project" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT,
     "favorite" BOOLEAN NOT NULL DEFAULT false,
     "content" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
 );
