@@ -3,7 +3,7 @@
 
 # Descrição do projeto
 
-O mipscode é ideal para aqueles que querem aprender e praticar programação em assembly MIPS. Ele oferece uma documentação abrangente para ajudar os usuários a entender melhor o assunto, além de um guia de aprendizagem passo a passo para facilitar ainda mais o processo. O sistema ainda inclui uma IDE especializada no MIPS assembly, permitindo que os usuários escrevam e testem seus códigos de maneira eficiente. Além disso, todos os recursos são totalmente gratuitos e acessíveis a qualquer pessoa que queira aprender a programar em MIPS assembly.
+O MipsCode se encaixa na área de educação, oferecendo uma IDE amigável e intuitiva para estudantes que desejam aprender e praticar a linguagem assembly MIPS. Além disso, o MipsCode atende às necessidades de professores que desejam ensinar programação de baixo nível, fornecendo uma ferramenta poderosa e completa que facilita o aprendizado e o ensino. Com o MipsCode, os estudantes podem desenvolver habilidades importantes para trabalhar em áreas como a indústria de tecnologia e sistemas embarcados, onde a linguagem assembly é amplamente utilizada. A plataforma também atende aos entusiastas de programação de baixo nível, que desejam se aprofundar no funcionamento interno dos computadores e sistemas. O MipsCode é a ferramenta perfeita para aqueles que buscam uma experiência de aprendizado completa e eficaz em assembly MIPS.
 
 # Equipe de desenvolvimento
 
@@ -12,10 +12,10 @@ O mipscode é ideal para aqueles que querem aprender e praticar programação em
 <table>
 
 <tr>
-    <td align="center"><a href="https://github.com/neemias-renan">
-        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/69238611?v=4" width="100px;" alt=""/>
+    <td align="center"><a href="https://github.com/dani7fl7">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/96999239?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/neemias-renan"><b>Neemias Renan</b></a>
+        <a href="https://github.com/dani7fl7"><b>Daniela Lima</b></a>
     </td>
     <td align="center"><a href="https://github.com/HilquiasAbias">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/76264931?v=4" width="100px;" alt=""/>
@@ -27,10 +27,15 @@ O mipscode é ideal para aqueles que querem aprender e praticar programação em
         <br />
         <a href="https://github.com/HeloiseMacena"><b>Heloise Macena</b></a>
     </td>
-    <td align="center"><a href="https://github.com/plmdsmatheus">
-        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/84824460?v=4" width="100px;" alt=""/>
+    <td align="center"><a href="https://github.com/PessoaRafael">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/90880251?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/plmdsmatheus"><b>Matheus Duarte</b></a>
+        <a href="https://github.com/PessoaRafael"><b>Rafael Pessoa</b></a>
+    </td>
+     <td align="center"><a href="https://github.com/IcaroJustino">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/49211922?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/IcaroJustino"><b>Icaro Miranda</b></a>
     </td>
   </tr>
 </table>
@@ -40,16 +45,16 @@ O mipscode é ideal para aqueles que querem aprender e praticar programação em
 <table>
 
 <tr>
-    <td align="center"><a href="https://github.com/Gilbert-Silva">
-        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/19308031?v=4" width="100px;" alt=""/>
+    <td align="center"><a href="https://github.com/gasilvabr">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/51339655?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/Gilbert-Silva"><b>Gilbert Silva</b></a>
+        <a href="https://github.com/gasilvabr"><b>George Azevedo</b></a>
     </td>
 </table>
 
 # Tecnologias Utilizadas
 
-Python, Django, HTML, CSS e JavaScript
+Node, ReactJS, TypeScript, Material Design, NestJS e JavaScript
 
 # Documentação
 
