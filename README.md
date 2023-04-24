@@ -60,26 +60,4 @@ Node, ReactJS, TypeScript, Material Design, NestJS e JavaScript
 
 [Link para os documentos do projeto](doc/documentacao.md)
 
-# Manual de desenvolvimento
-
-### Requisitos
-
-Para executar este projeto, você precisa do seguinte:
-
-* Python 3.10
-
-### Instalação
-
-Para instalar este projeto, execute os seguintes passos:
-
-1. Clone este repositório
-2. Para rodar a aplicação localmente é preciso criar o ambiente virtual através do VENV usando o seguinte comando`py -m venv venv`
-3. Instale as dependências do projeto com o comando `pip install -r requirements.txt`
-4. Execute as migrações com o comando `python manage.py migrate`
-5. Execute o servidor com o comando `python manage.py runserver`
-
-## Uso
-
-Após a instalação, você pode acessar o projeto pelo endereço
-[**http://localhost:8000**](http://localhost:8000)
 
