@@ -20,23 +20,24 @@ O MipsCode se encaixa na área de educação, oferecendo uma IDE amigável e int
     <td align="center"><a href="https://github.com/HilquiasAbias">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/76264931?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/HilquiasAbias"><b>Hilquias Abiass</b></a>
+        <a href="https://github.com/HilquiasAbias"><b>Hilquias Abias</b></a>
     </td>
     <td align="center"><a href="https://github.com/HeloiseMacena">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/42615847?v=4" width="100px;" alt=""/>
         <br />
         <a href="https://github.com/HeloiseMacena"><b>Heloise Macena</b></a>
     </td>
+        <td align="center"><a href="https://github.com/IcaroJustino">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/49211922?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/IcaroJustino"><b>Icaro Miranda</b></a>
+    </td>
     <td align="center"><a href="https://github.com/PessoaRafael">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/90880251?v=4" width="100px;" alt=""/>
         <br />
         <a href="https://github.com/PessoaRafael"><b>Rafael Pessoa</b></a>
     </td>
-     <td align="center"><a href="https://github.com/IcaroJustino">
-        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/49211922?v=4" width="100px;" alt=""/>
-        <br />
-        <a href="https://github.com/IcaroJustino"><b>Icaro Miranda</b></a>
-    </td>
+     
   </tr>
 </table>
 
