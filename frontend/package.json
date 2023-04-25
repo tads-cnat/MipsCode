@@ -10,8 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@material/textfield": "^14.0.0",
+    "@material/web": "^1.0.0-pre.7",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.3.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-md": "^5.1.4",
+    "react-router-dom": "^6.10.0",
+    "rollup": "^3.21.0",
+    "sass": "^1.62.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
