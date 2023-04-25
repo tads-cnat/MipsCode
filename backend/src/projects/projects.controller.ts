@@ -8,10 +8,12 @@ import {
   Delete,
   Put,
   UseGuards,
+  Req,
 } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { RequestProject } from './dto/request-project.dto';
 import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -28,13 +30,15 @@ export class ProjectsController {
   }
 
   @Get()
-  findAll() {
-    return this.projectsService.findAll();
+  findAll(@Req() req: RequestProject) {
+    const userId = req.user.id;
+    return this.projectsService.findAll(userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.projectsService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() req: RequestProject) {
+    const userId = req.user.id;
+    return this.projectsService.findOne(id, userId);
   }
 
   @Put(':id')
@@ -43,7 +47,8 @@ export class ProjectsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.projectsService.remove(id);
+  remove(@Param('id') id: string, @Req() req: RequestProject) {
+    const userId = req.user.id;
+    return this.projectsService.remove(id, userId);
   }
 }

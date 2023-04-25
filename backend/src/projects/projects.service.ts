@@ -26,9 +26,13 @@ export class ProjectsService {
     }
   }
 
-  async findAll() {
+  async findAll(userId: string) {
     try {
-      return await this.prisma.project.findMany();
+      return await this.prisma.project.findMany({
+        where: {
+          userId
+        }
+      });
     } catch (error) {
       throw new HttpException(
         {
@@ -42,21 +46,44 @@ export class ProjectsService {
       );
     }
   }
-  findOne(id: number) {
-    return `This action returns a #${id} project`;
+
+  async findOne(id: string, userId: string) {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId }, 
+        include: { project: true }
+      });
+
+      return user.project.find(project => project.id === id);
+
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Nenhum Projeto Encontrado',
+        },
+        HttpStatus.NOT_FOUND,
+        {
+          cause: error,
+        },
+      );
+    }
   }
 
   async update(id: string, data: UpdateProjectDto) {
     try {
-      const projectExist = await this.prisma.project.findUnique({
-        where: {
-          id,
-        },
+      const user = await this.prisma.user.findUnique({
+        where: { id: data.userId }, 
+        include: { project: true }
       });
 
-      if (!projectExist) {
+      const project = user.project.find(project => project.id === id);
+
+      if (!project) {
         throw new Error('Projeto Não Existe');
       }
+
+      console.log(project)
 
       return await this.prisma.project.update({
         data,
@@ -78,17 +105,20 @@ export class ProjectsService {
     }
   }
 
-  async remove(id: string) {
+  async remove(id: string, userId: string) {
     try {
-      const projectExists = await this.prisma.project.findUnique({
-        where: {
-          id,
-        },
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId }, 
+        include: { project: true }
       });
 
-      if (!projectExists) {
-        throw new Error('Projeto Não encontrado ');
+      const project = user.project.find(project => project.id === id);
+
+      if (!project) {
+        throw new Error('Projeto Não Existe');
       }
+
+      console.log(project)
 
       return await this.prisma.project.delete({
         where: {
