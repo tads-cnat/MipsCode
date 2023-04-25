@@ -54,7 +54,7 @@ model Project {
   favorite    Boolean  @default(false)
   content     String?
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now()) @updatedAt
+  updatedAt   DateTime @updatedAt
   author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
   userId      String
 }

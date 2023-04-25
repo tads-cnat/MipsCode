@@ -1,44 +1,24 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateProjectDto } from './dto/create-project.dto';
-import { UpdateProjectDto } from './dto/update-project.dto';
+import { CreateTutorialDto } from './dto/create-tutorial.dto';
+import { UpdateTutorialDto } from './dto/update-tutorial.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { retry } from 'rxjs';
 
 @Injectable()
-export class ProjectsService {
-  //construtor para poder usar o primsa Service
+export class TutorialsService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: CreateProjectDto) {
-    try {
-      return this.prisma.project.create({ data: data });
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Projeto não possui ',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
-    }
+  create(createTutorialDto: CreateTutorialDto) {
+    return 'This action adds a new tutorial';
   }
 
-  async findAll(userId: string) {
+  async findAll() {
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { project: true }
-      });
-
-      return user.project
+      return await this.prisma.tutorial.findMany();
     } catch (error) {
       throw new HttpException(
         {
           status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Projeto Encontrado',
+          error: 'Nenhum Tutorial Encontrado',
         },
         HttpStatus.NOT_FOUND,
         {
@@ -48,20 +28,19 @@ export class ProjectsService {
     }
   }
 
-  async findOne(id: string, userId: string) {
+  async findAllFromUser(userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
         where: { id: userId }, 
-        include: { project: true }
+        include: { Tutorial: true }
       });
 
-      return user.project.find(project => project.id === id);
-
+      return user.Tutorial
     } catch (error) {
       throw new HttpException(
         {
           status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Projeto Encontrado',
+          error: 'Nenhum Tutorial Encontrado',
         },
         HttpStatus.NOT_FOUND,
         {
@@ -71,21 +50,45 @@ export class ProjectsService {
     }
   }
 
-  async update(id: string, data: UpdateProjectDto) {
+  findOne(id: string) {
+    return this.prisma.tutorial.findUnique({ where: { id } });
+  }
+
+  async findOneFromUser(id: string, userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: data.userId }, 
-        include: { project: true }
+        where: { id: userId }, 
+        include: { Tutorial: true }
       });
 
-      const project = user.project.find(project => project.id === id);
+      return user.Tutorial.find(project => project.id === id);
 
-      if (!project) {
-        throw new Error('Projeto Não Existe');
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: 'Nenhum Tutorial Encontrado',
+        },
+        HttpStatus.NOT_FOUND,
+        {
+          cause: error,
+        },
+      );
+    }
+  }
+
+  async update(id: string, updateTutorialDto: UpdateTutorialDto) {
+    try {
+      const tutorial = await this.prisma.tutorial.findUnique({
+        where: { id } 
+      });
+
+      if (!tutorial) {
+        throw new Error('Tutorial Não Existe');
       }
 
-      return await this.prisma.project.update({
-        data,
+      return await this.prisma.tutorial.update({
+        data: updateTutorialDto,
         where: {
           id,
         },
@@ -104,20 +107,21 @@ export class ProjectsService {
     }
   }
 
-  async remove(id: string, userId: string) {
+  async updateFromUser(id: string, updateTutorialDto: UpdateTutorialDto) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { project: true }
+        where: { id: updateTutorialDto.userId }, 
+        include: { Tutorial: true }
       });
 
-      const project = user.project.find(project => project.id === id);
+      const tutorial = user.Tutorial.find(tutorial => tutorial.id === id);
 
-      if (!project) {
-        throw new Error('Projeto Não Existe');
+      if (!tutorial) {
+        throw new Error('Tutorial Não Existe');
       }
 
-      return await this.prisma.project.delete({
+      return await this.prisma.tutorial.update({
+        data: updateTutorialDto,
         where: {
           id,
         },
@@ -134,5 +138,9 @@ export class ProjectsService {
         },
       );
     }
+  }
+
+  remove(id: string) {
+    return `This action removes a #${id} tutorial`;
   }
 }
