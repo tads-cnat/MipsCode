@@ -6,11 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/auth/roles/roles.decorator';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { RolesGuard } from 'src/auth/role/role.guard';
 
 @Controller('users')
 @ApiTags('/ users')
@@ -22,6 +26,8 @@ export class UsersController {
     return this.usersService.createUser(createUserDto);
   }
 
+  @Roles('professor')
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
