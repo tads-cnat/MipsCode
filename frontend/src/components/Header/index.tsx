@@ -7,69 +7,75 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import LogoMips from '../../assets/imgs/logo-mips.png'
+import SettingsSharpIcon from '@mui/icons-material/SettingsSharp';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import './styles.css'
 
 
-const pages = ['Dashboard', 'Pricing', 'IDE'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const paginas = ['Dashboard', 'Documentação', 'IDE', 'Repositório', 'Tutoriais'];
+const perfil = ['Meu Perfil', 'Conta', 'Sair'];
 
-export default function Header() {
+function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const [anchorElSettings, setAnchorElSettings] = React.useState<null | HTMLElement>(null);
 
+// Open
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenUserProfile = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
 
+  const handleOpenUserSettings = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    const target = event.target as HTMLElement;
+    setAnchorElSettings(target);
+  };
+ 
+// Close
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserProfile = () => {
     setAnchorElUser(null);
   };
 
+  const handleCloseUserSettings= () => {
+    setAnchorElSettings(null);
+  };
+ 
+// Return
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters color='primary'>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            MIPSCODE
-          </Typography>
+    <AppBar position="absolute" >
+      <Container maxWidth="xl" >
+        <Toolbar disableGutters>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {/* Logo MipsCode*/}
+          <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <a href="/">
+                <img src={LogoMips} className="logo-style" />
+              </a>
+            </Box>
+          </Box>
+
+           {/* Botão Menu */}
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },  marginLeft: { xs: '-180px', md: 'unset' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >
+              color="inherit">
               <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -88,34 +94,16 @@ export default function Header() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {paginas.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu} >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+       
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {paginas.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -126,12 +114,23 @@ export default function Header() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+          {/* Logo MipsCode*/}
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, textAlign: 'center' }}>
+            <a href="/">
+              <img src={LogoMips} className="logo-style" />
+            </a>
+          </Box>
+
+          {/* Botão Configurações*/}         
+          <Box sx={{ display: { xs: 'flex'}}}>
+            <Menu open={Boolean(anchorElSettings)} onClose={handleCloseUserSettings}/>           
+            <IconButton color="inherit">                
+              <SettingsSharpIcon onClick={handleOpenUserSettings} />
+            </IconButton>   
+          </Box>
+
+          {/* Botão Perfil */}
+          <Box sx={{ flexGrow: 0 }}>            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -146,18 +145,28 @@ export default function Header() {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={handleCloseUserProfile}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+              {perfil.map((perfil) => (
+                <MenuItem key={perfil} onClick={handleCloseUserProfile}>
+                  <Typography textAlign="center">{perfil}</Typography>
                 </MenuItem>
               ))}
             </Menu>
+            <IconButton
+              size="large"
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              onClick={handleOpenUserProfile}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>    
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-
+export default Header;

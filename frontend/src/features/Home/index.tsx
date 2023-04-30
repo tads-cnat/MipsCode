@@ -1,13 +1,11 @@
-import { Button } from "@mui/material";
+import Header from "../../components/Header";
 
 
 export default function Home(){
 
   return (
     <>
-
-    <Button variant="contained" color='primary'>Contained</Button>
-
+    <Header/>
     </>
   )
 }
