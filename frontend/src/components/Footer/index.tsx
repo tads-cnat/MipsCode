@@ -20,7 +20,7 @@ function Footer() {
           </Box>
           <Box sx={{ flexGrow: 1 }}>
             <Typography variant="body1" textAlign="right">
-              Desenvolvido por OpenAI.
+         
             </Typography>
           </Box>
         </Box>
