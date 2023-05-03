@@ -51,7 +51,7 @@ function Header() {
  
 // Return
   return (
-    <AppBar position="absolute" >
+    <AppBar position="relative" >
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
 
