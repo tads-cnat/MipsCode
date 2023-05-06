@@ -5,58 +5,69 @@ import { UpdateTutorialDto } from './dto/update-tutorial.dto';
 import { RequestTutorial } from './dto/request-tutorial.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/auth/roles/roles.decorator';
+import { UserRole } from '@prisma/client';
+import { RolesGuard } from 'src/auth/role/role.guard';
 
 @Controller('tutorials')
-@UseGuards(JwtAuthGuard)
-@ApiBearerAuth()
 @ApiTags('/ tutorials')
 export class TutorialsController {
   constructor(private readonly tutorialsService: TutorialsService) {}
 
+  @Roles(UserRole.professor)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiBearerAuth()
   @Post()
   create(@Body() createTutorialDto: CreateTutorialDto) {
     return this.tutorialsService.create(createTutorialDto);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get()
   findAll() {
     return this.tutorialsService.findAll();
   }
 
-  @Get('/professor')
-  findAllFromUser(@Req() req: RequestTutorial) {
-    const userId = req.user.id;
-    return this.tutorialsService.findAllFromUser(userId);
-  }
-
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.tutorialsService.findOne(id);
   }
 
-  @Get('/professor/:id')
-  findOneFromUser(@Param('id') id: string, @Req() req: RequestTutorial) {
+  @Roles(UserRole.professor)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiBearerAuth()
+  @Get('/professor')
+  findAllFromProfessor(@Req() req: RequestTutorial) {
     const userId = req.user.id;
-    return this.tutorialsService.findOneFromUser(id, userId);
+    return this.tutorialsService.findAllFromProfessor(userId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTutorialDto: UpdateTutorialDto) {
-    return this.tutorialsService.update(id, updateTutorialDto);
+  @Roles(UserRole.professor)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiBearerAuth()
+  @Get('/professor/:id')
+  findOneFromProfessor(@Param('id') id: string, @Req() req: RequestTutorial) {
+    const userId = req.user.id;
+    return this.tutorialsService.findOneFromProfessor(id, userId);
   }
 
-  @Patch(':id')
-  updateFromUser(@Param('id') id: string, @Body() updateTutorialDto: UpdateTutorialDto) {
-    return this.tutorialsService.update(id, updateTutorialDto);
+  @Roles(UserRole.professor)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiBearerAuth()
+  @Patch('/professor/:id')
+  updateProfessorTutorial(@Param('id') id: string, @Body() updateTutorialDto: UpdateTutorialDto) {
+    return this.tutorialsService.updateProfessorTutorial(id, updateTutorialDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tutorialsService.remove(id);
-  }
-
-  @Delete(':id')
-  removeFromUser(@Param('id') id: string, @Req() req: RequestTutorial) {
-    return this.tutorialsService.remove(id);
+  @Roles(UserRole.professor)
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @ApiBearerAuth()
+  @Delete('/professor/:id')
+  removeProfessorTutorial(@Param('id') id: string, @Req() req: RequestTutorial) {
+    const userId = req.user.id
+    return this.tutorialsService.removeProfessorTutorial(id, userId);
   }
 }
