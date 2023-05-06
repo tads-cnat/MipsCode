@@ -1,38 +1,134 @@
 import { headers } from "../../../data";
 import api from "../../../services/api";
 
-
 // CRIAR
-export function criarProjetos(title: string, description: string, content: string) {
-    return api.post("api/projeto/", {title, description, content}, {
-      headers: headers()
-    });
+export async function criarProjetos(
+  title: string,
+  description: string,
+  content: string,
+  userId: string
+) {
+  try {
+    // caso você tente criar um projeto sem nome e sem referenciar o ID do usuario
+    if (!title || !userId) {
+      return "Bad Request";
+    }
+
+    const Resapi = await api.post(
+      "/project/",
+      { title, description, content, userId },
+      {
+        headers: headers(),
+      }
+    );
+
+    if (Resapi.data) {
+      return "Sucess";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
 }
 
 // LISTAR
-export function listarProjetos() {
-    return api.get("api/projeto", 
-        {headers: headers()});
-}
+export async function listarProjetos() {
+  try {
+    const Resapi = await api.get("/project", {
+      headers: headers(),
+    });
 
+    if (Resapi) {
+      return Resapi;
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
+}
 
 // EDITAR
-export function carregarProjeto(id?: string) {
-    return api.get(`api/projeto/${id}`, {
-      headers: headers()
+export async function carregarProjeto(userId?: string) {
+  try {
+    // caso o formulario não envie o Id
+    if (!userId) {
+      return {
+        error: "Id não informado ",
+      };
+    }
+
+    const resApi = await api.get(`project/${userId}`, {
+      headers: headers(),
     });
+
+    if (resApi) {
+      return "Sucess";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
 }
 
-export function atualizarProjeto(nome: string, id?: string) {
-    return api.put(`api/projeto/${id}/`, {nome}, {
-      headers: headers()
-    });
-}
+export async function atualizarProjeto(
+  title: string,
+  description: string,
+  content: string,
+  userId?: string
+) {
+  try {
+    if (!userId) {
+      return "Id não informado ";
+    }
 
+    const Resapi = await api.put(
+      `project/${userId}/`,
+      { title, description, userId, content },
+      {
+        headers: headers(),
+      }
+    );
+
+    if (Resapi) {
+      return "Sucess";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
+}
 
 // EXCLUIR
-export function excluirProjeto(id: string) { 
-  return api.delete(`api/projeto/${id}`, {
-    headers: headers()
-  });
+export async function excluirProjeto(userID: string) {
+  try {
+    if (!userID) {
+      return "ID não informado";
+    }
+
+    const Resapi = await api.delete(`project/${userID}`, {
+      headers: headers(),
+    });
+
+    if (Resapi) {
+      return "Projeto deletado com Sucesso ";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
 }
