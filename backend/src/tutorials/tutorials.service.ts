@@ -7,107 +7,61 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class TutorialsService {
   constructor(private prisma: PrismaService) {}
 
-  create(createTutorialDto: CreateTutorialDto) {
-    return 'This action adds a new tutorial';
+  async create(createTutorialDto: CreateTutorialDto) {
+    try {
+      return await this.prisma.tutorial.create({ data: createTutorialDto });
+
+    } catch (error) {
+      throw new HttpException('Already exists', HttpStatus.CONFLICT);
+    }
   }
 
   async findAll() {
     try {
-      return await this.prisma.tutorial.findMany();
+      const tutorials = await this.prisma.tutorial.findMany();
+      return tutorials
+
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Tutorial Encontrado',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  async findAllFromUser(userId: string) {
+  async findOne(id: string) {
     try {
-      const user = await this.prisma.user.findUnique({
+      return await this.prisma.tutorial.findUnique({ where: { id } });
+
+    } catch (error) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+    }
+  }
+
+  async findAllFromProfessor(userId: string) {
+    try {
+      const user = await this.prisma.user.findFirst({
         where: { id: userId }, 
         include: { Tutorial: true }
       });
-
       return user.Tutorial
+
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Tutorial Encontrado',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  findOne(id: string) {
-    return this.prisma.tutorial.findUnique({ where: { id } });
-  }
-
-  async findOneFromUser(id: string, userId: string) {
+  async findOneFromProfessor(id: string, userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
         where: { id: userId }, 
         include: { Tutorial: true }
       });
-
       return user.Tutorial.find(project => project.id === id);
 
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Tutorial Encontrado',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  async update(id: string, updateTutorialDto: UpdateTutorialDto) {
-    try {
-      const tutorial = await this.prisma.tutorial.findUnique({
-        where: { id } 
-      });
-
-      if (!tutorial) {
-        throw new Error('Tutorial Não Existe');
-      }
-
-      return await this.prisma.tutorial.update({
-        data: updateTutorialDto,
-        where: {
-          id,
-        },
-      });
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Infelizmente algo deu Errado',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
-    }
-  }
-
-  async updateFromUser(id: string, updateTutorialDto: UpdateTutorialDto) {
+  async updateProfessorTutorial(id: string, updateTutorialDto: UpdateTutorialDto) {
     try {
       const user = await this.prisma.user.findUnique({
         where: { id: updateTutorialDto.userId }, 
@@ -117,7 +71,7 @@ export class TutorialsService {
       const tutorial = user.Tutorial.find(tutorial => tutorial.id === id);
 
       if (!tutorial) {
-        throw new Error('Tutorial Não Existe');
+        throw new HttpException('Not found', HttpStatus.NOT_FOUND);
       }
 
       return await this.prisma.tutorial.update({
@@ -127,20 +81,28 @@ export class TutorialsService {
         },
       });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Infelizmente algo deu Errado',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Something gone wrong', HttpStatus.BAD_REQUEST);
     }
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} tutorial`;
+  async removeProfessorTutorial(id: string, userId: string) {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId }, 
+        include: { Tutorial: true }
+      });
+
+      const tutorial = user.Tutorial.find(tutorial => tutorial.id === id);
+
+      if (!tutorial) {
+        throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+      }
+
+      return await this.prisma.tutorial.delete({
+        where: { id }
+      })
+    } catch (error) {
+      throw new HttpException('Something gone wrong', HttpStatus.BAD_REQUEST);
+    }
   }
 }
