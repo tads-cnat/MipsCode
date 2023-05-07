@@ -31,10 +31,7 @@ function Header() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleOpenUserSettings = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-    const target = event.target as HTMLElement;
-    setAnchorElSettings(target);
-  };
+
  
 // Close
   const handleCloseNavMenu = () => {
@@ -123,10 +120,11 @@ function Header() {
 
           {/* Botão Configurações*/}         
           <Box sx={{ display: { xs: 'flex'}}}>
-            <Menu open={Boolean(anchorElSettings)} onClose={handleCloseUserSettings}/>           
+            <Menu open={Boolean(anchorElSettings)} onClose={handleCloseUserSettings}/>  
             <IconButton color="inherit">                
-              <SettingsSharpIcon onClick={handleOpenUserSettings} />
-            </IconButton>   
+              <SettingsSharpIcon  />
+            </IconButton> 
+
           </Box>
 
           {/* Botão Perfil */}
@@ -164,6 +162,7 @@ function Header() {
               <AccountCircle />
             </IconButton>    
           </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>

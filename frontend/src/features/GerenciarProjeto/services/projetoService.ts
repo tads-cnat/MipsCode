@@ -1,14 +1,11 @@
 import { headers } from "../../../data";
 import api from "../../../services/api";
+import { iProjeto } from "../../../types/iProjetos";
 
 // CRIAR
-export async function criarProjetos(
-  title: string,
-  description: string,
-  content: string,
-  userId: string
-) {
+export async function criarProjetos(projeto: iProjeto) {
   try {
+    const { title, description, content, userId } = projeto;
     // caso você tente criar um projeto sem nome e sem referenciar o ID do usuario
     if (!title || !userId) {
       return "Bad Request";
