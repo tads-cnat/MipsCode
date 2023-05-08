@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
+import Repositorio from '../GerenciarProjeto/pages/ListarProjetos';
 
 
 
@@ -18,7 +19,10 @@ export default function Home(){
     <>
     <Header/>
     <Box sx={{textAlign: 'center', alignItems: 'center', height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}>
+      
       <Button variant="contained" type="submit" onClick={handleClick}>Criar Projeto</Button>
+      
+      <Repositorio/>
     </Box>
     </>
   )
