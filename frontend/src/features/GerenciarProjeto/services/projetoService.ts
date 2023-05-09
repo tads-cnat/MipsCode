@@ -13,7 +13,7 @@ export async function criarProjetos(projeto: iProjeto) {
     }
 
     const Resapi = await api.post(
-      "/project/",
+      "projects/",
       { title, description, content, userId },
       {
         headers: headers(),
@@ -35,13 +35,14 @@ export async function criarProjetos(projeto: iProjeto) {
 // LISTAR
 export async function listarProjetos() {
   try {
-    const Resapi = await api.get("/project", {
+    const Resapi = await api.get("projects/", {
       headers: headers(),
     });
 
     if (Resapi) {
       return Resapi;
     }
+    
   } catch (error) {
     console.log(error);
 
@@ -61,7 +62,7 @@ export async function carregarProjeto(userId?: string) {
       };
     }
 
-    const resApi = await api.get(`project/${userId}`, {
+    const resApi = await api.get(`projects/${userId}`, {
       headers: headers(),
     });
 
@@ -89,7 +90,7 @@ export async function atualizarProjeto(
     }
 
     const Resapi = await api.put(
-      `project/${userId}/`,
+      `projects/${userId}/`,
       { title, description, userId, content },
       {
         headers: headers(),
@@ -115,7 +116,7 @@ export async function excluirProjeto(userID: string) {
       return "ID não informado";
     }
 
-    const Resapi = await api.delete(`project/${userID}`, {
+    const Resapi = await api.delete(`projects/${userID}`, {
       headers: headers(),
     });
 

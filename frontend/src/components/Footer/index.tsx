@@ -7,11 +7,11 @@ import './styles.css';
 
 function Footer() {
   return (
-    <Box sx={{ bgcolor: 'background.paper', color: 'white' }}>
+    <Box sx={{ bgcolor: 'background.paper', color: 'primary.contrastText' }}>
       <Container maxWidth="xl">
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: 3 }}>
           <Box sx={{ flexGrow: 1 }}>
-            <img src={LogoMips} className="logo-style" />
+            <img src={LogoMips} className="logo-style" alt='logo' />
           </Box>
           <Box sx={{ flexGrow: 1 }}>
             <Typography variant="body1" textAlign="center">

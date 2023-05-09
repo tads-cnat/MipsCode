@@ -128,7 +128,7 @@ function Header() {
           </Box>
 
           {/* Botão Perfil */}
-          <Box sx={{ flexGrow: 0, color:'primary.light'}}>            
+          <Box sx={{ flexGrow: 0, color:'secondary.light'}}>            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
