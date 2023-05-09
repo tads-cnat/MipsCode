@@ -20,7 +20,7 @@ const Repositorio = () => {
 
   return (
     <>
-      <Typography variant="subtitle1" display="block" gutterBottom color="primary">
+      <Typography variant="subtitle1" display="block" gutterBottom color="text.primary">
         MEU REPOSITÓRIO
       </Typography>
     

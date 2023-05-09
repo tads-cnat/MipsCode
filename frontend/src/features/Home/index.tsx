@@ -27,8 +27,8 @@ export default function Home(){
     <Box sx={{textAlign: 'center', alignItems: 'center', height: 260, mx: 'auto', my: { xs: 5, sm: 10 }, '& button': { m: 1 } }}>
       
       <Repositorio/> 
-      <Button size="small" variant="contained" type="submit" onClick={handleClickCriar}>Criar Novo Projeto</Button>
-      <Button size="small" variant="contained" type="submit" onClick={handleClickVer}>Ver todos os projetos</Button>
+      <Button color='secondary' size="small" variant="contained" type="submit" onClick={handleClickCriar}>Criar Novo Projeto</Button>
+      <Button color='secondary' size="small" variant="outlined" type="submit" onClick={handleClickVer}>Ver todos os projetos</Button>
 
     </Box>
     <Footer/>

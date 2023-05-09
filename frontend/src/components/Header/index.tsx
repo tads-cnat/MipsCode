@@ -56,13 +56,13 @@ function Header() {
           <Box sx={{ flexGrow: 1 }}>
             <Box sx={{ display: { xs: 'none', md: 'flex' }}}>
               <a href="/">
-                <img src={LogoMips} className="logo-style" />
+                <img src={LogoMips} className="logo-style" alt='logo' />
               </a>
             </Box>
           </Box>
 
            {/* Botão Menu */}
-          <Box sx={{ flexGrow: 1,  color:'primary.light', display: { xs: 'flex', md: 'none' },  marginLeft: { xs: '-180px', md: 'unset' } }}>
+          <Box sx={{ flexGrow: 1,  display: { xs: 'flex', md: 'none' },  marginLeft: { xs: '-180px', md: 'unset' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -114,12 +114,12 @@ function Header() {
           {/* Logo MipsCode*/}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, flexGrow: 1, textAlign: 'center' }}>
             <a href="/">
-              <img src={LogoMips} className="logo-style" />
+              <img src={LogoMips} className="logo-style" alt='logo'/>
             </a>
           </Box>
 
           {/* Botão Configurações*/}         
-          <Box sx={{ display: { xs: 'flex'},  color:'primary.light'}}>
+          <Box sx={{ display: { xs: 'flex'},  color:'secondary.light'}}>
             <Menu open={Boolean(anchorElSettings)} onClose={handleCloseUserSettings}/>  
             <IconButton color="inherit">                
               <SettingsSharpIcon  />
