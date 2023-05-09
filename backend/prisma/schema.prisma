@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
 }
 
@@ -14,16 +14,10 @@ model User {
   name      String
   bio       String?
   avatar    String? //avatar ira armazenar a URL da imagem de perfil 
-  role      UserRole
+  role      String?
   ide_theme Boolean    @default(true)
   project   Project[]
   Tutorial  Tutorial[]
-}
-
-// enum que serve para definir qual o tipo de usuario está cadastrado -- relacionado com a tabela User
-enum UserRole {
-  student
-  professor
 }
 
 //tabela dos tutoriais 

@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Req, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { TutorialsService } from './tutorials.service';
 import { CreateTutorialDto } from './dto/create-tutorial.dto';
 import { UpdateTutorialDto } from './dto/update-tutorial.dto';
@@ -6,7 +16,6 @@ import { RequestTutorial } from './dto/request-tutorial.dto';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Roles } from 'src/auth/roles/roles.decorator';
-import { UserRole } from '@prisma/client';
 import { RolesGuard } from 'src/auth/role/role.guard';
 
 @Controller('tutorials')
@@ -14,7 +23,6 @@ import { RolesGuard } from 'src/auth/role/role.guard';
 export class TutorialsController {
   constructor(private readonly tutorialsService: TutorialsService) {}
 
-  @Roles(UserRole.professor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
   @Post()
@@ -36,7 +44,6 @@ export class TutorialsController {
     return this.tutorialsService.findOne(id);
   }
 
-  @Roles(UserRole.professor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
   @Get('/professor')
@@ -45,7 +52,6 @@ export class TutorialsController {
     return this.tutorialsService.findAllFromProfessor(userId);
   }
 
-  @Roles(UserRole.professor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
   @Get('/professor/:id')
@@ -54,20 +60,24 @@ export class TutorialsController {
     return this.tutorialsService.findOneFromProfessor(id, userId);
   }
 
-  @Roles(UserRole.professor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
   @Patch('/professor/:id')
-  updateProfessorTutorial(@Param('id') id: string, @Body() updateTutorialDto: UpdateTutorialDto) {
+  updateProfessorTutorial(
+    @Param('id') id: string,
+    @Body() updateTutorialDto: UpdateTutorialDto,
+  ) {
     return this.tutorialsService.updateProfessorTutorial(id, updateTutorialDto);
   }
 
-  @Roles(UserRole.professor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @ApiBearerAuth()
   @Delete('/professor/:id')
-  removeProfessorTutorial(@Param('id') id: string, @Req() req: RequestTutorial) {
-    const userId = req.user.id
+  removeProfessorTutorial(
+    @Param('id') id: string,
+    @Req() req: RequestTutorial,
+  ) {
+    const userId = req.user.id;
     return this.tutorialsService.removeProfessorTutorial(id, userId);
   }
 }
