@@ -1,9 +1,8 @@
 import Button from '@mui/material/Button';
-import Header from "../../components/Header";
 import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Repositorio from '../GerenciarProjeto/pages/ListarProjetos';
-import Footer from '../../components/Footer';
+import {Header, Footer} from '../../components/';
 
 
 
