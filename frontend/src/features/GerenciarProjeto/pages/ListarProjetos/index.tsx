@@ -8,16 +8,24 @@ const Repositorio = () => {
   const [projetos, setProjetos] = useState<iProjeto[]>([]);
 
   useEffect(() => {
-    listarProjetos();
-        setProjetos(projetos);
-  }, []);
+    listarProjetos()
+        .then(() =>
+            setProjetos(projetos)
+        )            
+        .catch((erro) =>
+            console.log(erro)
+        )
+  },);
+
 
   return (
     <>
-        <Typography variant="overline" display="block" gutterBottom>
-        Meu Repositório
-        </Typography>
-        
+      <Typography variant="subtitle1" display="block" gutterBottom color="primary">
+        MEU REPOSITÓRIO
+      </Typography>
+    
+      <table>
+      </table>
       <ul>
         {projetos.map(projeto => (
           <li key={projeto.userId}>{projeto.title}</li>
@@ -28,4 +36,5 @@ const Repositorio = () => {
 }
 
 export default Repositorio;
+
 

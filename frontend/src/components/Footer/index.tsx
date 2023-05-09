@@ -7,7 +7,7 @@ import './styles.css';
 
 function Footer() {
   return (
-    <Box sx={{ bgcolor: 'primary.main', color: 'white' }}>
+    <Box sx={{ bgcolor: 'background.paper', color: 'white' }}>
       <Container maxWidth="xl">
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: 3 }}>
           <Box sx={{ flexGrow: 1 }}>
