@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { criarProjetos } from "../../services/projetoService";
 import Header from "../../../../components/Header";
 import Box from '@mui/material/Box';
+import { Typography, Card, CardContent, CardActions } from '@mui/material';
+
 
 
 import TextField from '@mui/material/TextField';
-import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
 import Footer from '../../../../components/Footer';
@@ -28,56 +29,67 @@ const CriarProjeto = () => {
   return (
     <>
     <Header/>
-    <Box sx={{textAlign: 'center', alignItems: 'center', mx: 'auto', my: { xs: 5, sm: 10 }, '& .MuiTextField-root': { m: 1, width: '25ch' }}}>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <FormLabel htmlFor="nome">Criar Projeto</FormLabel>
+    <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
+      <Card>
+        <CardContent>
+        <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
 
-        {/* Título */}
-        <div className="row">
-        <TextField 
-          id="outlined-helperText"
-          label="Título"
-          type="text"
-          variant="outlined" 
-          name="title"
-          onChange={(event) => setTitle(event.target.value)}
-          required 
-  
-        /></div>
+            {/* Título */}
+            <div className="row" color='secondary'>
+            <TextField 
+            
+              id="outlined-helperText"
+              label="Título"
+              type="text"
+              variant="outlined" 
+              name="title"
+              onChange={(event) => setTitle(event.target.value)}
+              required 
+              color="secondary"
+      
+            /></div>
 
-        {/* Descrição */}
-        <div className="row">
-        <TextField 
-          id="outlined-helperText"
-          label="Descrição"
-          type="text"
-          variant="outlined" 
-          name="description"
-          onChange={(event) => setDescription(event.target.value)}
-          color="secondary"
-        />  </div>
+            {/* Descrição */}
+            <div className="row">
+            <TextField 
+              id="outlined-helperText"
+              label="Descrição"
+              type="text"
+              variant="outlined" 
+              name="description"
+              onChange={(event) => setDescription(event.target.value)}
+              color="secondary"
+            />  </div>
 
-        {/* Conteúdo */}
-        <div className="row">
-        <TextField 
-          id="outlined-helperText"
-          label=""
-          type="file"
-          variant="outlined" 
-          name="content"
-          onChange={(event) => setContent(event.target.value)}
-        /></div>
+            {/* Conteúdo */}
+            <div className="row">
+            <TextField 
+              id="outlined-helperText"
+              label=""
+              type="file"
+              variant="outlined" 
+              name="content"
+              onChange={(event) => setContent(event.target.value)}
+              inputProps={{
+                accept: '.txt'
+              }}
+            /></div>
+            
+            <CardActions>
+              <Box width='100%' display='flex' justifyContent='center'>
+              <Button color="secondary" variant="contained" type="submit">Confirmar</Button>     
+              </Box>       
+            </CardActions>
 
-        <div className="row">
-            <Button variant="contained" type="submit" >Confirmar</Button>            
-        </div>
-
-      </form>
+          </form>
+        </Box>
+        </CardContent>
+      </Card>
     </Box>
     <Footer/>
     </>
   );
 }
 export default CriarProjeto;
-
-
