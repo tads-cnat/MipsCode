@@ -11,6 +11,7 @@ import { Typography, Card, CardContent, CardActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
+import { useContext } from 'react';
 import Footer from '../../../../components/Footer';
 
 const CriarProjeto = () => {
@@ -18,12 +19,26 @@ const CriarProjeto = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
+  const userId = "95cfb5d3-106a-46bc-87ea-13083d67a175";
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+
+  
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-      const projeto: iProjeto = {title, description, content, userId:""};
-      criarProjetos( projeto ).then(() => navigate('/'));
-      console.log('O botão foi clicado!');
+      const projeto: iProjeto = {title, description, content, userId};
+
+      try {
+
+        const res = await criarProjetos( projeto )
+        if(res){
+          () => navigate('/')
+        }
+//      criarProjetos( projeto ).then();
+        console.log('O botão foi clicado!');
+      } catch (error) {
+        console.log(error)
+      }
+
   }
 
   return (
