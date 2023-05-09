@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    font-family: Inter;
+}
+ 
+.page{
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.page > .main-section{
+    max-width: 1920px;
+    margin: auto;
+    width: 100%;
+    max-width: 90%;
+}
+
+.green-buttons-section{
+    margin: auto;
+    width: 100%;
+    max-width: 90%;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.green-buttons-section > span{
+    font-size: 32px;
+    line-height: 38.5px;
+    color: #ffff;
+    font-weight: 700;
+}
+.green-buttons-section .cards{
+    display: flex;
+    flex-direction: auto;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+}
