@@ -29,11 +29,11 @@ export class ProjectsService {
   async findAll(userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { project: true }
+        where: { id: userId },
+        include: { project: true },
       });
 
-      return user.project
+      return user.project;
     } catch (error) {
       throw new HttpException(
         {
@@ -51,12 +51,11 @@ export class ProjectsService {
   async findOne(id: string, userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { project: true }
+        where: { id: userId },
+        include: { project: true },
       });
 
-      return user.project.find(project => project.id === id);
-
+      return user.project.find((project) => project.id === id);
     } catch (error) {
       throw new HttpException(
         {
@@ -74,11 +73,11 @@ export class ProjectsService {
   async update(id: string, data: UpdateProjectDto) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: data.userId }, 
-        include: { project: true }
+        where: { id: data.userId },
+        include: { project: true },
       });
 
-      const project = user.project.find(project => project.id === id);
+      const project = user.project.find((project) => project.id === id);
 
       if (!project) {
         throw new Error('Projeto Não Existe');
@@ -107,11 +106,11 @@ export class ProjectsService {
   async remove(id: string, userId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { project: true }
+        where: { id: userId },
+        include: { project: true },
       });
 
-      const project = user.project.find(project => project.id === id);
+      const project = user.project.find((project) => project.id === id);
 
       if (!project) {
         throw new Error('Projeto Não Existe');

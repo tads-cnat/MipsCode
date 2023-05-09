@@ -3,20 +3,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { criarProjetos } from "../../services/projetoService";
 import Header from "../../../../components/Header";
+import Box from '@mui/material/Box';
+import { Typography, Card, CardContent, CardActions } from '@mui/material';
+
+
 
 import TextField from '@mui/material/TextField';
-import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-
-
-
-
-
-
-
+import { iProjeto } from '../../../../types/iProjetos';
+import Footer from '../../../../components/Footer';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
@@ -26,60 +21,75 @@ const CriarProjeto = () => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    criarProjetos (title, description, content).then((response) => navigate('/projeto'));
+      const projeto: iProjeto = {title, description, content, userId:""};
+      criarProjetos( projeto ).then(() => navigate('/'));
+      console.log('O botão foi clicado!');
   }
-
 
   return (
     <>
     <Header/>
-    <Card>
+    <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
+      <Card>
         <CardContent>
-            <Stack component="form" spacing={3} alignItems="center" justifyContent="space-between" onSubmit={handleSubmit}>
-            <FormLabel htmlFor="nome">Cadastrar Projeto</FormLabel>
+        <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
 
             {/* Título */}
+            <div className="row" color='secondary'>
             <TextField 
-                id="outlined-helperText"
-                label="Título"
-                type="text"
-                variant="outlined" 
-                name="title"
-                onChange={(event) => setTitle(event.target.value)}
-                required
-                
-            />
+            
+              id="outlined-helperText"
+              label="Título"
+              type="text"
+              variant="outlined" 
+              name="title"
+              onChange={(event) => setTitle(event.target.value)}
+              required 
+              color="secondary"
+      
+            /></div>
 
             {/* Descrição */}
+            <div className="row">
             <TextField 
-                id="outlined-helperText"
-                label="Descrição"
-                type="text"
-                variant="outlined" 
-                name="description"
-                onChange={(event) => setDescription(event.target.value)}
-                required
-            />  
+              id="outlined-helperText"
+              label="Descrição"
+              type="text"
+              variant="outlined" 
+              name="description"
+              onChange={(event) => setDescription(event.target.value)}
+              color="secondary"
+            />  </div>
 
             {/* Conteúdo */}
+            <div className="row">
             <TextField 
-                id="outlined-helperText"
-                label="Conteúdo"
-                type="text"
-                variant="outlined" 
-                name="content"
-                onChange={(event) => setContent(event.target.value)}
-                required
-            />
+              id="outlined-helperText"
+              label=""
+              type="file"
+              variant="outlined" 
+              name="content"
+              onChange={(event) => setContent(event.target.value)}
+              inputProps={{
+                accept: '.txt'
+              }}
+            /></div>
+            
+            <CardActions>
+              <Box width='100%' display='flex' justifyContent='center'>
+              <Button color="secondary" variant="contained" type="submit">Confirmar</Button>     
+              </Box>       
+            </CardActions>
 
-            <Button variant="contained">Confirmar</Button>            
-            </Stack>
+          </form>
+        </Box>
         </CardContent>
-
-    </Card>
+      </Card>
+    </Box>
+    <Footer/>
     </>
   );
 }
 export default CriarProjeto;
-
-
