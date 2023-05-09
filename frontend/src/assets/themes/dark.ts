@@ -39,6 +39,7 @@ export const DarkTheme: ThemeOptions = createTheme({
       dark: '#388E3C',
       contrastText: '#000000',
     },
+    divider: 'rgba(255,255,255,0.08)',
     background: {
       paper: '#333333',
       default: '#1A1B1F',
