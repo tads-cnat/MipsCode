@@ -1,4 +1,3 @@
-import { UserRole } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
@@ -32,7 +31,7 @@ export class CreateUserDto {
   avatar?: string;
 
   @ApiProperty()
-  role: UserRole;
+  role: string;
 
   //@ApiProperty()
   ide_theme?: boolean;
