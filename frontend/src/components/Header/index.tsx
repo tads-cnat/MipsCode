@@ -48,13 +48,13 @@ function Header() {
  
 // Return
   return (
-    <AppBar position="relative" >
-      <Container maxWidth="xl" >
+    <AppBar position="relative" color="inherit">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
 
           {/* Logo MipsCode*/}
           <Box sx={{ flexGrow: 1 }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }}}>
               <a href="/">
                 <img src={LogoMips} className="logo-style" />
               </a>
@@ -62,7 +62,7 @@ function Header() {
           </Box>
 
            {/* Botão Menu */}
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' },  marginLeft: { xs: '-180px', md: 'unset' } }}>
+          <Box sx={{ flexGrow: 1,  color:'primary.light', display: { xs: 'flex', md: 'none' },  marginLeft: { xs: '-180px', md: 'unset' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -119,7 +119,7 @@ function Header() {
           </Box>
 
           {/* Botão Configurações*/}         
-          <Box sx={{ display: { xs: 'flex'}}}>
+          <Box sx={{ display: { xs: 'flex'},  color:'primary.light'}}>
             <Menu open={Boolean(anchorElSettings)} onClose={handleCloseUserSettings}/>  
             <IconButton color="inherit">                
               <SettingsSharpIcon  />
@@ -128,7 +128,7 @@ function Header() {
           </Box>
 
           {/* Botão Perfil */}
-          <Box sx={{ flexGrow: 0 }}>            
+          <Box sx={{ flexGrow: 0, color:'primary.light'}}>            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

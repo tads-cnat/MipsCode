@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
+import Footer from '../../../../components/Footer';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ const CriarProjeto = () => {
           variant="outlined" 
           name="title"
           onChange={(event) => setTitle(event.target.value)}
-          required      
+          required 
+  
         /></div>
 
         {/* Descrição */}
@@ -52,6 +54,7 @@ const CriarProjeto = () => {
           variant="outlined" 
           name="description"
           onChange={(event) => setDescription(event.target.value)}
+          color="secondary"
         />  </div>
 
         {/* Conteúdo */}
@@ -71,6 +74,7 @@ const CriarProjeto = () => {
 
       </form>
     </Box>
+    <Footer/>
     </>
   );
 }
