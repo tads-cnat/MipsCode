@@ -34,13 +34,26 @@ Por fim, os riscos de alta prioridade representam um alto potencial de atraso na
 10. Reunião específica para o acompanhamento das issues.
 11. Usar o framework Scrum como base para a realização de atividades.
 
+### 4 - Estratégia de Mitigação
+1. Verificar atividades com menor complexidade para serem feitas nesse período.
+2. Dividir as atibuições de cada integrante onde as atividades/entregas possam ser feitas antes ou depois.
+3. Evitar atribuições nesse caso a cada integrante.
+4. Manter boa comunicaçãp em equipe de forma a evitar atrasos em casos de ausência de ambiente e/ou equipamento.
+5. Aderir a pair programming (programação em pares), deve-se evitar ao máximo que um membro fique sozinho em uma atividade.
+6. Utilizar o Discord como canal de comunicação oficial da equipe.
+7. Sempre tirar duvidas nas reuniões semanais de segunda e quarta para evitar duvidas.
+8. Realocar atibuições a outros integrantes.
+9. Manter comunicação, via principal canal, e dialogar a fim de evitar ausências não comunicadas.
+10. Sempre que estiver fazendo algo relacionado ao PDS, entrar no Discord, para que seja possível fornecer um feedback.
+11. Apoio junto com orientadores e profissionais de psicologia para evitar o pânico de integrantes.
+
 | Código | Dificuldade | Nome | Descrição | Indicador | Estratégia de Mitigação | Plano de Contingência |
 |--------|-------------|------|-----------|-----------|-------------------------|-----------------------|
 | R1     | Média       | Comunicação da equipe | Problemas de comunicação entre a equipe podem atrasar o progresso do projeto e levar a conflitos | Atrasos na conclusão das tarefas, falta de alinhamento entre os membros da equipe | Estabelecer canais de comunicação claros e definir expectativas para as reuniões da equipe | Realizar reuniões de acompanhamento regulares e designar um líder de projeto para mediar quaisquer conflitos |
 | R2     | Baixa       | Feriados e Férias | Feriados e férias da equipe podem afetar a disponibilidade dos membros da equipe e a conclusão do projeto | Membros da equipe não disponíveis para trabalho durante um período de tempo significativo | Planejar o cronograma levando em consideração as férias e feriados | Reatribuir tarefas a outros membros da equipe ou ajustar o cronograma para acomodar a ausência |
 | R3     | Alta        | Imprevistos de Saúde e Pessoais | Problemas de saúde ou pessoais podem afetar a disponibilidade e produtividade dos membros da equipe | Membros da equipe não disponíveis para trabalho durante um período de tempo significativo | Ter um plano de contingência para lidar com a ausência de membros da equipe e reavaliar o cronograma | Reatribuir tarefas a outros membros da equipe ou ajustar o cronograma para acomodar a ausência |
 | R4     | Alta        | Nível de Conhecimento | A falta de conhecimento técnico pode levar a atrasos na conclusão do projeto ou à entrega de um produto de qualidade inferior | Dificuldades na compreensão dos requisitos do projeto ou no desenvolvimento do código | Identificar as lacunas de conhecimento e fornecer treinamento ou suporte adequados | Reatribuir tarefas a membros da equipe com conhecimento relevante ou contratar um consultor externo |
-## 4 Conclusão
+## 5 Conclusão
 
 Esta tabela de riscos identifica os principais riscos ao projeto "Mips" e suas estratégias de mitigação e planos de contingência associados. É importante monitorar e atualizar os riscos conforme necessário para garantir que o projeto seja concluído com sucesso e dentro dos requisitos estabelecidos pela equipe do curso de TADS no IFRN. Além disso, é essencial manter uma comunicação clara entre a equipe e um planejamento adequado para lidar com imprevistos.
 
