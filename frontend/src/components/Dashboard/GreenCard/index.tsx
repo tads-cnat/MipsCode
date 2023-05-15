@@ -13,9 +13,9 @@ export function GreenCards ({title,description,url} : Card){
             {
                 title && description &&// checar primeiro se o componente recebeu os dados para poder renderizar 
                 <div className="content">
-                    <span className="title">{title}</span>
+                    <span className="card-title">{title}</span>
                     <div>
-                        <span className="description">{description}</span>
+                        <span className="card-description">{description}</span>
                         <image></image>
                     </div>
                 </div>
