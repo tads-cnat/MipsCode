@@ -38,11 +38,11 @@ Não há.
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
 | 1. Visitante acessa o site. | |  
-|  | 2. Renderiza página e seus scripts. |
+|  | 2. Renderiza a página e seus scripts. |
 | 3. Visitante acessa a página da IDE. | | 
 |  | 4. Renderiza a página e seus scripts e disponiliza o uso. |
 
 ### 5.2. Fluxo de exceção:
 #### Fluxo de exceção (3): Página fora do ar
 a) Usuário acessa a página da IDE; <br>
-b) Não é possivel renderizar a página da IDE;  <br>
+b) Não é possivel renderizar a página da IDE.  <br>
