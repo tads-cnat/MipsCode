@@ -1,4 +1,6 @@
 export interface iEstudante{
-    id: string;
-    nome: string;
+    email: string;
+    password: string;
+    name: string;
+    role: string;
 }
