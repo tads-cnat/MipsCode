@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { iProfessor } from "../../../../types/iProfessores";
-import { Box, Typography, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
+import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
 import { cadastrarProfessor } from "../../services/cadastroService";
-
 
 const ProfessorForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const role = "professor";
 
 
   async function handleSubmitProfessor(event: React.FormEvent<HTMLFormElement>) {
@@ -34,15 +33,12 @@ const ProfessorForm = () => {
 
   return (
     <>
-    <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
       <Card>
         <CardContent>
-        <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
           <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
-          <Typography  color='text.primary' variant='h6' align='center'>Sou Professor</Typography>
 
             {/* Email */}
-            <div className="row" color='secondary'>
+            <div className="row">
             <TextField 
               id="outlined-helperText"
               label="Email"
@@ -51,12 +47,12 @@ const ProfessorForm = () => {
               name="email"
               onChange={(event) => setEmail(event.target.value)}
               required 
-              color="secondary"
+              sx={{bgcolor:'background.default'}}
             /> </div>
 
 
             {/* Senha */}
-            <div className="row" color='secondary'>
+            <div className="row">
             <TextField 
               id="outlined-helperText"
               label="Senha"
@@ -65,11 +61,11 @@ const ProfessorForm = () => {
               name="password"
               onChange={(event) => setPassword(event.target.value)}
               required 
-              color="secondary"
+              sx={{bgcolor:'background.default'}}
             /> </div>
 
             {/* Nome */}
-            <div className="row" color='secondary'>
+            <div className="row">
             <TextField 
               id="outlined-helperText"
               label="Nome"
@@ -78,33 +74,18 @@ const ProfessorForm = () => {
               name="name"
               onChange={(event) => setName(event.target.value)}
               required 
-              color="secondary"
-            /> </div>
-
-            {/* Role */}
-            <div className="row" color='secondary'>
-            <TextField 
-              id="outlined-helperText"
-              label="Papel"
-              type="role"
-              variant="outlined" 
-              name="role"
-              onChange={(event) => setRole(event.target.value)}
-              required 
-              color="secondary"
+              sx={{bgcolor:'background.default'}}
             /> </div>
 
             <CardActions>
               <Box width='100%' display='flex' justifyContent='center'>
-              <Button color="secondary" variant="contained" type="submit">Confirmar</Button>     
+              <Button color="secondary" variant="outlined" type="submit">Confirmar</Button>     
               </Box>       
             </CardActions>
 
             </form>
-          </Box>
           </CardContent>
         </Card>
-      </Box>
     </>
   );  
 }
