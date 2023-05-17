@@ -9,12 +9,19 @@
 .page{
     max-width: 1920px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+
 }
-.page > .main-section{
-    width: fit-content;
+.main-section{
+    max-width: 80%;
     margin: auto;
-    padding: 0 1rem;
 }
+
+
+
+
+
 
 .title{
     font-size: 32px;
@@ -35,7 +42,9 @@
 
 /* BreakPoints de Respoonsividade  */
 
+
 @media screen and (max-width:842px) {
+
     .green-buttons-section{
         flex-direction: column;
         align-items: center;
@@ -66,6 +75,25 @@
         width: 100%;
         min-height: 224px;
     }
+    .recent-tutorials{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .title{
+        text-align: center;
+    }
+    .recent-tutorials{
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);  
+        grid-gap: 30px;
+    }
+    .tutorials .description{
+        text-align: center;
+    }
+
 }
 
 @media screen and (min-width:843px) {
@@ -87,14 +115,23 @@
         margin-top: 2rem;
         width: 100%;
         min-height: 224px;
+        margin-bottom: 2rem;
+    }
+    .recent-tutorials{
+        padding-bottom: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);  
+        grid-gap: 50px;
+    
     }
 }
+
+
 /* Configurações Das Sessões da Página  */
 
 .green-buttons-section{
     margin: auto;
     padding-bottom: 8rem;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -145,5 +182,16 @@
     color: white;
 }
 
+.tutorials{
 
+    display: flex;
+    flex-direction: column;
+;
+
+}
+
+.tutorial{
+  
+
+}
 

@@ -1,3 +1,4 @@
+import KeyboardArrowRightSharpIcon from '@mui/icons-material/KeyboardArrowRightSharp';
 import './styles.css'
 
 interface Card{
@@ -14,9 +15,9 @@ export function GreenCards ({title,description,url} : Card){
                 title && description &&// checar primeiro se o componente recebeu os dados para poder renderizar 
                 <div className="content">
                     <span className="card-title">{title}</span>
-                    <div>
+                    <div className='description-area'>
                         <span className="card-description">{description}</span>
-                        <image></image>
+                        <KeyboardArrowRightSharpIcon  className='arrowicon' fontSize='medium'/>
                     </div>
                 </div>
             }

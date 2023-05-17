@@ -3,7 +3,7 @@ import './styles.css'
 
 interface Project{
     title: string,
-    lastEditDate : string,
+    lastEditDate : any,
     description: string,
     url: string,
 }

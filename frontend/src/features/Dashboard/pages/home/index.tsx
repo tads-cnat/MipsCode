@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Header } from "../../../../components";
 import { GreenCards } from "../../../../components/Dashboard/GreenCard";
+import TutorialCard from "../../../../components/Dashboard/TutorialCard";
 import ProjectCard from "../../../../components/Dashboard/ProjectCard";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
@@ -25,7 +26,13 @@ export default function Dashboard() {
         title: string,
         description: string,
         url: string,
-        date: string
+        date: any
+    }
+
+    interface Tutorial {
+        title : string,
+        level : any,
+        url : string
     }
 
     const examples : any = [
@@ -50,27 +57,61 @@ export default function Dashboard() {
     const RecentProjects :any = [
         {
             "title": "Multiplicação por 2",
-            "lastEdit": "2023-05-15",
+            "date": "2023-05-15",
             "description": "Projeto que realiza a multiplicação de um valor por 2.",
             "url" : "#"
         },
         {
             "title": "Multiplicação por 2",
-            "lastEdit": "2023-05-15",
+            "date": "2023-05-15",
             "description": "Projeto que realiza a multiplicação de um valor por 2.",
             "url" : "#"
         },
         {
             "title": "Multiplicação por 2",
-            "lastEdit": "2023-05-15",
+            "date": "2023-05-15",
             "description": "Projeto que realiza a multiplicação de um valor por 2.",
             "url" : "#"
         }
     ]
 
+    const RecentTutorials : any = [
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" : 1,
+            "url" : "#"
+        },
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" : 2,
+            "url" : "#"
+        },
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" : 3,
+            "url" : "#"
+        },
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" :2,
+            "url" : "#"
+        },
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" : 2,
+            "url" : "#"
+        },
+        {
+            "title" : "Como calcular o mmc de dois valores utilizando o for.",
+            "level" : 3,
+            "url" : "#"
+        },
+    ]
+
     useEffect(() => {
         setbaselinks(examples);
         setProjects(RecentProjects)
+        setTutorials(RecentTutorials)
     }, [])
     
 
@@ -110,8 +151,22 @@ export default function Dashboard() {
                 {
                         recentProjects && recentProjects.map(( item : Project,index: number)=>{
                             if(item){
-                                console.log("1")
-                                return <ProjectCard title={item.title} description={item.description} lastEditDate={item.lastEdit} url={item.url} key={index}/>
+                                return <ProjectCard title={item.title} description={item.description} lastEditDate={item.date} url={item.url} key={index}/>
+                            }
+                        })
+                    }
+                </div>
+            </section>
+            <section className="tutorials">
+                <span className="title">Tutoriais</span>
+                <p className="description">Aprenda de maneira fácil e prática.</p>
+                <div className="recent-tutorials">
+                {
+                        tutorials && tutorials.map(( item : Tutorial,index: number)=>{
+                            if(item){
+                                return <div key={index}>
+                                    <TutorialCard title={item.title} level={item.level} url={item.url} />
+                                    </div>
                             }
                         })
                     }

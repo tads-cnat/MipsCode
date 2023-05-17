@@ -23,7 +23,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space;
 }
 
 .greencard>span{
@@ -37,4 +37,33 @@
 .greencard .card-description{
     font-size: 26px;
     font-weight: 400;
+    margin: auto 0;
+
 }
+
+.description-area {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*  responsividade */
+
+
+@media screen and (max-width:842px) {
+    .arrowicon{
+        position: relative;
+    }
+}
+
+@media screen and (min-width:843px) {
+    .arrowicon{
+        position: absolute;
+        right: 0;
+        bottom: 4px;
+    }
+}
+
+
+
+

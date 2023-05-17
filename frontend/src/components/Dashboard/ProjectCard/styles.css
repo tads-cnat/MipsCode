@@ -9,7 +9,7 @@
     border-radius: 13px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     margin: 10px 20px 10px 0;
     padding: 1rem;
 }
@@ -18,18 +18,21 @@
     font-size: 22px;
     line-height: 24.5px;
     font-weight: 700;
+    margin-bottom: 10px;
 }
 .project-last-edit{
     color: rgba(255, 255, 255, 0.5);
     font-size: 14px;
     line-height: 17px;
     font-weight: 400;
+    margin-bottom: 10px;
 }
 .project-description{
     color: rgba(255, 255, 255, 0.8);
     font-size: 18px;
     line-height: 19px;
     font-weight: 400px;
+    margin-bottom: 30px;
 }
 .project-url{
     min-height: 41px;
