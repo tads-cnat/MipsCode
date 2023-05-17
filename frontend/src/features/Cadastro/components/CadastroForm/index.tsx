@@ -1,48 +1,50 @@
 import * as React from 'react';
-import { Box, CardContent, Card } from '@mui/material';
+import { Box, CardContent, Card, Typography, Button } from '@mui/material';
 import EstudanteForm from '../EstudanteForm';
 import ProfessorForm from '../ProfessorForm';
 
 export default function CadastroForm() {
-  const [showEstudante, setShowEstudante] = React.useState(false);
+  const [showEstudante, setShowEstudante] = React.useState(true);
   const [showProfessor, setShowProfessor] = React.useState(false);
-  const container = React.useRef(null);
 
   const handleClickEstudante = () => {
-    setShowEstudante(!showEstudante);
+    setShowEstudante(true);
+    setShowProfessor(false);
   };
 
   const handleClickProfessor = () => {
-    setShowProfessor(!showProfessor);
+    setShowEstudante(false);
+    setShowProfessor(true);
   };
 
   return (
     <div>
-    <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
+    <Typography  color='text.primary' variant='h6' align='center' sx={{textAlign: 'center', alignItems: 'center', my: { sm: 5 } }}>CRIE UMA NOVA CONTA!</Typography>
+
+    <Box width='100vw' height='70vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
       <Card>
         <CardContent>
 
-          <button type="button" onClick={handleClickEstudante}>
-            {showEstudante ? 'Estudante' : 'Estudante' }
-          </button>
-          <Box sx={{ p: 1, my: 1, border: '1px solid' }}>
-            {showEstudante ? (
-              <EstudanteForm/>
-            ) : null}
+          <Box  sx={{ p: 1, my: 1 }}>
+          <Button
+            onClick={handleClickEstudante}
+            variant={showEstudante ? 'contained' : 'text'}
+            color='secondary'
+          >
+            Estudante
+          </Button>
+          <Button
+            onClick={handleClickProfessor}
+            variant={showProfessor ? 'contained' : 'text'}
+            color='secondary'
+          >
+            Professor
+          </Button>
+
+            {showEstudante && <EstudanteForm />}
+            {showProfessor && <ProfessorForm />}
           </Box>
 
-
-          <button type="button" onClick={handleClickProfessor}>
-            {showProfessor ? 'Professor'  :'Professor' }
-          </button>          
-          <Box sx={{ p: 1, my: 1, border: '1px solid' }}>
-            {showProfessor ? (
-              <ProfessorForm/>
-            ) : null}
-          </Box>
-
-
-          <Box sx={{ p: 1, my: 1, border: '1px solid' }} ref={container} />
         </CardContent>
       </Card>
     </Box>
