@@ -13,14 +13,6 @@
     flex-direction: column;
 
 }
-.main-section{
-    max-width: 80%;
-    margin: auto;
-}
-
-
-
-
 
 
 .title{
@@ -40,16 +32,64 @@
 }
 
 
+.project-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 38px;
+}
+
+.project-buttons button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 41px;
+    max-width: 242px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.project-buttons button span{
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.project-buttons .create {
+    background: #2EF2AA;
+    border: 1px solid #2EF2AA;
+    border-radius: 5px;
+   color: black;
+}
+.project-buttons .list{
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
 /* BreakPoints de Respoonsividade  */
 
 
 @media screen and (max-width:842px) {
 
+    .main-section{
+        max-width: 90%;
+        margin: auto;
+        margin-top: 2rem;
+    }
     .green-buttons-section{
         flex-direction: column;
         align-items: center;
-        
-    }
+        margin: auto;
+        padding-bottom: 8rem;
+        display: flex;
+    }   
     .green-buttons-section .title{
         text-align: center;
     }
@@ -90,24 +130,35 @@
         grid-template-columns: repeat(1, 2fr);  
         grid-gap: 30px;
     }
-    .tutorials .description{
+    .tutorials-section .description{
         text-align: center;
+    }
+    .tutorials-section{
+        display: flex;
+        flex-direction: column;
+    
     }
 
 }
 
 @media screen and (min-width:843px) {
+    .main-section{
+        max-width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+
     .green-buttons-section .cards{
         display: flex;
         margin: auto;
         justify-content: start;
         margin-top: 2rem;
+        margin-bottom: 1rem;
         width: 100%;
     }
     .project-buttons button{
         margin-right: 38px;
     }
-
     .recent-projects{
         display: flex;
         margin: auto;
@@ -128,70 +179,4 @@
 
 
 /* Configurações Das Sessões da Página  */
-
-.green-buttons-section{
-    margin: auto;
-    padding-bottom: 8rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.project-buttons-section{
-    margin: auto;
-    margin-bottom: 38px;
-}
-
-.project-buttons{
-    display: flex;
-    flex-direction: auto;
-    flex-wrap: wrap;
-    max-width: 100%;
-    width: 100%;
-    height: 100%;
-}
-.project-buttons button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 41px;
-    max-width: 232px;
-    width: 100%;
-    cursor: pointer;
-    border: none;
-}
-
-.project-buttons button span{
-    margin-left: 10px;
-}
-
-.project-buttons .create {
-    background: #2EF2AA;
-    border: 1px solid #2EF2AA;
-    border-radius: 5px;
-   color: black;
-
-}
-.project-buttons .list{
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #FFFFFF;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
-    color: white;
-}
-
-.tutorials{
-
-    display: flex;
-    flex-direction: column;
-;
-
-}
-
-.tutorial{
-  
-
-}
 

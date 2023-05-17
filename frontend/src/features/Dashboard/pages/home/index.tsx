@@ -52,8 +52,6 @@ export default function Dashboard() {
             "url": "#"
         },
     ]
-
- 
     const RecentProjects :any = [
         {
             "title": "Multiplicação por 2",
@@ -145,7 +143,7 @@ export default function Dashboard() {
                     <button className="list"><FolderOutlinedIcon/> <span>Ver Todos os Projetos</span></button>
                 </nav>
             </section>
-            <section className="">
+            <section className="recent-projects-section">
                 <span className="description">Projetos recentes</span>
                 <div className="recent-projects">
                 {
@@ -157,7 +155,7 @@ export default function Dashboard() {
                     }
                 </div>
             </section>
-            <section className="tutorials">
+            <section className="tutorials-section">
                 <span className="title">Tutoriais</span>
                 <p className="description">Aprenda de maneira fácil e prática.</p>
                 <div className="recent-tutorials">
