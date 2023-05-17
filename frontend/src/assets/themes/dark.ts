@@ -64,8 +64,8 @@ export const DarkTheme: ThemeOptions = createTheme({
   palette: {
     primary: {
       main: '#1F2024',
-      light: '#gb(75, 76, 79)',
-      dark: '#rgb(21, 22, 25)',
+      light: 'rgb(75, 76, 79)',
+      dark: 'rgb(21, 22, 25)',
       contrastText: '#ffffff',
     },
 
