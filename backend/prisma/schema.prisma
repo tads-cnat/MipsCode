@@ -8,16 +8,19 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  email     String     @unique
-  password  String
-  name      String
-  bio       String?
-  avatar    String? //avatar ira armazenar a URL da imagem de perfil 
-  role      String?
-  ide_theme Boolean    @default(true)
-  project   Project[]
-  Tutorial  Tutorial[]
+  id                 String      @id @default(uuid())
+  email              String      @unique
+  password           String
+  name               String
+  bio                String?
+  avatar             String? //avatar ira armazenar a URL da imagem de perfil 
+  role               String?
+  ide_theme          Boolean     @default(true)
+  project            Project[]
+  Tutorial           Tutorial[]
+  studentClassrom    Classroom?  @relation(fields: [classroomId], references: [id])
+  classroomId        String?
+  professorClassroom Classroom[] @relation("professor")
 }
 
 //tabela dos tutoriais 
@@ -27,10 +30,10 @@ model Tutorial {
   description String?
   content     String
   level       Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
   professor   User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
   userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 //tabela da documentação 
@@ -47,8 +50,49 @@ model Project {
   description String?
   favorite    Boolean  @default(false)
   content     String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
   author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
   userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Classroom {
+  id          String     @id @default(uuid())
+  students    User[]
+  tasklists   Tasklist[]
+  professor   User       @relation("professor", fields: [professorId], references: [id])
+  professorId String
+  cod         String     @unique
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Tasklist {
+  id          String     @id @default(uuid())
+  name        String     @unique
+  tasks       Task[]
+  Classroom   Classroom? @relation(fields: [classroomId], references: [id])
+  classroomId String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model Task {
+  id          String       @id @default(uuid())
+  title       String       @unique
+  description String
+  submissions Submission[]
+  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
+  tasklistId  String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Submission {
+  id        String  @id @default(uuid())
+  answer    String
+  isCorrect Boolean
+  userId    Int
+  Task      Task?   @relation(fields: [taskId], references: [id])
+  taskId    String?
 }

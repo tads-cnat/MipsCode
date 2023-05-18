@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { iProjeto } from "../../../../types/iProjetos";
 import { listarProjetos } from "../../services/projetoService";
 import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import Box from '@mui/material/Box';
 
 
 const Repositorio = () => {
@@ -24,13 +26,18 @@ const Repositorio = () => {
         MEU REPOSITÓRIO
       </Typography>
     
-      <table>
-      </table>
-      <ul>
+      <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
         {projetos.map(projeto => (
-          <li key={projeto.userId}>{projeto.title}</li>
+          <Card key={projeto.userId} sx={{ minWidth: 275, maxWidth: 345 }}>
+            <Typography variant="h5" component="h2">
+              {projeto.title}
+            </Typography>
+            <Typography variant="body2" component="p">
+              {projeto.description}
+            </Typography>
+          </Card>
         ))}
-      </ul>
+      </Box>
     </>
   );
 }

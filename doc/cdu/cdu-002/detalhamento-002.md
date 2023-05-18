@@ -42,7 +42,7 @@ Não há.
 | 3. Visitante preenche os dados do formulário. | | 
 | | 4. Verifica se corresponde a um usuário cadastrado.| 
 | 5. Visitante envia solicitação de cadastro. | | 
-| | 6. O visitante é cadastrado como usuário e notificado. |
+| | 6. O visitante é cadastrado como usuário e é notificado. |
 
 
 ### 5.2. Fluxo de exceção:

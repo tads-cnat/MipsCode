@@ -48,4 +48,4 @@ Não há.
 #### Fluxo de exceção (5): Usuário não encontrado
 a) Visitante envia solicitação de login; <br>
 b) Os dados são inválidos;  <br>
-c) A solicitação de login é negada e uma mensagem de erro retornada.
+c) A solicitação de login é negada e uma mensagem de erro é retornada.

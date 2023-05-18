@@ -15,11 +15,11 @@ export const jwtSecret = 'ke9E1Lk56fzz1B';
     PassportModule,
     JwtModule.register({
       secret: jwtSecret,
-      signOptions: { expiresIn: '5m' }, //W 30s, 7d, 24h
+      signOptions: { expiresIn: '24h' }, //W 30s, 7d, 24h
     }),
     UsersModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy]
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}

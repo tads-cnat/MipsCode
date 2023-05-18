@@ -28,9 +28,10 @@ export class UsersService {
   }
 
   async findAll(): Promise<User[]> {
-    return this.prisma.user.findMany({
+    return await this.prisma.user.findMany({
       include: {
         project: true,
+        Tutorial: true
       },
     });
   }
