@@ -14,6 +14,11 @@
 
 }
 
+section{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
 
 .title{
     font-size: 32px;
@@ -73,6 +78,28 @@
     color: white;
 }
 
+.list-tutorials{
+    margin: auto;
+    margin-right: 0;
+    margin-top: 20px;
+    align-items: center;
+    max-width: 232px;
+    min-height: 41px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+.list-tutorials span{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
 /* BreakPoints de Respoonsividade  */
 
 
@@ -138,7 +165,11 @@
         flex-direction: column;
     
     }
-
+    .list-tutorials{
+        margin: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
 }
 
 @media screen and (min-width:843px) {

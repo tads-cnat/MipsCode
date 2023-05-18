@@ -6,6 +6,7 @@ import TutorialCard from "../../../../components/Dashboard/TutorialCard";
 import ProjectCard from "../../../../components/Dashboard/ProjectCard";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
 export default function Dashboard() {
 
@@ -148,8 +149,10 @@ export default function Dashboard() {
                 <div className="recent-projects">
                 {
                         recentProjects && recentProjects.map(( item : Project,index: number)=>{
-                            if(item){
+                            if(recentProjects.indexOf(item) < 6){
                                 return <ProjectCard title={item.title} description={item.description} lastEditDate={item.date} url={item.url} key={index}/>
+                            }else{
+                                return;
                             }
                         })
                     }
@@ -161,14 +164,20 @@ export default function Dashboard() {
                 <div className="recent-tutorials">
                 {
                         tutorials && tutorials.map(( item : Tutorial,index: number)=>{
-                            if(item){
+                            if(tutorials.indexOf(item) < 6){
                                 return <div key={index}>
                                     <TutorialCard title={item.title} level={item.level} url={item.url} />
                                     </div>
+                            }else{
+                                return;
                             }
                         })
                     }
                 </div>
+                <button className="list-tutorials" onClick={()=>{window.location.assign("#")}}>
+                    <WorkOutlineIcon/>
+                    <span>Ver todos os tutoriais</span>
+                </button>
             </section>
             </div>
         </main>
