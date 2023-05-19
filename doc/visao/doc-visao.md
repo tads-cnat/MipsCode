@@ -109,7 +109,7 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 
 | **Código** | **Nome** | **Descrição** | **Prioridade** |
 | :---: | :---: | --- | :---: |
-| RNF001 | Tempo de Resposta | A administração deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de resposta na exportação. | Desejável
+| RNF001 | Tempo de Resposta | A administração deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de 5 segundos de resposta na exportação. | Desejável
 | RNF002 | Facilidade de uso | A administração deve prover um sistema com uma interface amigável que possibilite a seus usuários uma interação fácil. | Desejável
 | RNF003 | Manutenção e suporte da IDE | A administração irá garantir o funcionamento correto da IDE. | Desejável
 | RNF004 | Monitorar os tutoriais | A administração deverá manter a qualidade dos tutoriais. | Desejável
