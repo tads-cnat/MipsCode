@@ -10,13 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^4.5.8",
     "@material/textfield": "^14.0.0",
     "@material/web": "^1.0.0-pre.7",
     "@mui/icons-material": "^5.11.16",
-    "@mui/material": "^5.12.3",
+    "@mui/material": "^5.13.1",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.4.0",

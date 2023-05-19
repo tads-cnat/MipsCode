@@ -41,9 +41,10 @@ export class ProjectsController {
     return this.projectsService.findOne(id, userId);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
-    return this.projectsService.update(id, updateProjectDto);
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto, @Req() req: RequestProject) {
+    const userId = req.user.id;
+    return this.projectsService.update(id, updateProjectDto, userId);
   }
 
   @Delete(':id')
