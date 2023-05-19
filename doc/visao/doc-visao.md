@@ -115,3 +115,4 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | RNF004 | Monitorar os tutoriais | A administração deverá manter a qualidade dos tutoriais. | Desejável
 | RNF005 | Requisitos legais | A administração deverá adequar a plataforma de acordo com as normas legais(LGPD). | Obrigatório
 | RNF006 | Disponibilidade de armazenamento de arquivos | A administração deverá realizar o gerenciamento de cache para armazenamento de arquivos locais. | Obrigatório
+| RNF007 | Exportação de Arquivo | A administração deve ser capaz de disponibilizar o arquivo exportado pelo usuário em extensão asm. | Obrigatório
