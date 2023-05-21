@@ -9,7 +9,7 @@ const EstudanteForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [name] = useState("");
   const role = "estudante";
 
   async function handleSubmitEstudante(event: React.FormEvent<HTMLFormElement>) {
@@ -17,7 +17,7 @@ const EstudanteForm = () => {
     const estudanteForm: iEstudante = { email, password, name, role };
 
     try {
-      const res = await logarEstudante(estudanteForm);
+      const res = await logarEstudante( estudanteForm );
       if (res === "Success") {
         navigate('/login');
       }
@@ -59,24 +59,12 @@ const EstudanteForm = () => {
               />
             </div>
 
-            {/* Nome */}
-            <div className="row">
-              <TextField
-                id="outlined-helperText"
-                label="Nome"
-                type="name"
-                variant="outlined"
-                name="name"
-                onChange={(event) => setName(event.target.value)}
-                required
-                color="secondary"
-              />
-            </div>
+          
 
             <CardActions>
-              <Box width='100%' display='flex' justifyContent='center'>
-                <Button color="secondary" variant="outlined" type="submit">Confirmar</Button>
-              </Box>
+              <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <Button color="secondary" variant="outlined" type="submit">Entrar</Button>
+              </div>
             </CardActions>
           </form>
         </CardContent>
