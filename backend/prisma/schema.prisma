@@ -14,7 +14,7 @@ model User {
   name               String
   bio                String?
   avatar             String? //avatar ira armazenar a URL da imagem de perfil 
-  role               String?
+  role               String
   ide_theme          Boolean     @default(true)
   project            Project[]
   Tutorial           Tutorial[]
@@ -30,7 +30,7 @@ model Tutorial {
   description String?
   content     String
   level       Int
-  professor   User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
+  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -39,7 +39,7 @@ model Tutorial {
 //tabela da documentação 
 model Document {
   id      String @id @default(uuid())
-  title   String
+  title   String @unique
   content String
 }
 

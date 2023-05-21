@@ -2,136 +2,95 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { retry } from 'rxjs';
+import { isUUID } from 'class-validator';
 
 @Injectable()
 export class ProjectsService {
-  //construtor para poder usar o primsa Service
   constructor(private prisma: PrismaService) {}
 
   async create(data: CreateProjectDto) {
+    if (!isUUID(data.userId)) {
+      throw new HttpException('Id do usuário inválido', HttpStatus.FORBIDDEN);
+    }
+
     try {
-      return this.prisma.project.create({ data: data });
+      return await this.prisma.project.create({ data });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Projeto não possui ',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Falha ao criar projeto', HttpStatus.FORBIDDEN);
     }
   }
 
   async findAll(userId: string) {
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId },
-        include: { project: true },
+      return await this.prisma.project.findMany({
+        where: { userId }
       });
-
-      return user.project;
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Projeto Encontrado',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      if (error.code === 'P2001') {
+        throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
+      } else {
+        throw new HttpException('Algo de errado na requisição', HttpStatus.BAD_REQUEST);
+      }
     }
   }
 
   async findOne(id: string, userId: string) {
-    try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId },
-        include: { project: true },
-      });
-
-      return user.project.find((project) => project.id === id);
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum Projeto Encontrado',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+    if (!isUUID(id)) {
+      throw new HttpException('Id do usuário inválido', HttpStatus.FORBIDDEN);
     }
+
+    const user = await this.prisma.user.findUnique({
+      where: { id: userId },
+      include: { project: true },
+    });
+
+    const project = user.project.find((project) => project.id === id);
+
+    if (!project) {
+      throw new HttpException('Projeto não encontrado', HttpStatus.NOT_FOUND);
+    }
+
+    return project
   }
 
-  async update(id: string, data: UpdateProjectDto) {
+  async update(id: string, data: UpdateProjectDto, userId: string) {
+    if (!isUUID(data.userId)) {
+      throw new HttpException('Id do usuário inválido', HttpStatus.FORBIDDEN);
+    }
+  
+    const project = await this.prisma.project.findFirst({ where: { id, userId } });
+  
+    if (!project) {
+      throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
+    }
+  
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: data.userId },
-        include: { project: true },
-      });
-
-      const project = user.project.find((project) => project.id === id);
-
-      if (!project) {
-        throw new Error('Projeto Não Existe');
-      }
-
       return await this.prisma.project.update({
         data,
-        where: {
-          id,
-        },
+        where: { id }
       });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Infelizmente algo deu Errado',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Falha ao atualizar projeto', HttpStatus.FORBIDDEN);
     }
   }
 
   async remove(id: string, userId: string) {
+    const project = await this.prisma.project.findFirst({
+      where: { id, userId }
+    });
+
+    if (!project) {
+      throw new HttpException('Projeto não encontrado', HttpStatus.NOT_FOUND);
+    }
+
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId },
-        include: { project: true },
-      });
-
-      const project = user.project.find((project) => project.id === id);
-
-      if (!project) {
-        throw new Error('Projeto Não Existe');
-      }
-
       return await this.prisma.project.delete({
         where: {
           id,
         },
       });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.BAD_REQUEST,
-          error: 'Infelizmente algo deu Errado',
-        },
-        HttpStatus.BAD_REQUEST,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Falha ao remover projeto.', HttpStatus.FORBIDDEN);
     }
   }
 }
