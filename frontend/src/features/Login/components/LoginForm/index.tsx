@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, CardContent, Card, Typography, Button } from '@mui/material';
-import EstudanteForm from '../../../Login/components/EstudanteForm';
-import ProfessorForm from '../../../Login/components/ProfessorForm';
+import EstudanteLoginForm from '../../../Login/components/EstudanteForm';
+import ProfessorLoginForm from '../../../Login/components/ProfessorForm';
 
 
 
@@ -37,8 +37,8 @@ const LoginForm = () => {
                 Professor
               </Button>
 
-              {showEstudante && <EstudanteForm />}
-              {showProfessor && <ProfessorForm />}
+              {showEstudante && <EstudanteLoginForm/>}
+              {showProfessor && <ProfessorLoginForm />}
             </Box>
           </CardContent>
         </Card>

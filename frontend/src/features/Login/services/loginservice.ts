@@ -1,41 +1,34 @@
+import { headers } from "../../../data";
 import api from "../../../services/api";
 import { iEstudante } from "../../../types/iEstudantes";
 import { iProfessor } from "../../../types/iProfessores";
 
-export async function logarEstudante(estudante: iEstudante) {
+export async function logarEstudante({ email, password }: iEstudante) {
   try {
-    const { email, password } = estudante;
-
     if (!email || !password) {
-      return "Bad Request";
+      throw new Error("Bad Request: Email and password are required.");
     }
 
-    const response = await api.post("/login", estudante);
-    const { data } = response;
+    const response = await api.post("/users", { email, password }, {
+      headers: headers(),
+    });
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
+    if (response.status === 200) {
       return "Success";
     }
-
-    return "Authentication failed";
   } catch (error) {
     console.log(error);
-    return {
-      error: error,
-    };
+    return error;
   }
 }
 
-export async function logarProfessor(professor: iProfessor) {
+export async function logarProfessor({ email, password }: iProfessor) {
   try {
-    const { email, password } = professor;
-
     if (!email || !password) {
-      return "Bad Request";
+      throw new Error("Bad Request: Email and password are required.");
     }
 
-    const response = await api.post("/login", professor);
+    const response = await api.post("/login", { email, password });
     const { data } = response;
 
     if (data.token) {
@@ -46,8 +39,6 @@ export async function logarProfessor(professor: iProfessor) {
     return "Authentication failed";
   } catch (error) {
     console.log(error);
-    return {
-      error: error,
-    };
+    return error;
   }
 }
