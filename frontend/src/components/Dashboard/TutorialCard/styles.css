@@ -1,0 +1,75 @@
+.tutorial-card{
+    max-width: 350px;
+    width: 100%;
+    min-height: 189px;
+    background: #24252A;
+    border: 1px solid #333333;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.tutorial-title{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 24px;
+    max-width: 349.05px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.dificulty-area{
+    display: flex;
+    
+}
+
+.level{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+.easy{
+    color: #2EF2AA;
+    margin-left: 5px;
+}
+.medium{
+    color: #D9A318;
+    margin-left: 5px;
+}
+.hard{
+    color: #D91828;
+    margin-left: 5px;
+}
+
+.tutorial-card > .dificulty-area{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+button{
+    max-width: 170px;
+    width: 100%;
+    min-height: 41px;
+    background: rgba(46, 242, 170, 0.05);
+    border: 1px solid #2EF2AA;
+    color: #2EF2AA;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    margin: auto 0 ;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}

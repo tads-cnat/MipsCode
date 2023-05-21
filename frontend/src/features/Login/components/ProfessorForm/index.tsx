@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { iEstudante } from "../../../../types/iEstudantes";
+import { iProfessor } from "../../../../types/iProfessores";
 import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
-import { logarEstudante } from "../../../Login/services/loginservice";
+import { logarProfessor } from "../../../Login/services/loginservice";
 
-
-const EstudanteForm = () => {
+const ProfessorForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const role = "estudante";
+  const [name] = useState("");
+  const role = "professor";
 
-  async function handleSubmitEstudante(event: React.FormEvent<HTMLFormElement>) {
+
+  async function handleSubmitProfessor(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const estudanteForm: iEstudante = { email, password, name, role };
+    const professorForm: iProfessor = { email, password, name, role };
 
     try {
-      const res = await logarEstudante(estudanteForm);
+      const res = await logarProfessor(professorForm);
       if (res === "Success") {
         navigate('/login');
       }
@@ -30,7 +30,8 @@ const EstudanteForm = () => {
     <>
       <Card>
         <CardContent>
-          <form onSubmit={handleSubmitEstudante} encType="multipart/form-data">
+          <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
+
             {/* Email */}
             <div className="row">
               <TextField
@@ -41,9 +42,10 @@ const EstudanteForm = () => {
                 name="email"
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                color="secondary"
+                sx={{ bgcolor: 'background.default' }}
               />
             </div>
+
 
             {/* Senha */}
             <div className="row">
@@ -55,34 +57,22 @@ const EstudanteForm = () => {
                 name="password"
                 onChange={(event) => setPassword(event.target.value)}
                 required
-                color="secondary"
+                sx={{ bgcolor: 'background.default' }}
               />
             </div>
 
-            {/* Nome */}
-            <div className="row">
-              <TextField
-                id="outlined-helperText"
-                label="Nome"
-                type="name"
-                variant="outlined"
-                name="name"
-                onChange={(event) => setName(event.target.value)}
-                required
-                color="secondary"
-              />
-            </div>
+            
 
             <CardActions>
               <Box width='100%' display='flex' justifyContent='center'>
-                <Button color="secondary" variant="outlined" type="submit">Confirmar</Button>
+                <Button color="secondary" variant="outlined" type="submit">Entrar</Button>
               </Box>
             </CardActions>
+
           </form>
         </CardContent>
       </Card>
     </>
   );
 }
-
-export default EstudanteForm;
+export default ProfessorForm;
