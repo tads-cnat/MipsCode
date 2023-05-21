@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import CadastroPage from "./features/Cadastro/pages";
-import CadastroForm from "./features/Cadastro/components/CadastroForm";
-import LoginForm from "./features/Login/components/LoginForm";
 import CriarProjeto from "./features/GerenciarProjeto/pages/CriarProjeto";
 import Home from "./features/Home/index";
 import Dashboard from "./features/Dashboard/pages/home";
+import LoginPage from "./features/Login/pages";
+import Repositorio from "./features/GerenciarProjeto/pages/Repositório";
 
 const Rotas = () => {
     return (
@@ -12,9 +12,10 @@ const Rotas = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/cadastro" element={<CadastroPage />} />
-                <Route path="/login" element={<LoginForm />} />
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/criar-projeto" element={<CriarProjeto />} />
-                <Route path="/portal" element={<CadastroForm />} />
+                <Route path="/ver-projetos" element={<Repositorio />} />
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </BrowserRouter>
     );

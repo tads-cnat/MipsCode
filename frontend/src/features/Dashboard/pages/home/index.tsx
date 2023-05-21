@@ -8,14 +8,26 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
-export default function Dashboard() {
+import { useNavigate } from "react-router-dom";
 
+export default function Dashboard() {
+    const navigate = useNavigate();
 
     //links dos cards verdes da parte superior da tela, padrões do dashboard
     const  [baselinks, setbaselinks] :any = useState()
     const  [recentProjects,setProjects] : any = useState()
     const  [tutorials,setTutorials] : any = useState()
 
+
+    function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        navigate('/criar-projeto/');
+    }
+
+    function handleClickVer(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        navigate('/ver-projetos/');
+    }
 
     interface Baselink{
         title: string,
@@ -140,8 +152,8 @@ export default function Dashboard() {
                 <span className="title">Meus Projetos</span>
                 <p className="description">Guarde seus projetos e acesse onde estiver.</p>
                 <nav className="project-buttons">
-                    <button className="create"><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></button>
-                    <button className="list"><FolderOutlinedIcon/> <span>Ver Todos os Projetos</span></button>
+                    <button className="create" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></button>
+                    <button className="list" onClick={handleClickVer}><FolderOutlinedIcon/> <span>Ver Todos os Projetos</span></button>
                 </nav>
             </section>
             <section className="recent-projects-section">

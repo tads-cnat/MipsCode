@@ -11,7 +11,6 @@ import { Typography, Card, CardContent, CardActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
-import { useContext } from 'react';
 import Footer from '../../../../components/Footer';
 
 const CriarProjeto = () => {

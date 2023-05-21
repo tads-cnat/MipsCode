@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { iProfessor } from "../../../../types/iProfessores";
-import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
+import { Box, Card, CardContent, CardActions, TextField, Button, Snackbar } from '@mui/material';
 import { cadastrarProfessor } from "../../services/cadastroService";
 
-const ProfessorForm = () => {
+const ProfessorCadastroForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const role = "professor";
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  const handleSnackbarClose = () => {
+    setShowSuccessMessage(false);
+  };
 
   async function handleSubmitProfessor(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,7 +24,10 @@ const ProfessorForm = () => {
         
         const res = await cadastrarProfessor( professorForm )
         if(res){
-          () => navigate('/login')
+          setShowSuccessMessage(true);
+          setTimeout(() => {
+            navigate('/login');
+          }, 2000);
         }
 
         console.log('O botão foi clicado!');
@@ -38,9 +45,8 @@ const ProfessorForm = () => {
           <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
 
             {/* Email */}
-            <div className="row">
             <TextField 
-              id="outlined-helperText"
+              id="outlined-helperText-email"
               label="Email"
               type="email"
               variant="outlined" 
@@ -48,13 +54,12 @@ const ProfessorForm = () => {
               onChange={(event) => setEmail(event.target.value)}
               required 
               sx={{bgcolor:'background.default'}}
-            /> </div>
+            /> 
 
 
             {/* Senha */}
-            <div className="row">
             <TextField 
-              id="outlined-helperText"
+              id="outlined-helperText-password"
               label="Senha"
               type="password"
               variant="outlined" 
@@ -62,12 +67,12 @@ const ProfessorForm = () => {
               onChange={(event) => setPassword(event.target.value)}
               required 
               sx={{bgcolor:'background.default'}}
-            /> </div>
+            /> 
 
             {/* Nome */}
-            <div className="row">
+
             <TextField 
-              id="outlined-helperText"
+              id="outlined-helperText-name"
               label="Nome"
               type="name"
               variant="outlined" 
@@ -75,7 +80,7 @@ const ProfessorForm = () => {
               onChange={(event) => setName(event.target.value)}
               required 
               sx={{bgcolor:'background.default'}}
-            /> </div>
+            /> 
 
             <CardActions>
               <Box width='100%' display='flex' justifyContent='center'>
@@ -86,7 +91,14 @@ const ProfessorForm = () => {
             </form>
           </CardContent>
         </Card>
+
+        <Snackbar
+        open={showSuccessMessage}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message="Cadastro realizado com sucesso!"
+      />
     </>
   );  
 }
-export default ProfessorForm;
+export default ProfessorCadastroForm;

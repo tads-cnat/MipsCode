@@ -69,7 +69,7 @@ function Header() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit">
+              color="secondary">
               <MenuIcon />
             </IconButton>
 
