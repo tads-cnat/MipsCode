@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, CardContent, Card, Typography, Button } from '@mui/material';
-import EstudanteForm from '../EstudanteForm';
-import ProfessorForm from '../ProfessorForm';
+import EstudanteCadastroForm from '../EstudanteForm';
+import ProfessorCadastroForm from '../ProfessorForm';
 
 export default function CadastroForm() {
   const [showEstudante, setShowEstudante] = React.useState(true);
@@ -18,8 +18,10 @@ export default function CadastroForm() {
   };
 
   return (
-    <div>
-    <Typography  color='text.primary' variant='h6' align='center' sx={{textAlign: 'center', alignItems: 'center', my: { sm: 5 } }}>CRIE UMA NOVA CONTA!</Typography>
+    <Box>
+    <Typography  color='text.primary' variant='h6' align='center' sx={{textAlign: 'center', alignItems: 'center', my: { sm: 5 } }}>
+      CRIE UMA NOVA CONTA!
+    </Typography>
 
     <Box width='100vw' height='70vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
       <Card>
@@ -33,6 +35,7 @@ export default function CadastroForm() {
           >
             Estudante
           </Button>
+
           <Button
             onClick={handleClickProfessor}
             variant={showProfessor ? 'contained' : 'text'}
@@ -41,13 +44,13 @@ export default function CadastroForm() {
             Professor
           </Button>
 
-            {showEstudante && <EstudanteForm />}
-            {showProfessor && <ProfessorForm />}
+            {showEstudante && <EstudanteCadastroForm />}
+            {showProfessor && <ProfessorCadastroForm />}
           </Box>
 
         </CardContent>
       </Card>
     </Box>
-    </div>
+    </Box>
   );
 }

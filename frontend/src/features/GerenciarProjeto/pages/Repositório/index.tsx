@@ -4,6 +4,7 @@ import { listarProjetos } from "../../services/projetoService";
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
+import { Footer, Header } from "../../../../components";
 
 
 const Repositorio = () => {
@@ -22,6 +23,7 @@ const Repositorio = () => {
 
   return (
     <>
+      <Header/>
       <Typography variant="subtitle1" display="block" gutterBottom color="text.primary">
         MEU REPOSITÓRIO
       </Typography>
@@ -38,6 +40,7 @@ const Repositorio = () => {
           </Card>
         ))}
       </Box>
+      <Footer/>
     </>
   );
 }
