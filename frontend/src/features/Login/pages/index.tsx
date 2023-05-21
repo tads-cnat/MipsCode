@@ -1,8 +1,7 @@
 import { Footer, Header } from "../../../components";
 import LoginForm from "../../Login/components/LoginForm";
-import { Typography } from '@mui/material';
 
-const LogPage = () => {
+const LoginPage = () => {
   return (
     <div>
       <Header/>
@@ -12,4 +11,4 @@ const LogPage = () => {
   );
 };
 
-export default LogPage;
+export default LoginPage;

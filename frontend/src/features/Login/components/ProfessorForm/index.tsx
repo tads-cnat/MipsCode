@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { iProfessor } from "../../../../types/iProfessores";
 import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
-import { logarProfessor } from "../../../Login/services/loginservice";
+import { logarProfessor } from "../../services/loginService";
 
 const ProfessorForm = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const ProfessorForm = () => {
     try {
       const res = await logarProfessor(professorForm);
       if (res === "Success") {
-        navigate('/login');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ const ProfessorForm = () => {
             {/* Email */}
             <div className="row">
               <TextField
-                id="outlined-helperText"
+                id="outlined-helperText-email"
                 label="Email"
                 type="email"
                 variant="outlined"
@@ -50,7 +50,7 @@ const ProfessorForm = () => {
             {/* Senha */}
             <div className="row">
               <TextField
-                id="outlined-helperText"
+                id="outlined-helperText-password"
                 label="Senha"
                 type="password"
                 variant="outlined"
