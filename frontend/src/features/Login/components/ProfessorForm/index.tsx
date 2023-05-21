@@ -4,7 +4,7 @@ import { iProfessor } from "../../../../types/iProfessores";
 import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
 import { logarProfessor } from "../../services/loginService";
 
-const ProfessorForm = () => {
+const ProfessorLoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,4 +75,4 @@ const ProfessorForm = () => {
     </>
   );
 }
-export default ProfessorForm;
+export default ProfessorLoginForm;
