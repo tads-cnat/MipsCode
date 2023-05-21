@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { iEstudante } from "../../../../types/iEstudantes";
 import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
-import { logarEstudante } from "../../../Login/services/loginservice";
+import { logarEstudante } from "../../services/loginService";
 
 
 const EstudanteForm = () => {
@@ -19,7 +19,7 @@ const EstudanteForm = () => {
     try {
       const res = await logarEstudante( estudanteForm );
       if (res === "Success") {
-        navigate('/login');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.log(error);
@@ -34,7 +34,7 @@ const EstudanteForm = () => {
             {/* Email */}
             <div className="row">
               <TextField
-                id="outlined-helperText"
+                id="outlined-helperText-email"
                 label="Email"
                 type="email"
                 variant="outlined"
@@ -48,7 +48,7 @@ const EstudanteForm = () => {
             {/* Senha */}
             <div className="row">
               <TextField
-                id="outlined-helperText"
+                id="outlined-helperText-password"
                 label="Senha"
                 type="password"
                 variant="outlined"
@@ -62,9 +62,9 @@ const EstudanteForm = () => {
           
 
             <CardActions>
-              <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+              <Box style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <Button color="secondary" variant="outlined" type="submit">Entrar</Button>
-              </div>
+              </Box>
             </CardActions>
           </form>
         </CardContent>
