@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateTutorialDto } from './dto/create-tutorial.dto';
 import { UpdateTutorialDto } from './dto/update-tutorial.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { isUUID } from 'class-validator';
 
 @Injectable()
 export class TutorialsService {
@@ -12,7 +13,11 @@ export class TutorialsService {
       return await this.prisma.tutorial.create({ data: createTutorialDto });
 
     } catch (error) {
-      throw new HttpException('Already exists', HttpStatus.CONFLICT);
+      if (error.code === 'P2002') {
+        throw new HttpException('Tutorial already exists', HttpStatus.CONFLICT);
+      } else {
+        throw new HttpException('failed to create tutorial', HttpStatus.FORBIDDEN);
+      }
     }
   }
 
@@ -27,82 +32,71 @@ export class TutorialsService {
   }
 
   async findOne(id: string) {
+    if (!isUUID(id)) {
+      throw new HttpException('Invalid id', HttpStatus.FORBIDDEN);
+    }
+
     try {
       return await this.prisma.tutorial.findUnique({ where: { id } });
 
     } catch (error) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Tutorial not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  async findAllFromProfessor(userId: string) {
+  async findAllByAuthor(userId: string) {
     try {
-      const user = await this.prisma.user.findFirst({
-        where: { id: userId }, 
-        include: { Tutorial: true }
+      return await this.prisma.tutorial.findMany({
+        where: { userId }
       });
-      return user.Tutorial
-
     } catch (error) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-    }
+      if (error.code === 'P2001') {
+        throw new HttpException('No tutorial found', HttpStatus.NOT_FOUND);
+      } else {
+        throw new HttpException('Something gone wrong', HttpStatus.BAD_REQUEST);
+      }    }
   }
 
-  async findOneFromProfessor(id: string, userId: string) {
+  async findOneByAuthor(id: string, userId: string) {
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { Tutorial: true }
+      return await this.prisma.tutorial.findFirstOrThrow({
+        where: { id, userId }
       });
-      return user.Tutorial.find(project => project.id === id);
-
     } catch (error) {
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Tutorial not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  async updateProfessorTutorial(id: string, updateTutorialDto: UpdateTutorialDto) {
+  async updateAnAuthorTutorial(id: string, updateTutorialDto: UpdateTutorialDto, userId: string) {
+    const tutorial = await this.prisma.tutorial.findFirst({ where: { id, userId } });
+  
+    if (!tutorial) {
+      throw new HttpException('Tutorial not found', HttpStatus.NOT_FOUND);
+    }
+  
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: updateTutorialDto.userId }, 
-        include: { Tutorial: true }
-      });
-
-      const tutorial = user.Tutorial.find(tutorial => tutorial.id === id);
-
-      if (!tutorial) {
-        throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-      }
-
       return await this.prisma.tutorial.update({
         data: updateTutorialDto,
-        where: {
-          id,
-        },
+        where: { id }
       });
     } catch (error) {
-      throw new HttpException('Something gone wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('failed to update tutorial', HttpStatus.FORBIDDEN);
     }
   }
 
-  async removeProfessorTutorial(id: string, userId: string) {
+  async removeAnAuthorTutorial(id: string, userId: string) {
+    const tutorial = await this.prisma.tutorial.findFirst({ where: { id, userId } });
+  
+    if (!tutorial) {
+      throw new HttpException('Tutorial not found', HttpStatus.NOT_FOUND);
+    }
+  
     try {
-      const user = await this.prisma.user.findUnique({
-        where: { id: userId }, 
-        include: { Tutorial: true }
-      });
-
-      const tutorial = user.Tutorial.find(tutorial => tutorial.id === id);
-
-      if (!tutorial) {
-        throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-      }
-
       return await this.prisma.tutorial.delete({
         where: { id }
-      })
+      });
     } catch (error) {
-      throw new HttpException('Something gone wrong', HttpStatus.BAD_REQUEST);
+      throw new HttpException('failed to delete tutorial', HttpStatus.FORBIDDEN);
     }
   }
 }

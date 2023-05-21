@@ -2,6 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateDocumentDto } from './dto/create-document.dto';
 import { UpdateDocumentDto } from './dto/update-document.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { isUUID } from 'class-validator';
 
 @Injectable()
 export class DocumentService {
@@ -9,84 +10,50 @@ export class DocumentService {
 
   async create(data: CreateDocumentDto) {
     try {
-      const documentExists = await this.prisma.document.findFirst({
-        where: {
-          title: data.title,
-        },
-      });
-      //caso ja exista um topico da documentação com esse nome , retorne um erro
-      if (documentExists) {
-        throw new Error('documento ja existente');
-      }
-
-      return this.prisma.document.create({ data: data });
+      return await this.prisma.document.create({ data });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.CONFLICT,
-          error: 'Documento ja inserido na documentação',
-        },
-        HttpStatus.CONFLICT,
-        {
-          cause: error,
-        },
-      );
+      if (error.code === 'P2002') {
+        throw new HttpException('Documento já existe', HttpStatus.CONFLICT);
+      } else {
+        throw new HttpException('Falha ao criar documento', HttpStatus.FORBIDDEN);
+      }
     }
   }
 
   async findAll() {
     try {
-      return this.prisma.document.findMany();
+      return await this.prisma.document.findMany();
     } catch (error) {
-      // caso ele tente listar uma lista vazia na API
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum documento encontrado na documentação',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      if (error.code === 'P2001') {
+        throw new HttpException('Nenhum documento encontrado', HttpStatus.NOT_FOUND);
+      } else {
+        throw new HttpException('Algo de errado na requisição', HttpStatus.BAD_REQUEST);
+      }
     }
   }
 
   async findOne(id: string) {
+    if (!isUUID(id)) {
+      throw new HttpException('Id inválido', HttpStatus.FORBIDDEN);
+    }
+
     try {
-      return this.prisma.document.findUnique({
-        where: {
-          id,
-        },
+      return await this.prisma.document.findFirstOrThrow({
+        where: { id }
       });
     } catch (error) {
-      // caso ele tente listar uma lista vazia na API
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'Nenhum documento encontrado na documentação',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
     }
   }
 
   async update(id: string, data: UpdateDocumentDto) {
+    const document = await this.prisma.document.findFirst({where: { id }})
+
+    if (!document) {
+      throw new HttpException('Documento não encontrado', HttpStatus.NOT_FOUND);
+    }
+
     try {
-      const documentExists = await this.prisma.document.findUnique({
-        where: {
-          id: id,
-        },
-      });
-
-      //caso não exista esse documento na base de dados retorne um erro
-      if (!documentExists) {
-        throw new Error('documento não encontrado ');
-      }
-
       return await this.prisma.document.update({
         data,
         where: {
@@ -94,48 +61,25 @@ export class DocumentService {
         },
       });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'documento não encontrado ',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Falha ao criar documento', HttpStatus.FORBIDDEN);
     }
   }
 
   async remove(id: string) {
+    const document = await this.prisma.document.findFirst({where: { id }})
+
+    if (!document) {
+      throw new HttpException('Documento não encontrado', HttpStatus.NOT_FOUND);
+    }
+
     try {
-      const documentExists = await this.prisma.document.findUnique({
-        where: {
-          id: id,
-        },
-      });
-
-      //caso não exista esse documento na base de dados retorne um erro
-      if (!documentExists) {
-        throw new Error('documento não encontrado ');
-      }
-
       return await this.prisma.document.delete({
         where: {
           id,
         },
       });
     } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: 'documento não encontrado ',
-        },
-        HttpStatus.NOT_FOUND,
-        {
-          cause: error,
-        },
-      );
+      throw new HttpException('Falha ao apagar documento', HttpStatus.FORBIDDEN);
     }
   }
 }
