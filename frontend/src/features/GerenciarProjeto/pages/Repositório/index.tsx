@@ -1,50 +1,81 @@
 import { useEffect, useState } from "react";
-import { iProjeto } from "../../../../types/iProjetos";
 import { listarProjetos } from "../../services/projetoService";
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import Box from '@mui/material/Box';
 import { Footer, Header } from "../../../../components";
+import { Typography, Card, CardContent, Box, Button } from '@mui/material';
+import { iProjeto } from "../../../../types/iProjetos";
+import { useNavigate } from "react-router-dom";
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 
 
 const Repositorio = () => {
   const [projetos, setProjetos] = useState<iProjeto[]>([]);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
-    listarProjetos()
-        .then(() =>
-            setProjetos(projetos)
-        )            
-        .catch((erro) =>
-            console.log(erro)
-        )
-  },);
+    carregarProjetos();
+  }, []);
+
+  async function carregarProjetos() {
+    try {
+      const response = await listarProjetos();
+      if (response && response.data) {
+        setProjetos(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    navigate('/criar-projeto/');
+  }
+
+  function handleClickImportar(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    navigate('/criar-projeto/');
+  }
 
 
   return (
     <>
       <Header/>
-      <Typography variant="subtitle1" display="block" gutterBottom color="text.primary">
-        MEU REPOSITÓRIO
-      </Typography>
-    
-      <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-        {projetos.map(projeto => (
-          <Card key={projeto.userId} sx={{ minWidth: 275, maxWidth: 345 }}>
-            <Typography variant="h5" component="h2">
-              {projeto.title}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {projeto.description}
-            </Typography>
+
+      <Box>
+        <Typography variant="h6" align="left" padding={5} gutterBottom color="primary.contrastText">
+          Meus Projetos
+        </Typography>
+
+        <nav className="project-buttons">
+          <Button variant="outlined" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
+          <Button variant="contained" onClick={handleClickImportar}><FolderOutlinedIcon/><span>Importar Projeto</span></Button>        
+        </nav>
+
+        {projetos.map((projeto) => (
+          <Card key={projeto.userId} variant="outlined">
+            <CardContent>
+              <Typography variant="h5">{projeto.title}</Typography>
+
+              <Typography variant="body1">{projeto.description}</Typography>
+
+              <Typography variant="body2" color="secondary">
+                {projeto.content}
+              </Typography>
+
+              <Typography variant="body2" color="secondary">
+                Criado por: {projeto.userId}
+              </Typography>
+
+            </CardContent>
           </Card>
         ))}
       </Box>
+
       <Footer/>
     </>
   );
 }
 
 export default Repositorio;
-
-

@@ -7,7 +7,7 @@ import { iProjeto } from "../../../types/iProjetos";
 export async function criarProjetos(projeto: iProjeto) {
   try {
     const { title, description, content, userId } = projeto;
-    // caso você tente criar um projeto sem nome e sem referenciar o ID do usuario
+
     if (!title || !userId) {
       return "Bad Request";
     }
@@ -20,7 +20,7 @@ export async function criarProjetos(projeto: iProjeto) {
       }
     );
 
-    if (Resapi.data) {
+    if (Resapi && Resapi.data) {
       return "Sucess";
     }
   } catch (error) {
@@ -39,10 +39,9 @@ export async function listarProjetos() {
       headers: headers(),
     });
 
-    if (Resapi) {
-      return Resapi;
+    if (Resapi && Resapi.data) {
+      return Resapi.data;
     }
-    
   } catch (error) {
     console.log(error);
 
