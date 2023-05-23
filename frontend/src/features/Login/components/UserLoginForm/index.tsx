@@ -1,28 +1,37 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { iProfessor } from "../../../../types/iProfessores";
-import { Box, Card, CardContent, CardActions, TextField, Button } from '@mui/material';
-import { logarProfessor } from "../../services/loginService";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardActions,
+  TextField,
+  Button,
+} from "@mui/material";
+import { LoginType } from "../../../../types/iLogintype";
+import { loginUser } from "../../services/loginservice";
+import { AuthContext } from "../../services/authcontext";
 
-const ProfessorLoginForm = () => {
+const UserLoginForm = () => {
+  const { addUser } = AuthContext();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name] = useState("");
-  const role = "professor";
 
-
-  async function handleSubmitProfessor(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmitProfessor(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
-    const professorForm: iProfessor = { email, password, name, role };
-
+    const professorForm: LoginType = { email, password };
     try {
-      const res = await logarProfessor(professorForm);
-      if (res === "Success") {
-        navigate('/dashboard');
+      console.log(professorForm);
+      const res: any = await loginUser(professorForm);
+      if (res.msg == "Sucess") {
+        addUser(res.userData);
+        navigate("/dashboard");
       }
     } catch (error) {
-      console.log(error);
+      return error;
     }
   }
 
@@ -31,7 +40,6 @@ const ProfessorLoginForm = () => {
       <Card>
         <CardContent>
           <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
-
             {/* Email */}
             <div className="row">
               <TextField
@@ -42,10 +50,9 @@ const ProfessorLoginForm = () => {
                 name="email"
                 onChange={(event) => setEmail(event.target.value)}
                 required
-                sx={{ bgcolor: 'background.default' }}
+                sx={{ bgcolor: "background.default" }}
               />
             </div>
-
 
             {/* Senha */}
             <div className="row">
@@ -57,22 +64,21 @@ const ProfessorLoginForm = () => {
                 name="password"
                 onChange={(event) => setPassword(event.target.value)}
                 required
-                sx={{ bgcolor: 'background.default' }}
+                sx={{ bgcolor: "background.default" }}
               />
             </div>
 
-            
-
             <CardActions>
-              <Box width='100%' display='flex' justifyContent='center'>
-                <Button color="secondary" variant="outlined" type="submit">Entrar</Button>
+              <Box width="100%" display="flex" justifyContent="center">
+                <Button color="secondary" variant="outlined" type="submit">
+                  Entrar
+                </Button>
               </Box>
             </CardActions>
-
           </form>
         </CardContent>
       </Card>
     </>
   );
-}
-export default ProfessorLoginForm;
+};
+export default UserLoginForm;

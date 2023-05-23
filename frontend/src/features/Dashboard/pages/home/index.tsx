@@ -9,9 +9,12 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../../../Login/services/authcontext";
 export default function Dashboard() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
+
+
+    const { User } : any = AuthContext();
 
     //links dos cards verdes da parte superior da tela, padrões do dashboard
     const  [baselinks, setbaselinks] :any = useState()
@@ -85,7 +88,6 @@ export default function Dashboard() {
             "url" : "#"
         }
     ]
-
     const RecentTutorials : any = [
         {
             "title" : "Como calcular o mmc de dois valores utilizando o for.",
@@ -119,7 +121,11 @@ export default function Dashboard() {
         },
     ]
 
+
+
+
     useEffect(() => {
+        console.log("Userdata",User)
         setbaselinks(examples);
         setProjects(RecentProjects)
         setTutorials(RecentTutorials)

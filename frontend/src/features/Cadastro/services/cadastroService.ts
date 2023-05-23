@@ -1,7 +1,7 @@
 import { headers } from "../../../data";
 import api from "../../../services/api";
 import { iEstudante } from "../../../types/iEstudantes";
-import { iProfessor } from "../../../types/iProfessores";
+import { iProfessor } from "../../../types/iLogintype";
 
 export async function cadastrarEstudante(estudante: iEstudante) {
   try {

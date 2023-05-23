@@ -1,39 +1,22 @@
 import { headers } from "../../../data";
 import api from "../../../services/api";
-import { iEstudante } from "../../../types/iEstudantes";
-import { iProfessor } from "../../../types/iProfessores";
+import { LoginType } from "../../../types/iLogintype";
 
-export async function logarEstudante({ email, password }: iEstudante) {
+export async function loginUser({ email, password }: LoginType) {
   try {
     if (!email || !password) {
       throw new Error("Bad Request: Email and password are required.");
     }
 
-    const response = await api.post("/users", { email, password }, {
-      headers: headers(),
-    });
-
-    if (response.status === 200) {
-      return "Success";
-    }
-  } catch (error) {
-    console.log(error);
-    return error;
-  }
-}
-
-export async function logarProfessor({ email, password }: iProfessor) {
-  try {
-    if (!email || !password) {
-      throw new Error("Bad Request: Email and password are required.");
-    }
-
-    const response = await api.post("/login", { email, password });
+    const response = await api.post("/auth/login", { email, password });
     const { data } = response;
 
-    if (data.token) {
-      localStorage.setItem("token", data.token);
-      return "Success";
+    if (data.accessToken) {
+      localStorage.setItem("token", data.accessToken);
+      return {
+        msg: "Sucess",
+        userData: data.userData,
+      };
     }
 
     return "Authentication failed";
