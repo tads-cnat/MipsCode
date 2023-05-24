@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { iProfessor } from "../../../../types/iProfessores";
+import { iProfessor } from "../../../../types/iLogintype";
 import { Box, Card, CardContent, CardActions, TextField, Button, Snackbar } from '@mui/material';
 import { cadastrarProfessor } from "../../services/cadastroService";
 

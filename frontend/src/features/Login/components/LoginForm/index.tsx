@@ -1,23 +1,10 @@
-import { useState } from 'react';
-import { Box, CardContent, Card, Typography, Button } from '@mui/material';
-import EstudanteLoginForm from '../../../Login/components/EstudanteForm';
-import ProfessorLoginForm from '../../../Login/components/ProfessorForm';
+import { Box, CardContent, Card, Typography } from '@mui/material';
+import UserLoginForm from '../UserLoginForm';
 
 
 
 const LoginForm = () => {
-  const [showEstudante, setShowEstudante] = useState(true);
-  const [showProfessor, setShowProfessor] = useState(false);
 
-  const handleClickEstudante = () => {
-    setShowEstudante(true);
-    setShowProfessor(false);
-  };
-
-  const handleClickProfessor = () => {
-    setShowEstudante(false);
-    setShowProfessor(true);
-  };
 
   return (
     
@@ -30,15 +17,7 @@ const LoginForm = () => {
         <Card>
           <CardContent>
             <Box sx={{ p: 1, my: 1 }}>
-              <Button onClick={handleClickEstudante} variant={showEstudante ? 'contained' : 'text'} color="secondary">
-                Estudante
-              </Button>
-              <Button onClick={handleClickProfessor} variant={showProfessor ? 'contained' : 'text'} color="secondary">
-                Professor
-              </Button>
-
-              {showEstudante && <EstudanteLoginForm/>}
-              {showProfessor && <ProfessorLoginForm />}
+               <UserLoginForm/>
             </Box>
           </CardContent>
         </Card>
