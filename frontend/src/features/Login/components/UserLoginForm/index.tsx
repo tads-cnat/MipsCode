@@ -10,10 +10,9 @@ import {
 } from "@mui/material";
 import { LoginType } from "../../../../types/iLogintype";
 import { loginUser } from "../../services/loginservice";
-import { AuthContext } from "../../services/authcontext";
+import { AuthContext } from "../../../../services/authcontext";
 
 const UserLoginForm = () => {
-  const { addUser } = AuthContext();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +26,6 @@ const UserLoginForm = () => {
       console.log(professorForm);
       const res: any = await loginUser(professorForm);
       if (res.msg == "Sucess") {
-        addUser(res.userData);
         navigate("/dashboard");
       }
     } catch (error) {

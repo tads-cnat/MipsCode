@@ -5,9 +5,12 @@ import Box from '@mui/material/Box';
 import {Header, Footer} from '../../components/';
 import React from 'react';
 import banner from '../../assets/imgs/banner.png';
+import { AuthContext } from '../../services/authcontext';
 
 export default function Home(){
   const navigate = useNavigate();
+
+  const { User } : any = AuthContext();
 
   function handleClickCadastro(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -29,8 +32,10 @@ export default function Home(){
     event.preventDefault();
     navigate('/login/');
   }
-  
+  console.log(User)
   return (
+
+  
     <>
     <Header/>    
 
