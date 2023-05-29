@@ -1,4 +1,9 @@
-import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -31,7 +36,6 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     try {
       return await this.prisma.user.findMany();
-
     } catch (error) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
@@ -39,14 +43,43 @@ export class UsersService {
 
   async getUserById(id: string): Promise<User> {
     try {
-      return await this.prisma.user.findUnique({ where: { id } });
+      const userRes = await this.prisma.user.findUnique({ where: { id } });
 
+      if (!userRes) {
+        throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+      }
+
+      if (userRes.role == 'professor') {
+        return await this.prisma.user.findUnique({
+          where: { id },
+          include: {
+            professorClassroom: true,
+            studentClassrom: false,
+            project: true,
+            Tutorial: true,
+          },
+        });
+      }
+
+      return await this.prisma.user.findUnique({
+        where: { id },
+        include: {
+          studentClassrom: true,
+          professorClassroom: false,
+          project: true,
+          Tutorial: false,
+        },
+      });
     } catch (error) {
       throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
   }
 
-  async updateUser(id: string, updateUserDto: UpdateUserDto, userId: string): Promise<User> {
+  async updateUser(
+    id: string,
+    updateUserDto: UpdateUserDto,
+    userId: string,
+  ): Promise<User> {
     if (id !== userId) {
       throw new UnauthorizedException();
     }
@@ -59,7 +92,7 @@ export class UsersService {
     }
 
     const user = await this.prisma.user.findFirst({ where: { id } });
-  
+
     if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
@@ -69,7 +102,6 @@ export class UsersService {
         where: { id },
         data: updateUserDto,
       });
-
     } catch (error) {
       throw new HttpException('failed to update user', HttpStatus.FORBIDDEN);
     }
@@ -81,17 +113,20 @@ export class UsersService {
     }
 
     const user = await this.prisma.user.findFirst({ where: { id } });
-  
+
     if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }
-  
+
     try {
       return await this.prisma.user.delete({
-        where: { id: userId }
+        where: { id: userId },
       });
     } catch (error) {
-      throw new HttpException('failed to delete tutorial', HttpStatus.FORBIDDEN);
+      throw new HttpException(
+        'failed to delete tutorial',
+        HttpStatus.FORBIDDEN,
+      );
     }
   }
 }
