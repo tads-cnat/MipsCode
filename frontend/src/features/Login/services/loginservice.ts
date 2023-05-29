@@ -23,6 +23,7 @@ export async function loginUser({ email, password }: LoginType) {
     if (data.accessToken) {
       //localStorage.setItem("token", data.accessToken);
       createCookie("token", data.accessToken, 1); // cria um token que vai expirar em 1 dia
+      sessionStorage.setItem("userId", data.userData.id);
       return {
         msg: "Sucess",
         userData: data.userData,

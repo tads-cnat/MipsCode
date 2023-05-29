@@ -36,9 +36,6 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Roles('ADMIN') // UserRoles.ADMIN
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiBearerAuth()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.getUserById(id);
@@ -47,8 +44,12 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto, @Req() req: RequestUser) {
-    const userId = req.user.id
+  update(
+    @Param('id') id: string,
+    @Body() updateUserDto: UpdateUserDto,
+    @Req() req: RequestUser,
+  ) {
+    const userId = req.user.id;
     return this.usersService.updateUser(id, updateUserDto, userId);
   }
 
@@ -57,7 +58,7 @@ export class UsersController {
   @ApiBearerAuth()
   @Delete(':id')
   remove(@Param('id') id: string, @Req() req: RequestUser) {
-    const userId = req.user.id
+    const userId = req.user.id;
     return this.usersService.deleteUser(id, userId);
   }
 }

@@ -9,7 +9,8 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../Login/services/authcontext";
+import { AuthContext,Usercontext } from "../../../../services/authcontext";
+import { useContext } from "react";
 export default function Dashboard() {
     const navigate = useNavigate(); 
 
@@ -20,6 +21,7 @@ export default function Dashboard() {
     const  [baselinks, setbaselinks] :any = useState()
     const  [recentProjects,setProjects] : any = useState()
     const  [tutorials,setTutorials] : any = useState()
+    const [userdata,setUserdata] : any = useState()
 
 
     function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
@@ -125,11 +127,14 @@ export default function Dashboard() {
 
 
     useEffect(() => {
-        console.log("Userdata",User)
+        if(User){
+            setUserdata(User)
+            console.log("Userdata",userdata)
+        }
         setbaselinks(examples);
         setProjects(RecentProjects)
         setTutorials(RecentTutorials)
-    }, [])
+    }, [userdata])
     
 
 
