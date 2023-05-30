@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { listarProjetos } from "../../services/projetoService";
+import { listarProjetos, excluirProjeto } from "../../services/projetoService";
 import { Footer, Header } from "../../../../components";
-import { Typography, Card, CardContent, Box, Button } from '@mui/material';
+import { Typography, Card, CardContent, Box, Button, CardActions } from '@mui/material';
 import { iProjeto } from "../../../../types/iProjetos";
 import { useNavigate } from "react-router-dom";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
@@ -38,6 +38,15 @@ const Repositorio = () => {
     navigate('/criar-projeto/');
   }
 
+  async function handleExcluirProjeto(userId: string) {
+    try {
+      await excluirProjeto(userId);
+      carregarProjetos();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <>
@@ -69,6 +78,15 @@ const Repositorio = () => {
               </Typography>
 
             </CardContent>
+            <CardActions>
+              <Button color="secondary" onClick={() => navigate(`/editar/${projeto.userId}`)}>Editar</Button>
+              <Button 
+              color="secondary" 
+              onClick={() => 
+                window.confirm("Tem certeza que deseja excluir este projeto?") &&
+                handleExcluirProjeto(projeto.userId)}
+              >Excluir</Button>
+            </CardActions>
           </Card>
         ))}
       </Box>

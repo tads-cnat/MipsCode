@@ -4,7 +4,7 @@ import CriarProjeto from "./features/GerenciarProjeto/pages/CriarProjeto";
 import Home from "./features/Home/index";
 import Dashboard from "./features/Dashboard/pages/home";
 import LoginPage from "./features/Login/pages";
-import Repositorio from "./features/GerenciarProjeto/pages/Repositório";
+import Repositorio from "./features/GerenciarProjeto/pages/ListarRepositório";
 
 const Rotas = () => {
     return (
