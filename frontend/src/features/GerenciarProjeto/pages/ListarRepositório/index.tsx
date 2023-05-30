@@ -103,7 +103,7 @@ const Repositorio = () => {
 
             </CardContent>
             <CardActions>
-              <Button color="secondary" variant="outlined"  onClick={() => navigate(`/editar/${projeto.userId}`)}>Editar</Button>
+              <Button color="secondary" variant="outlined"  onClick={() => navigate(`/editar-projeto?id=${projeto.userId}`)}>Editar</Button>
               <Button 
               color="secondary" 
               variant="outlined"
