@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { iEstudante } from "../../../../types/iEstudantes";
 import { Box, Card, CardContent, CardActions, TextField, Button, Snackbar } from '@mui/material';
 import { cadastrarEstudante } from "../../services/cadastroService";
+import { iUser } from "../../../../types/iUser";
 
 const EstudanteCadastroForm = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const EstudanteCadastroForm = () => {
 
   async function handleSubmitEstudante(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-      const estudanteForm: iEstudante = {email, password, name, role};
+      const estudanteForm: iUser = {email, password, name, role};
       
       try {
         const res = await cadastrarEstudante( estudanteForm )
@@ -41,12 +41,15 @@ const EstudanteCadastroForm = () => {
     <>
       <Card>
         <CardContent>
+        <div className="col">
+
           <form 
             onSubmit={handleSubmitEstudante} 
             encType="multipart/form-data"               
           >
 
             {/* Email */}
+            <div className="row">
             <TextField 
               id="outlined-helperText-email"
               label="Email"
@@ -58,6 +61,7 @@ const EstudanteCadastroForm = () => {
               color="primary"
               sx={{bgcolor:'background.default'}}
             /> 
+            </div>
 
 
             {/* Senha */}
@@ -72,9 +76,11 @@ const EstudanteCadastroForm = () => {
               required 
               color="primary"
               sx={{bgcolor:'background.default'}}
-            /> </div>
+            /> 
+            </div>
 
             {/* Nome */}
+            <div className="row">
             <TextField 
               id="outlined-helperText-name"
               label="Nome"
@@ -86,6 +92,7 @@ const EstudanteCadastroForm = () => {
               color="primary"
               sx={{bgcolor:'background.default'}}
             /> 
+            </div>
 
             <CardActions>
               <Box width='100%' display='flex' justifyContent='center'>
@@ -94,6 +101,7 @@ const EstudanteCadastroForm = () => {
             </CardActions>
 
             </form>
+          </div>
           </CardContent>
         </Card>
 
