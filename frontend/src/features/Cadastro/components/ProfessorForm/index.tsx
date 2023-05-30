@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { iProfessor } from "../../../../types/iLogintype";
 import { Box, Card, CardContent, CardActions, TextField, Button, Snackbar } from '@mui/material';
 import { cadastrarProfessor } from "../../services/cadastroService";
+import { iUser } from "../../../../types/iUser";
 
 const ProfessorCadastroForm = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ProfessorCadastroForm = () => {
 
   async function handleSubmitProfessor(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-      const professorForm: iProfessor = {email, password, name, role};
+      const professorForm: iUser = {email, password, name, role};
       
       try {
         
@@ -42,9 +42,11 @@ const ProfessorCadastroForm = () => {
     <>
       <Card>
         <CardContent>
+          <div className="col">
           <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
 
             {/* Email */}
+            <div className="row">
             <TextField 
               id="outlined-helperText-email"
               label="Email"
@@ -53,11 +55,13 @@ const ProfessorCadastroForm = () => {
               name="email"
               onChange={(event) => setEmail(event.target.value)}
               required 
+              color="primary"
               sx={{bgcolor:'background.default'}}
             /> 
-
+            </div>
 
             {/* Senha */}
+            <div className="row">
             <TextField 
               id="outlined-helperText-password"
               label="Senha"
@@ -66,11 +70,13 @@ const ProfessorCadastroForm = () => {
               name="password"
               onChange={(event) => setPassword(event.target.value)}
               required 
+              color="primary"
               sx={{bgcolor:'background.default'}}
             /> 
+            </div>
 
             {/* Nome */}
-
+            <div className="row">
             <TextField 
               id="outlined-helperText-name"
               label="Nome"
@@ -79,8 +85,10 @@ const ProfessorCadastroForm = () => {
               name="name"
               onChange={(event) => setName(event.target.value)}
               required 
+              color="primary"
               sx={{bgcolor:'background.default'}}
             /> 
+            </div>
 
             <CardActions>
               <Box width='100%' display='flex' justifyContent='center'>
@@ -89,6 +97,7 @@ const ProfessorCadastroForm = () => {
             </CardActions>
 
             </form>
+          </div>
           </CardContent>
         </Card>
 
