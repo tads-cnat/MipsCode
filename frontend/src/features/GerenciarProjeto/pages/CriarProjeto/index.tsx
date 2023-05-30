@@ -1,13 +1,12 @@
-import * as React from 'react';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { criarProjetos } from "../../services/projetoService";
-import Header from "../../../../components/Header";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { criarProjetos } from '../../services/projetoService';
+import Header from '../../../../components/Header';
 import Box from '@mui/material/Box';
-import { Typography, Card, CardContent, CardActions } from '@mui/material';
-
-
-
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
@@ -19,7 +18,6 @@ const CriarProjeto = () => {
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const userId = "95cfb5d3-106a-46bc-87ea-13083d67a175";
-
 
   
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -43,7 +41,14 @@ const CriarProjeto = () => {
   return (
     <>
     <Header/>
-    <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
+    <Box 
+      width='100vw' 
+      height='100vh' 
+      display='flex' 
+      alignItems='center' 
+      justifyContent='center' 
+      sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }
+    >
       <Card>
         <CardContent>
         <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
