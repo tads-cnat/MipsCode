@@ -1,6 +1,7 @@
-export interface iProjeto{
-    title: string,
-    description: string,
-    content: string,
-    userId: string
+export interface iProjeto {
+  id: string;
+  title: string;
+  description: string;
+  content: string;
+  userId: string;
 }

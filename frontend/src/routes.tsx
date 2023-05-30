@@ -4,7 +4,8 @@ import CriarProjeto from "./features/GerenciarProjeto/pages/CriarProjeto";
 import Home from "./features/Home/index";
 import Dashboard from "./features/Dashboard/pages/home";
 import LoginPage from "./features/Login/pages";
-import Repositorio from "./features/GerenciarProjeto/pages/ListarRepositório";
+import Repositorio from "./features/GerenciarProjeto/pages/ListarRepositório";
+import EditarProjeto from "./features/GerenciarProjeto/pages/EditarProjeto";
 
 const Rotas = () => {
     return (
@@ -16,6 +17,7 @@ const Rotas = () => {
                 <Route path="/criar-projeto" element={<CriarProjeto />} />
                 <Route path="/ver-projetos" element={<Repositorio />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/editar-projeto" element={<EditarProjeto/>}/>
             </Routes>
         </BrowserRouter>
     );

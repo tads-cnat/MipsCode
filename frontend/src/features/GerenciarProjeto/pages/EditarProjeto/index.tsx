@@ -3,6 +3,7 @@ import { carregarProjeto, atualizarProjeto } from '../../services/projetoService
 import { Footer, Header } from "../../../../components";
 import { Typography, Card, CardContent, Box, Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import api from '../../../../services/api';
 
 
 const EditarProjeto = () => {

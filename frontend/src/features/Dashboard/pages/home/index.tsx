@@ -9,13 +9,10 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
 import { useNavigate } from "react-router-dom";
-import { AuthContext,Usercontext } from "../../../../services/authcontext";
-import { useContext } from "react";
+import api from "../../../../services/api";
 export default function Dashboard() {
     const navigate = useNavigate(); 
 
-
-    const { User } : any = AuthContext();
 
     //links dos cards verdes da parte superior da tela, padrões do dashboard
     const  [baselinks, setbaselinks] :any = useState()
@@ -124,22 +121,39 @@ export default function Dashboard() {
     ]
 
 
+    async function getData(){
+        const userId = sessionStorage.getItem("userId");
+
+        if(!userId){
+          return "User Not Found";
+        }
+      
+        try {
+          const res = await api.get(`/users/${userId}`)
+          if(res){
+            setUserdata(res.data) 
+          }
+          
+        } catch (error) {
+          if(error){
+            return error;
+          }
+        }
+    }
+
 
 
     useEffect(() => {
-        if(User){
-            setUserdata(User)
-            console.log("Userdata",userdata)
-        }
+        getData()
         setbaselinks(examples);
         setProjects(RecentProjects)
         setTutorials(RecentTutorials)
-    }, [userdata])
+    }, [])
     
 
 
 
-
+console.log(userdata)
 
 
 

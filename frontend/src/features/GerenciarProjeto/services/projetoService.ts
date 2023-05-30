@@ -2,6 +2,11 @@ import { headers } from "../../../data";
 import api from "../../../services/api";
 import { iProjeto } from "../../../types/iProjetos";
 
+function getCookie(name: string) {
+  const value = `; ${document.cookie}`;
+  const parts: any = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
 
 // CRIAR
 export async function criarProjetos(projeto: iProjeto) {
@@ -124,11 +129,6 @@ export async function excluirProjeto(projetoId: string) {
     };
   }
 }
-
-
-
-
-
 
 // // EDITAR - CARREGAR PROJETO
 // export async function carregarProjeto(userId?: string) {

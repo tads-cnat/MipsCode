@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { criarProjetos } from '../../services/projetoService';
 import Header from '../../../../components/Header';
@@ -11,13 +11,43 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
 import Footer from '../../../../components/Footer';
+import api from '../../../../services/api';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
-  const userId = "95cfb5d3-106a-46bc-87ea-13083d67a175";
+  const [userId,setUserid] = useState("");
+
+
+  async function getData(){
+    const userId = sessionStorage.getItem("userId");
+
+    if(!userId){
+      return "User Not Found";
+    }
+  
+    try {
+      const res = await api.get(`/users/${userId}`)
+      if(res){
+        setUserid(res.data.id) 
+      }
+      
+    } catch (error) {
+      if(error){
+        return error;
+      }
+    }
+}
+
+
+
+useEffect(() => {
+  getData()
+  console.log("teste",userId)
+}, [])
+
 
   
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
