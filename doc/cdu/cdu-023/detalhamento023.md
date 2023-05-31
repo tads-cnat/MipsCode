@@ -47,7 +47,14 @@ Toda e qualquer modificação deve ser salva e mostrada para o usuário.
 | 8. Faz as modificaçõs que deseja. | |
 | | 9. As modificações são salvas e mostrada ao usuário. |
 
-### 5.2. Fluxo de exceção:
+### 5.2. Fluxo Básico:
+| Ator | Sistema |
+| :-----------------: | :-----------------: | 
+| 1. 1)  Acessa a página de projetos. | |  
+|  | 2. Renderiza a página e mostra a listagem de projetos do usuário. |
+| 3. Pode criar, editar e excluir projetos. | | 
+
+### 5.3. Fluxo de exceção:
 #### Fluxo de exceção (5): Erro de autenticação
 a) O sistema realiza a autenticação do formulário; <br>
 b) Credenciais inválidas;  <br>
