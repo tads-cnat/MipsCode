@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Card, CardContent, CardActions, TextField, Button, Snackbar } from '@mui/material';
-import { cadastrarProfessor } from "../../services/cadastroService";
+import { cadastrarUsuario } from "../../services/cadastroService";
 import { iUser } from "../../../../types/iUser";
 
 const ProfessorCadastroForm = () => {
@@ -22,7 +22,7 @@ const ProfessorCadastroForm = () => {
       
       try {
         
-        const res = await cadastrarProfessor( professorForm )
+        const res = await cadastrarUsuario( professorForm )
         if(res){
           setShowSuccessMessage(true);
           setTimeout(() => {
