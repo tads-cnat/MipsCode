@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { criarProjetos } from '../../services/projetoService';
 import Header from '../../../../components/Header';
 import Box from '@mui/material/Box';
@@ -15,6 +15,9 @@ import api from '../../../../services/api';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
@@ -39,34 +42,51 @@ const CriarProjeto = () => {
         return error;
       }
     }
-}
+  }
+
+  useEffect(() => {
+    const projeto: iProjeto = location.state?.projeto;
+    if (projeto) {
+      setTitle(projeto.title);
+      setDescription(projeto.description);
+      setContent(projeto.content);
+      setUserid(projeto.userId);
+    }
+  }, [location.state]);
 
 
+  useEffect(() => {
+    getData()
+    console.log("teste",userId)
+  }, [])
 
-useEffect(() => {
-  getData()
-  console.log("teste",userId)
-}, [])
-
-
-  
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+      event.preventDefault();
       const projeto: iProjeto = {title, description, content, userId};
 
       try {
-
-        const res = await criarProjetos( projeto )
-        if(res){
-          () => navigate('/')
-        }
-//      criarProjetos( projeto ).then();
-        console.log('O botão foi clicado!');
+        await criarProjetos(projeto);
+        navigate('/ver-projetos');
       } catch (error) {
-        console.log(error)
+        console.error(error);
       }
-
   }
+
+
+  // async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+
+  //     const projeto: iProjeto = {title, description, content, userId};
+  //     try {
+  //       const res = await criarProjetos( projeto )
+  //       if(res){
+  //         () => navigate('/ver-projetos')
+  //       }
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+
+  // }
 
   return (
     <>
@@ -82,55 +102,52 @@ useEffect(() => {
       <Card>
         <CardContent>
         <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
+            <form onSubmit={handleSubmit} encType="multipart/form-data" >
+              <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
 
-            {/* Título */}
-            <div className="row" color='secondary'>
-            <TextField 
-            
-              id="outlined-helperText"
-              label="Título"
-              type="text"
-              variant="outlined" 
-              name="title"
-              onChange={(event) => setTitle(event.target.value)}
-              required 
-              color="secondary"
-      
-            /></div>
+              {/* Título */}
+              <TextField 
+              
+                id="outlined-helperText"
+                label="Título"
+                type="text"
+                variant="outlined" 
+                name="title"
+                onChange={(event) => setTitle(event.target.value)}
+                required 
+                color="secondary"
+        
+              />
 
-            {/* Descrição */}
-            <div className="row">
-            <TextField 
-              id="outlined-helperText"
-              label="Descrição"
-              type="text"
-              variant="outlined" 
-              name="description"
-              onChange={(event) => setDescription(event.target.value)}
-              color="secondary"
-            />  </div>
+              {/* Descrição */}
+              <TextField 
+                id="outlined-helperText"
+                label="Descrição"
+                type="text"
+                variant="outlined" 
+                name="description"
+                onChange={(event) => setDescription(event.target.value)}
+                color="secondary"
+              />  
 
-            {/* Conteúdo */}
-            <div className="row">
-            <TextField 
-              id="outlined-helperText"
-              label=""
-              type="file"
-              variant="outlined" 
-              name="content"
-              onChange={(event) => setContent(event.target.value)}
-              inputProps={{
-                accept: '.txt'
-              }}
-            /></div>
-            
-            <CardActions>
-              <Box width='100%' display='flex' justifyContent='center'>
-              <Button color="secondary" variant="contained" type="submit">Confirmar</Button>     
-              </Box>       
-            </CardActions>
+              {/* Conteúdo */}
+              <TextField 
+                id="outlined-helperText"
+                label=""
+                type="file"
+                variant="outlined" 
+                name="content"
+                onChange={(event) => setContent(event.target.value)}
+                inputProps={{
+                  accept: '.txt'
+                }}
+              />
+              
+              <CardActions>
+                <Box width='100%' display='flex' justifyContent='center'>
+                <Button color="secondary" variant="contained" type="submit">Confirmar</Button>     
+                </Box>       
+              </CardActions>
 
           </form>
         </Box>
