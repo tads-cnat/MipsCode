@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
+  url      = "file:./dev.db" // env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
 }
 
 model User {
@@ -68,13 +68,13 @@ model Classroom {
 }
 
 model Tasklist {
-  id          String     @id @default(uuid())
-  name        String     @unique
+  id          String    @id @default(uuid())
+  name        String    @unique
   tasks       Task[]
-  Classroom   Classroom? @relation(fields: [classroomId], references: [id])
-  classroomId String?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  Classroom   Classroom @relation(fields: [classroomId], references: [id])
+  classroomId String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Task {
@@ -82,8 +82,8 @@ model Task {
   title       String       @unique
   description String
   submissions Submission[]
-  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
-  tasklistId  String?
+  Tasklist    Tasklist     @relation(fields: [tasklistId], references: [id])
+  tasklistId  String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
@@ -93,6 +93,6 @@ model Submission {
   answer    String
   isCorrect Boolean
   userId    Int
-  Task      Task?   @relation(fields: [taskId], references: [id])
-  taskId    String?
+  Task      Task    @relation(fields: [taskId], references: [id])
+  taskId    String
 }

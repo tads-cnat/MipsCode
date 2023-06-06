@@ -5,6 +5,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { TutorialsModule } from './tutorials/tutorials.module';
+import { TasklistsModule } from './tasklists/tasklists.module';
 import * as cors from 'cors';
 
 @Module({
@@ -14,7 +15,7 @@ import * as cors from 'cors';
     ProjectsModule, 
     UsersModule, 
     AuthModule, 
-    TutorialsModule
+    TutorialsModule, TasklistsModule
   ],
 })
 export class AppModule implements NestModule {
