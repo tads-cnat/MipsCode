@@ -8,25 +8,20 @@ import api from "../../../../services/api";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 
-
 const Repositorio = () => {
   const [projetos, setProjetos] = useState<iProjeto[]>([]);
   const navigate = useNavigate();
 
-
   async function getProjects(){
     const userId = sessionStorage.getItem("userId");
-
     if(!userId){
       return "User Not Found";
     }
-  
     try {
       const res = await api.get(`/users/${userId}`)
       if(res){
         setProjetos(res.data.project) 
       }
-      
     } catch (error) {
       if(error){
         return error;
@@ -34,12 +29,11 @@ const Repositorio = () => {
     }
   }
 
-
   useEffect(() => {
     getProjects();
     console.log()
   }, []);
-
+  
   async function carregarProjetos() {
     try {
       const response = await listarProjetos();
@@ -53,7 +47,14 @@ const Repositorio = () => {
 
   function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    navigate('/criar-projeto/');
+    const projeto: iProjeto = {
+      id: '', // Adicione um ID vazio, que será preenchido posteriormente
+      title: '',
+      description: '',
+      content: '',
+      userId: sessionStorage.getItem("userId") || '', // Adicione o userId correspondente ao usuário atual
+    };
+    navigate('/criar-projeto/', { state: { projeto } });
   }
 
   function handleClickImportar(event: React.MouseEvent<HTMLButtonElement>) {
@@ -61,16 +62,21 @@ const Repositorio = () => {
     navigate('/criar-projeto/');
   }
 
+  function handleClickEditar(projetoId: string) {
+    navigate(`/editar-projeto?id=${projetoId}`, { state: { projetoId: projetoId } });
+  }
+  
+  
   async function handleExcluirProjeto(userId: string) {
     getProjects()
     try {
       await excluirProjeto(userId);
-      carregarProjetos();
+      await carregarProjetos ();
+      window.location.reload(); // Recarrega a página
     } catch (error) {
-      console.log(error);
+      console.error('Erro ao excluir programa:', error);
     }
   }
-
 
   return (
     <>
@@ -97,19 +103,18 @@ const Repositorio = () => {
                 {projeto.content}
               </Typography>
 
-              <Typography component={'span'} variant="body2" color="secondary">
-                Criado por: {projeto.userId}
-              </Typography>
-
             </CardContent>
             <CardActions>
-              <Button color="secondary" variant="outlined"  onClick={() => navigate(`/editar-projeto?id=${projeto.userId}`)}>Editar</Button>
+              <Button color="secondary" variant="outlined" onClick={() => handleClickEditar(projeto.id || '')}>Editar</Button>
+
               <Button 
-              color="secondary" 
-              variant="outlined"
-              onClick={() => 
+                type="submit"
+                color="secondary" 
+                variant="outlined"
+                onClick={() => 
                 window.confirm("Tem certeza que deseja excluir este projeto?") &&
-                handleExcluirProjeto(projeto.id)}
+                handleExcluirProjeto(projeto.id || '')
+                }
               >Excluir</Button>
             </CardActions>
           </Card>
