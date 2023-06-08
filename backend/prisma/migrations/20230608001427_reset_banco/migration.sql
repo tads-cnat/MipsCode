@@ -1,6 +1,55 @@
 -- CreateTable
+CREATE TABLE "User" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "bio" TEXT,
+    "avatar" TEXT,
+    "role" TEXT NOT NULL,
+    "ide_theme" BOOLEAN NOT NULL DEFAULT true,
+    "classroomId" TEXT,
+    CONSTRAINT "User_classroomId_fkey" FOREIGN KEY ("classroomId") REFERENCES "Classroom" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Tutorial" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "description" TEXT,
+    "content" TEXT NOT NULL,
+    "level" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Tutorial_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Document" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "content" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Project" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "title" TEXT NOT NULL,
+    "description" TEXT,
+    "favorite" BOOLEAN NOT NULL DEFAULT false,
+    "content" TEXT,
+    "userId" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    CONSTRAINT "Project_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
 CREATE TABLE "Classroom" (
     "id" TEXT NOT NULL PRIMARY KEY,
+    "className" TEXT NOT NULL,
+    "classDescription" TEXT NOT NULL,
     "professorId" TEXT NOT NULL,
     "cod" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -39,26 +88,14 @@ CREATE TABLE "Submission" (
     CONSTRAINT "Submission_taskId_fkey" FOREIGN KEY ("taskId") REFERENCES "Task" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
--- RedefineTables
-PRAGMA foreign_keys=OFF;
-CREATE TABLE "new_User" (
-    "id" TEXT NOT NULL PRIMARY KEY,
-    "email" TEXT NOT NULL,
-    "password" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
-    "bio" TEXT,
-    "avatar" TEXT,
-    "role" TEXT,
-    "ide_theme" BOOLEAN NOT NULL DEFAULT true,
-    "classroomId" TEXT,
-    CONSTRAINT "User_classroomId_fkey" FOREIGN KEY ("classroomId") REFERENCES "Classroom" ("id") ON DELETE SET NULL ON UPDATE CASCADE
-);
-INSERT INTO "new_User" ("avatar", "bio", "email", "id", "ide_theme", "name", "password", "role") SELECT "avatar", "bio", "email", "id", "ide_theme", "name", "password", "role" FROM "User";
-DROP TABLE "User";
-ALTER TABLE "new_User" RENAME TO "User";
+-- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-PRAGMA foreign_key_check;
-PRAGMA foreign_keys=ON;
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Tutorial_title_key" ON "Tutorial"("title");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Document_title_key" ON "Document"("title");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Classroom_cod_key" ON "Classroom"("cod");
