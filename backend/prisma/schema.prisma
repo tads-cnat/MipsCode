@@ -70,6 +70,7 @@ model Classroom {
 model Tasklist {
   id          String    @id @default(uuid())
   name        String    @unique
+  description String?
   tasks       Task[]
   Classroom   Classroom @relation(fields: [classroomId], references: [id])
   classroomId String

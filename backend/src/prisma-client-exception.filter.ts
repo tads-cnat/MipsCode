@@ -30,9 +30,10 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
         const match = message.match(regex);
         const entityName = match ? match[1] : null;
         const errorMessage = message.match(/`([^`]+)`\)$/);
+        
         response.status(status).json({
           statusCode: status,
-          message: entityName ? `The requested ${entityName} was not found.` : 'Record not found',
+          message: entityName ? `The requested ${entityName} was not found.` : message,
           error: 'Not found'
         });
         break;
