@@ -10,10 +10,14 @@ export class CreateClassDto {
   @IsString()
   className: string;
 
-  //@ApiProperty()
-
-  //@ApiProperty()
-  @IsOptional()
+  @ApiProperty()
   @IsString()
-  classDescription?: string;
+  classDescription: string;
+
+  @ApiProperty()
+  @IsString()
+  cod: string;
+
+  @ApiProperty()
+  professor: any;
 }

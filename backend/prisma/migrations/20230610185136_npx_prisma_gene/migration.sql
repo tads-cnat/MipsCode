@@ -8,8 +8,8 @@ CREATE TABLE "User" (
     "avatar" TEXT,
     "role" TEXT NOT NULL,
     "ide_theme" BOOLEAN NOT NULL DEFAULT true,
-    "classroomId" TEXT,
-    CONSTRAINT "User_classroomId_fkey" FOREIGN KEY ("classroomId") REFERENCES "Classroom" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    "ClassId" TEXT,
+    CONSTRAINT "User_ClassId_fkey" FOREIGN KEY ("ClassId") REFERENCES "Class" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -46,7 +46,7 @@ CREATE TABLE "Project" (
 );
 
 -- CreateTable
-CREATE TABLE "Classroom" (
+CREATE TABLE "Class" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "className" TEXT NOT NULL,
     "classDescription" TEXT NOT NULL,
@@ -54,17 +54,17 @@ CREATE TABLE "Classroom" (
     "cod" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "Classroom_professorId_fkey" FOREIGN KEY ("professorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "Class_professorId_fkey" FOREIGN KEY ("professorId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
 CREATE TABLE "Tasklist" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "classroomId" TEXT,
+    "ClassId" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "Tasklist_classroomId_fkey" FOREIGN KEY ("classroomId") REFERENCES "Classroom" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "Tasklist_ClassId_fkey" FOREIGN KEY ("ClassId") REFERENCES "Class" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -98,7 +98,7 @@ CREATE UNIQUE INDEX "Tutorial_title_key" ON "Tutorial"("title");
 CREATE UNIQUE INDEX "Document_title_key" ON "Document"("title");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Classroom_cod_key" ON "Classroom"("cod");
+CREATE UNIQUE INDEX "Class_cod_key" ON "Class"("cod");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Tasklist_name_key" ON "Tasklist"("name");

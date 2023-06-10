@@ -8,21 +8,43 @@ export class ClassService {
   constructor(private prisma: PrismaService) {}
 
   async create(classData: CreateClassDto) {
+    //código de 8 digitos da turma
+    function generateCode(): string {
+      let resultado = '';
+
+      for (let i = 0; i < 6; i++) {
+        const randomCharCode = Math.floor(Math.random() * 36);
+        const char = String.fromCharCode(
+          randomCharCode < 26 ? randomCharCode + 65 : randomCharCode + 22,
+        );
+        resultado += char;
+      }
+
+      return resultado;
+    }
+
     try {
-      const UserRole = await this.prisma.user.findFirst({
+      classData.cod = generateCode();
+
+      const userRes = await this.prisma.user.findFirst({
         where: { id: classData.professorId },
       });
-      if (UserRole.role != 'professor') {
+
+      //caso não seja um professor ele recebe um erro de Unauthorized
+      if (userRes.role != 'professor') {
         throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
-      const classRes = await this.prisma.classroom.create(classData);
+
+      classData.cod = generateCode();
+
+      return await this.prisma.class.create({ classData }); // erro ao criar turma
     } catch (error) {
       return error;
     }
   }
 
   findAll() {
-    return this.prisma.classroom.findMany();
+    return this.prisma.class.findMany();
   }
 
   findOne(id: number) {
