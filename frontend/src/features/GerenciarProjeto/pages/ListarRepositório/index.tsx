@@ -95,14 +95,22 @@ const Repositorio = () => {
         {projetos.map((projeto,index) => (
           <Card key={index} variant="outlined">
             <CardContent>
-              <Typography component={'span'} variant="h5">{projeto.title}</Typography>
-
-              <Typography component={'span'} variant="body1">{projeto.description}</Typography>
-
-              <Typography component={'span'} variant="body2" color="secondary">
-                {projeto.content}
-              </Typography>
-
+              <div className="col">
+                <div className="row">
+                  <Typography component={'span'} variant="h5">{projeto.title}</Typography>
+                </div>
+                <div className="row">
+                  <br></br>
+                </div>
+                <div className="row">
+                  <Typography component={'span'} variant="body1">{projeto.description}</Typography>
+                </div>
+                <div className="row">
+                  <Typography component={'span'} variant="body2" color="secondary">
+                    {projeto.content}
+                  </Typography>
+                </div>
+              </div>
             </CardContent>
             <CardActions>
               <Button color="secondary" variant="outlined" onClick={() => handleClickEditar(projeto.id || '')}>Editar</Button>
