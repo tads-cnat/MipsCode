@@ -10,14 +10,13 @@ import CardActions from '@mui/material/CardActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
-import Footer from '../../../../components/Footer';
+// import Footer from '../../../../components/Footer';
 import api from '../../../../services/api';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-
+  
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
@@ -108,7 +107,7 @@ const CriarProjeto = () => {
               {/* Título */}
               <TextField 
               
-                id="outlined-helperText"
+                id="outlined-helperText-title"
                 label="Título"
                 type="text"
                 variant="outlined" 
@@ -121,7 +120,7 @@ const CriarProjeto = () => {
 
               {/* Descrição */}
               <TextField 
-                id="outlined-helperText"
+                id="outlined-helperText-description"
                 label="Descrição"
                 type="text"
                 variant="outlined" 
@@ -132,7 +131,7 @@ const CriarProjeto = () => {
 
               {/* Conteúdo */}
               <TextField 
-                id="outlined-helperText"
+                id="outlined-helperText-content"
                 label=""
                 type="file"
                 variant="outlined" 
@@ -154,7 +153,7 @@ const CriarProjeto = () => {
         </CardContent>
       </Card>
     </Box>
-    <Footer/>
+    {/* <Footer/> */}
     </>
   );
 }

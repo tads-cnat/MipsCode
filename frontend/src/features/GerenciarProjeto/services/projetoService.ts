@@ -77,20 +77,17 @@ export async function carregarProjeto(projetoId: string) {
 }
 
 // EDITAR - ATUALIZAR PROJETO
-export async function atualizarProjeto(
-  title: string,
-  description: string,
-  content: string,
-  projetoId: string
-) {
+export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
   try {
     if (!projetoId) {
       return "ProjetoId não informado";
     }
 
+    const { title, description, content } = projeto; // Destructure the properties from the projeto object
+
     const Resapi = await api.put(
       `projects/${projetoId}/`,
-      { title, description, content },
+      { title, description, content }, // Pass the updated properties in the request body
       {
         headers: headers(),
       }
@@ -107,6 +104,8 @@ export async function atualizarProjeto(
     };
   }
 }
+
+
 
 // EXCLUIR PROJETO
 export async function excluirProjeto(projetoId: string) {
