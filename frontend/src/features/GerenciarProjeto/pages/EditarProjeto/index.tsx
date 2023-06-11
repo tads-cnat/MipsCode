@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { carregarProjeto, atualizarProjeto } from '../../services/projetoService';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { iProjeto } from '../../../../types/iProjetos';
 import Header from '../../../../components/Header';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -9,39 +10,42 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Footer from '../../../../components/Footer';
+
+// import Footer from '../../../../components/Footer';
 
 const EditarProjeto = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [content, setContent] = useState("");
-  const [projetoId, setProjetoId] = useState("");
+
+  const [projeto, setProjeto] = useState<iProjeto>({
+    id: '',
+    title: '',
+    description: '',
+    content: '',
+    userId: '',
+  });
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const projetoId = params.get("id");
+    const projetoId = location.state?.projetoId;
     if (projetoId) {
-      carregarProjeto(projetoId).then((projeto) => {
-        if (projeto && projeto.data) {
-          setTitle(projeto.data.title);
-          setDescription(projeto.data.description);
-          setContent(projeto.data.content);
-          setProjetoId(projetoId);
+      carregarProjeto(projetoId).then((res) => {
+        if (res) {
+          setProjeto(res);
         }
       });
     }
-  }, [location.search]);
-  
+  }, [location.state]);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     try {
-      const res = await atualizarProjeto(title, description, content, projetoId);
-      if (res) {
-        navigate('/ver-projetos');
-      }
+      const projetoId = location.state?.projetoId;
+      atualizarProjeto(projetoId, projeto).then((res) => {
+        if (res === "Success") { // Check for the correct success response
+          navigate('/ver-projetos');
+        }
+      });
     } catch (error) {
       console.log(error);
     }
@@ -72,13 +76,13 @@ const EditarProjeto = () => {
                 {/* Título */}
                 <TextField 
               
-                  id="outlined-helperText"
+                  id="outlined-helperText-t"
                   label="Título"
                   type="text"
                   variant="outlined" 
                   name="title"
-                  value={title} // Definir o valor do campo como o estado 'title'
-                  onChange={(event) => setTitle(event.target.value)}
+                  value={projeto.title} // Definir o valor do campo como o estado 'title'
+                  onChange={(event) => setProjeto({ ...projeto, title: event.target.value })}
                   required 
                   color="secondary"
           
@@ -86,24 +90,24 @@ const EditarProjeto = () => {
 
                 {/* Descrição */}
                 <TextField 
-                  id="outlined-helperText"
+                  id="outlined-helperText-d"
                   label="Descrição"
                   type="text"
                   variant="outlined" 
                   name="description"
-                  value={description}
-                  onChange={(event) => setDescription(event.target.value)}
+                  value={projeto.description}
+                  onChange={(event) => setProjeto({ ...projeto, description: event.target.value })}
                   color="secondary"
                 /> 
                 {/* Conteúdo */}
                 <TextField 
-                  id="outlined-helperText"
+                  id="outlined-helperText-c"
                   label=""
                   type="file"
                   variant="outlined" 
                   name="content"
-                  value={content}
-                  onChange={(event) => setContent(event.target.value)}
+                  value={projeto.content}
+                  onChange={(event) => setProjeto({ ...projeto, content: event.target.value })}
                   inputProps={{
                     accept: '.txt'
                   }}
@@ -112,8 +116,8 @@ const EditarProjeto = () => {
                 {/* Botoes */}
                 <CardActions>
                     <Box width='100%' display='flex' justifyContent='center'>
-                      <Button color="secondary" variant="outlined"  onClick={handleClickCancelar}>Cancelar</Button>     
-                      <Button color="secondary" variant="contained" type="submit">Salvar</Button>   
+                      <Button color="warning" variant="outlined"  onClick={handleClickCancelar}>Cancelar</Button>     
+                      <Button color="secondary" variant="outlined" type="submit">Salvar</Button>   
                     </Box>       
                 </CardActions>
 
@@ -122,7 +126,7 @@ const EditarProjeto = () => {
           </CardContent>
         </Card>
       </Box>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 };

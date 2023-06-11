@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { listarProjetos, excluirProjeto } from "../../services/projetoService";
-import { Footer, Header } from "../../../../components";
+import { Header } from "../../../../components";
 import { Typography, Card, CardContent, Box, Button, CardActions } from '@mui/material';
 import { iProjeto } from "../../../../types/iProjetos";
 import { useNavigate } from "react-router-dom";
@@ -132,7 +132,7 @@ const Repositorio = () => {
         ))}
       </Box>
 
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
