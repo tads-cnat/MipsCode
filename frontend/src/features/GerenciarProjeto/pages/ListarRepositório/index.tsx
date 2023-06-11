@@ -83,12 +83,15 @@ const Repositorio = () => {
       <Header/>
 
       <Box>
-        <Typography component={'span'} variant="h6" align="left" padding={5} gutterBottom color="primary.contrastText">
+      <div><br></br></div>
+
+        <Typography component={'span'} variant="h5" align="left" padding={5} gutterBottom color="primary.contrastText">
           Meus Projetos
         </Typography>
+        <div><br></br></div>
 
         <nav className="project-buttons">
-          <Button variant="outlined" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
+          <Button variant="contained" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
           <Button variant="contained" onClick={handleClickImportar}><FolderOutlinedIcon/><span>Importar Projeto</span></Button>        
         </nav>
 
@@ -117,7 +120,7 @@ const Repositorio = () => {
 
               <Button 
                 type="submit"
-                color="secondary" 
+                color="error" 
                 variant="outlined"
                 onClick={() => 
                 window.confirm("Tem certeza que deseja excluir este projeto?") &&

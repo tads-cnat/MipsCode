@@ -33,6 +33,7 @@ const EditarProjeto = () => {
       });
     }
   }, [location.search]);
+  
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -45,68 +46,78 @@ const EditarProjeto = () => {
       console.log(error);
     }
   }
+
+  function handleClickCancelar(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    navigate('/ver-projetos');
+  }
  
   return (
     <>
-      <Header />
-      
-      <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center' sx={{ textAlign: 'center', alignItems: 'center' }}>
-        <Card>
+    <Header />
+    <Box 
+      width='100vw' 
+      height='100vh' 
+      display='flex' 
+      alignItems='center' 
+      justifyContent='center' 
+      sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }
+    >        
+      <Card>
           <CardContent>
             <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
             <form onSubmit={handleSubmit}>
               <Typography color='text.primary' variant='h6' align='center'>EDITAR PROJETO</Typography>
-
-
-
-              {/* Título */}
-              <div className="row" color='secondary'>
-              <TextField 
+                
+                {/* Título */}
+                <TextField 
               
-                id="outlined-helperText"
-                label="Título"
-                type="text"
-                variant="outlined" 
-                name="title"
-                onChange={(event) => setTitle(event.target.value)}
-                required 
-                color="secondary"
-        
-              /></div>
+                  id="outlined-helperText"
+                  label="Título"
+                  type="text"
+                  variant="outlined" 
+                  name="title"
+                  value={title} // Definir o valor do campo como o estado 'title'
+                  onChange={(event) => setTitle(event.target.value)}
+                  required 
+                  color="secondary"
+          
+                />
 
-              {/* Descrição */}
-              <div className="row">
-              <TextField 
-                id="outlined-helperText"
-                label="Descrição"
-                type="text"
-                variant="outlined" 
-                name="description"
-                onChange={(event) => setDescription(event.target.value)}
-                color="secondary"
-              />  </div>
+                {/* Descrição */}
+                <TextField 
+                  id="outlined-helperText"
+                  label="Descrição"
+                  type="text"
+                  variant="outlined" 
+                  name="description"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                  color="secondary"
+                /> 
+                {/* Conteúdo */}
+                <TextField 
+                  id="outlined-helperText"
+                  label=""
+                  type="file"
+                  variant="outlined" 
+                  name="content"
+                  value={content}
+                  onChange={(event) => setContent(event.target.value)}
+                  inputProps={{
+                    accept: '.txt'
+                  }}
+                />
 
-              {/* Conteúdo */}
-              <div className="row">
-              <TextField 
-                id="outlined-helperText"
-                label=""
-                type="file"
-                variant="outlined" 
-                name="content"
-                onChange={(event) => setContent(event.target.value)}
-                inputProps={{
-                  accept: '.txt'
-                }}
-              /></div>
+                {/* Botoes */}
+                <CardActions>
+                    <Box width='100%' display='flex' justifyContent='center'>
+                      <Button color="secondary" variant="outlined"  onClick={handleClickCancelar}>Cancelar</Button>     
+                      <Button color="secondary" variant="contained" type="submit">Salvar</Button>   
+                    </Box>       
+                </CardActions>
 
-            <CardActions>
-              <Box width='100%' display='flex' justifyContent='center'>
-              <Button color="secondary" variant="contained" type="submit">Salvar</Button>     
-              </Box>       
-            </CardActions>
-          </form>
-
+            </form>
           </Box>
           </CardContent>
         </Card>
