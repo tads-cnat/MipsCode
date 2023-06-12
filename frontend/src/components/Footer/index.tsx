@@ -9,15 +9,18 @@ import './styles.css';
 
 function Footer() {
   return (
-    <Box sx={{ bgcolor: 'background.paper', color: 'primary.contrastText' }}>
+    <Box sx={{ bgcolor: 'background.paper', color: 'primary.contrastText' }} className="footer-container">
       <Container maxWidth="xl">
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: 3 }}>
           <Box>
             <img src={LogoMips} className="logo-style" alt='logo' />
           </Box>
-          <Box>
+          <Box className="footer-links">
             <Typography variant="body1">
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                <Typography variant="body1" component="span" className="highlighted-link">
+                  <Link href="#" color="inherit">Rotas Principais</Link>
+                </Typography>
                 <Typography variant="body1" component="span">
                   <Link href="#" color="inherit">Tutorial</Link>
                 </Typography>
@@ -36,9 +39,12 @@ function Footer() {
               </Box>
             </Typography>
           </Box>
-          <Box>
+          <Box className="footer-links">
             <Typography variant="body1">
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                <Typography variant="body1" component="span" className="highlighted-link">
+                  <Link href="#" color="inherit">Sobre nós</Link>
+                </Typography>
                 <Typography variant="body1" component="span">
                   <Link href="#" color="inherit">Quem somos</Link>
                 </Typography>
@@ -56,11 +62,10 @@ function Footer() {
             <InstagramIcon fontSize="small" sx={{ ml: 1 }} />
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', pb: 3 }}>
-          <Typography variant="body1" textAlign="center">
-            © 2023 MipsCode. Todos os direitos reservados.
+        <Box className="footer-line" />
+          <Typography variant="body1" className="footer-text">
+  © 2023 MipsCode. Todos os direitos reservados.
           </Typography>
-        </Box>
       </Container>
     </Box>
   );
