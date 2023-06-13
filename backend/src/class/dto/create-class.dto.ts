@@ -17,7 +17,4 @@ export class CreateClassDto {
   @ApiProperty()
   @IsString()
   cod: string;
-
-  @ApiProperty()
-  professor: any;
 }

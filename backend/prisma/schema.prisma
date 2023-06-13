@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL") // url do banco de dados precisa ficar no .env 
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -13,81 +13,78 @@ model User {
   password        String
   name            String
   bio             String?
-  avatar          String? //avatar ira armazenar a URL da imagem de perfil 
+  avatar          String?
   role            String
   ide_theme       Boolean    @default(true)
+  ClassId         String?
+  professorClass  Class[]    @relation("professor")
   project         Project[]
   Tutorial        Tutorial[]
   studentClassrom Class?     @relation(fields: [ClassId], references: [id])
-  ClassId         String?
-  professorClass  Class[]    @relation("professor")
 }
 
-//tabela dos tutoriais 
 model Tutorial {
   id          String   @id @default(uuid())
   title       String   @unique
   description String?
   content     String
   level       Int
-  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
 }
 
-//tabela da documentação 
 model Document {
   id      String @id @default(uuid())
   title   String @unique
   content String
 }
 
-//tabela dos projetos 
 model Project {
   id          String   @id @default(uuid())
   title       String
   description String?
   favorite    Boolean  @default(false)
   content     String?
-  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
 }
 
 model Class {
   id               String     @id @default(uuid())
-  students         User[]
-  tasklists        Tasklist[]
   className        String
   classDescription String
-  professor        User       @relation("professor", fields: [professorId], references: [id])
   professorId      String
-  cod              String     @unique @default(uuid())
+  cod              String     @unique
   createdAt        DateTime   @default(now())
   updatedAt        DateTime   @updatedAt
+  professor        User       @relation("professor", fields: [professorId], references: [id])
+  tasklists        Tasklist[]
+  students         User[]
 }
 
 model Tasklist {
   id        String   @id @default(uuid())
   name      String   @unique
-  tasks     Task[]
-  Class     Class?   @relation(fields: [ClassId], references: [id])
   ClassId   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  tasks     Task[]
+  Class     Class?   @relation(fields: [ClassId], references: [id])
 }
 
 model Task {
   id          String       @id @default(uuid())
   title       String       @unique
   description String
-  submissions Submission[]
-  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
   tasklistId  String?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+  submissions Submission[]
+  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
 }
 
 model Submission {
@@ -95,6 +92,6 @@ model Submission {
   answer    String
   isCorrect Boolean
   userId    Int
-  Task      Task?   @relation(fields: [taskId], references: [id])
   taskId    String?
+  Task      Task?   @relation(fields: [taskId], references: [id])
 }
