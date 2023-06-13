@@ -83,17 +83,20 @@ export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
       return "ProjetoId não informado";
     }
 
-    const { title, description, content } = projeto; // Destructure the properties from the projeto object
+    const { title, description, content, userId } = projeto; // Desestrutura as propriedades do objeto projeto
 
-    const Resapi = await api.put(
-      `projects/${projetoId}/`,
-      { title, description, content }, // Pass the updated properties in the request body
-      {
-        headers: headers(),
-      }
-    );
+    const updatedProjeto = {
+      title,
+      description,
+      content,
+      userId
+    };
 
-    if (Resapi) {
+    const resApi = await api.patch(`projects/${projetoId}`, updatedProjeto, {
+      headers: headers(),
+    });
+
+    if (resApi) {
       return "Success";
     }
   } catch (error) {
@@ -104,7 +107,6 @@ export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
     };
   }
 }
-
 
 
 // EXCLUIR PROJETO
