@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { Header } from "../../../../components";
-import { GreenCards } from "../../../../components/Dashboard/GreenCard";
-import TutorialCard from "../../../../components/Dashboard/TutorialCard";
-import ProjectCard from "../../../../components/Dashboard/ProjectCard";
+import { useState, useEffect } from "react";
+import { GreenCards, Header, ProjectCard, TutorialCard } from "../../../../components";
+export {GreenCards, TutorialCard, ProjectCard} from "../../../../components";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import './styles.css'
 import { useNavigate } from "react-router-dom";
 import api from "../../../../services/api";
-export default function Dashboard() {
+
+
+export default function DashboardEstudante() {
     const navigate = useNavigate(); 
 
 

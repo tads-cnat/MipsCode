@@ -9,27 +9,29 @@ const UserLoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function handleSubmitProfessor(
-    event: React.FormEvent<HTMLFormElement>
-  ) {
+  async function handleSubmitUser(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const professorForm: LoginType = { email, password };
+    const userForm: LoginType = { email, password };
     try {
-      console.log(professorForm);
-      const res: any = await loginUser(professorForm);
-      if (res.msg == "Sucess") {
-        navigate("/dashboard");
+      const res: any = await loginUser(userForm);
+      if (res.msg === "Sucess") {
+        if (res.userData.role === "student") {
+          navigate("/dashboard-estudante");
+        } else if (res.userData.role === "professor") {
+          navigate("/dashboard-professor");
+        }
       }
     } catch (error) {
       return error;
     }
   }
+  
 
   return (
     <>
       <Card>
         <CardContent>
-          <form onSubmit={handleSubmitProfessor} encType="multipart/form-data">
+          <form onSubmit={handleSubmitUser} encType="multipart/form-data">
             {/* Email */}
             <div className="row">
               <TextField

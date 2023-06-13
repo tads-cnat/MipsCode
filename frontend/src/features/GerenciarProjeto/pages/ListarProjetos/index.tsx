@@ -8,7 +8,7 @@ import api from "../../../../services/api";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 
-const ListarProjetos = () => {
+const Repositorio = () => {
   const [projetos, setProjetos] = useState<iProjeto[]>([]);
   const navigate = useNavigate();
 
@@ -137,4 +137,4 @@ const ListarProjetos = () => {
   );
 }
 
-export default ListarProjetos;
+export default Repositorio;

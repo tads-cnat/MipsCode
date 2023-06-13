@@ -1,11 +1,15 @@
 import { BrowserRouter, Route, Routes} from "react-router-dom";
 import CadastroPage from "./features/Cadastro/pages";
+import DashboardEstudante from "./features/Dashboard/pages/DashboardEstudante";
+import DashboardProfessor from "./features/Dashboard/pages/DashboardProfessor";
 import CriarProjeto from "./features/GerenciarProjeto/pages/CriarProjeto";
-import Home from "./features/Home/index";
-import Dashboard from "./features/Dashboard/pages/home";
-import LoginPage from "./features/Login/pages";
-import Repositorio from "./features/GerenciarProjeto/pages/ListarRepositório";
 import EditarProjeto from "./features/GerenciarProjeto/pages/EditarProjeto";
+import ListarProjetos from "./features/GerenciarProjeto/pages/ListarRepositório";
+import CriarTurma from "./features/GerenciarTurmas/pages/CriarTurmas";
+import EditarTurma from "./features/GerenciarTurmas/pages/EditarTurmas";
+import VerTurmas from "./features/GerenciarTurmas/pages/ListarTurmas";
+import Home from "./features/Home";
+import LoginPage from "./features/Login/pages";
 
 const Rotas = () => {
     return (
@@ -14,10 +18,16 @@ const Rotas = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/cadastro" element={<CadastroPage />} />
                 <Route path="/login" element={<LoginPage />} />
+
+                <Route path="/dashboard-estudante" element={<DashboardEstudante />} />
+                <Route path="/ver-projetos" element={<ListarProjetos />} />                
                 <Route path="/criar-projeto" element={<CriarProjeto />} />
-                <Route path="/ver-projetos" element={<Repositorio />} />
-                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/editar-projeto" element={<EditarProjeto/>}/>
+
+                <Route path="/dashboard-professor" element={<DashboardProfessor />} />
+                <Route path="/ver-turmas" element={<VerTurmas/>}/>
+                <Route path="/criar-turma" element={<CriarTurma/>}/>
+                <Route path="/editar-turma" element={<EditarTurma/>}/>
             </Routes>
         </BrowserRouter>
     );

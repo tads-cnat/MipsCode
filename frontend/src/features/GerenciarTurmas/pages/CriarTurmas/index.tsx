@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { criarProjetos } from '../../services/projetoService';
 import Header from '../../../../components/Header';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -9,11 +8,12 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { iProjeto } from '../../../../types/iProjetos';
 // import Footer from '../../../../components/Footer';
 import api from '../../../../services/api';
+import { iTurma } from '../../../../types/iTurmas';
+import { criarTurmas } from '../../services/turmasService';
 
-const CriarProjeto = () => {
+const CriarTurma = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -44,12 +44,12 @@ const CriarProjeto = () => {
   }
 
   useEffect(() => {
-    const projeto: iProjeto = location.state?.projeto;
-    if (projeto) {
-      setTitle(projeto.title);
-      setDescription(projeto.description);
-      setContent(projeto.content);
-      setUserid(projeto.userId);
+    const turma: iTurma = location.state?.turma;
+    if (turma) {
+      setTitle(turma.title);
+      setDescription(turma.description);
+      setContent(turma.content);
+      setUserid(turma.userId);
     }
   }, [location.state]);
 
@@ -61,11 +61,11 @@ const CriarProjeto = () => {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault();
-      const projeto: iProjeto = {title, description, content, userId};
+      const turma: iTurma = {title, description, content, userId};
 
       try {
-        await criarProjetos(projeto);
-        navigate('/ver-projetos');
+        await criarTurmas(turma);
+        navigate('/ver-turmas');
       } catch (error) {
         console.error(error);
       }
@@ -86,7 +86,7 @@ const CriarProjeto = () => {
         <CardContent>
         <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
             <form onSubmit={handleSubmit} encType="multipart/form-data" >
-              <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
+              <Typography  color='text.primary' variant='h6' align='center'>CRIAR NOVA TURMA</Typography>
 
               {/* Título */}
               <TextField 
@@ -141,4 +141,4 @@ const CriarProjeto = () => {
     </>
   );
 }
-export default CriarProjeto;
+export default CriarTurma;

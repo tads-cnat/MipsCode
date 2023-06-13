@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
-import { listarProjetos, excluirProjeto } from "../../services/projetoService";
 import { Header } from "../../../../components";
-import { Typography, Card, CardContent, Box, Button, CardActions } from '@mui/material';
-import { iProjeto } from "../../../../types/iProjetos";
+import { Typography, Box, Button } from '@mui/material';
+import { Card, CardContent, CardActions } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 import api from "../../../../services/api";
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
+import { iTurma } from "../../../../types/iTurmas";
+import { listarTurmas } from "../../services/turmasService";
+import { excluirTurma } from "../../services/turmasService";
 
-const ListarProjetos = () => {
-  const [projetos, setProjetos] = useState<iProjeto[]>([]);
+
+const VerTurmas = () => {
+  const [turmas, setTurmas] = useState<iTurma[]>([]);
   const navigate = useNavigate();
 
-  async function getProjects(){
+  async function getClasses(){
     const userId = sessionStorage.getItem("userId");
     if(!userId){
       return "User Not Found";
     }
     try {
       const res = await api.get(`/users/${userId}`)
-      if(res){
-        setProjetos(res.data.project) 
+      if (res && res.data && res.data.class) {
+        setTurmas(res.data.class) 
       }
     } catch (error) {
       if(error){
@@ -30,15 +32,15 @@ const ListarProjetos = () => {
   }
 
   useEffect(() => {
-    getProjects();
+    getClasses();
     console.log()
   }, []);
   
-  async function carregarProjetos() {
+  async function carregarTurmas() {
     try {
-      const response = await listarProjetos();
+      const response = await listarTurmas();
       if (response && response.data) {
-        setProjetos(response.data);
+        setTurmas(response.data);
       }
     } catch (error) {
       console.log(error);
@@ -47,31 +49,26 @@ const ListarProjetos = () => {
 
   function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    const projeto: iProjeto = {
+    const turma: iTurma = {
       id: '', // Adicione um ID vazio, que será preenchido posteriormente
       title: '',
       description: '',
       content: '',
       userId: sessionStorage.getItem("userId") || '', // Adicione o userId correspondente ao usuário atual
     };
-    navigate('/criar-projeto/', { state: { projeto } });
+    navigate('/criar-turma/', { state: { turma } });
   }
 
-  function handleClickImportar(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    navigate('/criar-projeto/');
-  }
 
-  function handleClickEditar(projetoId: string) {
-    navigate(`/editar-projeto?id=${projetoId}`, { state: { projetoId: projetoId } });
+  function handleClickEditar(turmaId: string) {
+    navigate(`/editar-turma?id=${turmaId}`, { state: { turmaId: turmaId } });
   }
-  
-  
-  async function handleExcluirProjeto(userId: string) {
-    getProjects()
+    
+  async function handleExcluirTurma(userId: string) {
+    getClasses()
     try {
-      await excluirProjeto(userId);
-      await carregarProjetos ();
+      await excluirTurma(userId);
+      await carregarTurmas ();
       window.location.reload(); // Recarrega a página
     } catch (error) {
       console.error('Erro ao excluir programa:', error);
@@ -86,45 +83,44 @@ const ListarProjetos = () => {
       <div><br></br></div>
 
         <Typography component={'span'} variant="h5" align="left" padding={5} gutterBottom color="primary.contrastText">
-          Meus Projetos
+            Minhas Turmas
         </Typography>
         <div><br></br></div>
 
-        <nav className="project-buttons">
-          <Button variant="contained" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
-          <Button variant="contained" onClick={handleClickImportar}><FolderOutlinedIcon/><span>Importar Projeto</span></Button>        
+        <nav className="classes-buttons">
+          <Button variant="contained" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar nova Turma</span></Button>
         </nav>
 
-        {projetos.map((projeto,index) => (
+        {turmas.map((turma,index) => (
           <Card key={index} variant="outlined">
             <CardContent>
               <div className="col">
                 <div className="row">
-                  <Typography component={'span'} variant="h5">{projeto.title}</Typography>
+                  <Typography component={'span'} variant="h5">{turma.title}</Typography>
                 </div>
                 <div className="row">
                   <br></br>
                 </div>
                 <div className="row">
-                  <Typography component={'span'} variant="body1">{projeto.description}</Typography>
+                  <Typography component={'span'} variant="body1">{turma.description}</Typography>
                 </div>
                 <div className="row">
                   <Typography component={'span'} variant="body2" color="secondary">
-                    {projeto.content}
+                    {turma.content}
                   </Typography>
                 </div>
               </div>
             </CardContent>
             <CardActions>
-              <Button color="secondary" variant="outlined" onClick={() => handleClickEditar(projeto.id || '')}>Editar</Button>
+              <Button color="secondary" variant="outlined" onClick={() => handleClickEditar(turma.id || '')}>Editar</Button>
 
               <Button 
                 type="submit"
                 color="error" 
                 variant="outlined"
                 onClick={() => 
-                window.confirm("Tem certeza que deseja excluir este projeto?") &&
-                handleExcluirProjeto(projeto.id || '')
+                window.confirm("Tem certeza que deseja excluir esta turma?") &&
+                handleExcluirTurma(turma.id || '')
                 }
               >Excluir</Button>
             </CardActions>
@@ -137,4 +133,4 @@ const ListarProjetos = () => {
   );
 }
 
-export default ListarProjetos;
+export default VerTurmas;
