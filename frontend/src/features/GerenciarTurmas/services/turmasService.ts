@@ -1,6 +1,6 @@
 import { headers } from "../../../data";
 import api from "../../../services/api";
-import { iProjeto } from "../../../types/iProjetos";
+import { iTurma } from "../../../types/iTurmas";
 
 function getCookie(name: string) {
   const value = `; ${document.cookie}`;
@@ -9,16 +9,16 @@ function getCookie(name: string) {
 }
 
 // CRIAR
-export async function criarProjetos(projeto: iProjeto) {
+export async function criarTurmas(turma: iTurma) {
   try {
-    const { title, description, content, userId } = projeto;
+    const { title, description, content, userId } = turma;
 
     if (!title || !userId) {
       return "Bad Request";
     }
 
     const Resapi = await api.post(
-      "projects/",
+      "class/",
       { title, description, content, userId },
       {
         headers: headers(),
@@ -38,9 +38,9 @@ export async function criarProjetos(projeto: iProjeto) {
 }
 
 // LISTAR
-export async function listarProjetos() {
+export async function listarTurmas() {
   try {
-    const Resapi = await api.get("projects/", {
+    const Resapi = await api.get("class/", {
       headers: headers(),
     });
 
@@ -58,9 +58,9 @@ export async function listarProjetos() {
 
 
 // EDITAR - CARREGAR PROJETO
-export async function carregarProjeto(projetoId: string) {
+export async function carregarTurma(turmaId: string) {
   try {
-    const resApi = await api.get(`projects/${projetoId}`, {
+    const resApi = await api.get(`class/${turmaId}`, {
       headers: headers(),
     });
 
@@ -76,23 +76,23 @@ export async function carregarProjeto(projetoId: string) {
   }
 }
 
-// EDITAR - ATUALIZAR PROJETO
-export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
+// EDITAR - ATUALIZAR TURMA
+export async function atualizarTurma(turmaId: string, turma: iTurma) {
   try {
-    if (!projetoId) {
+    if (!turmaId) {
       return "ProjetoId não informado";
     }
 
-    const { title, description, content, userId } = projeto; // Desestrutura as propriedades do objeto projeto
+    const { title, description, content, userId } = turma; // Desestrutura as propriedades do objeto turma
 
-    const updatedProjeto = {
+    const updatedTurma = {
       title,
       description,
       content,
       userId
     };
 
-    const resApi = await api.patch(`projects/${projetoId}`, updatedProjeto, {
+    const resApi = await api.patch(`class/${turmaId}`, updatedTurma, {
       headers: headers(),
     });
 
@@ -109,19 +109,19 @@ export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
 }
 
 
-// EXCLUIR PROJETO
-export async function excluirProjeto(projetoId: string) {
+// EXCLUIR TURMA
+export async function excluirTurma(turmaId: string) {
   try {
-    if (!projetoId) {
-      return "ProjetoId não informado";
+    if (!turmaId) {
+      return "TurmaId não informado";
     }
 
-    const Resapi = await api.delete(`projects/${projetoId}`, {
+    const Resapi = await api.delete(`class/${turmaId}`, {
       headers: headers(),
     });
 
     if (Resapi) {
-      return "Projeto deletado com sucesso";
+      return "Turma deletada com sucesso";
     }
   } catch (error) {
     console.log(error);
