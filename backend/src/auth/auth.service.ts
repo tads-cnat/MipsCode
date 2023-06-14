@@ -50,8 +50,8 @@ export class AuthService {
         Tutorial: true,
         project: true,
         ide_theme: true,
-        classroomId: true,
-        professorClassroom: true,
+        ClassId: true,
+        professorClass: true,
         studentClassrom: true,
       },
     });

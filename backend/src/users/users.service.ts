@@ -53,7 +53,7 @@ export class UsersService {
         return await this.prisma.user.findUnique({
           where: { id },
           include: {
-            professorClassroom: true,
+            professorClass: true,
             studentClassrom: false,
             project: true,
             Tutorial: true,
@@ -65,7 +65,7 @@ export class UsersService {
         where: { id },
         include: {
           studentClassrom: true,
-          professorClassroom: false,
+          professorClass: false,
           project: true,
           Tutorial: false,
         },

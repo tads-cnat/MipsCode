@@ -23,13 +23,19 @@ export class ProjectsService {
   async findAll(userId: string) {
     try {
       return await this.prisma.project.findMany({
-        where: { userId }
+        where: { userId },
       });
     } catch (error) {
       if (error.code === 'P2001') {
-        throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
+        throw new HttpException(
+          'Nenhum projeto encontrado',
+          HttpStatus.NOT_FOUND,
+        );
       } else {
-        throw new HttpException('Algo de errado na requisição', HttpStatus.BAD_REQUEST);
+        throw new HttpException(
+          'Algo de errado na requisição',
+          HttpStatus.BAD_REQUEST,
+        );
       }
     }
   }
@@ -50,33 +56,41 @@ export class ProjectsService {
       throw new HttpException('Projeto não encontrado', HttpStatus.NOT_FOUND);
     }
 
-    return project
+    return project;
   }
 
   async update(id: string, data: UpdateProjectDto, userId: string) {
     if (!isUUID(data.userId)) {
       throw new HttpException('Id do usuário inválido', HttpStatus.FORBIDDEN);
     }
-  
-    const project = await this.prisma.project.findFirst({ where: { id, userId } });
-  
+
+    const project = await this.prisma.project.findFirst({
+      where: { id, userId },
+    });
+
     if (!project) {
-      throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException(
+        'Nenhum projeto encontrado',
+        HttpStatus.NOT_FOUND,
+      );
     }
-  
+
     try {
       return await this.prisma.project.update({
         data,
-        where: { id }
+        where: { id },
       });
     } catch (error) {
-      throw new HttpException('Falha ao atualizar projeto', HttpStatus.FORBIDDEN);
+      throw new HttpException(
+        'Falha ao atualizar projeto',
+        HttpStatus.FORBIDDEN,
+      );
     }
   }
 
   async remove(id: string, userId: string) {
     const project = await this.prisma.project.findFirst({
-      where: { id, userId }
+      where: { id, userId },
     });
 
     if (!project) {
@@ -90,7 +104,10 @@ export class ProjectsService {
         },
       });
     } catch (error) {
-      throw new HttpException('Falha ao remover projeto.', HttpStatus.FORBIDDEN);
+      throw new HttpException(
+        'Falha ao remover projeto.',
+        HttpStatus.FORBIDDEN,
+      );
     }
   }
 }

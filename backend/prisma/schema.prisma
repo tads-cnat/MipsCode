@@ -8,85 +8,83 @@ datasource db {
 }
 
 model User {
-  id                 String      @id @default(uuid())
-  email              String      @unique
-  password           String
-  name               String
-  bio                String?
-  avatar             String? //avatar ira armazenar a URL da imagem de perfil 
-  role               String
-  ide_theme          Boolean     @default(true)
-  project            Project[]
-  Tutorial           Tutorial[]
-  studentClassrom    Classroom?  @relation(fields: [classroomId], references: [id])
-  classroomId        String?
-  professorClassroom Classroom[] @relation("professor")
+  id              String     @id @default(uuid())
+  email           String     @unique
+  password        String
+  name            String
+  bio             String?
+  avatar          String?
+  role            String
+  ide_theme       Boolean    @default(true)
+  ClassId         String?
+  professorClass  Class[]    @relation("professor")
+  project         Project[]
+  Tutorial        Tutorial[]
+  studentClassrom Class?     @relation(fields: [ClassId], references: [id])
 }
 
-//tabela dos tutoriais 
 model Tutorial {
   id          String   @id @default(uuid())
   title       String   @unique
   description String?
   content     String
   level       Int
-  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele Tutorial   
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
 }
 
-//tabela da documentação 
 model Document {
   id      String @id @default(uuid())
   title   String @unique
   content String
 }
 
-//tabela dos projetos 
 model Project {
   id          String   @id @default(uuid())
   title       String
   description String?
   favorite    Boolean  @default(false)
   content     String?
-  author      User     @relation(fields: [userId], references: [id]) // relacionamento com o user para saber quem é o autor daquele projeto  
   userId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
 }
 
-model Classroom {
-  id          String     @id @default(uuid())
-  students    User[]
-  tasklists   Tasklist[]
-  professor   User       @relation("professor", fields: [professorId], references: [id])
-  professorId String
-  cod         String     @unique
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+model Class {
+  id               String     @id @default(uuid())
+  className        String
+  classDescription String
+  professorId      String
+  cod              String     @unique
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  professor        User       @relation("professor", fields: [professorId], references: [id])
+  tasklists        Tasklist[]
+  students         User[]
 }
 
 model Tasklist {
-  id          String    @id @default(uuid())
-  name        String    @unique
-  description String?
-  tasks       Task[]
-  Classroom   Classroom @relation(fields: [classroomId], references: [id])
-  classroomId String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String   @id @default(uuid())
+  name      String   @unique
+  ClassId   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tasks     Task[]
+  Class     Class?   @relation(fields: [ClassId], references: [id])
 }
 
 model Task {
   id          String       @id @default(uuid())
   title       String       @unique
   description String
-  submissions Submission[]
-  Tasklist    Tasklist     @relation(fields: [tasklistId], references: [id])
-  tasklistId  String
+  tasklistId  String?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+  submissions Submission[]
+  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
 }
 
 model Submission {
@@ -94,6 +92,6 @@ model Submission {
   answer    String
   isCorrect Boolean
   userId    Int
-  Task      Task    @relation(fields: [taskId], references: [id])
-  taskId    String
+  taskId    String?
+  Task      Task?   @relation(fields: [taskId], references: [id])
 }
