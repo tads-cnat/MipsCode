@@ -111,8 +111,8 @@ Interpretadores e simuladores de assembly mips armazenados na internet.
 | :---: | :---: | --- | :---: |
 | RNF001 | Tempo de Resposta | A administração deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de 5 segundos de resposta na exportação. | Desejável
 | RNF002 | Facilidade de uso | A administração deve prover um sistema com uma interface amigável que possibilite a seus usuários uma interação fácil. | Desejável
-| RNF003 | Manutenção e suporte da IDE | A administração irá garantir o funcionamento correto da IDE. | Desejável
+| RNF003 | Manutenção e suporte da IDE |O administrador irá garantir o funcionamento correto da IDE, assegurando um alto grau de impacto.| Obrigatório
 | RNF004 | Monitorar os tutoriais | A administração deverá manter a qualidade dos tutoriais. | Desejável
-| RNF005 | Requisitos legais | A administração deverá adequar a plataforma de acordo com as normas legais(LGPD). | Obrigatório
-| RNF006 | Disponibilidade de armazenamento de arquivos | A administração deverá realizar o gerenciamento de cache para armazenamento de arquivos locais. | Obrigatório
-| RNF007 | Exportação de Arquivo | A administração deve ser capaz de disponibilizar o arquivo exportado pelo usuário em extensão asm. | Obrigatório
+| RNF005 | Requisitos legais |O administrador deverá adequar a plataforma de acordo com as normas legais(LGPD), garantindo a integridade de dados sensíveis armazenando-os com token de segurança| Obrigatório
+| RNF006 | Disponibilidade de armazenamento de arquivos | O sistema deverá realizar o gerenciamento de cache para armazenamento de arquivos locais com espelhamento interno.| Obrigatório
+| RNF007 | Exportação de Arquivo | O sistema deve ser capaz de disponibilizar o arquivo exportado pelo usuário em extensão ASM e XML. | Obrigatório
