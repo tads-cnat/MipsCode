@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { listarProjetos, excluirProjeto } from "../../services/projetoService";
-import { Footer, Header } from "../../../../components";
+import { Header } from "../../../../components";
 import { Typography, Card, CardContent, Box, Button, CardActions } from '@mui/material';
 import { iProjeto } from "../../../../types/iProjetos";
 import { useNavigate } from "react-router-dom";
@@ -83,33 +83,44 @@ const Repositorio = () => {
       <Header/>
 
       <Box>
-        <Typography component={'span'} variant="h6" align="left" padding={5} gutterBottom color="primary.contrastText">
+      <div><br></br></div>
+
+        <Typography component={'span'} variant="h5" align="left" padding={5} gutterBottom color="primary.contrastText">
           Meus Projetos
         </Typography>
+        <div><br></br></div>
 
         <nav className="project-buttons">
-          <Button variant="outlined" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
+          <Button variant="contained" color="secondary" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></Button>
           <Button variant="contained" onClick={handleClickImportar}><FolderOutlinedIcon/><span>Importar Projeto</span></Button>        
         </nav>
 
         {projetos.map((projeto,index) => (
           <Card key={index} variant="outlined">
             <CardContent>
-              <Typography component={'span'} variant="h5">{projeto.title}</Typography>
-
-              <Typography component={'span'} variant="body1">{projeto.description}</Typography>
-
-              <Typography component={'span'} variant="body2" color="secondary">
-                {projeto.content}
-              </Typography>
-
+              <div className="col">
+                <div className="row">
+                  <Typography component={'span'} variant="h5">{projeto.title}</Typography>
+                </div>
+                <div className="row">
+                  <br></br>
+                </div>
+                <div className="row">
+                  <Typography component={'span'} variant="body1">{projeto.description}</Typography>
+                </div>
+                <div className="row">
+                  <Typography component={'span'} variant="body2" color="secondary">
+                    {projeto.content}
+                  </Typography>
+                </div>
+              </div>
             </CardContent>
             <CardActions>
               <Button color="secondary" variant="outlined" onClick={() => handleClickEditar(projeto.id || '')}>Editar</Button>
 
               <Button 
                 type="submit"
-                color="secondary" 
+                color="error" 
                 variant="outlined"
                 onClick={() => 
                 window.confirm("Tem certeza que deseja excluir este projeto?") &&
@@ -121,7 +132,7 @@ const Repositorio = () => {
         ))}
       </Box>
 
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
