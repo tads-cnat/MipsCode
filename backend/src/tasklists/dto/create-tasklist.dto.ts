@@ -8,7 +8,7 @@ export class CreateTasklistDto {
 
   @ApiProperty({ required: true })
   @IsUUID()
-  classroomId: string
+  classId: string
 
   @ApiProperty({ required: true })
   @IsUUID()

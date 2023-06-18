@@ -8,12 +8,16 @@ import { isUUID } from 'class-validator';
 export class TasklistsService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createTasklistDto: CreateTasklistDto) {
-    const { name, classroomId, professorId } = createTasklistDto;
+  async create(createTasklistDto: CreateTasklistDto, requestUserId: string) {
+    if (createTasklistDto.professorId !== requestUserId) {
+      throw new HttpException('Unauthorized professor access', HttpStatus.UNAUTHORIZED);
+    }
+
+    const { name, classId, professorId } = createTasklistDto;
     
-    await this.prisma.classroom.findFirstOrThrow({
+    await this.prisma.class.findFirstOrThrow({
       where: {
-        id: classroomId,
+        id: classId,
         professorId: professorId,
       },
     });
@@ -21,49 +25,108 @@ export class TasklistsService {
     return this.prisma.tasklist.create({
       data: {
         name: name,
-        Classroom: {
+        Class: {
           connect: {
-            id: classroomId
+            id: classId
           }
         }
       }
     })
   }
 
-  async findAll(classroomId: string) {
-    if (!isUUID(classroomId)) {
+  async findAll(classId: string, userId: string, userRole: string) {
+    if (!isUUID(classId)) {
       throw new HttpException('Invalid input id', HttpStatus.BAD_REQUEST);
     }
 
-    const classroom = await this.prisma.classroom.findFirstOrThrow({
-      where: { id: classroomId },
-      include: { tasklists: true }
+    const searchedClass = await this.prisma.class.findFirstOrThrow({
+      where: { id: classId },
+      select: {
+        tasklists: true,
+        students: {
+          where: {
+            id: userId
+          },
+          take: 1
+        },
+        professorId: true
+      }
     })
 
-    return classroom.tasklists
-  }
-
-  findOne(id: string) {
-    if (!isUUID(id)) {
-      throw new HttpException('Invalid input id', HttpStatus.BAD_REQUEST);
+    if (userRole === 'STUDENT' && searchedClass.students.length === 0) {
+      throw new HttpException("Unauthorized student access", HttpStatus.UNAUTHORIZED);
     }
 
-    return this.prisma.tasklist.findFirstOrThrow({
-      where: { id }
-    });
+    if (userRole === 'PROFESSOR' && searchedClass.professorId !== userId) {
+      throw new HttpException("Unauthorized professor access", HttpStatus.NOT_FOUND);
+    }
+
+    return searchedClass.tasklists
   }
 
-  async update(id: string, updateTasklistDto: UpdateTasklistDto, requestUserId: string) {
-    if (!isUUID(id)) {
+  async findOne(
+    tasklistId: string, 
+    userId: string, 
+    userRole: string
+    ) {
+    if (!isUUID(tasklistId)) {
       throw new HttpException('Invalid input id', HttpStatus.BAD_REQUEST);
     }
 
     const tasklist = await this.prisma.tasklist.findFirstOrThrow({
       where: {
-        id
+        id: tasklistId
       },
       include: {
-        Classroom: {
+        Class: {
+          select: {
+            professorId: true,
+            students: {
+              where: {
+                id: userId
+              },
+              take: 1
+            }
+          }
+        },
+        tasks: true
+      }
+    })
+
+    if (userRole === 'STUDENT' && tasklist.Class.students.length === 0) {
+      throw new HttpException("Unauthorized student access", HttpStatus.UNAUTHORIZED);
+    }
+
+    if (userRole === 'PROFESSOR' && tasklist.Class.professorId !== userId) {
+      throw new HttpException("Unauthorized professor access", HttpStatus.UNAUTHORIZED);
+    }
+
+    return {
+      id: tasklist.id,
+      name: tasklist.name,
+      description: tasklist.description,
+      classId: tasklist.classId,
+      createdAt: tasklist.createdAt,
+      updatedAt: tasklist.updatedAt,
+      tasks: tasklist.tasks
+    }
+  }
+
+  async update(
+    tasklistId: string,
+    updateTasklistDto: UpdateTasklistDto,
+    userId: string
+    ) {
+    if (!isUUID(tasklistId)) {
+      throw new HttpException('Invalid input id', HttpStatus.BAD_REQUEST);
+    }
+
+    const tasklist = await this.prisma.tasklist.findFirstOrThrow({
+      where: {
+        id: tasklistId
+      },
+      include: {
+        Class: {
           select: {
             professorId: true
           }
@@ -71,15 +134,15 @@ export class TasklistsService {
       }
     })
 
-    if (tasklist.Classroom.professorId !== requestUserId) {
-      throw new HttpException('Unauthorized professor access', HttpStatus.UNAUTHORIZED);
+    if (tasklist.Class.professorId !== userId) {
+      throw new HttpException("Unauthorized professor access", HttpStatus.UNAUTHORIZED);
     }
 
     try {
       return await this.prisma.tasklist.update({
         data: updateTasklistDto,
         where: {
-          id,
+          id: tasklistId,
         }
       })
     } catch (error) {
@@ -103,7 +166,7 @@ export class TasklistsService {
         id
       },
       include: {
-        Classroom: {
+        Class: {
           select: {
             professorId: true
           }
@@ -111,7 +174,7 @@ export class TasklistsService {
       }
     })
 
-    if (tasklist.Classroom.professorId !== requestUserId) {
+    if (tasklist.Class.professorId !== requestUserId) {
       throw new HttpException('Unauthorized professor access', HttpStatus.UNAUTHORIZED);
     }
 
