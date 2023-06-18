@@ -32,7 +32,7 @@ export class ClassService {
       });
 
       //caso não seja um professor ele recebe um erro de Unau thorized
-      if (userRes.role != 'professor') {
+      if (userRes.role != 'PROFESSOR') {
         throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
 
