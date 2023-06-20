@@ -10,21 +10,21 @@ export class CreateTaskDto {
   @IsString()
   description: string
 
-  @ApiProperty()
-  @IsString()
-  inputDescription: string
+  // @ApiProperty()
+  // @IsString()
+  // inputDescription: string
 
-  @ApiProperty()
-  @IsString()
-  outputDescription: string
+  // @ApiProperty()
+  // @IsString()
+  // outputDescription: string
 
-  @ApiProperty()
-  @IsString()
-  exampleInput: string
+  // @ApiProperty()
+  // @IsString()
+  // exampleInput: string
 
-  @ApiProperty()
-  @IsString()
-  exampleOutput: string
+  // @ApiProperty()
+  // @IsString()
+  // exampleOutput: string
 
   @ApiProperty()
   @IsUUID()

@@ -13,7 +13,7 @@ export class TasklistsService {
       throw new HttpException('Unauthorized professor access', HttpStatus.UNAUTHORIZED);
     }
 
-    const { name, classId, professorId } = createTasklistDto;
+    const { name, classId, professorId, description } = createTasklistDto;
     
     await this.prisma.class.findFirstOrThrow({
       where: {
@@ -24,7 +24,8 @@ export class TasklistsService {
 
     return this.prisma.tasklist.create({
       data: {
-        name: name,
+        name,
+        description,
         Class: {
           connect: {
             id: classId

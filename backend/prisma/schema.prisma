@@ -93,6 +93,6 @@ model Submission {
   answer    String
   isCorrect Boolean
   userId    Int
-  taskId    String?
-  Task      Task?   @relation(fields: [taskId], references: [id])
+  taskId    String
+  Task      Task    @relation(fields: [taskId], references: [id])
 }

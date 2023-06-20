@@ -8,6 +8,7 @@ import { TutorialsModule } from './tutorials/tutorials.module';
 import { ClassModule } from './class/class.module';
 import { TasksModule } from './tasks/tasks.module';
 import * as cors from 'cors';
+import { TasklistsModule } from './tasklists/tasklists.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import * as cors from 'cors';
     AuthModule,
     TutorialsModule,
     ClassModule,
+    TasklistsModule,
     TasksModule,
   ],
 })
