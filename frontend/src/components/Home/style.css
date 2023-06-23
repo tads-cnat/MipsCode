@@ -233,6 +233,23 @@ section.explorador .contato form textarea {
     line-height: 120%;
 }
 
+section.explorador .contato button.demonstracao {
+    display: flex;
+    width: 636px;
+    padding: 15px 10px;
+    height: 51px;
+    border-radius: 5px;
+    border: 1px solid #2ef2aa;
+    background: rgba(46, 242, 170, 0.05);
+    align-items: center;
+    justify-content: center;
+    color: #2ef2aa;
+    text-align: center;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
 section.explorador .contato form textarea {
     min-height: 150px;
 }
