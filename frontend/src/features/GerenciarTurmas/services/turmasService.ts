@@ -2,24 +2,14 @@ import { headers } from "../../../data";
 import api from "../../../services/api";
 import { iTurma } from "../../../types/iTurmas";
 
-function getCookie(name: string) {
-  const value = `; ${document.cookie}`;
-  const parts: any = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(";").shift();
-}
-
-// CRIAR
+// CRIAR - POST
 export async function criarTurmas(turma: iTurma) {
   try {
-    const { title, description, content, userId } = turma;
-
-    if (!title || !userId) {
-      return "Bad Request";
-    }
+    const { professorId, className, classDescription, cod } = turma;
 
     const Resapi = await api.post(
       "class/",
-      { title, description, content, userId },
+      { professorId, className, classDescription, cod },
       {
         headers: headers(),
       }
@@ -37,7 +27,7 @@ export async function criarTurmas(turma: iTurma) {
   }
 }
 
-// LISTAR
+// LISTAR - GET
 export async function listarTurmas() {
   try {
     const Resapi = await api.get("class/", {
@@ -56,11 +46,10 @@ export async function listarTurmas() {
   }
 }
 
-
-// EDITAR - CARREGAR PROJETO
-export async function carregarTurma(turmaId: string) {
+// EDITAR - CARREGAR PROJETO - GET
+export async function carregarTurma(cod: string) {
   try {
-    const resApi = await api.get(`class/${turmaId}`, {
+    const resApi = await api.get(`class/${cod}`, {
       headers: headers(),
     });
 
@@ -76,23 +65,23 @@ export async function carregarTurma(turmaId: string) {
   }
 }
 
-// EDITAR - ATUALIZAR TURMA
+// EDITAR - ATUALIZAR TURMA - PATCH
 export async function atualizarTurma(turmaId: string, turma: iTurma) {
   try {
     if (!turmaId) {
       return "ProjetoId não informado";
     }
 
-    const { title, description, content, userId } = turma; // Desestrutura as propriedades do objeto turma
+    const { professorId, className, classDescription, cod } = turma; // Desestrutura as propriedades do objeto turma
 
     const updatedTurma = {
-      title,
-      description,
-      content,
-      userId
+      professorId,
+      className,
+      classDescription,
+      cod,
     };
 
-    const resApi = await api.patch(`class/${turmaId}`, updatedTurma, {
+    const resApi = await api.patch(`class/${cod}`, updatedTurma, {
       headers: headers(),
     });
 
@@ -108,20 +97,65 @@ export async function atualizarTurma(turmaId: string, turma: iTurma) {
   }
 }
 
-
-// EXCLUIR TURMA
-export async function excluirTurma(turmaId: string) {
+// EXCLUIR TURMA - DELETE
+export async function excluirTurma(cod: string) {
   try {
-    if (!turmaId) {
+    if (!cod) {
       return "TurmaId não informado";
     }
 
-    const Resapi = await api.delete(`class/${turmaId}`, {
+    const Resapi = await api.delete(`class/${cod}`, {
       headers: headers(),
     });
 
     if (Resapi) {
       return "Turma deletada com sucesso";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
+}
+
+// ADICIONAR ESTUDANTE - POST
+export async function addEstudante(userId: string) {
+  try {
+    const Resapi = await api.post(
+      `class/addStudent/${userId}`,
+      { userId },
+      {
+        headers: headers(),
+      }
+    );
+
+    if (Resapi && Resapi.data) {
+      return "Sucess";
+    }
+  } catch (error) {
+    console.log(error);
+
+    return {
+      error: error,
+    };
+  }
+}
+
+// REMOVER ESTUDANTE - DELETE
+export async function excluirEstudante(userId: string) {
+  try {
+    if (!userId) {
+      return "userId não informado";
+    }
+
+    const Resapi = await api.delete(`class/removeStudent/${userId}}`, {
+      headers: headers(),
+    });
+
+    if (Resapi) {
+      return "Estudante removido da turma com sucesso";
     }
   } catch (error) {
     console.log(error);
