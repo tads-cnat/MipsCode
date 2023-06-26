@@ -61,10 +61,11 @@ CREATE TABLE "Class" (
 CREATE TABLE "Tasklist" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "ClassId" TEXT,
+    "description" TEXT,
+    "ClassId" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "Tasklist_ClassId_fkey" FOREIGN KEY ("ClassId") REFERENCES "Class" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "Tasklist_ClassId_fkey" FOREIGN KEY ("ClassId") REFERENCES "Class" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -72,10 +73,10 @@ CREATE TABLE "Task" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "tasklistId" TEXT,
+    "tasklistId" TEXT NOT NULL,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "Task_tasklistId_fkey" FOREIGN KEY ("tasklistId") REFERENCES "Tasklist" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT "Task_tasklistId_fkey" FOREIGN KEY ("tasklistId") REFERENCES "Tasklist" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

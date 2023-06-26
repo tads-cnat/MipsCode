@@ -67,24 +67,25 @@ model Class {
 }
 
 model Tasklist {
-  id        String   @id @default(uuid())
-  name      String   @unique
-  ClassId   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  tasks     Task[]
-  Class     Class?   @relation(fields: [ClassId], references: [id])
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  classId     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tasks       Task[]
+  Class       Class    @relation(fields: [classId], references: [id])
 }
 
 model Task {
   id          String       @id @default(uuid())
   title       String       @unique
   description String
-  tasklistId  String?
+  tasklistId  String
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
   submissions Submission[]
-  Tasklist    Tasklist?    @relation(fields: [tasklistId], references: [id])
+  Tasklist    Tasklist     @relation(fields: [tasklistId], references: [id])
 }
 
 model Submission {
@@ -92,6 +93,6 @@ model Submission {
   answer    String
   isCorrect Boolean
   userId    Int
-  taskId    String?
-  Task      Task?   @relation(fields: [taskId], references: [id])
+  taskId    String
+  Task      Task    @relation(fields: [taskId], references: [id])
 }

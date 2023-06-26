@@ -6,40 +6,55 @@ import { RequestUser } from 'src/users/dto/request-user.dto';
 import { Roles } from 'src/auth/roles/roles.decorator';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { RolesGuard } from 'src/auth/role/role.guard';
-import { ApiBearerAuth } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-@Roles('PROFESSOR') // UserRoles.PROFESSOR, UserRoles.ADMIN
-@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiBearerAuth()
+@ApiTags('Tasklist')
 @Controller('tasklists')
 export class TasklistsController {
   constructor(private readonly tasklistsService: TasklistsService) {}
 
+  @Roles('PROFESSOR') // UserRoles.PROFESSOR
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Post()
-  create(@Body() createTasklistDto: CreateTasklistDto) {
-    return this.tasklistsService.create(createTasklistDto);
+  create(@Body() createTasklistDto: CreateTasklistDto, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.tasklistsService.create(createTasklistDto, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('class/:id')
-  findAll(@Param('id') id: string) {
-    return this.tasklistsService.findAll(id);
+  findAll(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
+    const userRole = req.user.role
+    return this.tasklistsService.findAll(id, userId, userRole);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tasklistsService.findOne(id);
+  @UseGuards(JwtAuthGuard)
+  @Get(':tasklistId')
+  findOne(
+    @Param('tasklistId') tasklistId: string,
+    @Req() req: RequestUser
+  ) {
+    const userId = req.user.id
+    const userRole = req.user.role
+    return this.tasklistsService.findOne(tasklistId, userId, userRole);
   }
 
-  @Patch(':id')
+  @Roles('PROFESSOR') // UserRoles.PROFESSOR
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Patch(':tasklistId')
   update(
-      @Param('id') id: string, 
-      @Body() updateTasklistDto: UpdateTasklistDto,
-      @Req() req: RequestUser
-    ) {
-      const userId = req.user.id
-      return this.tasklistsService.update(id, updateTasklistDto, userId);
+    @Param('tasklistId') tasklistId: string,
+    @Body() updateTasklistDto: UpdateTasklistDto,
+    @Req() req: RequestUser
+  ) {
+    const userId = req.user.id
+    return this.tasklistsService.update(tasklistId, updateTasklistDto, userId);
   }
 
+  @Roles('PROFESSOR') // UserRoles.PROFESSOR
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
   remove(@Param('id') id: string, @Req() req: RequestUser) {
     const userId = req.user.id
