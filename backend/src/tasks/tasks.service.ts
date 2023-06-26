@@ -106,11 +106,61 @@ export class TasksService {
     };
   }
 
-  async update(id: string, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  async update(id: string, updateTaskDto: UpdateTaskDto, userId: string) {
+    if (!isUUID(id)) {
+      throw new HttpException('Invalid input id', HttpStatus.FORBIDDEN);
+    }
+
+    const tasklist = await this.prisma.tasklist.findFirstOrThrow({
+      where: {
+        id: updateTaskDto.tasklistId,
+        Class: {
+          professorId: userId
+        },
+      },
+      include: {
+        tasks: {
+          where: { id },
+          take: 1
+        }
+      }
+    })
+
+    if (tasklist.tasks.length === 0) {
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
+    }
+
+    return await this.prisma.task.update({
+      data: updateTaskDto,
+      where: { id }
+    });
   }
 
-  async remove(id: string) {
-    return `This action removes a #${id} task`;
+  async remove(id: string, userId: string) {
+    if (!isUUID(id)) {
+      throw new HttpException('Invalid input id', HttpStatus.FORBIDDEN);
+    }
+    
+    const tasklist = await this.prisma.tasklist.findFirstOrThrow({
+      where: {
+        Class: {
+          professorId: userId
+        },
+      },
+      include: {
+        tasks: {
+          where: { id },
+          take: 1
+        }
+      }
+    })
+    
+    if (tasklist.tasks.length === 0) {
+      throw new HttpException('Task not found', HttpStatus.NOT_FOUND);
+    }
+
+    return await this.prisma.task.delete({
+      where: { id }
+    })
   }
 }

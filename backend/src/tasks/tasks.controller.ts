@@ -44,13 +44,19 @@ export class TasksController {
     return this.tasksService.findOne(id, userId);
   }
 
+  @Roles('PROFESSOR') // UserRoles.PROFESSOR
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.tasksService.update(id, updateTaskDto);
+  update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.tasksService.update(id, updateTaskDto, userId);
   }
 
+  @Roles('PROFESSOR') // UserRoles.PROFESSOR
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.tasksService.remove(id);
+  remove(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.tasksService.remove(id, userId);
   }
 }
