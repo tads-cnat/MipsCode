@@ -1,13 +1,13 @@
 import { randomUUID } from "crypto";
 import { CreateSubmissionDto } from "../dto/create-submission.dto";
 
-export default function createSubmission(createSubmissionDto: CreateSubmissionDto) {
+export default function createSubmission(createSubmissionDto: CreateSubmissionDto, submissionId: string) {
   const { answer, taskId, userId, tasklistId } = createSubmissionDto
 
   return `
     INSERT INTO Submission (id, answer, isCorrect, userId, taskId, createdAt)
     SELECT
-      '${randomUUID()}', 
+      '${submissionId}', 
       '${answer}',
       FALSE,
       '${userId}',
@@ -26,9 +26,7 @@ export default function createSubmission(createSubmissionDto: CreateSubmissionDt
         FROM Tasklist AS tl2
         WHERE tl2.id = '${tasklistId}'
         AND tl2.classId = c.id
-      )
-    LIMIT 1;
-    SELECT last_insert_rowid() AS id;
+      );
   `;
 }
 

@@ -22,20 +22,27 @@ export class SubmissionsService {
       throw new HttpException('Invalid input id', HttpStatus.FORBIDDEN);
     }    
 
-    const query = createSubmission(createSubmissionDto)
-    const submission = await this.prisma.$queryRawUnsafe(query)
-    const submissionId = submission[0]?.id;
-    
-    console.log(submissionId);
+    const submissionId = randomUUID();
+    const query = createSubmission(createSubmissionDto, submissionId)
 
-    return submission;
+    try {
+      await this.prisma.$queryRawUnsafe(query);
+    } catch (error) {
+      throw new Error('Invalid taskId, tasklistId, or userId');
+    }
+
+    return await this.prisma.submission.findFirstOrThrow({ where: { id: submissionId } });
   }
 
-  findAll() {
-    return `This action returns all submissions`;
+  async findAll(taskId: string, userId: string) {
+    return await this.prisma.submission.findMany({
+      where: { taskId, userId }
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} submission`;
+  async findOne(id: string, userId: string) {
+    return await this.prisma.submission.findFirstOrThrow({
+      where: { id, userId }
+    });
   }
 }

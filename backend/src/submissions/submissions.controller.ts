@@ -18,14 +18,16 @@ export class SubmissionsController {
     return this.submissionsService.create(createSubmissionDto, userId);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('task/:id')
   findAll(@Param('id') id: string, @Req() req: RequestUser) {
     const userId = req.user.id
-    return this.submissionsService.findAll();
+    return this.submissionsService.findAll(id, userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.submissionsService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.submissionsService.findOne(id, userId);
   }
 }
