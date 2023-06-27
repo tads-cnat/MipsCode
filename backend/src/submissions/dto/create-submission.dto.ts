@@ -9,4 +9,7 @@ export class CreateSubmissionDto {
 
   @IsUUID()
   taskId: string
+
+  @IsUUID()
+  tasklistId: string
 }

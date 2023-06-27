@@ -15,11 +15,12 @@ export class SubmissionsController {
   @Post()
   create(@Body() createSubmissionDto: CreateSubmissionDto, @Req() req: RequestUser) {
     const userId = req.user.id
-    return this.submissionsService.create(createSubmissionDto);
+    return this.submissionsService.create(createSubmissionDto, userId);
   }
 
-  @Get()
-  findAll() {
+  @Get('task/:id')
+  findAll(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
     return this.submissionsService.findAll();
   }
 
