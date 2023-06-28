@@ -92,7 +92,7 @@ model Submission {
   id        String   @id @default(uuid())
   answer    String
   isCorrect Boolean? @default(false)
-  userId    Int
+  userId    String
   taskId    String
   createdAt DateTime @default(now())
   Task      Task     @relation(fields: [taskId], references: [id])

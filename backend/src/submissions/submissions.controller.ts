@@ -15,16 +15,19 @@ export class SubmissionsController {
   @Post()
   create(@Body() createSubmissionDto: CreateSubmissionDto, @Req() req: RequestUser) {
     const userId = req.user.id
-    return this.submissionsService.create(createSubmissionDto);
+    return this.submissionsService.create(createSubmissionDto, userId);
   }
 
-  @Get()
-  findAll() {
-    return this.submissionsService.findAll();
+  @UseGuards(JwtAuthGuard)
+  @Get('task/:id')
+  findAll(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.submissionsService.findAll(id, userId);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.submissionsService.findOne(+id);
+  findOne(@Param('id') id: string, @Req() req: RequestUser) {
+    const userId = req.user.id
+    return this.submissionsService.findOne(id, userId);
   }
 }
