@@ -1,0 +1,157 @@
+.section-one {
+    display: flex;
+    height: 37.5em;
+    justify-content: center;
+}
+
+.section-two {
+    display: flex;
+    height: 29.5em;
+    justify-content: center;
+    background: #151518;
+}
+
+.section-three {
+    display: flex;
+    height: 29.5em;
+    justify-content: center;
+    gap: 5em;
+}
+
+.section-four {
+    height: 29.5em;
+    justify-content: center;
+    gap: 5em;
+}
+
+
+.div-text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.div-element {
+    width: 50%;
+    text-align: -webkit-right;
+}
+
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.card {
+    width: 289px;
+    height: 288px;
+    background: radial-gradient(100% 101.95% at 100% 0%, rgba(93, 173, 236, 0.083) 0%, rgba(93, 173, 236, 0) 85.71%), #1F2024;
+    border: 1.13538px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 4.54154px 28.3846px rgb(0 0 0 / 27%);
+    border-radius: 13.6246px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    gap: 2em;
+}
+
+.icon-card {
+    width: 4em;
+}
+
+.group-card {
+    display: flex;
+    padding: 0px 5%;
+    text-align: center;
+    gap: 5px;
+}
+
+
+article .section-four .group-depoimento {
+    display: flex;
+    height: 19em;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+/* article .section-four .group .texts .texts-identification h4 {
+    font-weight: 600;
+    line-height: 36px;
+} */
+
+/* article .section-four .group .texts .texts-identification p {
+    font-weight: 600;
+} */
+
+article .section-four .group .details {
+    display: flex;
+}
+
+article .section-four .group .details .avatar {
+    width: 70px;
+    height: 70px;
+    border: 3px solid #2EF2AA;
+    border-radius: 109px;
+}
+
+
+article .section-five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 29.5em;
+    justify-content: center;
+    margin-bottom: 15em;
+    gap: 2em;
+    padding: 0px 13%;
+}
+
+.group-contato {
+    text-align: center;
+    display: flex;
+    gap: 11px;
+}
+
+
+
+
+
+
+@media (max-width:1080px) {
+    .section-three {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    article .section-three .cards {
+        display: flex;
+        justify-content: space-between;
+        gap: 1em;
+        flex-direction: column;
+    }
+}
+
+@media (max-width:910px) {
+    article .section-one {
+        align-items: flex-start;
+    }
+
+    article .section-two .section-two-divisions .division-two {
+        width: 100%;
+        display: none;
+    }
+
+    article .section-five form .input-form {
+        width: 100%;
+    }
+
+    article .section-four .group .details .avatar {
+        display: none;
+    }
+
+    
+
+}

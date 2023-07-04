@@ -1,0 +1,141 @@
+.content-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+
+
+.search,
+.filters {
+    width: 18em;
+}
+
+.project-div {
+    border: 1px solid #333333;
+    border-radius: 13px;
+    padding: 23px 31px;
+    
+}
+
+.content-projetos-all {
+    gap: 1em;
+}
+
+.options {
+    gap: 2em;
+}
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.form-div{
+    width: 31em;
+    background: #1a1b1f;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    height: auto;
+    box-shadow: 1px 2px 47px 0px #00000057;
+    border-radius: 5px;
+    color: white;
+    padding: 1em 8em 3em;
+}
+
+.input-form {
+    color: white !important;
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(217, 217, 217, 0.02) !important;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    font-family: 'Inter';
+}
+
+.input-button {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(46, 242, 170, 0.05);
+    border: 1px solid #2EF2AA;
+    color: #2EF2AA;
+    font-family: 'Inter';
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.textarea {
+    resize: none;
+}
+
+
+
+
+
+.options-div {
+    position: absolute;
+    border-radius: 5px;
+    border: solid 1px white;
+    margin-top: 1.9em;
+    right: 16em;
+    width: 14em;
+    backdrop-filter: blur(26px);
+}
+
+
+.buttonOptions {
+    background: none;
+    border: none;
+}
+
+.option {
+    padding: 1em 1em;
+    margin: 0;
+}
+
+
+.div-projects{
+    width: 50%;
+}
+
+@media (max-width:1050px) {
+    .div-projects{
+        width: 100%;
+    }
+    .options{
+        justify-content: space-between;
+        margin-top: 1em;
+    }
+    .project-div{
+        flex-direction: column !important;
+    }
+    .p-button {
+        text-align: right;
+        line-height: 1;
+    }
+
+    .div-filters {
+        gap: 2em !important;
+    }
+
+    .search {
+        width: 10em;
+    }
+
+    .filters {
+        width: 18em;
+    }
+    .options-div{
+        margin-top: 1.9em;
+        right: 6em;
+        width: 13em;
+    }
+}
