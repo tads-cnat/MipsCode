@@ -1,0 +1,231 @@
+.area-link {
+    background: linear-gradient(96.95deg, #19C284 0%, rgba(83, 169, 107, 0.95) 100%);
+    border-radius: 4px;
+    width: -webkit-fill-available;
+    padding: 2em 2em;
+    height: 6em;
+}
+
+.area-div {
+    gap: 2em;
+}
+
+.content-buttons {
+    gap: 1em;
+}
+
+.content-projetos-all {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+}
+
+.project-div {
+    border: 1px solid #333333;
+    border-radius: 13px;
+    padding: 23px 31px;
+}
+
+.p-button{
+    line-height: normal !important;
+}
+
+
+.content-filtersesearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3em;
+}
+
+.content-filtersesearch .search {
+    background: rgba(217, 217, 217, 0.02);
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    border-radius: 5px;
+    height: 34px;
+    width: 263px;
+    color: white;
+    padding: 0px 15px;
+    font-family: 'Inter';
+}
+
+.content-filtersesearch .filters {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1.5px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    height: 34px;
+    width: 199px;
+    color: white;
+    padding: 0px 15px;
+    font-family: 'Inter';
+}
+
+
+.content-projetos-all .project .options {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.content-projetos-all .project .options .button-open {
+    background: rgba(46, 242, 170, 0.05);
+    border: 1px solid #2EF2AA;
+    border-radius: 5px;
+    height: 34px;
+    width: 145px;
+    color: #2EF2AA;
+    padding: 0px 15px;
+    font-family: 'Inter';
+}
+
+.content-projetos-all .project .options .div-options {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+}
+
+
+
+
+
+.content-buttons .button-white-solid {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    width: 229px;
+    height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+article .content-projetos .content-div .h1 {
+    margin: 0px;
+    font-size: 32px;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 1em;
+    padding-right: 9em;
+}
+
+article .content-projetos .content-div .h3 {
+    font-size: 22px;
+}
+
+article .content-projetos .content-div .p {
+    font-size: 18px;
+}
+
+article .content-projetos .content-div .content-roadmap {
+    width: 50%;
+}
+
+
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+
+
+
+.editar-arquivo {
+    position: fixed;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.form-div{
+    width: 31em;
+    background: #1a1b1f;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    height: auto;
+    box-shadow: 1px 2px 47px 0px #00000057;
+    border-radius: 5px;
+    color: white;
+    padding: 1em 8em 3em;
+}
+
+.input-form {
+    color: white !important;
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(217, 217, 217, 0.02) !important;
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    font-family: 'Inter';
+}
+
+.input-button {
+    height: 36px;
+    border-radius: 4px;
+    padding: 0px 12px;
+    background: rgba(46, 242, 170, 0.05);
+    border: 1px solid #2EF2AA;
+    color: #2EF2AA;
+    font-family: 'Inter';
+
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.textarea {
+    resize: none;
+}
+
+
+
+
+.options-div {
+    position: absolute;
+    border-radius: 5px;
+    background: #1a1b1f;
+    border: solid 1px white;
+    margin-top: 11em;
+    right: 17em;
+}
+
+.buttonOptions {
+    background: none;
+    border: none;
+}
+
+.option {
+    padding: 1em 1em;
+    margin: 0;
+}
+
+
+@media (max-width:1050px) {
+    .area-div {
+        gap: 2em;
+        flex-direction: column !important;
+    }
+    .area-link {
+        height: auto !important;
+    }
+
+    .content-projetos-all {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>MipsCode</title>
+    <link rel="stylesheet" href="./assets/css/ide.css">
+    <script src="../src/index.js" defer="true" type="module"></script>
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/geral.css">
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo-mips-min.png">
+</head>
+
+<body>
+    <form method="post" action="#">
+        <article class="article">
+    
+    
+            <div class="form-divs">
+    
+                <div class="row height-100">
+    
+                    <section class="row width-100 height-100 ">
+    
+                        <div class="textarea-code color-white fs-6 width-50 row">
+                            <textarea class="textarea-code color-white fs-6 width-50 mips" id="textarea" name="content"
+                                placeholder="code here..."></textarea>
+                            <!--
+                                DEPOIS DE MONTAR:
+                                <div class="textarea-code color-white fs-6 width-50 row">
+                                    <div class="mounted-code-area">
+                                        <div class="mounted-code-line">
+                                            <span class="mounted-code-column-element">address</span>
+                                            <span class="mounted-code-column-element">hex code</span>
+                                            <span class="mounted-code-column-element">user code</span>
+                                        </div>
+                                        ...
+                                    </div>
+                                </div>
+                            -->
+                        </div>
+    
+                        <div class="width-50 align-center column div-regs">
+                            <section class="sections-regs">
+                                <h3 class="fs-5">Registradores</h3>
+    
+                                <table class="table width-100">
+                                    <tbody class="width-100">
+                                        <tr>
+                                            <th>Identificação</th>
+                                            <th>Nome</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                        <tr class="table-reg-line">
+                                            <td>$0</td>
+                                            <td>
+                                                <div class="border">$zero</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$0">0</td>
+                                        </tr>
+                                        <tr class="table-reg-line">
+                                            <td>$1</td>
+                                            <td>
+                                                <div class="border">$at</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$1">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$2</td>
+                                            <td>
+                                                <div class="border">$v0</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$2">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$3</td>
+                                            <td>
+                                                <div class="border">$v1</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$3">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$4</td>
+                                            <td>
+                                                <div class="border">$a0</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$4">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$5</td>
+                                            <td>
+                                                <div class="border">$a1</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$5">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$6</td>
+                                            <td>
+                                                <div class="border">$a2</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$6">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$7</td>
+                                            <td>
+                                                <div class="border">$a3</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$7">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$8</td>
+                                            <td>
+                                                <div class="border">$t0</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$8">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$9</td>
+                                            <td>
+                                                <div class="border">$t1</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$9">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$10</td>
+                                            <td>
+                                                <div class="border">$t2</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$10">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$11</td>
+                                            <td>
+                                                <div class="border">$t3</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$11">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$12</td>
+                                            <td>
+                                                <div class="border">$t4</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$12">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$13</td>
+                                            <td>
+                                                <div class="border">$t5</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$13">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$14</td>
+                                            <td>
+                                                <div class="border">$t6</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$14">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$15</td>
+                                            <td>
+                                                <div class="border">$t7</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$15">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$16</td>
+                                            <td>
+                                                <div class="border">$s0</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$16">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$17</td>
+                                            <td>
+                                                <div class="border">$s1</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$17">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$18</td>
+                                            <td>
+                                                <div class="border">$s2</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$18">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$19</td>
+                                            <td>
+                                                <div class="border">$s3</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$19">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$20</td>
+                                            <td>
+                                                <div class="border">$s4</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$20">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$21</td>
+                                            <td>
+                                                <div class="border">$s5</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$21">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$22</td>
+                                            <td>
+                                                <div class="border">$t6</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$22">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$23</td>
+                                            <td>
+                                                <div class="border">$t7</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$23">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$24</td>
+                                            <td>
+                                                <div class="border">$t8</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$24">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$25</td>
+                                            <td>
+                                                <div class="border">$t9</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$25">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$26</td>
+                                            <td>
+                                                <div class="border">$k0</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$26">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$27</td>
+                                            <td>
+                                                <div class="border">$k1</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$27">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$28</td>
+                                            <td>
+                                                <div class="border">$gp</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$28">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$29</td>
+                                            <td>
+                                                <div class="border">$sp</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$29">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$30</td>
+                                            <td>
+                                                <div class="border">$fp</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$30">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>$31</td>
+                                            <td>
+                                                <div class="border">$ra</div>
+                                            </td>
+                                            <td class="table-reg-value" name="$31">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>pc</td>
+                                            <td>
+                                                <div class="border">pc</div>
+                                            </td>
+                                            <td class="table-reg-value" name="pc">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>hi</td>
+                                            <td>
+                                                <div class="border">hi</div>
+                                            </td>
+                                            <td class="table-reg-value" name="hi">0</td>
+                                        </tr>
+    
+                                        <tr class="table-reg-line">
+                                            <td>lo</td>
+                                            <td>
+                                                <div class="border">lo</div>
+                                            </td>
+                                            <td class="table-reg-value" name="lo">0</td>
+                                        </tr>
+    
+                                    </tbody>
+                                </table>
+                            </section>
+    
+                            <section class="sections-regs height-50 console margin-top-1">
+                                <h3 class="fs-5">Console</h3>
+                                <!--
+                                CONSOLE NÃO DEVE SER UM TEXTAREA, MAS SIM UMA DIV ONDE A MEDIDA
+                                QUE ELEMENTOS SÃO ADCIONADOS DENTRO, CRIE UM SCROOL PARA NÃO QUEBRAR
+                                A INTERFACE, O USUÁRIO SÓ VAI ESCREVER NO CONSOLE QUANDO TIVER UM
+                                SYSCALL DE ENTRADA DE DADOS, NESSE CASO EU CRIO UM INPUT E DESABILITO
+                                APÓS O USUÁRIO DIGITAR ENTER PELO JAVASCRIPT
+                            -->
+                                <div class="width-100 height-50 textarea-console color-white console-div"></div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+    
+                <div class="options-div">
+                    <div class="column divs-buttons-separations">
+                        <div class="row">
+                            <button type="button" class="button-opt button button-green color-green fs-6 bold cursor-pointer mount "><img
+                                    class="icon-options" src="./assets/svgs/icon-montar.svg"><span
+                                    class="text-buttons-options">Montar</span></button>
+                            <button type="button" class="button-opt button button-green color-green fs-6 bold cursor-pointer run"><img
+                                    class="icon-options" src="./assets/svgs/icon-run.svg"><span
+                                    class="text-buttons-options">Executar</span></button>
+                            <button type="button" class="button-opt button button-white fs-6 bold cursor-pointer step"><img
+                                    class="icon-options" src="./assets/svgs/icon-executar.svg"><span
+                                    class="text-buttons-options">Avançar</span></button>
+                            <button type="button" class="button-opt button button-white fs-6 bold cursor-pointer back"><img
+                                    class="icon-options" src="./assets/svgs/icon-voltar.svg"><span
+                                    class="text-buttons-options">Retroceder</span></button>
+                            <button type="button" class=" button-opt button button-white fs-6 bold cursor-pointer unmount"><img
+                                    class="icon-options" src="./assets/svgs/icon-desmontar.svg"><span
+                                    class="text-buttons-options">Desmontar</span></button>
+    
+                        </div>
+                        <div class="row gap-1 align-center width-100 justify-space-between padding-horizon-0">
+                            <button type="button" class="button button-white fs-6 bold console-button gap-1 cursor-pointer width-50"><img
+                                    class="icon-options" src="./assets/svgs/icon-console.svg"><span
+                                    class="text-options">Console</span></button>
+                            <button type="button" class="button button-green color-green fs-6 bold registers-button cursor-pointer gap-1 width-50"><img
+                                    class="icon-options" src="./assets/svgs/icon-registradores.svg"><span
+                                    class="text-options">Registradores</span></button>
+                        </div>
+                    </div>
+    
+                    <img src="./assets/svgs/icon-menu-options.svg">
+    
+    
+                </div>
+    
+    
+        </article>
+
+    </form>
+</body>
+
+</html>

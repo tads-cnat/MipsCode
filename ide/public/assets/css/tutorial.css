@@ -1,0 +1,8 @@
+.div-tutorial {
+    background: #24252A;
+    border: 1px solid #333333;
+    border-radius: 13px;
+    padding: 2em 2em;
+}
+
+@media (max-width:1050px) {}

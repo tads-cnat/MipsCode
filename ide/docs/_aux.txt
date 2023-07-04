@@ -1,0 +1,294 @@
+iType {
+    org a = op, rt, rs, imm -> 7 instructions
+    org b = op, rs, rt, label -> 2 instructions
+    org c = op, rs, label (rt = 00001) -> 1 instruction
+    org d = op, rs, label (rt = 00000) -> 3 instructions
+    org e = op, rt, imm(rs) -> 10 instructions
+    org f = op, rt, imm -> 1 instruction
+}
+
+rType {
+    org a = fn, rd, rs, rt -> 10 instructions
+    org b = fn -> 2 instructions
+    org c = fn, rs, rt -> 4 instructions
+    org d = fn, rd -> 2 instructions
+    org e = fn, rd, rt, sa -> 3 instructions
+    org f = fn, rd, rt, rs -> 3 instructions
+    org g = fn, rs -> 3 instructions
+    org h = fn, rd, rs -> 1 instruction
+}
+
+jType {
+    label, op, coded address of label -> 2 instructions
+}
+
+# code #
+
+addi $2, $0, 5
+syscall
+add $4, $2, $2
+addi $2, $0, 1
+syscall
+addi $2, $0, 10
+syscall
+
+# systemMounted #
+
+sys {
+    memory: {
+        $0: 0, $1: 0, $2: 0, $3: 0, $4: 0, $5: 0, $6: 0, $7: 0, $8: 0, $9: 0,
+        $10: 0, $11: 0, $12: 0, $13: 0, $14: 0, $15: 0, $16: 0, $17: 0, $18: 0, $19: 0,
+        $20: 0, $21: 0, $22: 0, $23: 0, $24: 0, $25: 0, $26: 0, $27: 0, $28: 0, $29: 0,
+        $30: 0, $31: 0, pc: 4, hi: 0, lo: 0
+    },
+    addressCount: 0,
+    instructions: [
+        {
+            address: '0x00000004', 
+            hex: '0x20020005', 
+            registers: {
+                destinationRegister: "$2",
+                operands:  {first: '$0', second: 5}
+            }, 
+            typing: {
+                org:  "a",
+                type: "i"
+            }, 
+            do: ƒ
+        },
+        {
+            address: '0x00000008', 
+            hex: '0x0000000c', 
+            typing: {type: 'r', org: 'b'}, 
+            syscall: true}
+        {
+            address: '0x0000000c', 
+            hex: '0x00422020', 
+            registers: {…}, 
+            typing: {…}, 
+            do: ƒ
+        },
+        {
+            address: '0x00000010', 
+            hex: '0x20020001', 
+            registers: {…}, 
+            typing: {…}, 
+            do: ƒ
+        },
+        {
+            address: '0x00000014', 
+            hex: '0x0000000c', 
+            typing: {…}, 
+            syscall: true}
+        {
+            address: '0x00000018', 
+            hex: '0x2002000a', 
+            registers: {…}, 
+            typing: {…}, 
+            do: ƒ
+        },
+        {
+            address: '0x0000001c', 
+            hex: '0x0000000c', 
+            typing: {…}, 
+            syscall: true
+        }
+    ],
+    memoryStackTimeline: [],
+    viewInformations: [
+        {address: '0x00000004', hex: '0x20020005', line: 1}
+        {address: '0x00000008', hex: '0x0000000c', line: 2}
+        {address: '0x0000000c', hex: '0x00422020', line: 3}
+        {address: '0x00000010', hex: '0x20020001', line: 4}
+        {address: '0x00000014', hex: '0x0000000c', line: 5}
+        {address: '0x00000018', hex: '0x2002000a', line: 6}
+        {address: '0x0000001c', hex: '0x0000000c', line: 7}
+    ],
+    lastInstructionExecuted: 0
+}
+
+1º
+main:  addi $2, $0, 5
+       syscall
+       add $4, $2, $2
+       addi $2, $0, 1
+       syscall
+       addi $2, $0, 10
+       syscall
+
+2º
+[
+    ['main:addi', '$2,', '$0,', '5']
+    ['syscall']
+    ['add', '$4,' ',$2,', '$2']
+    ['addi', '$2,', '$0,', '1']
+    ['syscall']
+    ['addi', '$2,', '$0,', '10']
+    ['syscall']
+]
+
+3º
+[
+    { func: 'addi', values: [ '$2,', '$0,', '5' ], label: 'main', line: 1 },
+    { func: 'syscall', values: null, label: '', line: 2 },
+    { func: 'add', values: [ '$4,' ',$2,', '$2' ], label: '', line: 3 },
+    { func: 'addi', values: [ '$2,', '$0,', '1' ], label: '', line: 4 },
+    { func: 'syscall', values: null, label: '', line: 5 },
+    { func: 'addi', values: [ '$2,', '$0,', '10' ], label: '', line: 6 },
+    { func: 'syscall', values: null, label: '', line: 7 }
+]
+
+4º
+[ 
+    {
+        address: '0x00000004', 
+        hex: '0x20020005', 
+        registers: {
+            destinationRegister: '$2', 
+            operands: { 
+                first: '$0', 
+                second: 5
+            } 
+        }, 
+        typing: {
+            type: 'i',
+            org: 'a'
+        },
+        label: 'main',
+        do: ƒ,
+    },
+    {address: '0x00000008', hex: '0x0000000c', typing: {…}, syscall: true},
+    {address: '0x0000000c', hex: '0x00422020', registers: {…}, typing: {…}, do: ƒ,},
+    {address: '0x00000010', hex: '0x20020001', registers: {…}, typing: {…}, do: ƒ,},
+    {address: '0x00000014', hex: '0x0000000c', typing: {…}, syscall: true},
+    {address: '0x00000018', hex: '0x2002000a', registers: {…}, typing: {…}, do: ƒ,},
+    {address: '0x0000001c', hex: '0x0000000c', typing: {…}, syscall: true}
+]
+
+*****************************************
+.text
+
+main:  addi $2, $0, 5
+       syscall
+       add $4, $2, $2
+print:
+       addi $2, $0, 1
+       syscall
+end:   addi $2, $0, 10
+       syscall
+
+
+.text
+
+main:  addi $2, $0, 5
+       syscall
+       add $4, $2, $2
+
+print: addi $2, $0, 1
+       syscall
+       
+end:   addi $2, $0, 10
+       syscall
+
+*****************************************
+
+.data
+
+.word 67 117 33
+
+.text
+
+main:	lui $8, 0x1001
+
+        lw $4, 0($8)
+        addi $2, $0, 11
+        syscall
+        
+        addi $8, $8, 4
+        
+        lw $4, 0($8)
+        addi $2, $0, 11
+        syscall
+        
+        addi $8, $8, 4
+        
+        lw $4, 0($8)
+        addi $2, $0, 11
+        syscall
+        
+        addi $2, $0, 10
+        syscall
+
+*****************************************
+
+.data   -> se tiver '.data' na entrada, deve habilitar o uso da memória e se houver valores '.word' e '.text' precisa pegar esses valores e tratar.
+        -> buscar por erros
+        -> armazenar sequencialmente os valores na memória a partir de 0x10010000. (em '../src/scripts/tests/tests.js' tem um rascunho)
+
+
+.word   -> se tiver '.word' na entrada, deve procurar por '.data' antes de '.word'.
+        -> se não houver '.data' antes gerar um erro.
+        -> se houver, deve capturar os valores na mesma linha e linhas seguintes até chegar em '.text'
+
+
+.text   -> se não tiver '.text' na entrada deve gerar um erro.
+        -> se tiver e '.text' aparecer antes de '.word' ou '.data' deve gerar um erro
+
+
+// console.js
+
+export const dataIn = async () => {
+    const inputLine = createConsoleInput()
+
+    inputLine.focus()
+    const userData = await getUserData(inputLine)
+        .then(res => res)
+        .catch(err => console.log(err))
+
+    return userData
+}
+
+function createConsoleInput() {
+    const inputLine = document.createElement('input')
+    inputLine.classList.add('data-in-input')
+    dataInAndOut.appendChild(inputLine)
+
+    return inputLine
+}
+
+function getUserData(inputLine) {
+    return new Promise(resolve => {
+        let value
+        
+        inputLine.addEventListener('keyup', event => {
+            if (event.key === 'Enter') {
+                value = inputLine.value
+                inputLine.disabled = true
+            }
+        })
+
+        resolve(value)
+    })
+}
+
+// sys.js
+
+async function getDataAndSetInRegister() {
+    // ...
+    if (sys.regs.$2 === 5) {
+        // const input = parseInt(prompt())
+
+        user.utils.freeze()
+
+        const input = await dataIn()
+        
+        user.utils.unFreeze()
+
+        sys.regs.$2 = input
+        view.setValueInViewRegister(input, '$2')
+        return
+    }
+    // ...
+}
+
+sys.regs.$2 está recebendo [object Promise] em vez do valor digitado pelo usuário após pressionar "Enter", identifique o erro

@@ -1,0 +1,91 @@
+teste{
+addi $2, $0, 5
+andi $8, $2, 1
+ori $9, $2, 2
+slti $10, $2, 3
+sltiu $11, $2, 4
+xori $12, $2, 5
+
+add $13, $2, $8
+addu $14, $2, $8
+and $15, $2, $9
+or $16, $2, $10
+nor $17, $2, $2
+slt $18, $2, $11
+sub $19, $2, $13
+}
+
+i type = {
+    complete: [
+        addi (org: a),
+        andi (org: a),
+        ori (org: a),
+        slti (org: a),
+        sltiu (org: a),
+        xori (org: a),
+
+    ],
+    incomplete: [
+        addiu, 
+        beq, 
+        bgez, 
+        bgtz, 
+        blez, 
+        bltz, 
+        bne,
+        lb,
+        lbu,	
+        lh,
+        lhu,
+        lui, 
+        lw,
+        lwc1,
+        sb,
+        sh,	
+        sw,
+        swc1
+    ]
+}
+
+
+r type {
+    complete: [
+        add (org: a),
+        addu (org: a),
+        and (org: a),
+        or (org: a),
+        nor (org: a),
+        slt (org: a),
+        sub (org: a),
+
+    ],
+    incomplete: [
+        break,
+        div, ?
+        divu, ?
+        jalr,
+        jr,
+        mfhi,
+        mflo,
+        mthi,
+        mtlo,
+        mult, ?
+        multu, ?
+        sll,
+        sllv,
+        sltu,
+        sra,
+        srav,
+        srl,
+        srlv,
+        subu,
+        syscall,
+        xor,
+    ]
+}
+
+j type {
+    j ->
+    jal ->
+}
+
