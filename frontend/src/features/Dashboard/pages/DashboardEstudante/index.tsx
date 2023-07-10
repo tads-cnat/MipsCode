@@ -120,6 +120,12 @@ export default function DashboardEstudante() {
     ]
 
 
+    function handleClickTurmas(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        navigate('/ver-turmas/');
+    }
+
+
     async function getData(){
         const userId = sessionStorage.getItem("userId");
 
@@ -178,6 +184,13 @@ console.log(userdata)
                 <nav className="project-buttons">
                     <button className="create" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></button>
                     <button className="list" onClick={handleClickVer}><FolderOutlinedIcon/> <span>Ver Todos os Projetos</span></button>
+                </nav>
+            </section>
+            <section className="project-buttons-section">
+                <span className="title">Minhas Turmas</span>
+                <p className="description">Acessar minhas turmas </p>
+                <nav className="project-buttons">
+                    <button className="create" onClick={handleClickTurmas}><FolderOutlinedIcon/><span>Turmas</span></button>
                 </nav>
             </section>
             <section className="recent-projects-section">

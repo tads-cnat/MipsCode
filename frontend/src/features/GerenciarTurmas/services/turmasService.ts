@@ -121,10 +121,10 @@ export async function excluirTurma(cod: string) {
 }
 
 // ADICIONAR ESTUDANTE - POST
-export async function addEstudante(userId: string) {
+export async function addEstudante(userId: string, classCod: string) {
   try {
     const Resapi = await api.post(
-      `class/addStudent/${userId}`,
+      `class/addStudent/${classCod}`,
       { userId },
       {
         headers: headers(),
@@ -144,15 +144,19 @@ export async function addEstudante(userId: string) {
 }
 
 // REMOVER ESTUDANTE - DELETE
-export async function excluirEstudante(userId: string) {
+export async function excluirEstudante(userId: string, classCod: string) {
   try {
     if (!userId) {
       return "userId não informado";
     }
 
-    const Resapi = await api.delete(`class/removeStudent/${userId}}`, {
-      headers: headers(),
-    });
+    const Resapi = await api.post(
+      `class/removeStudent/${classCod}}`,
+      { userId },
+      {
+        headers: headers(),
+      }
+    );
 
     if (Resapi) {
       return "Estudante removido da turma com sucesso";

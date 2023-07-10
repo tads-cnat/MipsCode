@@ -14,7 +14,7 @@ export class CreateClassDto {
   @IsString()
   classDescription: string;
 
-  @ApiProperty()
-  @IsString()
-  cod: string;
+  // @ApiProperty()
+  // @IsString()
+  // cod: string;
 }

@@ -20,7 +20,7 @@ model User {
   professorClass  Class[]    @relation("professor")
   project         Project[]
   Tutorial        Tutorial[]
-  studentClassrom Class?     @relation(fields: [ClassId], references: [id])
+  studentClassrom Class[]
 }
 
 model Tutorial {
