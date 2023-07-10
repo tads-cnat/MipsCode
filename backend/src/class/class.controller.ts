@@ -28,8 +28,6 @@ export class ClassController {
     return this.classService.create(createClassDto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiBearerAuth()
   @Get()
   findAll() {
     return this.classService.findAll();
