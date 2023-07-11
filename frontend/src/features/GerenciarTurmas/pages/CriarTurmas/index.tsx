@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import Header from "../../../../components/Header";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-// import Footer from '../../../../components/Footer';
-import api from "../../../../services/api";
-import { iTurma } from "../../../../types/iTurmas";
-import { criarTurmas } from "../../services/turmasService";
+import React, { useState,useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Header from '../../../../components/Header';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import api from '../../../../services/api';
+import { iTurma } from '../../../../types/iTurmas';
+import { criarTurmas } from '../../services/turmasService';
+import { Footer } from '../../../../components';
 
 const CriarTurma = () => {
   const navigate = useNavigate();
@@ -23,16 +23,16 @@ const CriarTurma = () => {
   const [cod, setCod] = useState("");
 
   async function getData() {
-    const cod = sessionStorage.getItem("cod");
+    const professorId = sessionStorage.getItem("userId");
 
-    if (!cod) {
+    if (!professorId) {
       return "User Not Found";
     }
 
     try {
-      const res = await api.get(`/users/${cod}`);
+      const res = await api.get(`/users/${professorId}`);
       if (res) {
-        setCod(res.data.id);
+        setProfessorId(res.data.id);
       }
     } catch (error) {
       if (error) {
@@ -53,12 +53,12 @@ const CriarTurma = () => {
 
   useEffect(() => {
     getData();
-    console.log("teste", cod);
-  }, [cod]);
+    console.log("teste", professorId);
+  }, [professorId]);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const turma: iTurma = { professorId, className, classDescription, cod };
+      event.preventDefault();
+      const turma: iTurma = { professorId, className, classDescription, cod};
 
     try {
       await criarTurmas(turma);
@@ -68,82 +68,64 @@ const CriarTurma = () => {
     }
   }
 
+  function handleClickCancelar(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    navigate('/ver-turmas');
+  }
+
   return (
     <>
-      <Header />
-      <Box
-        width="100vw"
-        height="100vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        sx={{
-          textAlign: "center",
-          alignItems: "center",
-          "& .MuiTextField-root": { m: 1.5, width: "55ch" },
-        }}
-      >
-        <Card>
-          <CardContent>
-            <Box
-              display="flex"
-              flexDirection="column"
-              gap={2}
-              width={550}
-              alignContent={"center"}
-            >
-              <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <Typography color="text.primary" variant="h6" align="center">
-                  CRIAR NOVA TURMA
-                </Typography>
+    <Header/>
+    <Box 
+      width='100vw' 
+      height='100vh' 
+      display='flex' 
+      alignItems='center' 
+      justifyContent='center' 
+      sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }
+    >
+      <Card>
+        <CardContent >
+        <Box  display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <Typography  color='text.primary' variant='h6' align='center'>Criar Turma</Typography>
 
-                {/* Título */}
-                <TextField
-                  id="outlined-helperText-title"
-                  label="Profesor ID"
-                  type="text"
-                  variant="outlined"
-                  name="professorId"
-                  onChange={(event) => setProfessorId(event.target.value)}
-                  required
-                  color="secondary"
-                />
+              {/* Nome */}
+              <TextField 
+                id="outlined-helperText-title"
+                label="Nome da Turma"
+                type="text"
+                name="title"
+                onChange={(event) => setClassName(event.target.value)}
+                color="secondary"
+                required
+        
+              />
 
-                {/* Descrição */}
-                <TextField
-                  id="outlined-helperText-description"
-                  label="Título"
-                  type="text"
-                  variant="outlined"
-                  name="className"
-                  onChange={(event) => setClassName(event.target.value)}
-                  color="secondary"
-                />
+              {/* Descrição */}
+              <TextField 
+                id="outlined-helperText-description"
+                label="Matéria"
+                type="text"
+                name="description"
+                onChange={(event) => setClassDescription(event.target.value)}
+                color="secondary"
+                required
+              />  
+              
+              <CardActions>
+                <Box width='100%' display='flex' justifyContent='center' gap={2}>
+                  <Button color="secondary" variant="outlined" onClick={handleClickCancelar}>Cancelar</Button>     
+                  <Button color="secondary" variant="contained" type="submit">Criar</Button>     
+                </Box>       
+              </CardActions>
 
-                {/* Conteúdo */}
-                <TextField
-                  id="outlined-helperText-content"
-                  label="Descrição"
-                  type="text"
-                  variant="outlined"
-                  name="classDescription"
-                  onChange={(event) => setClassDescription(event.target.value)}
-                  color="secondary"
-                />
-
-                <CardActions>
-                  <Box width="100%" display="flex" justifyContent="center">
-                    <Button color="secondary" variant="contained" type="submit">
-                      Confirmar
-                    </Button>
-                  </Box>
-                </CardActions>
-              </form>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
-      {/* <Footer/> */}
+          </form>
+        </Box>
+        </CardContent>
+      </Card>
+    </Box>
+    <Footer/> 
     </>
   );
 };
