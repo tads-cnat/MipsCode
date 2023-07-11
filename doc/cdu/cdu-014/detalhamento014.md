@@ -51,12 +51,13 @@ Todos os campos/labels devem ser preenchidos para uma tarefa seja cadastrada.
 ### 5.2. Fluxo Básico:
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
-| 1. 1)  Acessa a página de projetos. | |  
-|  | 2. Renderiza a página e mostra a listagem de projetos do usuário. |
-| 3. Pode criar, editar e excluir projetos. | | 
+| 1. 1)  Acessa a página de criar atividade. | |  
+|  | 2. Renderiza um formulário mostrado professor para criação da atividade e salvá-la. |
+| 3. Pode criar, excluir e editar a atividade.. | | 
 
 ### 5.3. Fluxo de exceção:
 #### Fluxo de exceção (5): Erro de autenticação
 a) O sistema realiza a autenticação do formulário; <br>
 b) Credenciais inválidas;  <br>
-c) Visitante é notificado
+c) Campos não preenchdios; <br>
+d) Professor é notificado; 
