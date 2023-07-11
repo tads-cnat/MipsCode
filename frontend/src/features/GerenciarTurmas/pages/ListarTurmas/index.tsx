@@ -30,15 +30,12 @@ const VerTurmas = () => {
       const res = await api.get(`/users/${cod}`);
       
       
+      setUserRole(res.data.role)
       setUserId(cod)
       if(res.data.role != "PROFESSOR"){
-        setUserRole(res.data.role)
         setTurmas(res.data.studentClassrom);
-      }
-
-      if (res && res.data && res.data.class) {
-        setUserRole(res.data.role)
-        setTurmas(res.data.class);
+      }else{
+        setTurmas(res.data.professorClass);
       }
     } catch (error) {
       if (error) {
@@ -132,11 +129,12 @@ const VerTurmas = () => {
 
   }
 
+
   return (
     <main className="page">
     <Header />
     {
-      userRole == "PROFESSOR" ? 
+      userRole && userRole == "PROFESSOR" ? 
       <div className="main-section">
       <section className="project-buttons-section">
               <span className="title">Turmas</span>

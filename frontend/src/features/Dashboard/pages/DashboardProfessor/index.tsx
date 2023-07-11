@@ -23,7 +23,7 @@ export default function DashboardProfessor() {
 
   function handleClickTurmas(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    navigate("/ver-turmas-professor/");
+    navigate("/ver-turmas/");
   }
 
   interface Baselink {
