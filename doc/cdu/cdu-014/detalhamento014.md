@@ -43,7 +43,7 @@ Todos os campos/labels devem ser preenchidos para uma tarefa seja cadastrada.
 | | 4. Renderiza a página e abre o formulário. | 
 | | 5. Realiza a autenticação e libera o acesso ao dashboard do professor. |
 | 6. Acessa uma das turmas da listagem. |  |
-|  | 7. Renderiza a página com as turmas dos usuário. |
+|  | 7. Renderiza a página da turma(s) dos usuário. |
 | 8. Clica no botão para criar uma atividade. | |
 | | 9. O sistema renderiza um formulário mostrado ao professor para criação da atividade e para salvá-la. |
 | | 10. O sistema salva a atividade e  registra-a para turma notificando que o processo foi realizado. | |
