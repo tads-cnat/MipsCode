@@ -28,7 +28,7 @@ Estar logado como professor
 <br>
 
 ## 4. Pós-condições: 
-Todos os campos/label devem ser preenchidos para uma tarefa ser cadastrada.
+Todos os campos/labels devem ser preenchidos para uma tarefa seja cadastrada.
 
 <br>
 
@@ -41,11 +41,12 @@ Todos os campos/label devem ser preenchidos para uma tarefa ser cadastrada.
 |  | 2. Renderiza página e seus scripts. |
 | 3. Acessa a página de login. | | 
 | | 4. Renderiza a página e abre o formulário. | 
-| | 5. Realiza a autenticação e libera o acesso ao dashboard. |
-| 6. Acessa a ágina de projetos. |  |
-|  | 7. Renderiza a página e os projetos do usuário. |
-| 8. Faz as modificaçõs que deseja. | |
-| | 9. As modificações são salvas e mostrada ao usuário. |
+| | 5. Realiza a autenticação e libera o acesso ao dashboard do professor. |
+| 6. Acessa uma das turmas da listagem. |  |
+|  | 7. Renderiza a página com as turmas dos usuário. |
+| 8. Clica no botão para criar uma atividade. | |
+| | 9. O sistema renderiza um formulário mostrado ao professor para criação da atividade e para salvá-la. |
+| | 10. O sistema salva a atividade e  registra-a para turma notificando que o processo foi realizado. | |
 
 ### 5.2. Fluxo Básico:
 | Ator | Sistema |
