@@ -15,9 +15,9 @@ const UserLoginForm = () => {
     try {
       const res: any = await loginUser(userForm);
       if (res.msg === "Sucess") {
-        if (res.userData.role === "STUDENT") {
+        if (res.userData.role === "student") {
           navigate("/dashboard-estudante");
-        } else if (res.userData.role === "PROFESSOR") {
+        } else if (res.userData.role === "professor") {
           navigate("/dashboard-professor");
         }
       }
