@@ -16,7 +16,7 @@ import './styles.css'
 
 
 const paginas = ['Dashboard', 'Documentação', 'IDE', 'Repositório', 'Tutoriais'];
-const perfil = ['Meu Perfil', 'Conta', 'Sair'];
+const perfil = ['Meu Perfil', 'Sair'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
