@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import {  Header} from "../../../../components";
-import { Button, Box } from '@mui/material';
+import { Header } from "../../../../components";
+import { Button, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import api from "../../../../services/api";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
@@ -8,17 +8,17 @@ import { iTurma } from "../../../../types/iTurmas";
 import { listarTurmas } from "../../services/turmasService";
 import { excluirTurma } from "../../services/turmasService";
 import { addEstudante } from "../../services/turmasService";
-import './styles.css'
-import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
-import EditIcon from '@mui/icons-material/Edit';
-import OtherHousesOutlinedIcon from '@mui/icons-material/OtherHousesOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import "./styles.css";
+import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import TurmaCard from "../../components/TurmaCard";
+import TesteTurmaCard from "./test";
 
 const VerTurmas = () => {
   const [turmas, setTurmas] = useState<iTurma[]>([]);
-  const [userRole,setUserRole] = useState<String>()
-  const [classCode,setclassCode] = useState<string>("")
-  const [userId,setUserId] = useState<any>()
+  const [userRole, setUserRole] = useState<String>();
+  const [classCode, setclassCode] = useState<string>("");
+  const [userId, setUserId] = useState<any>();
   const navigate = useNavigate();
 
   async function getClasses() {
@@ -28,13 +28,12 @@ const VerTurmas = () => {
     }
     try {
       const res = await api.get(`/users/${cod}`);
-      
-      
-      setUserRole(res.data.role)
-      setUserId(cod)
-      if(res.data.role != "PROFESSOR"){
+
+      setUserRole(res.data.role);
+      setUserId(cod);
+      if (res.data.role !== "PROFESSOR") {
         setTurmas(res.data.studentClassrom);
-      }else{
+      } else {
         setTurmas(res.data.professorClass);
       }
     } catch (error) {
@@ -43,8 +42,6 @@ const VerTurmas = () => {
       }
     }
   }
-
-
 
   useEffect(() => {
     getClasses();
@@ -89,103 +86,129 @@ const VerTurmas = () => {
 
   async function EnterClass() {
     const studentId = sessionStorage.getItem("userId");
-    const code = classCode
+    const code = classCode;
 
-    if(!code){
-      alert("Por favor insira um código valido")
+    if (!code) {
+      alert("Por favor insira um código válido");
     }
-    if(studentId){
-      const res = await addEstudante(studentId,code)
+    if (studentId) {
+      const res = await addEstudante(studentId, code);
 
-      if(res == "Sucess"){
-        alert("Aluno cadastrado com sucesso")
-        getClasses()
+      if (res === "Sucess") {
+        alert("Aluno cadastrado com sucesso");
+        getClasses();
         return;
       }
-        alert("algo deu errado")
+      alert("Algo deu errado");
     }
-
-
   }
 
-
-  async function LeaveClass(userId:string) {
+  async function LeaveClass(userId: string) {
     const studentId = userId;
-    const code = classCode
+    const code = classCode;
 
-    if(!code){
-      alert("Por favor insira um código valido")
+    if (!code) {
+      alert("Por favor insira um código válido");
     }
-    if(studentId){
-      const res = await addEstudante(studentId,code)
+    if (studentId) {
+      const res = await addEstudante(studentId, code);
 
-      if(res == "Sucess"){
-        alert("Saiu da turma com sucesso")
-        getClasses()
+      if (res === "Sucess") {
+        alert("Saiu da turma com sucesso");
+        getClasses();
         return;
       }
-        alert("algo deu errado")
+      alert("Algo deu errado");
     }
-
   }
-
 
   return (
     <main className="page">
-    <Header />
-    {
-      userRole && userRole == "PROFESSOR" ? 
-      <div className="main-section">
-      <section className="project-buttons-section">
-              <span className="title">Turmas</span>
-              <p className="description">Dashboard / Turmas</p>
-              <nav className="project-buttons">
-                  <button className="create" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar nova Turma</span></button>
-              </nav>
-      </section>
-  </div>
-      :
-      <div className="input-code">
-        <h1>Turmas</h1>
-        <div className="sectionrout">
-          <div className="url-bar">
-          <OtherHousesOutlinedIcon className="input-icon" />
-          <span className="url1">Dashboard / </span>
-          <span className="url2">Turmas</span>
-          </div>
-          <div className="input-area">
-              <label>Entrar em uma nova turma</label>
-            <form className="search">
-              <input type="text" placeholder="Inserir Código" value={classCode} onChange={(e)=>{setclassCode(e.target.value)}}></input>
-              <div className="add-class" onClick={()=>{EnterClass()}}><SearchOutlinedIcon className="search-input-icon" /></div> 
-            </form>
-          </div>
+      <Header />
+      {userRole && userRole === "PROFESSOR" ? (
+        <div className="main-section">
+          <section className="project-buttons-section">
+            <span className="title">Turmas</span>
+            <p className="description">Dashboard / Turmas</p>
+            <nav className="project-buttons">
+              <button className="create" onClick={handleClickCriar}>
+                <AddBoxOutlinedIcon />
+                <span>Criar nova Turma</span>
+              </button>
+            </nav>
+          </section>
+          {turmas.map((turma, index) => (
+            <div className="turma-card" key={index}>
+              <span className="turma-title">{turma.className}</span>
+              <span className="turma-description">
+                {turma.classDescription}
+              </span>
+              <Box width="100%" display="flex" justifyContent="right" gap={2}>
+                <TurmaCard
+                  key={index}
+                  className={turma.className}
+                  classDescription={turma.classDescription}
+                  userRole={userRole}
+                  onDeleteTurma={() =>
+                    window.confirm("Tem certeza que deseja excluir esta turma?") &&
+                    handleExcluirTurma(turma.cod || "")
+                  }
+                  onEditTurma={() => handleClickEditar(turma.cod || "")}
+                />
+              </Box>
+            </div>
+          ))}
         </div>
+      ) : (
+        <div className="input-code">
+          <h1>Turmas</h1>
+          <TesteTurmaCard/>
 
-      </div>
-    }
-
-
-    {turmas.map((turma,index) => (
-    <div className='turma-card'key={index}>
-        <span className='turma-title'>{turma.className}</span>
-        <span className='turma-description'>{turma.classDescription}</span>
-        <Box width='100%' display='flex' justifyContent='right' gap={2}>
-            <Button 
-                color="secondary"                   
-                onClick={() => 
-                window.confirm("Tem certeza que deseja excluir este turma?") && handleExcluirTurma(turma.cod || '')
-                }><DeleteTwoToneIcon/>
-            </Button>
-            <Button 
-                color="secondary" 
-                onClick={() => handleClickEditar(turma.cod || '')}><EditIcon/>
-            </Button>
-        </Box>
-
-    </div>
-    ))}
-</main>
+          <div className="sectionrout">
+            <div className="url-bar">
+              <OtherHousesOutlinedIcon className="input-icon" />
+              <span className="url1">Dashboard / </span>
+              <span className="url2">Turmas</span>
+            </div>
+            <div className="input-area">
+              <label>Entrar em uma nova turma</label>
+              <form className="search">
+                <input
+                  type="text"
+                  placeholder="Inserir Código"
+                  value={classCode}
+                  onChange={(e) => {
+                    setclassCode(e.target.value);
+                  }}
+                ></input>
+                <div className="add-class" onClick={() => EnterClass()}>
+                  <SearchOutlinedIcon className="search-input-icon" />
+                </div>
+              </form>
+            </div>
+          </div>
+          {turmas.map((turma, index) => (
+            <div className="turma-card" key={index}>
+              <span className="turma-title">{turma.className}</span>
+              <span className="turma-description">
+                {turma.classDescription}
+              </span>
+              <Box width="100%" display="flex" justifyContent="right" gap={2}>
+                <Button
+                  color="secondary"
+                  onClick={() =>
+                    window.confirm("Tem certeza que deseja sair desta turma?") &&
+                    LeaveClass(turma.cod || "")
+                  }
+                >
+                  Leave Class
+                </Button>
+              </Box>
+            </div>
+          ))}
+        </div>
+      )}
+    </main>
   );
 };
 
