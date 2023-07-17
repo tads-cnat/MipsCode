@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: #1A1B1F;
+    color: white;
+}
+
+
+/* Textos Titulos */
+.fs-0 {
+    font-size: 93px;
+    font-weight: 800;
+    line-height: 126px;
+    margin: 0;
+}
+
+.fs-1 {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 62.4px;
+    margin: 0px;
+}
+
+.fs-2 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 50.4px;
+    margin: 0px;
+}
+
+.fs-3 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 42.8571px;
+}
+
+.fs-4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.8px;
+}
+
+.fs-5 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21.6px;
+}
+
+/* Textos normais */
+
+.fs-6 {
+    font-size: 16px;
+    line-height: 22.8571px
+}
+
+.fs-7 {
+    font-size: 14px;
+    line-height: 21.6px;
+}
+
+.fs-navegations {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+    padding: 3px;
+    transition: 0.5s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+textarea{
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: initial;
+    cursor: pointer;
+}
+
+.font-uppercase {
+    text-transform: uppercase;
+}
+
+
+
+.padding-padrao {
+    padding: 1em 12.4em;
+}
+
+/* Margins */
+.margin-bottom-2 {
+    margin-bottom: 2em !important;
+}
+.margin-bottom-05 {
+    margin-bottom: 0.5em !important;
+}
+
+
+.margin-top-1 {
+    margin-top: 1em;
+}
+
+.margin-top-2 {
+    margin-top: 2em;
+}
+
+.margin-top-5 {
+    margin-top: 5em;
+}
+
+.margin-top-7 {
+    margin-top: 7em;
+}
+
+.margin-zero {
+    margin: 0em !important;
+}
+
+/* Weight */
+.bold {
+    font-weight: bold !important;
+}
+
+.medio {
+    font-weight: 500 !important;
+}
+
+.ligth {
+    font-weight: 400 !important;
+}
+
+/* Colors */
+.color-white {
+    color: white !important;
+}
+
+.color-gray {
+    color: #D0D0D0 !important;
+}
+
+.color-green {
+    color: #2EF2AA !important;
+}
+
+.color-black {
+    color: #000 !important;
+}
+.color-black-opacity{
+    color: #00000069 !important
+}
+
+.color-yellow {
+    color: #D9A318 !important;
+}
+
+.color-red {
+    color: #D91828 !important;
+}
+
+.color-opaco {
+    color: #FFFFFF80 !important;
+
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.arrow-right::before {
+    content: "➝";
+    margin-right: 5px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    justify-content: flex-end;
+}
+
+.alignself-end {
+    align-self: end;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+/* Botões */
+
+
+.button {
+    display: flex;
+    padding: 2px 2em;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.button-green {
+    border: 1px solid #2EF2AA;
+    background: rgba(46, 242, 170, 0.05);
+    color: #FFFFFF;
+}
+
+.button-white {
+    border: 1px solid #C9B9B9;
+    background: #d9d9d91a;
+    color: #FFFFFF;
+}
+
+.button-red {
+    background: rgba(217, 24, 40, 0.1);
+    border: 1px solid #D91828;
+    border-radius: 4.15px;
+}
+
+.button-background-opaco {
+    background: #24252A;
+}
+
+.background-button-green {
+    background: #2EF2AA;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.background-button-white {
+    align-items: center;
+    gap: 0.5em;
+}
+
+
+.input {
+    padding: 15px 10px;
+    width: -webkit-fill-available;
+    border: 1px solid #F0F0F0;
+    border-radius: 5px;
+    background: none;
+    color: white;
+}
+
+.input-off {
+    padding: 15px 10px;
+    background: rgba(217, 217, 217, 0.02);
+    border: 1px solid rgba(208, 208, 208, 0.5);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+
+
+.input-off:focus {
+    color: white;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+}
+
+.sitemap-inicio::after {
+    content: "/";
+    margin: 0px 1em;
+}
+
+#file {
+    opacity: 0;
+    width: 0;
+}
+
+.padding-vertical-1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.create-arquivo,
+.editar-arquivo {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #1a1b1fdb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+}
+
+.display-none {
+    display: none;
+}
+
+.button-close {
+    background: #ffffff1c;
+    border: solid 1px white;
+    border-radius: 4px;
+    width: 2em;
+    height: 2em;
+    color: white;
+    font-weight: 600;
+}
+
+.gap-1 {
+    gap: 1em;
+}
+.gap-2 {
+    gap: 2em;
+}
+
+.gap-05 {
+    gap: 0.5em;
+}
+
+.gap-4 {
+    gap: 4em;
+}
+
+footer {
+    background: #151518;
+    width: 100%;
+}
+
+footer .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+footer .top .group {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    gap: 6em;
+}
+
+footer .top .group .links {
+    display: flex;
+    gap: 0.5em;
+}
+
+footer .top .links-externs {
+    display: flex;
+    align-items: flex-start;
+    gap: 2em;
+}
+
+.bottom {
+    color: white;
+    border-top: 1px solid;
+    padding: 2em;
+    font-size: 13px;
+    justify-content: center;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-60 {
+    width: 60%;
+}
+.width-70 {
+    width: 70%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.resize-none {
+    resize: none;
+}
+
+@media (max-width:1400px) {
+    .padding-padrao {
+        padding: 2em 1.8em !important;
+    }
+
+    .fs-0 {
+        font-size: 4.5rem !important;
+    }
+
+    .form {
+        width: 80% !important;
+    }
+
+}
+
+
+
+@media (max-width:880px) {
+
+    .form-div {
+        width: 21em;
+        padding: 1em 3em 3em;
+    }
+
+    .fs-0 {
+        font-size: 3.5rem !important;
+    }
+
+    .fs-1 {
+        font-size: 32px !important;
+        font-weight: 700 !important;
+        line-height: 38.4px !important;
+    }
+
+    .fs-2 {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+        line-height: 33.6px !important;
+    }
+
+    .fs-6 {
+        font-size: 14px !important;
+        line-height: normal !important;
+    }
+
+    .fs-navegations {
+        font-size: 15px !important;
+    }
+
+    .padding-padrao {
+        padding: 2em 1.8em !important;
+    }
+
+    .form {
+        width: 96% !important;
+    }
+
+    footer {
+        display: none;
+    }
+
+    footer .top {
+        gap: 4em;
+    }
+}
