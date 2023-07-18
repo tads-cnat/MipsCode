@@ -129,7 +129,6 @@ const VerTurmas = () => {
     </div>
   )
 
-
   return (
     <main className="page">
       <Header />

@@ -12,6 +12,74 @@
 </head>
 
 <body>
+    <header class="padding-padrao header-nav">
+        <% if (!user) { %>
+            <nav class="row navegation align-center">
+                <div class="nav-logo row align-center">
+                    <img src="./assets/img/logo-mips.png" alt="MipsCode Logo" class="logo">
+                </div>
+          
+          
+                <div class="nav-links">
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:index' %}">Início</a>
+                    <a class="fs-navegations color-green" href="{% url 'mipscode:ide' %}">IDE</a>
+                    <a class="fs-navegations color-gray" href="{% url 'mipscode:documentation' documentationfirst %}">Documentação</a>
+                </div>
+          
+                <div class="nav-buttons">
+                    <a href="{% url 'mipscode:login' %}" class="fs-navegations color-green">Entrar</a>
+                    <a href="{% url 'mipscode:registration' %}"><input class="fs-navegations button button-white bold"
+                            type="button" value="Inscreva-se"></a>
+                </div>
+          
+            </nav>
+          
+            <nav class="header-nav-mobile">
+                <a href="{% url 'mipscode:dashboard' %}"><img src="{% static 'mipscode/img/logo-mips.png' %}"
+                        alt="MipsCode Logo" class="logo"></a>
+                <button class="menu" id="button-menu-mobile">
+                    <img src="{% static 'mipscode/svgs/menu-min.svg' %}" alt="Menu">
+                </button>
+            </nav>
+        <% } else { %>
+
+            <nav class="row navegation align-center">
+                <div class="nav-logo row align-center">
+                    <img src="./assets/img/logo-mips.png" alt="MipsCode Logo" class="logo">
+                </div>
+        
+        
+                <div class="nav-links">
+                    <a class="fs-navegations color-gray" href="">Dashboard</a>
+                    <a class="fs-navegations color-gray" href="">Documentação</a>
+                    <a class="fs-navegations color-green" href="">Repositório</a>
+                    <a class="fs-navegations color-gray" href="">Tutoriais</a>
+                </div>
+        
+                <div class="nav-buttons">
+                    <div class="row gap-4">
+                        <a class="row align-center gap-1" href="{% url 'mipscode:profile' %}">
+                            <div class="avatar" style="background-image: url({{profile.avatar.url}});"></div>
+                            <span class="fs-navegations color-white"><%= user.name %></span>
+                        </a>
+        
+                        <a href="{% url 'mipscode:logout' %}" class="row align-center"><img class="cursor-pointer"
+                                src="{% static 'mipscode/svgs/icon-logout.svg' %}" alt=""></a>
+                    </div>
+                </div>
+        
+            </nav>
+        
+            <nav class="header-nav-mobile">
+                <a href="{% url 'mipscode:dashboard' %}"><img src="{% static 'mipscode/img/logo-mips.png' %}"
+                        alt="MipsCode Logo" class="logo"></a>
+                <button class="menu" id="button-menu-mobile">
+                    <img src="{% static 'mipscode/svgs/menu-min.svg' %}" alt="Menu">
+                </button>
+            </nav>
+        <% } %>
+    </header>
+
     <form method="post" action="#">
         <article class="article">
     
@@ -24,7 +92,7 @@
     
                         <div class="textarea-code color-white fs-6 width-50 row">
                             <textarea class="textarea-code color-white fs-6 width-50 mips" id="textarea" name="content"
-                                placeholder="code here..."></textarea>
+                                placeholder="code here..."><%= code %></textarea>
                             <!--
                                 DEPOIS DE MONTAR:
                                 <div class="textarea-code color-white fs-6 width-50 row">

@@ -117,7 +117,7 @@ export default function TurmaCard({
             </>
           )}
         </div>
-      )}
-    </div>
-  );
+    )
 }
+</div>
+  )}

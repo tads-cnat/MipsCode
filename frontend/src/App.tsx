@@ -5,6 +5,8 @@ import { useContext } from 'react';
 import { AuthContext } from './services/authcontext';
 import { ThemeProvider } from '@mui/material';
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function App() {
 
 

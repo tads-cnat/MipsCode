@@ -10,15 +10,19 @@ import VerTurmas from "./features/GerenciarTurmas/pages/ListarTurmas";
 import Home from "./features/Home";
 import LoginPage from "./features/Login/pages";
 import ListarProjetos from "./features/GerenciarProjeto/pages/ListarRepositório";
-import TurmasProfessor from "./features/GerenciarTurmas/pages/TurmasProfessor";
+import Documentacao from "./features/Documentacao/Pages";
+import Configuracoes from "./features/Configuracoes/pages";
 
 const Rotas = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Documentacao" element={<Documentacao />} />
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/login" element={<LoginPage />} />
+
+        <Route path="/configuracoes" element={<Configuracoes />} />
 
         <Route path="/dashboard-estudante" element={<DashboardEstudante />} />
         <Route path="/ver-projetos" element={<ListarProjetos />} />
@@ -27,7 +31,6 @@ const Rotas = () => {
 
         <Route path="/dashboard-professor" element={<DashboardProfessor />} />
         <Route path="/ver-turmas" element={<VerTurmas />} />
-        <Route path="/ver-turmas-professor" element={<TurmasProfessor />} />
         <Route path="/criar-turma" element={<CriarTurma />} />
         <Route path="/editar-turma" element={<EditarTurma />} />
       </Routes>
