@@ -13,93 +13,15 @@ import LogoMips from '../../assets/imgs/logo-mips.png'
 import SettingsSharpIcon from '@mui/icons-material/SettingsSharp';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import './styles.css'
-import { useEffect, useState } from "react";
-import api from '../../services/api';
 
 
-const paginas = ['Dashboard', 'Documentação', 'IDE', 'Projetos', 'Tutoriais'];
-
-const paginasEstudante = [
-{
-  label:"Dashboard",
-  url:"/dashboard-estudante"
-},
-{
-  label:"Documentação",
-  url:"#"
-},
-{
-  label:"IDE",
-  url:"http://localhost:3002/"
-},
-{
-  label:"Projetos",
-  url:"/ver-projetos"
-},
-{
-  label:"Tutoriais",
-  url:"#"
-},
-]
-
-const paginasProfessor = [
-  {
-    label:"Dashboard",
-    url:"/dashboard-professor"
-  },
-  {
-    label:"Documentação",
-    url:"#"
-  },
-  {
-    label:"IDE",
-    url:"http://localhost:3002/"
-  },
-  {
-    label:"Projetos",
-    url:"/ver-projetos"
-  },
-  {
-    label:"Tutoriais",
-    url:"#"
-  },
-]
-
-
+const paginas = ['Dashboard', 'Documentação', 'IDE', 'Repositório', 'Tutoriais'];
 const perfil = ['Meu Perfil', 'Conta', 'Sair'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [anchorElSettings, setAnchorElSettings] = React.useState<null | HTMLElement>(null);
-  const [userRole, setUserRole] = useState<string>("")
-
-
-  async function getClasses() {
-    const cod = sessionStorage.getItem("userId");
-    if (!cod) {
-      return "User Not Found";
-    }
-    try {
-      const res = await api.get(`/users/${cod}`);
-
-      if(res.data.role){
-        setUserRole(res.data.role)
-      }
-      
-    } catch (error) {
-      if (error) {
-        return error;
-      }
-    }
-  }
-
-
-  useEffect(() => {
-    getClasses()
-  }, [])
-  
-
 
 // Open
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -123,10 +45,6 @@ function Header() {
   const handleCloseUserSettings= () => {
     setAnchorElSettings(null);
   };
-
-  const handleClickURL = (url:string)=>{
-    window.location.replace(url)
-  }
  
 // Return
   return (
@@ -173,57 +91,24 @@ function Header() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {
-                userRole && userRole == "PROFESSOR"?
-                <>
-                {paginasProfessor.map((page,index) => (
-                  <MenuItem key={index} onClick={()=>{handleClickURL(page.url)}} >
-                    <Typography textAlign="center">{page.label}</Typography>
-                  </MenuItem>
-                ))}
-                </>
-                :
-                <>
-                {paginasEstudante.map((page,index) => (
-                  <MenuItem key={index} onClick={()=>{handleClickURL(page.url)}} >
-                    <Typography textAlign="center">{page.label}</Typography>
-                  </MenuItem>
-                ))}               
-                </>
-                
-              }
-
+              {paginas.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu} >
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
             </Menu>
           </Box>
        
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {
-                userRole && userRole == "PROFESSOR"?
-                <>
-            {paginasProfessor.map((page,index) => (
+            {paginas.map((page) => (
               <Button
-                key={index}
-                onClick={()=>{handleClickURL(page.url)}}
+                key={page}
+                onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page.label}
+                {page}
               </Button>
-            ))}                
-                </>
-                :
-                <>
-            {paginasEstudante.map((page,index) => (
-              <Button
-                key={index}
-                onClick={()=>{handleClickURL(page.url)}}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page.label}
-              </Button>
-            ))}                               
-                </>
-                
-          }
+            ))}
           </Box>
 
           {/* Logo MipsCode*/}

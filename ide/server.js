@@ -13,7 +13,13 @@ app.get('/ide', (req, res) => {
   res.render('index', { code, user });
 });
 
+<<<<<<< HEAD
 const PORT = 3003;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+=======
+app.listen(3000, () => {
+  console.log('Aplicativo rodando em http://localhost:3000');
+});
+>>>>>>> parent of f2b157a (versão estavel para apresentar)

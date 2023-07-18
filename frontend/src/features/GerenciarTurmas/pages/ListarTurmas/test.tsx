@@ -7,7 +7,7 @@ const TesteTurmaCard = () => {
       <TurmaCard
         className="Turma de Matemática"
         classDescription="Turma de matemática avançada"
-        userRole="STUDENT"
+        userRole="PROFESSOR"
         onDeleteTurma={() => {
           console.log("Excluir Turma");
         }}
@@ -15,7 +15,14 @@ const TesteTurmaCard = () => {
           console.log("Editar Turma");
         }}
       />
-
+      <TurmaCard
+        className="Turma de Ciências"
+        classDescription="Turma de ciências básicas"
+        userRole="ESTUDANTE"
+        onLeaveClass={() => {
+          console.log("Sair da Turma");
+        }}
+      />
       
     </div>
   );

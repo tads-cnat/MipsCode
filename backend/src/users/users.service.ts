@@ -65,7 +65,7 @@ export class UsersService {
         where: { id },
         include: {
           studentClassrom: true,
-          professorClass: true,
+          professorClass: false,
           project: true,
           Tutorial: true,
         },

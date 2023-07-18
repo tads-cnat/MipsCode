@@ -9,7 +9,7 @@ const ProfessorCadastroForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const role = "PROFESSOR";
+  const role = "professor";
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSnackbarClose = () => {
