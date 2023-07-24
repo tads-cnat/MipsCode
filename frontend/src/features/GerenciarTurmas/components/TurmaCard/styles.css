@@ -1,17 +1,17 @@
+
 .turma-card{
     max-width: 398px;
-    width: 100%;
-    min-height: 224px;
-    height: 100%;
+    width: 25rem;
+    max-height: fit-content;
     background-color: #333333;
     border: 1px solid #333333;
     box-sizing: border-box;
     border-radius: 13px;
     display: flex;
     flex-direction: column;
+    padding: 2.5rem;
     justify-content: center;
-    margin: 10px 20px 10px 0;
-    padding: 1rem;
+    position: relative;
 }
 .turma-title{
     color: #fff;
@@ -48,4 +48,27 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
+}
+.delete-section{
+    max-width: 398px;
+    position: absolute;
+    bottom:1.7rem;
+    padding-bottom: 1rem;
+    left: -1px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 25rem;
+    border: 1px solid #161515;
+    box-sizing: border-box;
+    background-color: #292929;
+    z-index: 99;
+  
+}
+.buttons{
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    width: 100%;
 }
