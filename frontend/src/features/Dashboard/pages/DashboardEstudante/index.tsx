@@ -183,7 +183,7 @@ console.log(userdata)
                 <p className="description">Guarde seus projetos e acesse onde estiver.</p>
                 <nav className="project-buttons">
                     <button className="create" onClick={handleClickCriar}><AddBoxOutlinedIcon/><span>Criar novo Projeto</span></button>
-                    <button className="list" onClick={handleClickVer}><FolderOutlinedIcon/> <span>Ver Todos os Projetos</span></button>
+                    <button className="list" onClick={handleClickVer}><FolderOutlinedIcon/> <span>Ver Todos os Projetos </span></button>
                 </nav>
             </section>
             <section className="project-buttons-section">
