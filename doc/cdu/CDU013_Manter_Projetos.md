@@ -15,7 +15,7 @@
 <br>
 
 ## 1. Resumo
-O usuário é capaz de criar,excluir,editar e visualizar seus projetos.
+O usuário é capaz de criar, excluir, editar e visualizar seus projetos.
 
 <br>
 
