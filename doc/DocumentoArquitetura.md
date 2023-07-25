@@ -33,7 +33,7 @@ O MipsCode é uma IDE amigável para estudantes aprenderem e praticarem a lingua
 # 3. Requisitos Significantes
 | Código | Nome | Descrição |
 | --- | --- | --- |
-| RNF001 | E Tempo de resposta | O sistema deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de 5 segundos de resposta na exportação. |
+| RNF001 | Tempo de resposta | O sistema deve ser capaz de garantir a  comunicação entre o servidor e o cliente, não podendo ultrapassar o tempo de 5 segundos de resposta na exportação. |
 | RNF007 | Exportação de Arquivo | O sistema deve ser capaz de disponibilizar o arquivo exportado pelo usuário em extensão ASM e XML. |
 | RNF002 | Facilidade de Uso | O sistema deve fornecer uma interface amigável e intuitiva que permita aos usuários interagir facilmente com ele, visando melhorar a experiência do usuário e aumentar a produtividade. |
 | RNF004 | Monitorar os tutoriais | O administrador deverá manter a qualidade dos tutoriais, assegurando que eles sejam atualizados, precisos, e acessíveis aos usuários, por meio de um processo contínuo de revisão, atualização e depuração do código. |
@@ -60,3 +60,13 @@ Com relação aos atores externos, estes podem interagir principalmente com o co
 ## 6.1 Visão Lógica
 
 ### 6.2 Modelos de domínio
+<img src="../doc/dominio/dominio.svg" alt="Modelos de domínio">
+
+| Conceito | Descrição |
+| --- | --- |
+| User | Tabela que mantém os dados dos professores e pacientes na plataforma | 
+| Tutorial | Mantém os tutoriais criados pelos professores | 
+| Project | Mantém os projetos criados pelos usuários  | 
+| Documentation | Mantém os arquivos da documentação do Assembly MIPS | 
+| Roles | Enum que classifica os tipos de usuários da plataforma  | 
+<img src="../doc/dominio/Classes.JPG">
