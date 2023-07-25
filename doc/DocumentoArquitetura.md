@@ -45,4 +45,18 @@ O MipsCode é uma IDE amigável para estudantes aprenderem e praticarem a lingua
 # 5. Escopo do Sistema e Contexto
 
 ## 5.1 Diagrama de Contexto
+<img src="../doc/diagrama-de-contexto.svg" alt="Diagrama de Contexto">
 
+A figura acima contempla o diagrama de contexto do sistema MipsCode utilizado no projeto de sistemas distribuídos (PDS). Nele são evidenciados os blocos que trazem o nome do sistema e o que interage com ele, além do usuário que realiza uma ação.
+
+## 5.2 Diagrama de Containers
+<img src="../doc/diagrama-de-containers.svg" alt="Diagrama de Containers">
+Quanto às interações, os containers interagem entre si por meio de interfaces bem definidas e troca de mensagens. O container de Interface do Usuário pode enviar comandos e dados para o container de Lógica de Negócios, que, por sua vez, pode acessar ou atualizar informações no container de Armazenamento de Dados. O container de Assembler recebe informações do container de Lógica de Negócios e gera o código de máquina a ser executado pelo container de Simulador de Hardware.
+
+Com relação aos atores externos, estes podem interagir principalmente com o container de Interface do Usuário, enviando comandos e recebendo respostas ou informações relevantes por meio da interface disponibilizada pelo sistema. Os atores externos podem ser usuários humanos, outros sistemas, ou mesmo dispositivos periféricos que se comuniquem com o sistema MipsCode.
+
+# 6. Diagramas Conceituais
+
+## 6.1 Visão Lógica
+
+### 6.2 Modelos de domínio
