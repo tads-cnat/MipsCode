@@ -15,7 +15,7 @@
 7. [CDU-007 - Voltar uma Execução](CDU007_Voltar_Uma_Execução.md)
 8. [CDU-008 - Avançar uma Execução](CDU003_Avançar_Uma_Execução.md)
 9. [CDU-009 - Desmontar Código](CDU008_Desmontar_Código.md)
-10. [CDU-010 - Percorrer Execuções](CDU009_Percorrer_Execuções.md)
+10. [CDU-010 - Executar Código](CDU009_Executar_Código.md)
 11. [CDU-011 - Atualizar Código do Projeto](CDU010_Atualizar_Código_do_Projeto.md)
 12. [CDU-012 - Gerenciar Perfil](CDU011_Gerenciar_Perfil.md)
 13. [CDU-013 - Manter Projetos](CDU012_Manter_Projetos.md)
