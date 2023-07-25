@@ -37,9 +37,9 @@ Não há.
 
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
-| 1. Visitante acessa o site. | |  
+| 1. Acessa o site. | |  
 |  | 2. Renderiza a página e seus scripts. |
-| 3. Visitante acessa a página da IDE. | | 
+| 3. Acessa a página da IDE. | | 
 |  | 4. Renderiza a página e seus scripts e disponiliza o uso. |
 
 <br>
