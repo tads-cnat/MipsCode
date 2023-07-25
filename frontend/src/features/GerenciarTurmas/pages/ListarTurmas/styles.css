@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+*{
+    font-family: Inter;
+}
+
+/* Construção da Página */
+.page{
+    max-width: 1920px;
+
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* divisão dos componentes da página */
+section{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+.inputsarea{
+    margin-left: 4rem;
+}
+
+
+/* Configurações Globais do CSS - Não afetam a responsividade  */
+
+
+.input-code{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    row-gap: 1;
+}
+.input-code >h1 {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.sectionrout .url1{
+margin-left: 10px;
+margin-right: 10px;
+color: rgba(255, 255, 255, 0.50);
+text-align: center;
+font-family: Inter;
+font-size: 1rem;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+}
+
+.input-icon{
+    max-height: 4rem;
+    width: fit-content;
+    margin: auto;
+    color: #655858;
+}
+
+.url-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: fit-content;
+}
+
+.sectionrout .url2{
+    color: #2EF2AA;
+    text-align: center;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.input-area{
+    display: flex;
+    flex-direction: column;
+}
+.input-area >label{
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+}
+.search{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.search-input-icon{
+    min-height: 2rem;
+    min-width: 2rem;
+    color: #655858;
+    border-style: solid;
+    border-width: 1px;
+    padding: 0.5rem;
+    margin: auto 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.search-input-icon:hover{
+    color: #2EF2AA;
+}
+.search > input{
+    display: flex;
+    height: 2.5rem;
+    background-color: transparent;
+    color: #9E9E9E;
+    align-self: stretch;
+    border-radius: 0.25rem;
+    border: 1px solid #737373;
+    padding-left: 0.5rem;
+    font-size: 1rem;
+    margin-top: 3px;
+}
+.create{
+    margin-top: 20px;
+}
+
+.cards-area{
+    max-width: 100%;
+    width: 95%;
+    margin: auto;
+    max-height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+    column-gap: 3.5rem;
+}
+
+
+
+
+/* BreakPoints de Respoonsividade  */
+
+
+/* @media screen and (max-width:842px) {
+
+    .main-section{
+        max-width: 90%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+    .green-buttons-section{
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        padding-bottom: 8rem;
+        display: flex;
+    }   
+    .green-buttons-section .title{
+        text-align: center;
+    }
+    .project-buttons-section{
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+    }
+    .project-buttons button{
+        margin-right: 0px;
+        margin: 20px auto;
+    }
+
+    .recent-projects{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: start;
+        margin-top: 2rem;
+        width: 100%;
+        min-height: 224px;
+    }
+    .recent-tutorials{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+    }
+    .title{
+        text-align: center;
+    }
+    .recent-tutorials{
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);  
+        grid-gap: 30px;
+    }
+    .tutorials-section .description{
+        text-align: center;
+    }
+    .tutorials-section{
+        display: flex;
+        flex-direction: column;
+    
+    }
+    .list-tutorials{
+        margin: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width:843px) {
+    .main-section{
+        max-width: 80%;
+        margin: auto;
+        margin-top: 2rem;
+    }
+
+    .green-buttons-section .cards{
+        display: flex;
+        margin: auto;
+        justify-content: start;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .project-buttons button{
+        margin-right: 38px;
+    }
+    .recent-projects{
+        display: flex;
+        margin: auto;
+        justify-content: start;
+        margin-top: 2rem;
+        width: 100%;
+        min-height: 224px;
+        margin-bottom: 2rem;
+    }
+    .recent-tutorials{
+        padding-bottom: 2rem;
+        display: grid;
+        grid-template-columns: repeat(3, 2fr);  
+        grid-gap: 50px;
+    
+    }
+} */
+
+
+
+
+/* Configurações Das Sessões da Página  */
+

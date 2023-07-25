@@ -1,14 +1,19 @@
 const express = require('express');
+const app = express();
 const path = require('path');
 
-const app = express();
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('/ide', (req, res) => {
+  const code = 'req.body.code';
+  const user = null
+  res.render('index', { code, user });
 });
 
-app.listen(3000, () => {
-  console.log('Aplicativo rodando em http://localhost:3000');
+const PORT = 3003;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

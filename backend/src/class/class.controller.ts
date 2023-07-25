@@ -18,6 +18,7 @@ import { RolesGuard } from 'src/auth/role/role.guard';
 import { DeleteClassDto } from './dto/delete-class-dto';
 
 @Controller('class')
+@ApiTags('/ Classes')
 export class ClassController {
   constructor(private readonly classService: ClassService) {}
 
@@ -28,8 +29,6 @@ export class ClassController {
     return this.classService.create(createClassDto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiBearerAuth()
   @Get()
   findAll() {
     return this.classService.findAll();

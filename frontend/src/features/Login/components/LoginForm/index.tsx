@@ -1,13 +1,9 @@
 import { Box, CardContent, Card, Typography } from '@mui/material';
 import UserLoginForm from '../UserLoginForm';
-
-
+ 
 
 const LoginForm = () => {
-
-
   return (
-    
     <div>
       <Typography color="text.primary" variant="h6" align="center" sx={{ textAlign: 'center', alignItems: 'center', my: { sm: 5 } }}>
         FAÇA O LOGIN NA SUA CONTA!
@@ -17,7 +13,7 @@ const LoginForm = () => {
         <Card>
           <CardContent>
             <Box sx={{ p: 1, my: 1 }}>
-               <UserLoginForm/>
+              <UserLoginForm/>
             </Box>
           </CardContent>
         </Card>

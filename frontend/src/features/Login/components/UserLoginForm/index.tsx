@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {  Box,  Card,  CardContent,  CardActions,  TextField,  Button,} from "@mui/material";
 import { LoginType } from "../../../../types/iLogintype";
 import { loginUser } from "../../services/loginservice";
+import { Link } from 'react-router-dom';
 
 const UserLoginForm = () => {
   const navigate = useNavigate();
@@ -15,9 +16,9 @@ const UserLoginForm = () => {
     try {
       const res: any = await loginUser(userForm);
       if (res.msg === "Sucess") {
-        if (res.userData.role === "student") {
+        if (res.userData.role === "STUDENT") {
           navigate("/dashboard-estudante");
-        } else if (res.userData.role === "professor") {
+        } else if (res.userData.role === "PROFESSOR") {
           navigate("/dashboard-professor");
         }
       }
@@ -65,6 +66,11 @@ const UserLoginForm = () => {
                 <Button color="secondary" variant="outlined" type="submit">
                   Entrar
                 </Button>
+                </Box>
+                <Box width="100%" display="flex" justifyContent="center">
+                <Button variant="outlined" color="secondary" component={Link} to="http://localhost:3003/cadastro/">
+                 INSCREVA-SE
+              </Button>
               </Box>
             </CardActions>
           </form>

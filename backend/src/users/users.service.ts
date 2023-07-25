@@ -54,7 +54,7 @@ export class UsersService {
           where: { id },
           include: {
             professorClass: true,
-            studentClassrom: false,
+            studentClassrom: true,
             project: true,
             Tutorial: true,
           },
@@ -67,7 +67,7 @@ export class UsersService {
           studentClassrom: true,
           professorClass: false,
           project: true,
-          Tutorial: false,
+          Tutorial: true,
         },
       });
     } catch (error) {

@@ -60,7 +60,6 @@ section{
 
 .project-buttons button span{
     margin-left: 10px;
-    margin-top: 2px;
 }
 
 .project-buttons .create {
@@ -73,6 +72,7 @@ section{
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid #FFFFFF;
     border-radius: 5px;
+    margin-top: 19px;
     font-size: 16px;
     font-weight: 600;
     color: white;

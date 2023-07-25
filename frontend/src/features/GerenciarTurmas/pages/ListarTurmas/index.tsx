@@ -1,27 +1,37 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../../../components";
-import { Typography, Box, Button } from "@mui/material";
-import { Card, CardContent, CardActions } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import api from "../../../../services/api";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import { iTurma } from "../../../../types/iTurmas";
-import { listarTurmas } from "../../services/turmasService";
-import { excluirTurma } from "../../services/turmasService";
+import { addEstudante } from "../../services/turmasService";
+import "./styles.css";
+import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import TurmaCard from "../../components/TurmaCard";
+import {Footer} from "../../../../components";
 
 const VerTurmas = () => {
   const [turmas, setTurmas] = useState<iTurma[]>([]);
+  const [userRole, setUserRole] = useState<string>("PROFESSOR");
+  const [classCode, setclassCode] = useState<string>("");
+  const [userId, setUserId] = useState<any>();
   const navigate = useNavigate();
 
   async function getClasses() {
-    const cod = sessionStorage.getItem("cod");
+    const cod = sessionStorage.getItem("userId");
     if (!cod) {
       return "User Not Found";
     }
     try {
-      const res = await api.get(`/class/${cod}`);
-      if (res && res.data && res.data.class) {
-        setTurmas(res.data.class);
+      const res = await api.get(`/users/${cod}`);
+
+      setUserRole(res.data.role);
+      setUserId(cod);
+      if (res.data.role !== "PROFESSOR") {
+        setTurmas(res.data.studentClassrom);
+      } else {
+        setTurmas(res.data.professorClass);
       }
     } catch (error) {
       if (error) {
@@ -32,18 +42,11 @@ const VerTurmas = () => {
 
   useEffect(() => {
     getClasses();
-    console.log();
   }, []);
 
-  async function carregarTurmas() {
-    try {
-      const response = await listarTurmas();
-      if (response && response.data) {
-        setTurmas(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+
+  async function updatePage(){
+    getClasses();
   }
 
   function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
@@ -57,105 +60,106 @@ const VerTurmas = () => {
     navigate("/criar-turma/", { state: { turma } });
   }
 
-  function handleClickEditar(turmaId: string) {
-    navigate(`/editar-turma?id=${turmaId}`, { state: { turmaId: turmaId } });
-  }
+  async function EnterClass() {
+    const studentId = sessionStorage.getItem("userId");
+    const code = classCode;
 
-  async function handleExcluirTurma(userId: string) {
-    getClasses();
-    try {
-      await excluirTurma(userId);
-      await carregarTurmas();
-      window.location.reload(); // Recarrega a página
-    } catch (error) {
-      console.error("Erro ao excluir programa:", error);
+    if (!code) {
+      alert("Por favor insira um código válido");
+    }
+    if (studentId) {
+      const res = await addEstudante(studentId, code);
+
+      if (res === "Sucess") {
+        alert("Aluno cadastrado com sucesso");
+        getClasses();
+        return;
+      }
+      alert("Algo deu errado");
     }
   }
 
+
+  
+  const CreateClassInput = (
+      <div className="input-code">
+      <h1>Turmas</h1>
+      <div className="sectionrout">
+        <div className="url-bar">
+          <OtherHousesOutlinedIcon className="input-icon" />
+          <span className="url1">Dashboard / </span>
+          <span className="url2">Turmas</span>
+        </div>
+        <nav className="project-buttons">
+        <button className="create" onClick={handleClickCriar}>
+          <AddBoxOutlinedIcon />
+          <span>Criar nova Turma</span>
+        </button>
+      </nav>
+      </div>
+      </div>
+  )
+
+  const EnterClassInput = (
+    <div className="input-code">
+    <h1>Turmas</h1>
+    <div className="sectionrout">
+      <div className="url-bar">
+        <OtherHousesOutlinedIcon className="input-icon" />
+        <span className="url1">Dashboard / </span>
+        <span className="url2">Turmas</span>
+      </div>
+      <div className="input-area">
+        <label>Entrar em uma nova turma</label>
+        <form className="search">
+          <input
+            type="text"
+            placeholder="Inserir Código"
+            value={classCode}
+            onChange={(e) => {
+              setclassCode(e.target.value);
+            }}
+          ></input>
+          <div className="add-class" onClick={() => EnterClass()}>
+            <SearchOutlinedIcon className="search-input-icon" />
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  )
+
+
   return (
-    <>
+    <main className="page">
       <Header />
+      <section className="inputsarea">
+      {userRole && userRole === "PROFESSOR" ? 
+      // checar se vai mostrar o botão de criar turma ou o campo de entrar o código de uma turma 
+      CreateClassInput 
+      : 
+      EnterClassInput
+      }
+      </section>
+      <section className="cards-area">
+        {
+          turmas && turmas.map(
+            (turma : any)=>{
+              return(
+                <TurmaCard className={turma.className} classDescription={turma.classDescription} userRole={userRole} userId={userId} classId={turma.cod} handleUpdate={updatePage()}/>
+              )
+            }
+          )
+        }
 
-      <Box>
-        <div>
-          <br></br>
-        </div>
+      </section>
 
-        <Typography
-          component={"span"}
-          variant="h5"
-          align="left"
-          padding={5}
-          gutterBottom
-          color="primary.contrastText"
-        >
-          Minhas Turmas
-        </Typography>
-        <div>
-          <br></br>
-        </div>
+      <section className="">
+      
+      </section>
 
-        <nav className="classes-buttons">
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleClickCriar}
-          >
-            <AddBoxOutlinedIcon />
-            <span>Criar nova Turma</span>
-          </Button>
-        </nav>
-
-        {turmas.map((turma, index) => (
-          <Card key={index} variant="outlined">
-            <CardContent>
-              <div className="col">
-                <div className="row">
-                  <Typography component={"span"} variant="h5">
-                    {turma.className}
-                  </Typography>
-                </div>
-                <div className="row">
-                  <br></br>
-                </div>
-                <div className="row">
-                  <Typography component={"span"} variant="body1">
-                    {turma.classDescription}
-                  </Typography>
-                </div>
-              </div>
-            </CardContent>
-            <CardActions>
-              <Button
-                color="secondary"
-                variant="outlined"
-                onClick={() => handleClickEditar(turma.cod || "")}
-              >
-                Editar
-              </Button>
-
-              <Button
-                type="submit"
-                color="error"
-                variant="outlined"
-                onClick={() =>
-                  window.confirm(
-                    "Tem certeza que deseja excluir esta turma?"
-                  ) && handleExcluirTurma(turma.cod || "")
-                }
-              >
-                Excluir
-              </Button>
-
-              <Button>Adicionar Estudante</Button>
-            </CardActions>
-          </Card>
-        ))}
-      </Box>
-
-      {/* <Footer/> */}
-    </>
+      <Footer/>
+    </main>
   );
-};
-
+}
 export default VerTurmas;

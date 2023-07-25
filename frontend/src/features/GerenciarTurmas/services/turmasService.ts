@@ -98,14 +98,18 @@ export async function atualizarTurma(turmaId: string, turma: iTurma) {
 }
 
 // EXCLUIR TURMA - DELETE
-export async function excluirTurma(cod: string) {
+export async function excluirTurma(cod: string, userId: string) {
+  console.log("classcode", cod);
+  console.log("userId", userId);
   try {
     if (!cod) {
       return "TurmaId não informado";
     }
-
     const Resapi = await api.delete(`class/${cod}`, {
       headers: headers(),
+      data: {
+        professorId: userId,
+      },
     });
 
     if (Resapi) {
@@ -121,11 +125,11 @@ export async function excluirTurma(cod: string) {
 }
 
 // ADICIONAR ESTUDANTE - POST
-export async function addEstudante(userId: string) {
+export async function addEstudante(userId: string, classCod: string) {
   try {
     const Resapi = await api.post(
-      `class/addStudent/${userId}`,
-      { userId },
+      `class/addStudent/${classCod}`,
+      { userId: userId },
       {
         headers: headers(),
       }
@@ -144,18 +148,25 @@ export async function addEstudante(userId: string) {
 }
 
 // REMOVER ESTUDANTE - DELETE
-export async function excluirEstudante(userId: string) {
+export async function removeStudent(userId: string, classCod: string) {
+  console.log("userId", userId);
+  console.log("classCod", classCod);
+
   try {
     if (!userId) {
       return "userId não informado";
     }
 
-    const Resapi = await api.delete(`class/removeStudent/${userId}}`, {
-      headers: headers(),
-    });
+    const Resapi = await api.post(
+      `class/removeStudent/${classCod}`,
+      { userId: userId },
+      {
+        headers: headers(),
+      }
+    );
 
     if (Resapi) {
-      return "Estudante removido da turma com sucesso";
+      return "Sucess";
     }
   } catch (error) {
     console.log(error);

@@ -25,7 +25,7 @@ export class ClassService {
     }
 
     try {
-      data.cod = generateCode();
+      //data.cod = generateCode();
 
       const userRes = await this.prisma.user.findFirst({
         where: { id: data.professorId },
@@ -36,12 +36,13 @@ export class ClassService {
         throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
       }
 
-      return await this.prisma.class.create({ data });
+      return await this.prisma.class.create({
+        data: { ...data, cod: generateCode() },
+      });
     } catch (error) {
       return error;
     }
   }
-
   async findAll() {
     return await this.prisma.class.findMany();
   }
