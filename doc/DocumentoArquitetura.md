@@ -113,4 +113,44 @@ O design da interface foi esboçado usando a plataforma Figma. Também foi utili
 # 8. Anexos
 
 ## 8.1 API do Projeto
+**Criação de um projeto**
+
+Uma requisição POST que listará todos os agendamentos.
+
+**Parâmetros da requisição**
+
+| Parâmetros | Descrição            |
+|------------|----------------------|
+| title      | título do projeto    |
+| description| descrição do projeto |
+| content    | arquivo mips mars    |
+| userId     | ID do autor do projeto |
+
+**Estrutura da resposta**
+
+| Path          | Tipo    | Descrição                   |
+|---------------|---------|-----------------------------|
+| [ ]           | Object  | toda a descrição do projeto |
+| [ ].id        | String  | id do Projeto               |
+| [ ].title     | String  | Título do projeto           |
+| [ ].description | String| descrição do projeto        |
+| [ ].favorite  | Boolean | status se o projeto foi favoritado pelo autor |
+| [ ].userId    | String  | id do Autor do projeto      |
+
+**Exemplo de requisição**
+POST 'http://localhost:3000/projects'
+
+**Exemplo de resposta**
+
+```json
+{
+  "id": "9623eb26-d21f-44e0-9c67-17300d2807c9",
+  "title": "projeto teste 23 3 4 512",
+  "description": "",
+  "favorite": false,
+  "content": "",
+  "userId": "95cfb5d3-106a-46bc-87ea-13083d67a175",
+  "createdAt": "2023-05-30T21:48:02.774Z",
+  "updatedAt": "2023-05-30T21:48:02.774Z"
+}
 
