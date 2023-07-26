@@ -84,28 +84,30 @@ Com relação aos atores externos, estes podem interagir principalmente com o co
 
 # 7. Detalhamento da Implementação e Ambiente Físico
 
-## 7.1 Visão de Implementação
-[[inserir o diagrama de componentes do CDU principal e dos CDUs detalhados]]
-[[Listar os componentes e suas respectivas descrições]]
+## 7. Detalhamento da Implementação e Ambiente Físico
 
+### 7.1.	Visão de Distribuição
+| Nó | Descrição |
+| :--- | :--- |
+| SGBD - PostgreSQL | Sistema de banco de dados da aplicação |
+| Servidor da aplicação - Frontend | Conjunto de interfaces e páginas da aplicação |
+| Servidor da aplicação - Backend | Conjunto de classes, regras de negocio e endpoints |
+| Computador do usuario | Maquina que o usuario utilizará para fazer acesso a aplicação |
 
-| Componente | Descrição |
-| --- | --- |
-|  |  |
-|  |  |
+### 7.2. Persistência
+| Classe | Tabela | Significado |
+| :--- | :--- | :--- |
+IDE|ide|Realiza a montagem do código
+Tutorial|tutoriais|Campo onde um usuário pode verificar os tutoriais do MIPS32
+Documentação|documentações|Documentação da página que o usuário pode acessar
+Estudante|estudantes|Usuario que pode realizar login no sistema e acessar sua turma/atividade
+Usuario|usuarios|Usuario base do sistema
+Professor|professores|Usuario que pode realizar login no sistema e cadastrar turma/tarefa
+Visitante|visitantes|Usuario que acessa a página e utiliza suas funcionalidades não estando logado
 
-## 7.2 Visão de Distribuição
+### 7.4. Interface de Usuário
 
-[Inserir o diagrama de Implantação]
-
-[Inserir uma descrição breve de cada nó]
-
-## 7.3 Persistência
-[[inserir a descrição superficial da implementação da persistência]]
-[[motivação]] 
-[[sgbd e a motivação]]
-[[tecnologia da implementação (ex. pacotes do django responsáveis pela persistência]]
-[[módulos implementados que solicitam a persistência]]
+O design da interface foi esboçado usando a plataforma Figma. Também foi utilizado O React-JS junto do MaterialUI na estilização dos componentes para o frontend.
 
 # 8. Anexos
 
