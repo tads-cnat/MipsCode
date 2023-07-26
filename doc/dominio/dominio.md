@@ -1,3 +1,3 @@
 # Modelo de Domínio
 
-![Diagrama de Classe](./dominio.svg)
+![Diagrama de Classe](./dominio.png)
