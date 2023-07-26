@@ -81,7 +81,7 @@ Com relação aos atores externos, estes podem interagir principalmente com o co
 | Project | Mantém os projetos criados pelos usuários  | 
 | Documentation | Mantém os arquivos da documentação do Assembly MIPS | 
 | Roles | Enum que classifica os tipos de usuários da plataforma  | 
-<img src="../doc/dominio/Classes.JPG">
+<img src="../doc/dominio/MipsCode (2).png">
 
 # 7. Detalhamento da Implementação e Ambiente Físico
 
