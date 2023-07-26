@@ -41,6 +41,17 @@ O MipsCode é uma IDE amigável para estudantes aprenderem e praticarem a lingua
 | RNF005 | Requisitos Legais | O administrador deverá adequar a plataforma de acordo com as normas legais(LGPD), garantindo a integridade de dados sensíveis armazenando-os no banco de dados com token de segurança. |
 | RNF003 | Manutenção e suporte da IDE | O administrador irá garantir o funcionamento correto da IDE, assegurando um alto grau de impacto. |
 
+## 4. Restrições Arquiteturais
+### 4.1.Restrições técnicas
+|  | Restrição | Contexto e/ou Motivação |
+| :--- | :--- | :--- |
+| Restrição de software e programação |
+| RT1 | Acessibilidade | A interface atual não conta com nenhum conjunto de ferramentas que possa auxiliar pessoas com deficiência. |
+| Restrição de sistema operacional |
+| RT2 | Segurança | A ausência de suporte a determinadas medidas de segurança, como criptografia ou autenticação, por parte do sistema operacional pode expor o aplicativo a vulnerabilidades e possíveis ataques. |
+| Restrições de Hardware |
+| RT3 | Conectividade de rede | Quando a conectividade de rede é limitada, a velocidade e a disponibilidade do aplicativo podem ser afetadas.. |
+
 
 # 5. Escopo do Sistema e Contexto
 
