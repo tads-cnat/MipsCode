@@ -40,7 +40,7 @@ Toda e qualquer modificação deve ser salva e mostrada para o usuário.
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
 | 1. Acessa a página de projetos. | |
-|  | 2. Renderiza a página e mostra a listagem de projetos do usuário. |
+|  | 2. Carrega uma nova página e mostra a listagem de projetos do usuário. |
 | 3. Seleciona “Criar Projeto”. | |
 | | 4. Mostra o formulário com os campos “Título” (obrigatório), “Descrição” e “Upload de arquivo”. |
 | 5. Preenche os campos e seleciona “Confirmar”. | |
