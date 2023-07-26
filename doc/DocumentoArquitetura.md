@@ -7,7 +7,7 @@
 | Data | Versão | Descrição | Autor |
 | --- | --- | --- | --- |
 | 25/07/2023 | 1.0 | Versão inicial | Heloise e Ícaro |
-| 25/07/2023 | 1.1 | Versão atualizada | Rafael Pessoa e  Hilquias |
+| 26/07/2023 | 1.1 | Versão atualizada | Rafael Pessoa e  Hilquias |
 
 # 1. Introdução
 O MipsCode é uma IDE amigável para estudantes aprenderem e praticarem a linguagem assembly MIPS. Também é útil para professores ensinarem programação de baixo nível. Atende a áreas como tecnologia e sistemas embarcados, sendo ideal para entusiastas de programação de baixo nível. É uma ferramenta completa e eficaz para aprender assembly MIPS.
