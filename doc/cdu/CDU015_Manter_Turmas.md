@@ -40,7 +40,7 @@ Não há.
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
 | 1. Acessa a página de turmas. | |
-|  | 2. Renderiza a página e mostra a listagem de turmas do usuário. |
+|  | 2. Carrega uma nova página e mostra a listagem de turmas do usuário. |
 | 3. Seleciona “Criar Turma”. | |
 | | 4. Mostra o formulário com os campos “Título” (obrigatório) e “Matéria”. |
 | 5. Preenche os campos e seleciona “Confirmar”. | |
