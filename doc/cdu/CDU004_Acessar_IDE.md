@@ -38,7 +38,7 @@ Não há.
 | Ator | Sistema |
 | :-----------------: | :-----------------: | 
 | 1. Acessa o site. | |  
-|  | 2. Renderiza a página e seus scripts. |
+|  | 2. Carrega uma nova página e seus scripts. |
 | 3. Acessa a página da IDE. | | 
 |  | 4. Renderiza a página e seus scripts e disponiliza o uso. |
 
