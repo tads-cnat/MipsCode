@@ -105,7 +105,7 @@ Usuario|usuarios|Usuario base do sistema
 Professor|professores|Usuario que pode realizar login no sistema e cadastrar turma/tarefa
 Visitante|visitantes|Usuario que acessa a página e utiliza suas funcionalidades não estando logado
 
-### 7.4. Interface de Usuário
+### 7.3. Interface de Usuário
 
 O design da interface foi esboçado usando a plataforma Figma. Também foi utilizado O React-JS junto do MaterialUI na estilização dos componentes para o frontend.
 
