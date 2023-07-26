@@ -41,7 +41,7 @@ O MipsCode é uma IDE amigável para estudantes aprenderem e praticarem a lingua
 | RNF005 | Requisitos Legais | O administrador deverá adequar a plataforma de acordo com as normas legais(LGPD), garantindo a integridade de dados sensíveis armazenando-os no banco de dados com token de segurança. |
 | RNF003 | Manutenção e suporte da IDE | O administrador irá garantir o funcionamento correto da IDE, assegurando um alto grau de impacto. |
 
-## 4. Restrições Arquiteturais
+# 4. Restrições Arquiteturais
 ### 4.1.Restrições técnicas
 |  | Restrição | Contexto e/ou Motivação |
 | :--- | :--- | :--- |
@@ -81,3 +81,33 @@ Com relação aos atores externos, estes podem interagir principalmente com o co
 | Documentation | Mantém os arquivos da documentação do Assembly MIPS | 
 | Roles | Enum que classifica os tipos de usuários da plataforma  | 
 <img src="../doc/dominio/Classes.JPG">
+
+# 7. Detalhamento da Implementação e Ambiente Físico
+
+## 7.1 Visão de Implementação
+[[inserir o diagrama de componentes do CDU principal e dos CDUs detalhados]]
+[[Listar os componentes e suas respectivas descrições]]
+
+
+| Componente | Descrição |
+| --- | --- |
+|  |  |
+|  |  |
+
+## 7.2 Visão de Distribuição
+
+[Inserir o diagrama de Implantação]
+
+[Inserir uma descrição breve de cada nó]
+
+## 7.3 Persistência
+[[inserir a descrição superficial da implementação da persistência]]
+[[motivação]] 
+[[sgbd e a motivação]]
+[[tecnologia da implementação (ex. pacotes do django responsáveis pela persistência]]
+[[módulos implementados que solicitam a persistência]]
+
+# 8. Anexos
+
+## 8.1 API do Projeto
+
