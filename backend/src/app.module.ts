@@ -10,6 +10,7 @@ import { TasksModule } from './tasks/tasks.module';
 import * as cors from 'cors';
 import { TasklistsModule } from './tasklists/tasklists.module';
 import { SubmissionsModule } from './submissions/submissions.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { SubmissionsModule } from './submissions/submissions.module';
     TasklistsModule,
     TasksModule,
     SubmissionsModule,
+    FilesModule,
   ],
 })
 export class AppModule implements NestModule {
