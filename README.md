@@ -47,7 +47,7 @@ O MipsCode se encaixa na área de educação, oferecendo uma IDE amigável e int
     <td align="center"><a href="https://github.com/gasilvabr">
         <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/51339655?v=4" width="100px;" alt=""/>
         <br />
-        <a href="https://github.com/gasilvabr"><b>George Azevedo</b></a>
+        <a href="https://github.com/gasilvabr"><b>Alexandre Gomes</b></a>
     </td>
 </table>
 
