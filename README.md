@@ -36,8 +36,15 @@ O MipsCode se encaixa na área de educação, oferecendo uma IDE amigável e int
         <br />
         <a href="https://github.com/PessoaRafael"><b>Rafael Pessoa</b></a>
     </td>
+    <td align="center"><a href="https://github.com/eryellima">
+        <img style="border-radius: 10%;" src="https://avatars.githubusercontent.com/u/48968656?v=4" width="100px;" alt=""/>
+        <br />
+        <a href="https://github.com/eryellima"><b>Eryel Lima</b></a>
+    </td>
 </tr>
 </table>
+
+
 
 ### Orientador
 
