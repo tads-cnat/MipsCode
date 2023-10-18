@@ -1,16 +1,16 @@
-import { headers } from "../../../data";
+//import { headers } from "../../../data";
 import api from "../../../services/api";
 import { LoginType } from "../../../types/iLogintype";
 
 export async function loginUser({ email, password }: LoginType) {
-  function createCookie(name: string, value: string, days: any) {
-    if (days) {
-      var d = new Date();
-      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-      var expires = "; expires=" + d.toString();
-    } else var expires = "";
-    document.cookie = name + "=" + value + expires + "; path=/";
-  }
+  // function createCookie(name: string, value: string, days: any) {
+  //   if (days) {
+  //     var d = new Date();
+  //     d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+  //     var expires = "; expires=" + d.toString();
+  //   } else var expires = "";
+  //   document.cookie = name + "=" + value + expires + "; path=/";
+  // }
 
   try {
     if (!email || !password) {

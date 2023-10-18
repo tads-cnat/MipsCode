@@ -1,5 +1,4 @@
-import { createContext, useState, useContext, useEffect} from "react";
-import axios from "axios";
+import { createContext, useState } from "react";
 import api from "./api";
 
 interface Providerprops {
@@ -7,7 +6,7 @@ interface Providerprops {
 }
 
 interface UserContextprops {
-  User : object,
+  User: object,
   addUser: (User: object) => void;
 }
 
@@ -35,21 +34,21 @@ export const AuthProvider = ({ children }: Providerprops) => {
 
 
 export async function AuthContext() {
-  const context = useContext(Usercontext);
+  //const context = useContext(Usercontext);
   const userId = sessionStorage.getItem("userId");
 
-  if(!userId){
+  if (!userId) {
     return "User Not Found";
   }
 
   try {
     const res = await api.get(`/users/${userId}`)
-    if(res){
+    if (res) {
       return res.data
     }
-    
+
   } catch (error) {
-    if(error){
+    if (error) {
       return error;
     }
   }

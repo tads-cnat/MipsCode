@@ -5,7 +5,7 @@ import { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import './styles.css'
 import { excluirTurma } from "../../services/turmasService";
-import { addEstudante } from "../../services/turmasService";
+//import { addEstudante } from "../../services/turmasService";
 import { removeStudent } from "../../services/turmasService";
 import { useNavigate, } from "react-router-dom";
 
@@ -13,8 +13,8 @@ interface TurmaProps {
   className: string;
   classDescription: string;
   userRole: string;
-  classId:string;
-  userId:string;
+  classId: string;
+  userId: string;
   handleUpdate?: any;
 }
 
@@ -31,12 +31,12 @@ export default function TurmaCard({
   const [confirmDelete, setConfirmDelete] = useState(false);
 
 
-  async function handleExcluirTurma(cod:string,userId: string,) {
+  async function handleExcluirTurma(cod: string, userId: string,) {
 
     try {
-      await excluirTurma(cod,userId);
+      await excluirTurma(cod, userId);
       setConfirmDelete(false)
- 
+
     } catch (error) {
       console.error("Erro ao excluir programa:", error);
     }
@@ -46,11 +46,11 @@ export default function TurmaCard({
     navigate(`/editar-turma?id=${turmaId}`, { state: { turmaId: turmaId } });
   }
 
-  async function handleSairdaTurma(userId: string, classCod: string){
+  async function handleSairdaTurma(userId: string, classCod: string) {
     try {
       await removeStudent(userId, classCod);
       setConfirmDelete(false)
- 
+
     } catch (error) {
       console.error("Erro ao excluir programa:", error);
     }
@@ -59,12 +59,12 @@ export default function TurmaCard({
 
 
   const handleLeaveClass = () => {
-    handleSairdaTurma(userId,classId)
+    handleSairdaTurma(userId, classId)
     handleUpdate()
   };
 
   const handleDeleteTurma = () => {
-    handleExcluirTurma(classId,userId)
+    handleExcluirTurma(classId, userId)
     handleUpdate()
   };
 
@@ -97,22 +97,22 @@ export default function TurmaCard({
         <div className="delete-section">
           {userRole && userRole === "STUDENT" ? (
             <>
-              <br/>
+              <br />
               <Typography color="text.primary" >Tem certeza que deseja sair desta turma?</Typography>
-              <br/>
+              <br />
               <div className="buttons">
-              <Button color="secondary" variant="outlined" onClick={handleLeaveClass}>Confirmar</Button>
-              <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
+                <Button color="secondary" variant="outlined" onClick={handleLeaveClass}>Confirmar</Button>
+                <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
               </div>
             </>
           ) : (
             <>
-              <br/>
+              <br />
               <Typography color="text.primary">Tem certeza que deseja excluir esta turma?</Typography>
-              <br/>
+              <br />
               <div className="buttons">
-              <Button color="secondary" variant="outlined" onClick={handleDeleteTurma}>Confirmar</Button>
-              <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
+                <Button color="secondary" variant="outlined" onClick={handleDeleteTurma}>Confirmar</Button>
+                <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
               </div>
             </>
           )}

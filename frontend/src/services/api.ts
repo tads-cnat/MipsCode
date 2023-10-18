@@ -8,8 +8,9 @@ function getCookie(name: string) {
 
 function configHeader() {
   const token = getCookie("token");
-  var header;
-  if (!token) {
+  var header : any = ''
+
+  if (!token && header) {
     return (header = { "Content-Type": "application/x-www-form-urlencoded" });
   }
   return (header = { Authorization: `Bearer ${token}` });
