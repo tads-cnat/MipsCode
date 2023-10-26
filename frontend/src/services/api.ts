@@ -1,5 +1,11 @@
 import axios from "axios";
 
+
+
+
+
+
+
 function getCookie(name: string) {
   const value = `; ${document.cookie}`;
   const parts: any = value.split(`; ${name}=`);
@@ -18,6 +24,7 @@ function configHeader() {
 
 const api = axios.create({
   headers: configHeader(),
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.API_URL,
 });
+
 export default api;

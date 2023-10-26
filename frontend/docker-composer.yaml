@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    image: icarojustino/mipsfront:1.1.1
+    container_name: front-end
+    environment:
+      - API_URL=http://localhost:3000
+    ports:
+      - 8000:8000
+    working_dir: /app

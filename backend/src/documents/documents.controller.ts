@@ -23,9 +23,9 @@ import { RolesGuard } from 'src/auth/role/role.guard';
 export class DocumentController {
   constructor(private readonly documentService: DocumentService) {}
 
-  @Roles('ADMIN') // UserRoles.ADMIN
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @ApiBearerAuth()
+  // @Roles('ADMIN') // UserRoles.ADMIN
+  // @UseGuards(JwtAuthGuard, RolesGuard)
+  // @ApiBearerAuth()
   @Post()
   async create(@Body() createDocumentDto: CreateDocumentDto) {
     return this.documentService.create(createDocumentDto);
