@@ -5,7 +5,7 @@ Clique em cada um dos links abaixo para acessar o artefato específico.
 <br>
 
 CORPORATIVO
-1. [Registro das Partes Interessadas](registros-das-partes-interessadas.pdf)
+1. [Registro das Partes Interessadas](registro-das-partes-interessadas.pdf)
 2. [Dicionário EAP](eap-dicionario.pdf)
 3. [Cronograma de Marcos](cronograma-de-marcos-eap.png)
 4. [Análise Heurística](analise-heuristica.pdf)
