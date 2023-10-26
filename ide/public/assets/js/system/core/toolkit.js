@@ -3,6 +3,10 @@ const baseAddressIncrement = 4
 export const addressBase = 4194304
 
 export function copyRegs(regs) {
+    if(!regs) {
+        return {};
+    }
+    
     const copy = {}
     let count = 0
   
