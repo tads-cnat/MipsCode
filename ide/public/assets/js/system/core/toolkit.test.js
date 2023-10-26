@@ -22,14 +22,14 @@ describe('copyRegs', () => {
     expect(copiedRegs.currentIndex).toBeNull();
   });
  
-  // é preciso ajustar a função no 'toolkit.js' para este teste
-   /* it('deve retornar um objeto vazio se nenhum objeto regs for fornecido', () => {
+  // caso de falha
+   it('deve retornar um objeto vazio se nenhum objeto regs for fornecido', () => {
     // Chama função copyRegs sem fornecer um objeto
     const copiedRegs = copyRegs();
 
     // Verifique se o resultado é um objeto vazio
     expect(copiedRegs).toEqual({});
-  }); */
+  });
 });
 
 
