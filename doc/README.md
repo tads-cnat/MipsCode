@@ -9,7 +9,7 @@ CORPORATIVO
 2. [Dicionário EAP](eap-dicionario.pdf)
 3. [Cronograma de Marcos](cronograma-de-marcos-eap.png)
 4. [Análise Heurística](analise-heuristica.pdf)
-5. [Apresentação da 1a Etapa](PDSCorporativo.pdf)
+5. [Apresentação da 1a Etapa](apresentacao-1-etapa.pdf)
 
 <br>
 
