@@ -13,7 +13,7 @@ app.get('/ide', (req, res) => {
   res.render('index', { code, user });
 });
 
-const PORT = 3003;
+const PORT = 3002;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

@@ -31,7 +31,7 @@ const paginasEstudante = [
 },
 {
   label:"IDE",
-  url:"http://localhost:3002/"
+  url:"http://localhost:3002/ide"
 },
 {
   label:"Projetos",
@@ -54,7 +54,7 @@ const paginasProfessor = [
   },
   {
     label:"IDE",
-    url:"http://localhost:3002/"
+    url:"http://localhost:3002/ide"
   },
   {
     label:"Projetos",
