@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  Box,  Card,  CardContent,  CardActions,  TextField,  Button,} from "@mui/material";
+import { Box, Card, CardContent, CardActions, TextField, Button, } from "@mui/material";
 import { LoginType } from "../../../../types/iLogintype";
 import { loginUser } from "../../services/loginservice";
 import { Link } from 'react-router-dom';
@@ -26,7 +26,7 @@ const UserLoginForm = () => {
       return error;
     }
   }
-  
+
 
   return (
     <>
@@ -66,11 +66,11 @@ const UserLoginForm = () => {
                 <Button color="secondary" variant="outlined" type="submit">
                   Entrar
                 </Button>
-                </Box>
-                <Box width="100%" display="flex" justifyContent="center">
+              </Box>
+              <Box width="100%" display="flex" justifyContent="center">
                 <Button variant="outlined" color="secondary" component={Link} to="http://localhost:3003/cadastro/">
-                 INSCREVA-SE
-              </Button>
+                  INSCREVA-SE
+                </Button>
               </Box>
             </CardActions>
           </form>

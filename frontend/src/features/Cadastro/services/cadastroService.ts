@@ -6,6 +6,9 @@ export async function cadastrarUsuario(user: iUser) {
   try {
     const { email, password, name, role } = user;
 
+
+    console.log(api,"teste")  
+
     if (!email || !password || !name || !role) {
       return "Bad Request";
     }
