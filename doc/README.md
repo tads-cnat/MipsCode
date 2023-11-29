@@ -10,6 +10,8 @@ CORPORATIVO
 3. [Cronograma de Marcos](cronograma-de-marcos-eap.png)
 4. [Análise Heurística](analise-heuristica.pdf)
 5. [Apresentação da 1a Etapa](apresentacao-1-etapa.pdf)
+6. [Cronograma do Projeto](cronograma.pdf)
+7. [Orçamento do Projeto](orçamento.pdf)
 
 <br>
 
