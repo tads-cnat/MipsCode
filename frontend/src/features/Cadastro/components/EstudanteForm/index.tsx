@@ -40,7 +40,7 @@ const EstudanteCadastroForm = () => {
 
   return (
 			<Container component="main" maxWidth="xs">
-        <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>      
+        <Box sx={{ marginTop: 4, display: 'flex', flexDirection: 'column', alignItems: 'center',}}>      
 				
           <Typography sx={{ mt: 4}} color='text.primary' component="h1" variant="h5">
           CRIE UMA NOVA CONTA
@@ -125,7 +125,7 @@ const EstudanteCadastroForm = () => {
 						</Grid>
 
               <Grid item xs={12} >
-                <Link href="#" variant="body2" color="secondary" sx={{ mt: 4, mb: 4}}>
+                <Link href="http://localhost:3003/login" variant="body2" color="secondary" sx={{ mt: 4, mb: 4}}>
                   Já possui uma conta?
                 </Link>
               </Grid>
