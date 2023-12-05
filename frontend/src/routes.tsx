@@ -22,7 +22,6 @@ const Rotas = () => {
         <Route path="/Documentacao" element={<Documentacao />} />
         <Route path="/cadastro" element={<CadastroPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/cadastroteste" element={<FormularioCadastro />} />
 
         <Route path="/configuracoes" element={<Configuracoes />} />
 

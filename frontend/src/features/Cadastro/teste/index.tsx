@@ -1,4 +1,4 @@
-import { Box, Button, Container, Grid, Link, Snackbar, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Grid, Link, TextField, Typography } from "@mui/material";
 
 
 export default function FormularioCadastro() {
@@ -14,17 +14,17 @@ export default function FormularioCadastro() {
 
         <Box component="form" sx={{ mt: 3, textAlign: 'center'}}>
 
-          <Grid container spacing={4} >
+            <Grid container spacing={4} >
               <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
                   required
                   fullWidth
-                  label="Nome"
                   name="name"
                   type="name"
                   id="outlined-helperText-name"
-                  color="secondary" focused 
+                  placeholder="Nome"
+                  color="info" focused 
                 />
               </Grid>
 
@@ -33,11 +33,11 @@ export default function FormularioCadastro() {
                   autoComplete="email"
                   required
                   fullWidth
-                  label="Email"
                   name="email"
                   type="email"
                   id="email"
-                  color="secondary" focused 
+                  placeholder="Email"
+                  color="info" focused 
 
                 />
               </Grid>
@@ -47,42 +47,59 @@ export default function FormularioCadastro() {
                   autoComplete="new-password"
                   required
                   fullWidth
-                  label="Senha"
                   name="password"
                   type="password"
+                  placeholder="Senha"
                   id="password"
-                  color="secondary" focused 
+                  color="info" focused 
                 />
               </Grid>
-            </Grid>
 
-            <Button
-              type="submit"
-              variant="outlined"
-              color="secondary"
-              size="large"
-              fullWidth
-              sx={{ mt: 3, mb: 2}}>
-              Cadastrar-se            
-            </Button>
-            
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Link href="#" variant="body2" color="secondary">
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="new-password"
+                  required
+                  fullWidth
+                  name="password"
+                  type="password"
+                  placeholder="Confirme a Senha"
+                  id="password"
+                  color="info" focused 
+                />
+              </Grid>
+
+              <Grid item xs={12} >
+                <Button 
+                type="submit"
+                variant="outlined"
+                color="secondary"
+                size="large"
+                sx={{ mb:4,  maxWidth:'100%'}}>
+                Cadastrar-se            
+              </Button>
+              </Grid>
+              </Grid>
+
+              <Grid item xs={12} >
+              <Link href="#" variant="body2" color="secondary" sx={{ mt: 4, mb: 4}}>
                   Já possui uma conta?
                 </Link>
               </Grid>
-            </Grid>
 
-            <Button 
+              <Grid item xs={12} >
+              <Button 
               type="submit"
               variant="contained"
               color="primary"
               size="large"
               fullWidth
-              sx={{ mt: 3, mb: 2, bgcolor:'background.default'}}>
+              sx={{ mt: 4, mb: 4,  maxWidth:'100%', bgcolor:'background.default'}}>
               Cadastrar com o SUAP          
             </Button>
+              </Grid>
+
+
+      
 
         </Box>
 

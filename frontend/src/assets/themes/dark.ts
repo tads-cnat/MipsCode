@@ -38,7 +38,7 @@ export const DarkTheme: ThemeOptions = createTheme({
 
     info: {
       light: "#4FC3F7",
-      main: "#29B6F6",
+      main: "#ffffff",
       dark: "#0288D1",
       contrastText: "#000000",
     },
