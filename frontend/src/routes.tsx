@@ -12,6 +12,7 @@ import LoginPage from "./features/Login/pages";
 import ListarProjetos from "./features/GerenciarProjeto/pages/ListarRepositório";
 import Documentacao from "./features/Documentacao/Pages";
 import Configuracoes from "./features/Configuracoes/pages";
+import FormularioCadastro from "./features/Cadastro/teste";
 
 const Rotas = () => {
   return (

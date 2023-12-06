@@ -1,10 +1,11 @@
 import { Footer, Header } from "../../../components";
+import HeaderOut from "../../../components/Header Out";
 import LoginForm from "../../Login/components/LoginForm";
 
 const LoginPage = () => {
   return (
     <div>
-      <Header/>
+      <HeaderOut/>
       <LoginForm/>
       <Footer/>
     </div>

@@ -69,7 +69,7 @@ const paginasProfessor = [
 
 const perfil = ['Meu Perfil', 'Conta', 'Sair'];
 
-function Header() {
+function HeaderOut() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const [anchorElSettings, setAnchorElSettings] = React.useState<null | HTMLElement>(null);
@@ -295,7 +295,8 @@ function Header() {
 
             (
               <Box>
-                <Button variant='text' color='secondary' className='login-button' onClick={()=>{navigate('/')}}>Sair</Button>
+                <Button variant='text' color='secondary' className='login-button' onClick={()=>{navigate('/login')}}>Entrar</Button>
+                <Button color='primary' sx={{ bgcolor:'background.default'}} variant='contained' className='login-button' onClick={()=>{navigate('/cadastro')}}>Inscreva-se</Button>
               </Box>
             )
           }          
@@ -307,4 +308,4 @@ function Header() {
     </AppBar>
   );
 }
-export default Header;
+export default HeaderOut;

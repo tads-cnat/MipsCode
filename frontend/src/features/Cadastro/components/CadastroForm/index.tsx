@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, CardContent, Card, Typography, Button } from '@mui/material';
+import { Box, Button, Container } from '@mui/material';
 import EstudanteCadastroForm from '../EstudanteForm';
 import ProfessorCadastroForm from '../ProfessorForm';
 
@@ -18,39 +18,32 @@ export default function CadastroForm() {
   };
 
   return (
-    <Box>
-    <Typography  color='text.primary' variant='h6' align='center' sx={{textAlign: 'center', alignItems: 'center', my: { sm: 5 } }}>
-      CRIE UMA NOVA CONTA!
-    </Typography>
+    <Container component="main" maxWidth="sm">
+      <Box sx={{ mt: 8, mb: 8, justifyContent: 'center'}}>
+            <Button
+              sx={{ maxWidth:'50%', mt: 4}}
+              onClick={handleClickEstudante}
+              variant={showEstudante ? 'outlined' : 'text'}
+              color='secondary'
+              size="large"
+              fullWidth
+            >
+              Estudante
+            </Button>
 
-    <Box width='100vw' height='70vh' display='flex' alignItems='center' justifyContent='center' sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }>
-      <Card>
-        <CardContent>
+            <Button
+              sx={{ maxWidth:'50%', mt: 4}}
+              onClick={handleClickProfessor}
+              variant={showProfessor ? 'outlined' : 'text'}
+              color='secondary'
+            >
+              Professor
+            </Button>
 
-          <Box  sx={{ p: 1, my: 1 }}>
-          <Button
-            onClick={handleClickEstudante}
-            variant={showEstudante ? 'contained' : 'text'}
-            color='secondary'
-          >
-            Estudante
-          </Button>
+              {showEstudante && <EstudanteCadastroForm />}
+              {showProfessor && <ProfessorCadastroForm />}
 
-          <Button
-            onClick={handleClickProfessor}
-            variant={showProfessor ? 'contained' : 'text'}
-            color='secondary'
-          >
-            Professor
-          </Button>
-
-            {showEstudante && <EstudanteCadastroForm />}
-            {showProfessor && <ProfessorCadastroForm />}
-          </Box>
-
-        </CardContent>
-      </Card>
-    </Box>
-    </Box>
+      </Box>
+    </Container>
   );
 }
