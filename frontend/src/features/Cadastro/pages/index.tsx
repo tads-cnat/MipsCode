@@ -1,10 +1,11 @@
-import { Footer, Header } from "../../../components";
+import { Footer } from "../../../components";
+import HeaderOut from "../../../components/Header Out";
 import CadastroForm from "../components/CadastroForm";
 
 const CadastroPage = () => {
   return (
     <div>
-      <Header/>
+      <HeaderOut/>
       <CadastroForm/>
       <Footer/>
     </div>

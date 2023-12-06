@@ -8,6 +8,7 @@ import { AuthContext } from '../../services/authcontext';
 import { Paper } from '@mui/material';
 
 import "./page.css";
+import HeaderOut from '../../components/Header Out';
 
 export default function Home(){
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export default function Home(){
   return (
 
     <>
-    <Header/>
+    <HeaderOut/>
     <section id="Início" className="inicio">
         <img src="/imgs/cover.jpg" alt="" />
       </section>
