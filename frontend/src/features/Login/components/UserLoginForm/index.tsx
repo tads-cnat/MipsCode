@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  Box,  TextField,  Button, Container, Grid, Typography, Link,} from "@mui/material";
+import { Box, TextField, Button, Container, Grid, Typography, Link, } from "@mui/material";
 import { LoginType } from "../../../../types/iLogintype";
 import { loginUser } from "../../services/loginservice";
 
@@ -25,87 +25,87 @@ const UserLoginForm = () => {
       return error;
     }
   }
-  
+
 
   return (
-      <Container component="main" maxWidth="xs">
-        <Box sx={{ mt: 6, mb: 6,  display: 'flex', flexDirection: 'column', alignItems: 'center',}}>      
-    
-          <Typography sx={{mb: 4,  mt: 4}} color='text.primary' component="h1" variant="h5">
-            ENTRE NA SUA CONTA         
-          </Typography>
+    <Container component="main" maxWidth="xs">
+      <Box sx={{ mt: 6, mb: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
 
-          <Box component="form" onSubmit={handleSubmitUser} encType="multipart/form-data" sx={{ mt: 3, textAlign: 'center'}}>
+        <Typography sx={{ mb: 4, mt: 4 }} color='text.primary' component="h1" variant="h5">
+          ENTRE NA SUA CONTA
+        </Typography>
 
-            <Grid container spacing={4} >            
-            
-            	{/* Email */}
-              <Grid item xs={12}>
-		            <TextField 
-									autoComplete="email"
-                  required
-                  fullWidth
-                  name="email"
-                  type="email"
-                  id="email"
-	                placeholder="Email"
-                  color="info" focused
-		              onChange={(event) => setEmail(event.target.value)}
-		            /> 
-							</Grid>
+        <Box component="form" onSubmit={handleSubmitUser} encType="multipart/form-data" sx={{ mt: 3, textAlign: 'center' }}>
 
-              {/* Senha */}
-	            <Grid item xs={12}>
-		            <TextField 
-									autoComplete="new-password"
-                  required
-                  fullWidth
-                  name="password"
-                  type="password"
-                  id="password"
-	                placeholder="Senha"
-                  color="info" focused
-		              onChange={(event) => setPassword(event.target.value)}
-		            /> 
-							</Grid>
+          <Grid container spacing={4} >
 
-							{/* Botão Entrar */}
-							<Grid item xs={12} >
-                <Button 
-	                type="submit"
-	                variant="outlined"
-	                color="secondary"
-	                size="large"
-	                sx={{  mb: 4, maxWidth:'100%'}}>
-	                Conecte-se            
-	              </Button>
-              </Grid>
-
+            {/* Email */}
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="email"
+                required
+                fullWidth
+                name="email"
+                type="email"
+                id="email"
+                placeholder="Email"
+                color="info" focused
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </Grid>
 
-            <Grid item xs={12} >
-              <Link href="http://localhost:3003/cadastro/" variant="body2" color="secondary" sx={{ mt: 4, mb: 4}}>
-                Crie sua conta
-              </Link>
+            {/* Senha */}
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="new-password"
+                required
+                fullWidth
+                name="password"
+                type="password"
+                id="password"
+                placeholder="Senha"
+                color="info" focused
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </Grid>
 
+            {/* Botão Entrar */}
             <Grid item xs={12} >
-                <Button 
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                  fullWidth
-                  sx={{ mt: 4, mb: 6,  maxWidth:'100%', bgcolor:'background.default'}}>
-                  Continuar com o SUAP          
-                </Button>
-              </Grid>
+              <Button
+                type="submit"
+                variant="outlined"
+                color="secondary"
+                size="large"
+                sx={{ mb: 4, maxWidth: '100%' }}>
+                Conecte-se
+              </Button>
+            </Grid>
 
-          </Box>
+          </Grid>
+
+          <Grid item xs={12} >
+            <Link href="/cadastro" variant="body2" color="secondary" sx={{ mt: 4, mb: 4 }}>
+              Crie sua conta
+            </Link>
+          </Grid>
+
+          <Grid item xs={12} >
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="large"
+              fullWidth
+              sx={{ mt: 4, mb: 6, maxWidth: '100%', bgcolor: 'background.default' }}>
+              Continuar com o SUAP
+            </Button>
+          </Grid>
 
         </Box>
 
-      </Container>
+      </Box>
+
+    </Container>
 
 
   );

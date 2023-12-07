@@ -8,15 +8,19 @@ function getCookie(name: string) {
 
 function configHeader() {
   const token = getCookie("token");
-  var header;
-  if (!token) {
+  var header: any = ''
+
+  if (!token && header) {
     return (header = { "Content-Type": "application/x-www-form-urlencoded" });
   }
   return (header = { Authorization: `Bearer ${token}` });
 }
 
+
+
 const api = axios.create({
   headers: configHeader(),
-  baseURL: "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_URL
 });
+
 export default api;
