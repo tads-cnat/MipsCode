@@ -12,6 +12,7 @@ CORPORATIVO
 5. [Apresentação da 1a Etapa](apresentacao-1-etapa.pdf)
 6. [Cronograma do Projeto](cronograma.pdf)
 7. [Orçamento do Projeto](orcamento.pdf)
+8. [Análise de Riscos](analise_de_riscos.pdf)
 
 <br>
 
