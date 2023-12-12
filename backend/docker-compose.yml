@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  backend:
+    image: icarojustino/mipsapi:1.5
+    hostname: localhost
+    container_name: backend
+    ports:
+      - 3000:3000
+    environment:
+      - DATABASE_URL=postgres://mips:mips@host.docker.internal:5433/mips?schema=public

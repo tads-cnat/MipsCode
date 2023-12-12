@@ -1,5 +1,5 @@
 export interface iProjeto {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   content: string;

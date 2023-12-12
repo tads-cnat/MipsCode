@@ -5,7 +5,7 @@ import { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import './styles.css'
 import { excluirTurma } from "../../services/turmasService";
-import { addEstudante } from "../../services/turmasService";
+//import { addEstudante } from "../../services/turmasService";
 import { removeStudent } from "../../services/turmasService";
 import { useNavigate, } from "react-router-dom";
 

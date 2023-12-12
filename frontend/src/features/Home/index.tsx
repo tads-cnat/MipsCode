@@ -1,29 +1,29 @@
 import Button from '@mui/material/Button';
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import Box from '@mui/material/Box';
-import {Header, Footer} from '../../components/';
+import { Footer } from '../../components/';
 import React from 'react';
-import banner from '../../assets/imgs/banner.png';
+//import banner from '../../assets/imgs/banner.png';
 import { AuthContext } from '../../services/authcontext';
-import { Paper } from '@mui/material';
+//import { Paper } from '@mui/material';
 
 import "./page.css";
 import HeaderOut from '../../components/Header Out';
 
-export default function Home(){
-  const navigate = useNavigate();
+export default function Home() {
+  //const navigate = useNavigate();
 
-  const { User } : any = AuthContext();
+  const { User }: any = AuthContext();
 
-  function handleClickCadastro(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    navigate('/cadastro/');
-  }
+  // function handleClickCadastro(event: React.MouseEvent<HTMLButtonElement>) {
+  //   event.preventDefault();
+  //   navigate('/cadastro/');
+  // }
 
   function handleEnviar(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
   }
-  
+
 
   // function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
   //   event.preventDefault();
@@ -35,16 +35,16 @@ export default function Home(){
   //   navigate('/ver-projetos/');
   // }
 
-  function handleClickLogin(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    navigate('/login/');
-  }
+  // function handleClickLogin(event: React.MouseEvent<HTMLButtonElement>) {
+  //   event.preventDefault();
+  //   navigate('/login/');
+  // }
   console.log(User)
   return (
 
     <>
-    <HeaderOut/>
-    <section id="Início" className="inicio">
+      <HeaderOut />
+      <section id="Início" className="inicio">
         <img src="/imgs/cover.jpg" alt="" />
       </section>
 
@@ -221,10 +221,10 @@ export default function Home(){
         </div>
       </section>
 
-      
-      
 
-    <Footer/>
+
+
+      <Footer />
     </>
   )
 }
