@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String     @id @default(uuid())
+  email           String     @unique
+  password        String
+  name            String
+  bio             String?
+  avatar          String?
+  role            String
+  ide_theme       Boolean    @default(true)
+  ClassId         String?
+  Photo           Photo?
+  professorClass  Class[]    @relation("professor")
+  project         Project[]
+  Tutorial        Tutorial[]
+  studentClassrom Class[]
+}
+
+model Photo {
+  id            String @id @default(uuid())
+  fileName      String
+  contentLength Int
+  contentType   String
+  path          String
+  User          User?  @relation(fields: [userId], references: [id])
+  userId        String @unique
+}
+
+model Tutorial {
+  id          String   @id @default(uuid())
+  title       String   @unique
+  description String?
+  content     String
+  level       Int
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
+}
+
+model Document {
+  id      String @id @default(uuid())
+  title   String @unique
+  content String
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  favorite    Boolean  @default(false)
+  content     String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  author      User     @relation(fields: [userId], references: [id])
+}
+
+model Class {
+  id               String     @id @default(uuid())
+  className        String
+  classDescription String
+  professorId      String
+  cod              String     @unique
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  professor        User       @relation("professor", fields: [professorId], references: [id])
+  tasklists        Tasklist[]
+  students         User[]
+}
+
+model Tasklist {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  classId     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tasks       Task[]
+  Class       Class    @relation(fields: [classId], references: [id])
+}
+
+model Task {
+  id          String       @id @default(uuid())
+  title       String       @unique
+  description String
+  tasklistId  String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  submissions Submission[]
+  Tasklist    Tasklist     @relation(fields: [tasklistId], references: [id])
+}
+
+model Submission {
+  id        String   @id @default(uuid())
+  answer    String
+  isCorrect Boolean? @default(false)
+  userId    String
+  taskId    String
+  createdAt DateTime @default(now())
+  Task      Task     @relation(fields: [taskId], references: [id])
+}

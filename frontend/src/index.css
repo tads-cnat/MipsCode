@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #151518;
+}
+
+.App {
+    min-height: 100vh;
+}
+

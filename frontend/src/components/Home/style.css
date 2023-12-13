@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Inter", sans-serif;
+}
+
+h2 {
+    color: #fff !important;
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 700;
+}
+
+p {
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: Inter;
+}
+
+header {
+    background: #1a1b1f;
+    color: #fff;
+}
+
+header nav {
+    height: 80px;
+}
+
+header nav .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+header nav .navbar-nav {
+    gap: 4rem;
+}
+
+header nav .navbar-nav a,
+header nav .buttons a {
+    color: #fff;
+    margin: 0;
+    padding: 0 !important;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+header nav .navbar-nav a:hover,
+header nav .buttons a {
+    color: #2ef2aa;
+}
+
+header nav .buttons {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+header nav .buttons button {
+    width: 200px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1px solid #c9b9b9;
+    background: rgba(217, 217, 217, 0.1);
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+
+/* Início */
+
+
+
+section.inicio {
+    margin: 0;
+}
+
+section.inicio img {
+    width: 100%;
+    height: (100svh - 80px);
+    object-fit: cover;
+    object-position: top;
+}
+
+
+/* Feito para você */
+
+section.feito {
+    margin: 0;
+}
+
+section.feito {
+    background: url("../../../public/home/bg1.png") no-repeat center center / cover;
+    padding: 7rem 0;
+}
+
+section.feito a.demonstracao {
+    display: block;
+    text-decoration: none;
+    width: 307px;
+    height: 51px;
+    border-radius: 5px;
+    border: 1px solid #2ef2aa;
+    background: rgba(46, 242, 170, 0.05);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #2ef2aa;
+    text-align: center;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+    margin-top: 3rem;
+}
+
+
+/* Seja um explorador */
+
+section.explorador {
+    padding: 8rem 0;
+    margin: 0;
+    background: url("../../../public/home/bg.png") no-repeat center center / cover;
+}
+
+section.explorador .card {
+    border-radius: 13.625px;
+    border: 1.135px solid rgba(255, 255, 255, 0.15);
+    background: radial-gradient( 142.81% 141.42% at -0% 0%, rgba(93, 173, 236, 0.08) 0%, rgba(93, 173, 236, 0) 94.17%), #1f2024;
+    box-shadow: 0px 4.541538715362549px 28.38461685180664px 0px rgba(0, 0, 0, 0.27);
+    padding: 2.5rem 1.8rem;
+    color: #fff;
+    max-width: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: auto;
+}
+
+section.explorador .card h3 {
+    color: #fff;
+    text-align: center;
+    font-size: 22px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+section.explorador .card img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin: 1rem auto;
+}
+
+
+/* DEPOIMENTOS */
+
+section.explorador .depoimentos {
+    padding: 6rem 0;
+}
+
+section.explorador .depoimentos p {
+    color: #fff;
+    font-size: 22px;
+    font-family: Inter;
+    font-weight: 300;
+}
+
+section.explorador .depoimentos span {
+    color: #2ef2aa;
+    font-size: 30px;
+    font-family: Inter;
+    font-weight: 600;
+    display: block;
+}
+
+section.explorador .depoimentos small {
+    color: #fff;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+section.explorador .depoimentos img {
+    object-fit: contain;
+    margin-left: 5rem;
+}
+
+section.explorador .depoimentos .carousel-indicators {
+    margin: 0;
+    justify-content: flex-end;
+}
+
+section.explorador .depoimentos .carousel-indicators button {
+    width: 13px;
+    height: 13px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.75) !important;
+    background: transparent;
+}
+
+section.explorador .depoimentos .carousel-indicators button.active,
+section.explorador .depoimentos .carousel-indicators button:hover {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* CONTATO */
+
+section.explorador .contato h2,
+section.explorador .contato p {
+    text-align: center;
+}
+
+section.explorador .contato form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0 8rem;
+}
+
+section.explorador .contato form input,
+section.explorador .contato form textarea {
+    display: flex;
+    width: 636px;
+    padding: 15px 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    font-family: Inter;
+    line-height: 120%;
+}
+
+section.explorador .contato button.demonstracao {
+    display: flex;
+    width: 636px;
+    padding: 15px 10px;
+    height: 51px;
+    border-radius: 5px;
+    border: 1px solid #2ef2aa;
+    background: rgba(46, 242, 170, 0.05);
+    align-items: center;
+    justify-content: center;
+    color: #2ef2aa;
+    text-align: center;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 600;
+}
+
+section.explorador .contato form textarea {
+    min-height: 150px;
+}
+
+
+/* Footer */
+
+footer {
+    background: #151518;
+    padding: 6rem 0;
+}
+
+footer ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+footer li {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    font-family: Inter;
+    margin-bottom: 0.4rem;
+}
+
+footer li strong {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: block;
+}

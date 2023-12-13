@@ -1,0 +1,29 @@
+.div-perfil-1 {
+    width: 100%;
+    background: #24252A;
+    border-radius: 1em;
+    padding: 2em 0em 2em 3em;
+}
+
+.avatar-perfil{    
+    object-fit: cover;
+    width: 8em;
+    height: 8em;
+    border-radius: 100%;
+    border: solid 1px white !important;
+}
+
+.div-image-space-perfil{
+    padding: 2em 3em 0em;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;    
+}
+
+select option{
+    padding: 15px 10px;
+    background: rgba(217, 217, 217, 0.02);
+}
