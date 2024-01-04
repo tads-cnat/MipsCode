@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateDocumentDto } from './dto/create-document.dto';
 import { UpdateDocumentDto } from './dto/update-document.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { isUUID } from 'class-validator';
 
 @Injectable()
@@ -34,7 +34,7 @@ export class DocumentService {
 
   async findOne(id: string) {
     if (!isUUID(id)) {
-      throw new HttpException('Id inválido', HttpStatus.FORBIDDEN);
+      throw new HttpException('Id inválido', HttpStatus.BAD_REQUEST);
     }
 
     try {
@@ -42,7 +42,7 @@ export class DocumentService {
         where: { id }
       });
     } catch (error) {
-      throw new HttpException('Nenhum projeto encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException('Nenhum documento encontrado', HttpStatus.NOT_FOUND);
     }
   }
 
