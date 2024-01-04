@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { User } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
-import { roundsOfHashing } from 'src/auth/auth.service';
+import { roundsOfHashing } from '../auth/auth.service';
 
 //export const roundsOfHashing = 10;
 

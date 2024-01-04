@@ -8,7 +8,7 @@ import { PrismaService } from './../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { AuthEntity } from './entity/auth.entity';
 import * as bcrypt from 'bcrypt';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 
 export const roundsOfHashing = 10;
 
@@ -30,7 +30,11 @@ export class AuthService {
         },
       });
     } catch (error) {
-      throw new ForbiddenException("Can't create user");
+      if (error.code === 'P2002') {
+        throw new ForbiddenException('Usuário já existe');
+      } else {
+        throw new ForbiddenException('Erro ao criar usuário');
+      }
     }
   }
 
@@ -67,7 +71,7 @@ export class AuthService {
     }
 
     return {
-      accessToken: this.jwtService.sign({ userId: user.id }),
+      accessToken: "aaa", //this.jwtService.sign({ userId: user.id }),
       userData: userData,
     };
   }
