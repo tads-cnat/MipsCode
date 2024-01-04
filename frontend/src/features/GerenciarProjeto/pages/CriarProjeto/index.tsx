@@ -11,6 +11,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { iProjeto } from '../../../../types/iProjetos';
 import api from '../../../../services/api';
+import { ButtonGroup, Container, Grid } from '@mui/material';
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
@@ -83,21 +84,20 @@ const CriarProjeto = () => {
   return (
     <>
       <Header />
-      <Box
-        width='100vw'
-        height='100vh'
-        display='flex'
-        alignItems='center'
-        justifyContent='center'
-        sx={{ textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' } }}
-      >
-        <Card>
-          <CardContent>
-            <Box display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
-              <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <Typography color='text.primary' variant='h6' align='center'>CRIAR NOVO PROJETO</Typography>
+      <Container component="main" maxWidth="xs">
+        <Box sx={{ mt: 6, mb: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
 
+          <Typography sx={{ mb: 4, mt: 4 }} color='text.primary' component="h1" variant="h5">
+            CRIAR NOVO PROJETO
+          </Typography>
+
+          <Box component="form" onSubmit={handleSubmit} encType="multipart/form-data" sx={{ mt: 3, textAlign: 'center' }}>
+
+            <Grid container spacing={4} >
+              
+              <Grid item xs={12}>
                 <TextField
+                  fullWidth
                   id="outlined-helperText-title"
                   label="Título"
                   type="text"
@@ -106,11 +106,14 @@ const CriarProjeto = () => {
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                   required
-                  color="secondary"
-                  helperText="Dê um título ao seu projeto."
+                  color="info" focused
+                  placeholder="Dê um título ao seu projeto."
                 />
+              </Grid>
 
+              <Grid item xs={12}>
                 <TextField
+                  fullWidth
                   id="outlined-helperText-description"
                   label="Descrição"
                   type="text"
@@ -118,48 +121,59 @@ const CriarProjeto = () => {
                   name="description"
                   value={description}
                   onChange={(event) => setDescription(event.target.value)}
-                  color="secondary"
-                  helperText="Forneça uma breve descrição do seu projeto."
+                  color="info" focused
+                  placeholder="Forneça uma breve descrição do seu projeto."
                 />
+              </Grid>
 
+              <Grid item xs={12}> 
                 <TextField
+                  fullWidth
                   id="outlined-helperText-content"
                   label=""
                   type="file"
                   variant="outlined"
                   name="content"
+                  color="info" focused
                   onChange={(event) => setContent(event.target.value)}
                   inputProps={{
                     accept: '.txt'
                   }}
                 />
+              </Grid>
 
-                <CardActions>
-                    <Box width='100%' display='flex' justifyContent='center'>
-                      <Button
-                        style={{ background: 'white', color: 'red' }}
-                        onClick={() => navigate('/ver-projetos')}
-                      >
-                        Cancelar
-                      </Button>
-                      <Box width='40%' display='flex' justifyContent='center'>
-                    <Button color="secondary" variant="contained" type="submit">
-                      Confirmar
-                    </Button>
-                    </Box>
-                  </Box>
-                </CardActions>
+              <Grid item xs={12}>
+                <Button
+                  onClick={() => navigate('/ver-projetos')}
+                  variant="outlined"
+                  color="secondary"
+                  size="large"
+                  sx={{ mr:3.5, mb: 4  }}>
+                  Cancelar
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  sx={{  ml:3.5, mb: 4  }}>
+                  Confirmar
+                </Button>
+              </Grid>
+              
 
                 {showFeedback && (
                   <Typography color={feedbackMessage.includes("sucesso") ? 'green' : 'red'} variant='body1' align='center'>
                     {feedbackMessage}
                   </Typography>
                 )}
-              </form>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
+            </Grid>
+        </Box>
+
+        </Box>
+
+      </Container>
+
     </>
   );
 };

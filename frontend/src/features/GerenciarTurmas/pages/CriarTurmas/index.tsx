@@ -12,6 +12,7 @@ import api from '../../../../services/api';
 import { iTurma } from '../../../../types/iTurmas';
 import { criarTurmas } from '../../services/turmasService';
 import { Footer } from '../../../../components';
+import { Container, Grid } from '@mui/material';
 
 const CriarTurma = () => {
   const navigate = useNavigate();
@@ -76,55 +77,69 @@ const CriarTurma = () => {
   return (
     <>
     <Header/>
-    <Box 
-      width='100vw' 
-      height='100vh' 
-      display='flex' 
-      alignItems='center' 
-      justifyContent='center' 
-      sx={{textAlign: 'center', alignItems: 'center', '& .MuiTextField-root': { m: 1.5, width: '55ch' }} }
-    >
-      <Card>
-        <CardContent >
-        <Box  display='flex' flexDirection='column' gap={2} width={550} alignContent={'center'}>
-            <form onSubmit={handleSubmit} encType="multipart/form-data">
-              <Typography  color='text.primary' variant='h6' align='center'>Criar Turma</Typography>
+    <Container component="main" maxWidth="xs">
+      <Box sx={{ mt: 6, mb: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
 
+        <Typography sx={{ mb: 4, mt: 4 }} color='text.primary' component="h1" variant="h6">
+          CRIAR TURMA
+        </Typography>
+
+        <Box component="form" onSubmit={handleSubmit} encType="multipart/form-data" sx={{ mt: 3, textAlign: 'center' }}>
+
+          <Grid container spacing={4} >
+
+            <Grid item xs={12}>
               {/* Nome */}
-              <TextField 
-                id="outlined-helperText-title"
-                label="Nome da Turma"
-                type="text"
+              <TextField
+                required
+                fullWidth
                 name="title"
-                onChange={(event) => setClassName(event.target.value)}
-                color="secondary"
-                required
-        
-              />
-
-              {/* Descrição */}
-              <TextField 
-                id="outlined-helperText-description"
-                label="Matéria"
                 type="text"
-                name="description"
-                onChange={(event) => setClassDescription(event.target.value)}
-                color="secondary"
-                required
-              />  
-              
-              <CardActions>
-                <Box width='100%' display='flex' justifyContent='center' gap={2}>
-                  <Button color="secondary" variant="outlined" onClick={handleClickCancelar}>Cancelar</Button>     
-                  <Button color="secondary" variant="contained" type="submit">Criar</Button>     
-                </Box>       
-              </CardActions>
+                id="outlined-helperText-title"
+                placeholder="Nome da Turma"
+                color="info" focused
+                onChange={(event) => setClassName(event.target.value)}
+              />
+            </Grid>
 
-          </form>
+            <Grid item xs={12}>
+              {/* Descrição */}
+              <TextField
+                required
+                fullWidth
+                name="description"
+                type="text"
+                id="outlined-helperText-title"
+                placeholder="Matéria"
+                color="info" focused
+                onChange={(event) => setClassDescription(event.target.value)}
+              />
+            </Grid>
+
+            <Grid item xs={12}>
+              <Button
+                onClick={handleClickCancelar}
+                variant="outlined"
+                color="secondary"
+                size="large"
+                sx={{ mr:3.5, mb: 4  }}>
+                Cancelar
+              </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="secondary"
+                size="large"
+                sx={{  ml:3.5, mb: 4  }}>
+                Confirmar
+              </Button>
+            </Grid>
+
+
+          </Grid>
         </Box>
-        </CardContent>
-      </Card>
-    </Box>
+      </Box>
+    </Container>
     <Footer/> 
     </>
   );

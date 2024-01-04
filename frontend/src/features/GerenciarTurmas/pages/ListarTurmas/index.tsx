@@ -7,9 +7,10 @@ import { iTurma } from "../../../../types/iTurmas";
 import { addEstudante } from "../../services/turmasService";
 import "./styles.css";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import TurmaCard from "../../components/TurmaCard";
 import {Footer} from "../../../../components";
+import { Input } from "@mui/icons-material";
+import Button from '@mui/material/Button';
 
 const VerTurmas = () => {
   const [turmas, setTurmas] = useState<iTurma[]>([]);
@@ -103,26 +104,24 @@ const VerTurmas = () => {
   const EnterClassInput = (
     <div className="input-code">
     <h1>Turmas</h1>
-    <div className="sectionrout">
+    <div className="sectionrout" >
       <div className="url-bar">
         <OtherHousesOutlinedIcon className="input-icon" />
         <span className="url1">Dashboard / </span>
         <span className="url2">Turmas</span>
       </div>
-      <div className="input-area">
+      <div className="input-area" >
         <label>Entrar em uma nova turma</label>
-        <form className="search">
-          <input
+        <form className="start" >
+          <input 
             type="text"
             placeholder="Inserir Código"
             value={classCode}
             onChange={(e) => {
               setclassCode(e.target.value);
-            }}
-          ></input>
-          <div className="add-class" onClick={() => EnterClass()}>
-            <SearchOutlinedIcon className="search-input-icon" />
-          </div>
+          }}/>
+          <Button aria-label="add class" color="secondary" component="label" variant="outlined" onClick={() => EnterClass()} sx={{borderRadius: 30}}><Input /></Button>
+        
         </form>
       </div>
     </div>
