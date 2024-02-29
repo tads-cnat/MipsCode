@@ -295,8 +295,8 @@ function HeaderOut() {
 
                 (
                   <Box>
-                    <Button variant='text' color='secondary' className='login-button' onClick={() => { navigate('/login') }}>Entrar</Button>
-                    <Button color='primary' sx={{ bgcolor: 'background.default' }} variant='contained' className='login-button' onClick={() => { navigate('/cadastro') }}>Inscreva-se</Button>
+                    <Button variant='text' color='secondary' className='login-button' onClick={() => { navigate('/login') }}>Login</Button>
+                    <Button color='primary' sx={{ bgcolor: 'background.default' }} variant='contained' className='login-button' onClick={() => { navigate('/cadastro') }}>Cadastro</Button>
                   </Box>
                 )
             }
