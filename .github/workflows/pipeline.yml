@@ -1,33 +1,40 @@
 name: MipsCode Pipeline
-on: [push]
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
-  Build:
+  build:
+  
     runs-on: ubuntu-latest
     steps:
-      - name: Copy files from repository
+      - name: copy files from repository
         uses: actions/checkout@v3
         
-      - name: Set up Node.js
+      - name: set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
       
-      - name: Install dependencies
+      - name: install dependencies
         run: |
           cd backend
           npm install
 
-      - name: Build backend
+      - name: build backend
         run: |
           cd backend
           npm run build
 
-      - name: Install dependencies
+      - name: install dependencies
         run: |
           cd frontend
           npm install
 
-      - name: Build frontend
+      - name: build frontend
         run: |
           cd frontend
           npm run build
