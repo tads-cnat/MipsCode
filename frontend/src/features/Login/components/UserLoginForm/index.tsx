@@ -85,7 +85,7 @@ const UserLoginForm = () => {
 
           <Grid item xs={12} >
             <Link href="/cadastro" variant="body2" color="secondary" sx={{ mt: 4, mb: 4 }}>
-              Crie sua conta
+              Esqueceu sua senha?
             </Link>
           </Grid>
 
