@@ -8,4 +8,4 @@ services:
     ports:
       - 3000:3000
     environment:
-      - DATABASE_URL=postgres://mips:mips@host.docker.internal:5433/mips?schema=public
+      - DATABASE_URL=postgres://mips:@host.docker.internal:5433/mips?schema=public
