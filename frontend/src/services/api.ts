@@ -8,7 +8,7 @@ function getCookie(name: string) {
 
 function configHeader() {
   const token = getCookie("token");
-  var header: any = ''
+  let header: any = ''
 
   if (!token && header) {
     return (header = { "Content-Type": "application/x-www-form-urlencoded" });
