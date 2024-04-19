@@ -1,152 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
-
-*{
-    font-family: Inter;
+* {
+  font-family: Inter;
 }
 
 /* Construção da Página */
-.page{
-    max-width: 1920px;
+.page {
+  max-width: 1920px;
 
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
-
 
 /* divisão dos componentes da página */
-section{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 0.5rem;
-    
-    
+section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
 }
-.inputsarea{
-    margin-left: 4rem;
-    
+.inputsarea {
+  margin-left: 4rem;
 }
-
 
 /* Configurações Globais do CSS - Não afetam a responsividade  */
 
-
-.input-code{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    row-gap: 1;
-    
+.input-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 1;
 }
-.input-code >h1 {
-    color: #FFF;
-    font-family: Inter;
-    font-size: 1.375rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    
+.input-code > h1 {
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
-.sectionrout .url1{
-margin-left: 10px;
-margin-right: 10px;
-color: rgba(255, 255, 255, 0.50);
-text-align: center;
-font-family: Inter;
-font-size: 1rem;
-font-style: normal;
-font-weight: 300;
-line-height: normal;
-
+.sectionrout .url1 {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
-.input-icon{
-    max-height: 4rem;
-    width: fit-content;
-    margin: auto;
-    color: #655858;
-    
+.input-icon {
+  max-height: 4rem;
+  width: fit-content;
+  margin: auto;
+  color: #655858;
 }
 
-.url-bar{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    width: fit-content;
-    
+.url-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: fit-content;
 }
 
-.sectionrout .url2{
-    color: #2EF2AA;
-    text-align: center;
-    font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    
+.sectionrout .url2 {
+  color: #2ef2aa;
+  text-align: center;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
-.input-area{
-    display: flex;
-    flex-direction: column;
-    
+.input-area {
+  display: flex;
+  flex-direction: column;
 }
-.input-area >label{
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: #FFF;
-    font-family: Inter;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 120%;
-    
+.input-area > label {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
 }
-.start{
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
+.start {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
 }
 
-
-.start > input{
-    display: flex;
-    height: 2.5rem;
-    background-color: transparent;
-    color: #9E9E9E;
-    align-self: stretch;
-    border-radius: 0.25rem;
-    border: 1px solid #737373;
-    padding-left: 0.5rem;
-    font-size: 1rem;
-    margin-right: 0.5rem;
+.start > input {
+  display: flex;
+  height: 2.5rem;
+  background-color: transparent;
+  color: #9e9e9e;
+  align-self: stretch;
+  border-radius: 0.25rem;
+  border: 1px solid #737373;
+  padding-left: 0.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
 }
 
-.create{
-    margin-top: 20px;
+.create {
+  margin-top: 20px;
 }
 
-.cards-area{
-    max-width: 100%;
-    width: 95%;
-    margin: auto;
-    max-height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 1.5rem;
-    column-gap: 3.5rem;
+.cards-area {
+  max-width: 100%;
+  width: 95%;
+  margin: auto;
+  max-height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1.5rem;
+  column-gap: 3.5rem;
 }
-
-
-
 
 /* BreakPoints de Respoonsividade  */
-
 
 /* @media screen and (max-width:842px) {
 
@@ -253,8 +232,4 @@ line-height: normal;
     }
 } */
 
-
-
-
 /* Configurações Das Sessões da Página  */
-

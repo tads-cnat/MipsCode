@@ -12,7 +12,7 @@ export async function criarTurmas(turma: iTurma) {
       { professorId, className, classDescription, cod },
       {
         headers: headers(),
-      }
+      },
     );
 
     if (Resapi && Resapi.data) {
@@ -132,7 +132,7 @@ export async function addEstudante(userId: string, classCod: string) {
       { userId: userId },
       {
         headers: headers(),
-      }
+      },
     );
 
     if (Resapi && Resapi.data) {
@@ -162,7 +162,7 @@ export async function removeStudent(userId: string, classCod: string) {
       { userId: userId },
       {
         headers: headers(),
-      }
+      },
     );
 
     if (Resapi) {

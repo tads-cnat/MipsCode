@@ -5,9 +5,9 @@ import CadastroForm from "../components/CadastroForm";
 const CadastroPage = () => {
   return (
     <div>
-      <HeaderOut/>
-      <CadastroForm/>
-      <Footer/>
+      <HeaderOut />
+      <CadastroForm />
+      <Footer />
     </div>
   );
 };

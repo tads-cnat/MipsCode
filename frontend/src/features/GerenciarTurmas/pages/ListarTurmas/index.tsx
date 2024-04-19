@@ -8,9 +8,9 @@ import { addEstudante } from "../../services/turmasService";
 import "./styles.css";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 import TurmaCard from "../../components/TurmaCard";
-import {Footer} from "../../../../components";
+import { Footer } from "../../../../components";
 import { Input } from "@mui/icons-material";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 
 const VerTurmas = () => {
   const [turmas, setTurmas] = useState<iTurma[]>([]);
@@ -45,8 +45,7 @@ const VerTurmas = () => {
     getClasses();
   }, []);
 
-
-  async function updatePage(){
+  async function updatePage() {
     getClasses();
   }
 
@@ -80,10 +79,8 @@ const VerTurmas = () => {
     }
   }
 
-
-  
   const CreateClassInput = (
-      <div className="input-code">
+    <div className="input-code">
       <h1>Turmas</h1>
       <div className="sectionrout">
         <div className="url-bar">
@@ -92,73 +89,80 @@ const VerTurmas = () => {
           <span className="url2">Turmas</span>
         </div>
         <nav className="project-buttons">
-        <button className="create" onClick={handleClickCriar}>
-          <AddBoxOutlinedIcon />
-          <span>Criar nova Turma</span>
-        </button>
-      </nav>
+          <button className="create" onClick={handleClickCriar}>
+            <AddBoxOutlinedIcon />
+            <span>Criar nova Turma</span>
+          </button>
+        </nav>
       </div>
-      </div>
-  )
+    </div>
+  );
 
   const EnterClassInput = (
     <div className="input-code">
-    <h1>Turmas</h1>
-    <div className="sectionrout" >
-      <div className="url-bar">
-        <OtherHousesOutlinedIcon className="input-icon" />
-        <span className="url1">Dashboard / </span>
-        <span className="url2">Turmas</span>
-      </div>
-      <div className="input-area" >
-        <label>Entrar em uma nova turma</label>
-        <form className="start" >
-          <input 
-            type="text"
-            placeholder="Inserir Código"
-            value={classCode}
-            onChange={(e) => {
-              setclassCode(e.target.value);
-          }}/>
-          <Button aria-label="add class" color="secondary" component="label" variant="outlined" onClick={() => EnterClass()} sx={{borderRadius: 30}}><Input /></Button>
-        
-        </form>
+      <h1>Turmas</h1>
+      <div className="sectionrout">
+        <div className="url-bar">
+          <OtherHousesOutlinedIcon className="input-icon" />
+          <span className="url1">Dashboard / </span>
+          <span className="url2">Turmas</span>
+        </div>
+        <div className="input-area">
+          <label>Entrar em uma nova turma</label>
+          <form className="start">
+            <input
+              type="text"
+              placeholder="Inserir Código"
+              value={classCode}
+              onChange={(e) => {
+                setclassCode(e.target.value);
+              }}
+            />
+            <Button
+              aria-label="add class"
+              color="secondary"
+              component="label"
+              variant="outlined"
+              onClick={() => EnterClass()}
+              sx={{ borderRadius: 30 }}
+            >
+              <Input />
+            </Button>
+          </form>
+        </div>
       </div>
     </div>
-    </div>
-  )
-
+  );
 
   return (
     <main className="page">
       <Header />
       <section className="inputsarea">
-      {userRole && userRole === "PROFESSOR" ? 
-      // checar se vai mostrar o botão de criar turma ou o campo de entrar o código de uma turma 
-      CreateClassInput 
-      : 
-      EnterClassInput
-      }
+        {userRole && userRole === "PROFESSOR"
+          ? // checar se vai mostrar o botão de criar turma ou o campo de entrar o código de uma turma
+            CreateClassInput
+          : EnterClassInput}
       </section>
       <section className="cards-area">
-        {
-          turmas && turmas.map(
-            (turma : any)=>{
-              return(
-                <TurmaCard className={turma.className} classDescription={turma.classDescription} userRole={userRole} userId={userId} classId={turma.cod} handleUpdate={updatePage()}/>
-              )
-            }
-          )
-        }
-
+        {turmas &&
+          turmas.map((turma: any) => {
+            return (
+              <TurmaCard
+                className={turma.className}
+                classDescription={turma.classDescription}
+                userRole={userRole}
+                userId={userId}
+                classId={turma.cod}
+                handleUpdate={updatePage()}
+              />
+            );
+          })}
       </section>
 
-      <section className="">
-      
-      </section>
+      <section className=""></section>
 
-      <Footer/>
+      <Footer />
     </main>
   );
-}
+};
 export default VerTurmas;

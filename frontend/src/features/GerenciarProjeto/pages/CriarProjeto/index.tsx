@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { criarProjetos } from '../../services/projetoService';
-import Header from '../../../../components/Header';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import { iProjeto } from '../../../../types/iProjetos';
-import api from '../../../../services/api';
-import { Container, Grid } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { criarProjetos } from "../../services/projetoService";
+import Header from "../../../../components/Header";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { iProjeto } from "../../../../types/iProjetos";
+import api from "../../../../services/api";
+import { Container, Grid } from "@mui/material";
 
 const CriarProjeto = () => {
   const navigate = useNavigate();
@@ -65,7 +65,7 @@ const CriarProjeto = () => {
 
       setTimeout(() => {
         setShowFeedback(false);
-        navigate('/ver-projetos');
+        navigate("/ver-projetos");
       }, 3000);
     } catch (error) {
       console.error(error);
@@ -74,24 +74,39 @@ const CriarProjeto = () => {
     }
   }
 
-//  const handleCloseFeedback = () => {
-//    setShowFeedback(false);
-//  };
+  //  const handleCloseFeedback = () => {
+  //    setShowFeedback(false);
+  //  };
 
   return (
     <>
       <Header />
       <Container component="main" maxWidth="xs">
-        <Box sx={{ mt: 6, mb: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-
-          <Typography sx={{ mb: 4, mt: 4 }} color='text.primary' component="h1" variant="h5">
+        <Box
+          sx={{
+            mt: 6,
+            mb: 6,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            sx={{ mb: 4, mt: 4 }}
+            color="text.primary"
+            component="h1"
+            variant="h5"
+          >
             CRIAR NOVO PROJETO
           </Typography>
 
-          <Box component="form" onSubmit={handleSubmit} encType="multipart/form-data" sx={{ mt: 3, textAlign: 'center' }}>
-
-            <Grid container spacing={4} >
-              
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+            sx={{ mt: 3, textAlign: "center" }}
+          >
+            <Grid container spacing={4}>
               <Grid item xs={12}>
                 <TextField
                   fullWidth
@@ -103,7 +118,8 @@ const CriarProjeto = () => {
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                   required
-                  color="info" focused
+                  color="info"
+                  focused
                   placeholder="Dê um título ao seu projeto."
                 />
               </Grid>
@@ -118,12 +134,13 @@ const CriarProjeto = () => {
                   name="description"
                   value={description}
                   onChange={(event) => setDescription(event.target.value)}
-                  color="info" focused
+                  color="info"
+                  focused
                   placeholder="Forneça uma breve descrição do seu projeto."
                 />
               </Grid>
 
-              <Grid item xs={12}> 
+              <Grid item xs={12}>
                 <TextField
                   fullWidth
                   id="outlined-helperText-content"
@@ -131,21 +148,23 @@ const CriarProjeto = () => {
                   type="file"
                   variant="outlined"
                   name="content"
-                  color="info" focused
+                  color="info"
+                  focused
                   onChange={(event) => setContent(event.target.value)}
                   inputProps={{
-                    accept: '.txt'
+                    accept: ".txt",
                   }}
                 />
               </Grid>
 
               <Grid item xs={12}>
                 <Button
-                  onClick={() => navigate('/ver-projetos')}
+                  onClick={() => navigate("/ver-projetos")}
                   variant="outlined"
                   color="secondary"
                   size="large"
-                  sx={{ mr:3.5, mb: 4  }}>
+                  sx={{ mr: 3.5, mb: 4 }}
+                >
                   Cancelar
                 </Button>
                 <Button
@@ -153,24 +172,25 @@ const CriarProjeto = () => {
                   variant="contained"
                   color="secondary"
                   size="large"
-                  sx={{  ml:3.5, mb: 4  }}>
+                  sx={{ ml: 3.5, mb: 4 }}
+                >
                   Confirmar
                 </Button>
               </Grid>
-              
 
-                {showFeedback && (
-                  <Typography color={feedbackMessage.includes("sucesso") ? 'green' : 'red'} variant='body1' align='center'>
-                    {feedbackMessage}
-                  </Typography>
-                )}
+              {showFeedback && (
+                <Typography
+                  color={feedbackMessage.includes("sucesso") ? "green" : "red"}
+                  variant="body1"
+                  align="center"
+                >
+                  {feedbackMessage}
+                </Typography>
+              )}
             </Grid>
+          </Box>
         </Box>
-
-        </Box>
-
       </Container>
-
     </>
   );
 };

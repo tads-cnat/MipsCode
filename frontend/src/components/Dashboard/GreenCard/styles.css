@@ -1,69 +1,59 @@
-
-
-.greencard{
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    max-width: 24rem;
-    min-height: 7rem;
-    margin: 10px 53px 10px 0;
-    margin-left: 0;
-    color: #ffff;
-    display: flex;
-    flex-direction: column;
-    background-image: linear-gradient(to right, #19C284 , #53A96B);
-    border-radius:13px;
-
+.greencard {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  max-width: 24rem;
+  min-height: 7rem;
+  margin: 10px 53px 10px 0;
+  margin-left: 0;
+  color: #ffff;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to right, #19c284, #53a96b);
+  border-radius: 13px;
 }
 
-
-.greencard .content{
-    margin: 20px 0;
-    width: 90%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space;
+.greencard .content {
+  margin: 20px 0;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space;
 }
 
-.greencard>span{
-    margin: auto 10px;
+.greencard > span {
+  margin: auto 10px;
 }
 
-.greencard .card-title{
-    font-size: 16px;
-    font-weight: 700;
+.greencard .card-title {
+  font-size: 16px;
+  font-weight: 700;
 }
-.greencard .card-description{
-    font-size: 26px;
-    font-weight: 400;
-    margin: auto 0;
-
+.greencard .card-description {
+  font-size: 26px;
+  font-weight: 400;
+  margin: auto 0;
 }
 
 .description-area {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 
 /*  responsividade */
 
-
-@media screen and (max-width:842px) {
-    .arrowicon{
-        position: relative;
-    }
+@media screen and (max-width: 842px) {
+  .arrowicon {
+    position: relative;
+  }
 }
 
-@media screen and (min-width:843px) {
-    .arrowicon{
-        position: absolute;
-        right: 0;
-        bottom: 4px;
-    }
+@media screen and (min-width: 843px) {
+  .arrowicon {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+  }
 }
-
-
-
-

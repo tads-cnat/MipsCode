@@ -6,7 +6,7 @@ interface Providerprops {
 }
 
 interface UserContextprops {
-  User: object,
+  User: object;
   addUser: (User: object) => void;
 }
 
@@ -31,8 +31,6 @@ export const AuthProvider = ({ children }: Providerprops) => {
   );
 };
 
-
-
 export async function AuthContext() {
   //const context = useContext(Usercontext);
   const userId = sessionStorage.getItem("userId");
@@ -42,15 +40,13 @@ export async function AuthContext() {
   }
 
   try {
-    const res = await api.get(`/users/${userId}`)
+    const res = await api.get(`/users/${userId}`);
     if (res) {
-      return res.data
+      return res.data;
     }
-
   } catch (error) {
     if (error) {
       return error;
     }
   }
-
 }

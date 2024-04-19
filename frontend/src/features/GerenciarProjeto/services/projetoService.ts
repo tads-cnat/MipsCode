@@ -22,7 +22,7 @@ export async function criarProjetos(projeto: iProjeto) {
       { title, description, content, userId },
       {
         headers: headers(),
-      }
+      },
     );
 
     if (Resapi && Resapi.data) {
@@ -56,7 +56,6 @@ export async function listarProjetos() {
   }
 }
 
-
 // EDITAR - CARREGAR PROJETO
 export async function carregarProjeto(projetoId: string) {
   try {
@@ -89,7 +88,7 @@ export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
       title,
       description,
       content,
-      userId
+      userId,
     };
 
     const resApi = await api.patch(`projects/${projetoId}`, updatedProjeto, {
@@ -107,7 +106,6 @@ export async function atualizarProjeto(projetoId: string, projeto: iProjeto) {
     };
   }
 }
-
 
 // EXCLUIR PROJETO
 export async function excluirProjeto(projetoId: string) {
