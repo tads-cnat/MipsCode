@@ -3,18 +3,18 @@ import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import EditIcon from "@mui/icons-material/Edit";
 import { useState } from "react";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import './styles.css'
+import "./styles.css";
 import { excluirTurma } from "../../services/turmasService";
 //import { addEstudante } from "../../services/turmasService";
 import { removeStudent } from "../../services/turmasService";
-import { useNavigate, } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface TurmaProps {
   className: string;
   classDescription: string;
   userRole: string;
-  classId:string;
-  userId:string;
+  classId: string;
+  userId: string;
   handleUpdate?: any;
 }
 
@@ -24,19 +24,15 @@ export default function TurmaCard({
   classId,
   userId,
   userRole,
-  handleUpdate
+  handleUpdate,
 }: TurmaProps) {
-
   const navigate = useNavigate();
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-
-  async function handleExcluirTurma(cod:string,userId: string,) {
-
+  async function handleExcluirTurma(cod: string, userId: string) {
     try {
-      await excluirTurma(cod,userId);
-      setConfirmDelete(false)
- 
+      await excluirTurma(cod, userId);
+      setConfirmDelete(false);
     } catch (error) {
       console.error("Erro ao excluir programa:", error);
     }
@@ -46,30 +42,27 @@ export default function TurmaCard({
     navigate(`/editar-turma?id=${turmaId}`, { state: { turmaId: turmaId } });
   }
 
-  async function handleSairdaTurma(userId: string, classCod: string){
+  async function handleSairdaTurma(userId: string, classCod: string) {
     try {
       await removeStudent(userId, classCod);
-      setConfirmDelete(false)
- 
+      setConfirmDelete(false);
     } catch (error) {
       console.error("Erro ao excluir programa:", error);
     }
   }
 
-
-
   const handleLeaveClass = () => {
-    handleSairdaTurma(userId,classId)
-    handleUpdate()
+    handleSairdaTurma(userId, classId);
+    handleUpdate();
   };
 
   const handleDeleteTurma = () => {
-    handleExcluirTurma(classId,userId)
-    handleUpdate()
+    handleExcluirTurma(classId, userId);
+    handleUpdate();
   };
 
   const handleEditTurma = () => {
-    handleClickEditar(classId)
+    handleClickEditar(classId);
     handleUpdate();
   };
 
@@ -97,22 +90,50 @@ export default function TurmaCard({
         <div className="delete-section">
           {userRole && userRole === "STUDENT" ? (
             <>
-              <br/>
-              <Typography color="text.primary" >Tem certeza que deseja sair desta turma?</Typography>
-              <br/>
+              <br />
+              <Typography color="text.primary">
+                Tem certeza que deseja sair desta turma?
+              </Typography>
+              <br />
               <div className="buttons">
-              <Button color="secondary" variant="outlined" onClick={handleLeaveClass}>Confirmar</Button>
-              <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
+                <Button
+                  color="secondary"
+                  variant="outlined"
+                  onClick={handleLeaveClass}
+                >
+                  Confirmar
+                </Button>
+                <Button
+                  color="warning"
+                  variant="outlined"
+                  onClick={() => setConfirmDelete(false)}
+                >
+                  Cancelar
+                </Button>
               </div>
             </>
           ) : (
             <>
-              <br/>
-              <Typography color="text.primary">Tem certeza que deseja excluir esta turma?</Typography>
-              <br/>
+              <br />
+              <Typography color="text.primary">
+                Tem certeza que deseja excluir esta turma?
+              </Typography>
+              <br />
               <div className="buttons">
-              <Button color="secondary" variant="outlined" onClick={handleDeleteTurma}>Confirmar</Button>
-              <Button color="warning" variant="outlined" onClick={() => setConfirmDelete(false)}>Cancelar</Button>
+                <Button
+                  color="secondary"
+                  variant="outlined"
+                  onClick={handleDeleteTurma}
+                >
+                  Confirmar
+                </Button>
+                <Button
+                  color="warning"
+                  variant="outlined"
+                  onClick={() => setConfirmDelete(false)}
+                >
+                  Cancelar
+                </Button>
               </div>
             </>
           )}

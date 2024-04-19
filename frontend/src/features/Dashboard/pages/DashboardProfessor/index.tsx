@@ -148,7 +148,9 @@ export default function DashboardProfessor() {
       <Header />
       <div className="main-section">
         <section className="green-buttons-section">
-          <span className="title">Bem vindo! Veja o que você pode realizar no Mips</span>
+          <span className="title">
+            Bem vindo! Veja o que você pode realizar no Mips
+          </span>
           <div className="cards">
             {baselinks &&
               baselinks.map((item: Baselink, index: number) => {

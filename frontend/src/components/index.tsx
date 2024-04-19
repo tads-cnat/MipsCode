@@ -4,5 +4,5 @@ import { GreenCards } from "./Dashboard/GreenCard";
 import TutorialCard from "./Dashboard/TutorialCard";
 import ProjectCard from "./Dashboard/ProjectCard";
 
-export {Footer, Header}
-export {GreenCards, TutorialCard, ProjectCard}
+export { Footer, Header };
+export { GreenCards, TutorialCard, ProjectCard };

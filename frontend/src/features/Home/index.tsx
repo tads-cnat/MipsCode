@@ -1,14 +1,14 @@
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 //import { useNavigate } from "react-router-dom";
-import Box from '@mui/material/Box';
-import { Footer } from '../../components/';
-import React from 'react';
+import Box from "@mui/material/Box";
+import { Footer } from "../../components/";
+import React from "react";
 //import banner from '../../assets/imgs/banner.png';
-import { AuthContext } from '../../services/authcontext';
+import { AuthContext } from "../../services/authcontext";
 //import { Paper } from '@mui/material';
 
 import "./page.css";
-import HeaderOut from '../../components/Header Out';
+import HeaderOut from "../../components/Header Out";
 
 export default function Home() {
   //const navigate = useNavigate();
@@ -24,7 +24,6 @@ export default function Home() {
     event.preventDefault();
   }
 
-
   // function handleClickCriar(event: React.MouseEvent<HTMLButtonElement>) {
   //   event.preventDefault();
   //   navigate('/criar-projeto/');
@@ -39,9 +38,8 @@ export default function Home() {
   //   event.preventDefault();
   //   navigate('/login/');
   // }
-  console.log(User)
+  console.log(User);
   return (
-
     <>
       <HeaderOut />
       <section id="Início" className="inicio">
@@ -208,8 +206,16 @@ export default function Home() {
                   <img src = { banner } alt = "BannerMC" width='800vw' height='400vh' />
                   </Paper>
                 </Box> */}
-                <Box display='flex' alignItems='center' justifyContent='center'>
-                  <Button color='secondary' size='small' variant='outlined' type='submit' onClick={handleEnviar}>Enviar</Button>
+                <Box display="flex" alignItems="center" justifyContent="center">
+                  <Button
+                    color="secondary"
+                    size="small"
+                    variant="outlined"
+                    type="submit"
+                    onClick={handleEnviar}
+                  >
+                    Enviar
+                  </Button>
                   {/* <Button color='secondary' size='small' variant='outlined' type='submit' onClick={handleClickCadastro}>Cadastro</Button>
                   <Button color='secondary' size="small" variant="contained" type="submit" onClick={handleClickCriar}>Criar Novo Projeto</Button>
                   <Button color='secondary' size="small" variant="outlined" type="submit" onClick={handleClickVer}>Ver todos os projetos</Button> 
@@ -221,12 +227,7 @@ export default function Home() {
         </div>
       </section>
 
-
-
-
       <Footer />
     </>
-  )
+  );
 }
-
-
