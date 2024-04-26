@@ -43,7 +43,10 @@ jobs:
           cd frontend
           npx prettier . --check
 
-      # Detectar código duplicado
-      - name: detectar código duplicado
+      - name: install jscpd
+        run: |
+          npm install -g jscpd
+
+      - name: detect duplicate code
         run: |
           jscpd --pattern "frontend/**/*.js,backend/**/*.js" --config jscpd.json
