@@ -1,0 +1,7 @@
+{
+    "threshold": 5,
+    "reporters": ["console", "html"],
+    "ignore": ["**/node_modules/**", "**/*.min.js"],
+    "absolute": true
+  }
+  

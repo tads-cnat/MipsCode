@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '20'
       
-      - name: install dependencies
+      - name: install backend dependencies
         run: |
           cd backend
           npm install
@@ -28,7 +28,7 @@ jobs:
           cd backend
           npm run build
 
-      - name: install dependencies
+      - name: install frontend dependencies
         run: |
           cd frontend
           npm install
@@ -42,8 +42,8 @@ jobs:
         run: |
           cd frontend
           npx prettier . --check
-      
 
-
-
-      
+      # Detectar código duplicado
+      - name: detectar código duplicado
+        run: |
+          jscpd --pattern "frontend/**/*.js,backend/**/*.js" --config jscpd.json
