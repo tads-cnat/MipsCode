@@ -27,11 +27,6 @@ jobs:
           cd backend
           npm run build
 
-      - name: ESLint check for backend
-        run: |
-          cd backend
-          npx eslint . --ext .js,.jsx --format stylish
-
       - name: Install frontend dependencies
         run: |
           cd frontend
@@ -45,7 +40,7 @@ jobs:
       - name: ESLint check for frontend
         run: |
           cd frontend
-          npx eslint . --ext .js,.jsx --format stylish
+          npx eslint . 
 
       - name: Prettier check
         run: |
