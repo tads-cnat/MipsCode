@@ -37,7 +37,7 @@ jobs:
           cd frontend
           npm run build
 
-      - name: ESLint check for frontend
+      - name: ESLint security check for frontend
         run: |
           cd frontend
           npx eslint . 
