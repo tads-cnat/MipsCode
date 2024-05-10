@@ -2,7 +2,6 @@ name: MipsCode Pipeline
 
 on:
   push:
-  
   pull_request:
 
 jobs:
@@ -10,43 +9,53 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: copy files from repository
+      - name: Checkout code
         uses: actions/checkout@v3
         
-      - name: set up Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
       
-      - name: install backend dependencies
+      - name: Install backend dependencies
         run: |
           cd backend
           npm install
 
-      - name: build backend
+      - name: Build backend
         run: |
           cd backend
           npm run build
 
-      - name: install frontend dependencies
+      - name: ESLint check for backend
+        run: |
+          cd backend
+          npx eslint . --ext .js,.jsx --format stylish
+
+      - name: Install frontend dependencies
         run: |
           cd frontend
           npm install
 
-      - name: build frontend
+      - name: Build frontend
         run: |
           cd frontend
           npm run build
 
-      - name: prettier check
+      - name: ESLint check for frontend
+        run: |
+          cd frontend
+          npx eslint . --ext .js,.jsx --format stylish
+
+      - name: Prettier check
         run: |
           cd frontend
           npx prettier . --check
 
-      - name: install jscpd
+      - name: Install jscpd
         run: |
           npm install -g jscpd
 
-      - name: detect duplicate code
+      - name: Detect duplicate code
         run: |
-          jscpd --exitCode 1 --pattern "frontend/**/*.js,backend/**/*.js" --config jscpd.json 
+          jscpd --exitCode 1 --pattern "frontend/**/*.js,backend/**/*.js" --config jscpd.json
