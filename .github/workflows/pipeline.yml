@@ -38,6 +38,11 @@ jobs:
           cd frontend
           npm run build
 
+      - name: run eslint 
+        run: |
+          cd frontend
+          npm run lint
+
       - name: prettier check
         run: |
           cd frontend
