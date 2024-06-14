@@ -61,4 +61,4 @@ jobs:
         run: |
           cd backend
           npm install madge
-          npx madge --circular --extensions js src
+          npx madge --circular --e bxtensions js src
