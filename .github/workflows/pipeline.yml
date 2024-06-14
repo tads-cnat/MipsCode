@@ -57,3 +57,8 @@ jobs:
           npm install madge
           npx madge --circular --extensions ts,tsx src
 
+      - name: Check circular dependencies in backend
+        run: |
+          cd backend
+          npm install madge
+          npx madge --circular --extensions js src
