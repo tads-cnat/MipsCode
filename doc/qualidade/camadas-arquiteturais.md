@@ -18,7 +18,7 @@ O MipsCode é estruturado em uma arquitetura que pode ser dividida nas seguintes
 
 <br>
 
-## 2. Evitando Dependência Circular
+## 2. Evitando Dependências Circulares
 
 Para evitar dependências circulares entre as camadas do MipsCode:
 
